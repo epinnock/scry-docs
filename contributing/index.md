@@ -57,7 +57,7 @@ We follow the [Contributor Covenant](https://www.contributor-covenant.org/versio
 
 - **Questions:** Open a [Discussion](https://github.com/epinnock/scry/discussions)
 - **Bugs:** File an [Issue](https://github.com/epinnock/scry/issues)
-- **Security:** Email security@scry.com (see [Security Policy](/contributing/security))
+- **Security:** Email security@scry.com
 
 ## Recognition
 
