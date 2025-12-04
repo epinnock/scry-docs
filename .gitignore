@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# VitePress build output
+.vitepress/dist/
+
+# VitePress cache
+.vitepress/cache/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Vercel
+.vercel/
