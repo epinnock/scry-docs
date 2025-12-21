@@ -21,7 +21,7 @@ Sharing Storybook builds with your team shouldn't be complicated. Traditional ap
 Scry simplifies this to a single command:
 
 ```bash
-npx @scry/storybook-deployer init --projectId my-project --apiKey sk_xxx
+npx @scry/scry init --projectId my-project --apiKey sk_xxx
 ```
 
 This command:

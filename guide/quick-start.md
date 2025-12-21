@@ -33,19 +33,19 @@ From your project's root directory:
 ::: code-group
 
 ```bash [npm]
-npx @scry/storybook-deployer init \
+npx @scry/scry init \
   --projectId YOUR_PROJECT_ID \
   --apiKey YOUR_API_KEY
 ```
 
 ```bash [pnpm]
-pnpm dlx @scry/storybook-deployer init \
+pnpm dlx @scry/scry init \
   --projectId YOUR_PROJECT_ID \
   --apiKey YOUR_API_KEY
 ```
 
 ```bash [yarn]
-yarn dlx @scry/storybook-deployer init \
+yarn dlx @scry/scry init \
   --projectId YOUR_PROJECT_ID \
   --apiKey YOUR_API_KEY
 ```
@@ -87,6 +87,7 @@ After the first workflow completes, you should see:
 # Check your deployment
 curl https://view.scry.com/{project}/latest/
 ```
+or simply visit the deployment URL in your browser.
 
 ## Troubleshooting
 
@@ -119,7 +120,7 @@ gh auth login
 If you prefer to set up secrets manually:
 
 ```bash
-npx @scry/storybook-deployer init \
+npx @scry/scry init \
   --projectId YOUR_PROJECT_ID \
   --apiKey YOUR_API_KEY \
   --skip-gh-setup
