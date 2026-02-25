@@ -38,6 +38,20 @@ NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
 NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
 
+# CDN viewer base URL (scry-cdn-service)
+# Used for Storybook "View" links and fetching coverage-report.json
+# Examples:
+#   NEXT_PUBLIC_SCRY_VIEW_URL=http://localhost:8787
+#   NEXT_PUBLIC_SCRY_VIEW_URL=https://view.staging.example.com
+#   NEXT_PUBLIC_SCRY_VIEW_URL=https://view.example.com
+NEXT_PUBLIC_SCRY_VIEW_URL=https://view.scrymore.com
+
+# Optional: if NEXT_PUBLIC_SCRY_VIEW_URL points at localhost, the dashboard can fetch
+# viewer resources through a same-origin Next.js API proxy:
+#   GET /api/view/<project>/<version>/coverage-report.json
+# which proxies to this upstream.
+SCRY_VIEW_PROXY_TARGET=http://localhost:8787
+
 # Authentication (optional)
 NEXT_PUBLIC_USE_AUTH=false
 ```
@@ -177,6 +191,8 @@ docker run -p 3000:3000 --env-file .env.local scry-dashboard
 | `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | Yes | Firebase sender ID |
 | `NEXT_PUBLIC_FIREBASE_APP_ID` | Yes | Firebase app ID |
 | `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID` | No | Firebase analytics ID |
+| `NEXT_PUBLIC_SCRY_VIEW_URL` | No | CDN viewer base URL (where `scry-cdn-service` is running). Defaults to `https://view.scrymore.com` |
+| `SCRY_VIEW_PROXY_TARGET` | No | Local upstream for `/api/view/*` proxy when the viewer URL is localhost (default: `http://localhost:8787`) |
 | `NEXT_PUBLIC_USE_AUTH` | No | Enable authentication (`true`/`false`) |
 
 ## Verification
