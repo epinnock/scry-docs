@@ -50,6 +50,7 @@ export default defineConfig({
         {
           text: 'Integrations',
           items: [
+            { text: 'Figma Plugin', link: '/guide/figma-plugin' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]
         },
