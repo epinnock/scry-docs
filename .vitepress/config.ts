@@ -112,6 +112,15 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Diff Service',
+          items: [
+            { text: 'Introduction', link: '/services/diff-service/' },
+            { text: 'API Reference', link: '/services/diff-service/api-reference' },
+            { text: 'Review Model', link: '/services/diff-service/review-model' },
+            { text: 'Deployment', link: '/services/diff-service/deployment' },
+          ]
+        },
+        {
           text: 'Dashboard',
           items: [
             { text: 'Introduction', link: '/services/dashboard/' },

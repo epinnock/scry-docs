@@ -117,6 +117,8 @@ More than a frontend: it owns project and member records, API keys and personal 
 
 The plugin links a Figma layer to a story and, for signed-in users, uploads the Figma render so the two can be compared. The diff service holds the pairs, the issues raised against them, and the Figma OAuth connection used to import designs.
 
+Annotation proposes findings, but nothing becomes a real issue until a person promotes it and sets a severity — see the [Diff Service](/services/diff-service/) for that model.
+
 [Learn more about the Figma plugin →](/guide/figma-plugin)
 
 ## Data flow
@@ -208,4 +210,5 @@ The Workers services deploy to Cloudflare, and the dashboard to Vercel or any No
 - [CDN Service](/services/cdn-service/) — serving builds
 - [Dashboard](/services/dashboard/) — projects, keys and review
 - [Figma plugin](/guide/figma-plugin) — linking designs to stories
+- [Diff Service](/services/diff-service/) — pairs, issues and review
 - [Self-Hosting](/self-hosting/) — run your own
