@@ -71,10 +71,25 @@ If the preview shows **Preview blocked**, that Storybook refuses to be framed (`
 
 Open **Suggest links** and pick a scope: **Selection**, **This page** or **Whole file**. The scan reads only the open file and uses no Figma API quota. It collects component-set variants, standalone components and screen-sized top-level frames, skipping instances, hidden layers, names starting with `_` or `iOS/`, and anything already linked.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-1-scan.mp4"></video>
+  <figcaption>Scanning — pick a scope and the plugin collects candidates from the open file.</figcaption>
+</figure>
+
 - **Signed out**, matching is by name: both sides are normalised, so `screen-04`, `Screen 04` and `screen04` are the same thing, and variant properties are compared with story names.
 - **Signed in with a project selected**, the thumbnails are also matched against the project's latest build screenshots. A story's score is the better of its name and visual score, and each row shows which matcher had an opinion. If that endpoint is unreachable, the review says *Visual matching unavailable — showing name matches only*.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-2-review.mp4"></video>
+  <figcaption>The review screen — each row pairs the Figma layer with its proposed story and shows which matcher had an opinion.</figcaption>
+</figure>
+
 Results are grouped into Components, Screens and a collapsed No match group, sorted by confidence. Nothing is linked until you accept it: accept rows one by one, or use **Accept _n_ high-confidence** in one click. Each accept writes the same link the manual flow writes and, when signed in with a project, syncs the Figma render.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-3-accept.mp4"></video>
+  <figcaption>Accepting — one row at a time, or every high-confidence row in a single click.</figcaption>
+</figure>
 
 ### Compare a pair before accepting
 
