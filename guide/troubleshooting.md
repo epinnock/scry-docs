@@ -43,7 +43,7 @@ gh auth login
 Or skip GitHub CLI setup:
 
 ```bash
-npx @scry/storybook-deployer init \
+npx @scrymore/scry-deployer init \
   --projectId YOUR_PROJECT_ID \
   --apiKey YOUR_API_KEY \
   --skip-gh-setup
@@ -100,7 +100,7 @@ ls -la ./storybook-static  # Verify it exists
 
 ```bash
 # Check environment variable
-echo $STORYBOOK_DEPLOYER_API_KEY
+node -e 'console.log((process.env.SCRY_API_KEY || process.env.STORYBOOK_DEPLOYER_API_KEY) ? "API key is set" : "API key is missing")'
 
 # Should start with scry_proj_
 ```
@@ -133,7 +133,7 @@ Ensure the key:
 du -h storybook-static/
 
 # Retry with verbose logging
-npx @scry/storybook-deployer --dir ./storybook-static --verbose
+npx @scrymore/scry-deployer --dir ./storybook-static --verbose
 ```
 
 ### "Timeout" errors
@@ -247,7 +247,7 @@ permissions:
 
 ```bash
 # Run init
-npx @scry/storybook-deployer init --projectId xxx --apiKey yyy
+npx @scrymore/scry-deployer init --projectId xxx --apiKey yyy
 
 # Or create manually
 cat > .storybook-deployer.json << EOF
@@ -289,8 +289,8 @@ If you can't resolve your issue:
 ## Diagnostic Commands
 
 ```bash
-# Check CLI version
-npx @scry/storybook-deployer --version
+# Check installed CLI version (when installed as a dependency)
+npm ls @scrymore/scry-deployer --depth=0
 
 # Verify Node.js version
 node --version
@@ -303,5 +303,5 @@ git status
 curl -I https://upload.scrymore.com/health
 
 # Verbose deployment
-npx @scry/storybook-deployer --dir ./storybook-static --verbose
+npx @scrymore/scry-deployer --dir ./storybook-static --verbose
 ```

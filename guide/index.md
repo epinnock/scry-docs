@@ -16,21 +16,21 @@ Sharing Storybook builds with your team shouldn't be complicated. Traditional ap
 - Managing preview environments
 - Dealing with access control
 
-## The Solution
+## Set up Scry
 
-Scry simplifies this to a single command:
+Install the setup skill in your application's repository:
 
 ```bash
-npx @scry/scry init --projectId my-project --apiKey sk_xxx
+npx skills add epinnock/scry-node --skill scry-setup
 ```
 
-This command:
+The installer requires Node.js 22.20 or newer. Ask your assistant to set up
+Scry, or request only the integration you need: Storybook deployment, component
+search through MCP, or Figma linking. The assistant checks your existing
+configuration and verifies the result; you complete browser sign-in.
 
-1. Creates a configuration file
-2. Generates GitHub Actions workflows
-3. Sets up repository secrets
-4. Commits and pushes everything
-5. Triggers the first deployment
+See [Set up with AI](/guide/skill) for details, or use the
+[direct CLI quick start](/guide/quick-start#set-up-directly-with-the-cli).
 
 ## Key Concepts
 

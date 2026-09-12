@@ -4,7 +4,7 @@ layout: home
 hero:
   name: Scry
   text: Deploy Storybook to the cloud
-  tagline: One command. Automatic PR previews. Zero configuration.
+  tagline: Set up with your AI assistant. Deploy Storybook and find your components.
   actions:
     - theme: brand
       text: Get Started
@@ -15,8 +15,8 @@ hero:
 
 features:
   - icon: ⚡
-    title: Lightning Fast Setup
-    details: Deploy your Storybook in under 5 minutes with npx @scry/storybook-deployer init
+    title: Set Up with Your Assistant
+    details: Install the Scry skill to configure deployments, MCP, and component indexing for your project
   - icon: 🔍
     title: Automatic PR Previews
     details: Every pull request gets its own preview URL for visual review
@@ -34,33 +34,21 @@ features:
     details: Deploy the complete stack on your own infrastructure
 ---
 
-## Get Started in 5 Minutes
+## Set up with your AI assistant
 
-::: code-group
+From your application's repository:
 
-```bash [npm]
-npx @scry/storybook-deployer init \
-  --projectId YOUR_PROJECT_ID \
-  --apiKey YOUR_API_KEY
+```bash
+npx skills add epinnock/scry-node --skill scry-setup
 ```
 
-```bash [pnpm]
-pnpm dlx @scry/storybook-deployer init \
-  --projectId YOUR_PROJECT_ID \
-  --apiKey YOUR_API_KEY
-```
+Use Node.js 22.20 or newer for the installer. Choose your assistant, then ask:
+**“Set up Scry for this project and connect my assistant to its components.”**
 
-```bash [yarn]
-yarn dlx @scry/storybook-deployer init \
-  --projectId YOUR_PROJECT_ID \
-  --apiKey YOUR_API_KEY
-```
+The skill adapts to your repository and helps configure deployment, MCP, and
+optional Figma linking. You complete sign-in in your browser.
 
-:::
-
-That's it! Your Storybook now deploys automatically on every push.
-
-[Learn more →](/guide/quick-start)
+[Set up with AI →](/guide/skill) · [Use the CLI directly →](/guide/quick-start#set-up-directly-with-the-cli)
 
 ## How It Works
 
@@ -79,7 +67,7 @@ That's it! Your Storybook now deploys automatically on every push.
 1. **Push to main** → Deploys to production (`/latest`)
 2. **Open a PR** → Deploys preview (`/pr-123`)
 3. **Update PR** → Updates preview automatically
-4. **Merge PR** → Preview cleaned up, main updated
+4. **Merge PR** → Main deployment updated
 
 ## Why Scry?
 
@@ -96,7 +84,7 @@ That's it! Your Storybook now deploys automatically on every push.
 
 Scry consists of three main components:
 
-- **CLI (`@scry/storybook-deployer`)** - The command-line tool you run in CI
+- **CLI (`@scrymore/scry-deployer`)** - The command-line tool you run in CI
 - **Upload Service** - Cloudflare Worker that handles file uploads
 - **CDN Service** - Cloudflare Worker that serves your Storybook
 

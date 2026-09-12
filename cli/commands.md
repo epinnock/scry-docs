@@ -5,7 +5,7 @@
 Initialize a project with Scry configuration and GitHub Actions workflows.
 
 ```bash
-npx @scry/storybook-deployer init [options]
+npx @scrymore/scry-deployer init [options]
 ```
 
 ### Options
@@ -25,29 +25,32 @@ npx @scry/storybook-deployer init [options]
 3. Sets up GitHub repository variables and secrets (unless `--skip-gh-setup`)
 4. Commits and pushes changes to GitHub
 
+`--skip-gh-setup` skips only GitHub variable/secret setup. It still writes
+files, commits, and pushes; the manual secret instructions can print the key.
+For local configuration before publishing, use the [setup skill](/guide/skill)
+or [manual deployment](/guide/first-deployment).
+
 ### Examples
 
 ```bash
 # Full setup
-npx @scry/storybook-deployer init \
+npx @scrymore/scry-deployer init \
   --projectId my-design-system \
   --apiKey scry_proj_my-design-system_xxx
 
 # Skip GitHub CLI setup (manual secrets)
-npx @scry/storybook-deployer init \
+npx @scrymore/scry-deployer init \
   --projectId my-project \
   --apiKey scry_proj_xxx \
   --skip-gh-setup
 ```
 
-## deploy (default)
+## Deployment (no subcommand)
 
 Deploy a Storybook build to Scry. This is the default command when no command is specified.
 
 ```bash
-npx @scry/storybook-deployer [options]
-# or
-npx @scry/storybook-deployer deploy [options]
+npx @scrymore/scry-deployer [options]
 ```
 
 ### Options
@@ -68,7 +71,7 @@ npx @scry/storybook-deployer deploy [options]
 
 ```bash
 # Basic deployment
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-project \
   --version v1.0.0
@@ -76,15 +79,15 @@ npx @scry/storybook-deployer \
 # Using environment variables
 export STORYBOOK_DEPLOYER_API_KEY=scry_proj_xxx
 export STORYBOOK_DEPLOYER_PROJECT=my-project
-npx @scry/storybook-deployer --dir ./storybook-static
+npx @scrymore/scry-deployer --dir ./storybook-static
 
 # Verbose output
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --verbose
 
 # With story analysis
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --with-analysis \
   --storybook-url http://localhost:6006
@@ -111,7 +114,7 @@ npx @scry/storybook-deployer \
 Analyze Storybook stories and capture screenshots without deploying.
 
 ```bash
-npx @scry/storybook-deployer analyze [options]
+npx @scrymore/scry-deployer analyze [options]
 ```
 
 ### Options
@@ -143,16 +146,16 @@ The analyze command automatically finds story files anywhere in your project:
 
 ```bash
 # Auto-detect stories and capture screenshots
-npx @scry/storybook-deployer analyze \
+npx @scrymore/scry-deployer analyze \
   --storybook-url http://localhost:6006
 
 # Specify stories directory
-npx @scry/storybook-deployer analyze \
+npx @scrymore/scry-deployer analyze \
   --stories-dir ./src/components \
   --storybook-url http://localhost:6006
 
 # Custom output directory
-npx @scry/storybook-deployer analyze \
+npx @scrymore/scry-deployer analyze \
   --screenshots-dir ./visual-snapshots
 ```
 

@@ -92,7 +92,7 @@ curl -X POST \
 
 ```bash
 export SCRY_API_KEY=scry_proj_my-project_xxx
-npx @scry/storybook-deployer --dir ./storybook-static
+npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ### In GitHub Actions
@@ -101,7 +101,7 @@ npx @scry/storybook-deployer --dir ./storybook-static
 - name: Deploy
   env:
     STORYBOOK_DEPLOYER_API_KEY: ${{ secrets.SCRY_API_KEY }}
-  run: npx @scry/storybook-deployer --dir ./storybook-static
+  run: npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ## Creating API Keys

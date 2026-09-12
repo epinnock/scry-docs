@@ -1,23 +1,23 @@
 # CLI Overview
 
-The Scry CLI (`@scry/storybook-deployer`) is a command-line tool for deploying Storybook builds to the cloud.
+The Scry CLI (`@scrymore/scry-deployer`) is a command-line tool for deploying Storybook builds to the cloud.
 
 ## Installation
 
 ::: code-group
 
 ```bash [npx (recommended)]
-npx @scry/storybook-deployer [command] [options]
+npx @scrymore/scry-deployer [command] [options]
 ```
 
 ```bash [npm]
-npm install @scry/storybook-deployer --save-dev
-npx storybook-deployer [command] [options]
+npm install @scrymore/scry-deployer --save-dev
+npm exec -- scry-deployer [command] [options]
 ```
 
 ```bash [pnpm]
-pnpm add @scry/storybook-deployer -D
-pnpm dlx storybook-deployer [command] [options]
+pnpm add @scrymore/scry-deployer -D
+pnpm exec scry-deployer [command] [options]
 ```
 
 :::
@@ -27,21 +27,21 @@ pnpm dlx storybook-deployer [command] [options]
 | Command | Description |
 |---------|-------------|
 | `init` | Initialize project with workflows and config |
-| `deploy` | Deploy Storybook (default command) |
+| No subcommand | Deploy Storybook |
 | `analyze` | Analyze stories and capture screenshots |
 
 ## Binary Aliases
 
 The package provides multiple binary names:
 
-- `storybook-deployer` - Full name
+- `scry-deployer` - Full name
 - `storybook-deploy` - Short name
 - `scry` - Shortest alias
 
 All are equivalent:
 
 ```bash
-npx storybook-deployer --help
+npm exec -- scry-deployer --help
 npx storybook-deploy --help
 npx scry --help
 ```
@@ -51,7 +51,7 @@ npx scry --help
 ### Initialize a Project
 
 ```bash
-npx @scry/storybook-deployer init \
+npx @scrymore/scry-deployer init \
   --projectId my-project \
   --apiKey scry_proj_xxx
 ```
@@ -59,7 +59,7 @@ npx @scry/storybook-deployer init \
 ### Deploy Storybook
 
 ```bash
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-project \
   --version latest
@@ -68,7 +68,7 @@ npx @scry/storybook-deployer \
 ### Analyze Stories
 
 ```bash
-npx @scry/storybook-deployer analyze \
+npx @scrymore/scry-deployer analyze \
   --storybook-url http://localhost:6006
 ```
 
@@ -77,9 +77,16 @@ npx @scry/storybook-deployer analyze \
 The CLI reads configuration from multiple sources in order of priority:
 
 1. **Command-line arguments** (highest priority)
-2. **Environment variables** (`STORYBOOK_DEPLOYER_*` or `SCRY_*`)
-3. **Configuration file** (`.storybook-deployer.json`)
-4. **Default values** (lowest priority)
+2. **GitHub Actions context** (deployment version)
+3. **Environment variables** (`STORYBOOK_DEPLOYER_*` or `SCRY_*`)
+4. **Configuration file** (`.storybook-deployer.json`)
+5. **Default values** (lowest priority)
+
+Use `--deploy-version latest` when the main build must publish a `/latest/`
+alias. GitHub Actions context can override version values supplied only through
+the environment or configuration file. The CLI does not automatically load
+`.env`; supply variables to the process or use your existing environment loader.
+`init` requires its own project/key flags.
 
 ## Environment Variables
 
@@ -113,9 +120,9 @@ export SCRY_API_KEY=scry_proj_xxx
 ## Getting Help
 
 ```bash
-npx @scry/storybook-deployer --help
-npx @scry/storybook-deployer init --help
-npx @scry/storybook-deployer analyze --help
+npx @scrymore/scry-deployer --help
+npx @scrymore/scry-deployer init --help
+npx @scrymore/scry-deployer analyze --help
 ```
 
 ## Next Steps

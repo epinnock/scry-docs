@@ -59,7 +59,7 @@ Example: `scry_proj_design-system_KjE2MzQ1Njc4OTBhYmNkZWYxMjM0NTY3ODkw`
 ### In CLI
 
 ```bash
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --api-key scry_proj_xxx
 ```
@@ -86,7 +86,7 @@ export SCRY_API_KEY=scry_proj_xxx
 - name: Deploy
   env:
     STORYBOOK_DEPLOYER_API_KEY: ${{ secrets.SCRY_API_KEY }}
-  run: npx @scry/storybook-deployer --dir ./storybook-static
+  run: npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ## Viewing Keys

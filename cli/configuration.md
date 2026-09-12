@@ -7,9 +7,10 @@ The Scry CLI can be configured through multiple sources.
 Configuration is resolved in order of priority:
 
 1. **Command-line arguments** (highest priority)
-2. **Environment variables**
-3. **Configuration file** (`.storybook-deployer.json`)
-4. **Default values** (lowest priority)
+2. **GitHub Actions context** (deployment version)
+3. **Environment variables**
+4. **Configuration file** (`.storybook-deployer.json`)
+5. **Default values** (lowest priority)
 
 ## Configuration File
 
@@ -48,6 +49,12 @@ Never commit API keys in the configuration file. Use environment variables for s
 | `storiesDir` | string | Auto-detect | Stories directory path |
 | `screenshotsDir` | string | `./screenshots` | Screenshots output |
 | `storybookUrl` | string | `http://localhost:6006` | Running Storybook URL |
+
+Use `--deploy-version latest` when the main build must publish a `/latest/`
+alias. GitHub Actions context can override version values supplied only through
+the environment or configuration file. The CLI does not automatically load
+`.env`; supply variables to the process or use your existing environment loader.
+`init` requires its own project/key flags.
 
 ## Environment Variables
 
@@ -88,7 +95,7 @@ export STORYBOOK_DEPLOYER_VERSION=v1.0.0
 export STORYBOOK_DEPLOYER_API_KEY=scry_proj_xxx
 
 # Run CLI (picks up env vars)
-npx @scry/storybook-deployer --dir ./storybook-static
+npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ```bash
@@ -97,7 +104,7 @@ export SCRY_PROJECT_ID=my-project
 export SCRY_API_KEY=scry_proj_xxx
 export SCRY_API_URL=https://upload.scrymore.com
 
-npx @scry/storybook-deployer --dir ./storybook-static
+npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ## GitHub Actions Variables
@@ -127,7 +134,7 @@ For GitHub Actions, set these as repository variables and secrets:
     STORYBOOK_DEPLOYER_API_KEY: ${{ secrets.SCRY_API_KEY }}
     STORYBOOK_DEPLOYER_PROJECT: ${{ vars.SCRY_PROJECT_ID }}
     STORYBOOK_DEPLOYER_VERSION: ${{ github.sha }}
-  run: npx @scry/storybook-deployer --dir ./storybook-static
+  run: npx @scrymore/scry-deployer --dir ./storybook-static --deploy-version "${{ github.sha }}"
 ```
 
 ## Default Values

@@ -35,6 +35,7 @@ export default defineConfig({
           items: [
             { text: 'What is Scry?', link: '/guide/' },
             { text: 'Quick Start', link: '/guide/quick-start' },
+            { text: 'Set Up with AI', link: '/guide/skill' },
             { text: 'Installation', link: '/guide/installation' },
           ]
         },

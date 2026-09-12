@@ -10,7 +10,7 @@ Deploy your Storybook to the `latest` version:
 
 ```bash
 npm run build-storybook
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --version latest
@@ -21,7 +21,7 @@ npx @scry/storybook-deployer \
 Deploy a specific version:
 
 ```bash
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --version v1.2.3
@@ -32,7 +32,7 @@ npx @scry/storybook-deployer \
 Use the git commit SHA as version:
 
 ```bash
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --version $(git rev-parse --short HEAD)
@@ -46,7 +46,7 @@ npx @scry/storybook-deployer \
 # Get PR number from environment or git
 PR_NUMBER=$(gh pr view --json number -q .number 2>/dev/null || echo "local")
 
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --version "pr-${PR_NUMBER}"
@@ -60,7 +60,7 @@ npx @scry/storybook-deployer \
     STORYBOOK_DEPLOYER_API_KEY: ${{ secrets.SCRY_API_KEY }}
     STORYBOOK_DEPLOYER_PROJECT: ${{ vars.SCRY_PROJECT_ID }}
     STORYBOOK_DEPLOYER_VERSION: pr-${{ github.event.pull_request.number }}
-  run: npx @scry/storybook-deployer --dir ./storybook-static
+  run: npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ## Branch-Based Deployments
@@ -70,7 +70,7 @@ npx @scry/storybook-deployer \
 ```bash
 BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's/[^a-zA-Z0-9]/-/g')
 
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --version "branch-${BRANCH}"
@@ -81,7 +81,7 @@ npx @scry/storybook-deployer \
 ```bash
 DATE=$(date +%Y%m%d)
 
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --version "${DATE}-latest"
@@ -98,7 +98,7 @@ Analyze stories, capture screenshots, and deploy:
 npm run storybook &
 sleep 10  # Wait for server
 
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --version v1.0.0 \
@@ -118,7 +118,7 @@ npm run storybook &
 
 npx wait-on http://localhost:6006
 
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --with-analysis \
   --storybook-url http://localhost:6006
@@ -132,7 +132,7 @@ Analyze and capture screenshots without deploying:
 npm run storybook &
 npx wait-on http://localhost:6006
 
-npx @scry/storybook-deployer analyze \
+npx @scrymore/scry-deployer analyze \
   --project my-design-system \
   --storybook-url http://localhost:6006 \
   --screenshots-dir ./visual-snapshots
@@ -157,7 +157,7 @@ for package in "${PACKAGES[@]}"; do
 
   echo "Deploying ${project}..."
 
-  npx @scry/storybook-deployer \
+  npx @scrymore/scry-deployer \
     --dir "${path}/storybook-static" \
     --project "${project}" \
     --version latest
@@ -187,7 +187,7 @@ jobs:
         env:
           STORYBOOK_DEPLOYER_PROJECT: ${{ matrix.project }}
         run: |
-          npx @scry/storybook-deployer \
+          npx @scrymore/scry-deployer \
             --dir ${{ matrix.path }}/storybook-static
 ```
 
@@ -196,7 +196,7 @@ jobs:
 ### Staging Environment
 
 ```bash
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --api-url https://upload-stage.scrymore.com \
@@ -206,7 +206,7 @@ npx @scry/storybook-deployer \
 ### Self-Hosted Backend
 
 ```bash
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --project my-design-system \
   --api-url https://storybook-api.mycompany.com \
@@ -222,7 +222,7 @@ Add to `package.json`:
 ```json
 {
   "scripts": {
-    "deploy:storybook": "npm run build-storybook && npx @scry/storybook-deployer --dir ./storybook-static",
+    "deploy:storybook": "npm run build-storybook && npx @scrymore/scry-deployer --dir ./storybook-static",
     "deploy:storybook:staging": "npm run deploy:storybook -- --version staging",
     "deploy:storybook:production": "npm run deploy:storybook -- --version latest"
   }
@@ -245,7 +245,7 @@ build-storybook:
 	npm run build-storybook
 
 deploy-storybook: build-storybook
-	npx @scry/storybook-deployer \
+	npx @scrymore/scry-deployer \
 		--dir ./storybook-static \
 		--project $(PROJECT) \
 		--version $(VERSION)
@@ -269,7 +269,7 @@ make deploy-production
 ### Verbose Output
 
 ```bash
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --verbose
 ```
@@ -284,7 +284,7 @@ cat .storybook-deployer.json
 env | grep -E "(STORYBOOK_DEPLOYER|SCRY)_"
 
 # Dry run (just build archive)
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
   --verbose 2>&1 | head -20
 ```
@@ -296,7 +296,7 @@ npx @scry/storybook-deployer \
 curl -I https://upload.scrymore.com/health
 
 # Validate API key format
-echo $SCRY_API_KEY | grep -E "^scry_proj_"
+node -e 'console.log((process.env.SCRY_API_KEY || process.env.STORYBOOK_DEPLOYER_API_KEY) ? "API key is set" : "API key is missing")'
 ```
 
 ## Error Handling
@@ -310,7 +310,7 @@ MAX_RETRIES=3
 RETRY_DELAY=5
 
 for i in $(seq 1 $MAX_RETRIES); do
-  npx @scry/storybook-deployer \
+  npx @scrymore/scry-deployer \
     --dir ./storybook-static \
     --project my-design-system \
     && exit 0
@@ -331,7 +331,7 @@ exit 1
 # Only deploy if Storybook files changed
 if git diff --name-only HEAD~1 | grep -qE '\.(stories|mdx)\.(ts|tsx|js|jsx)$'; then
   echo "Storybook files changed, deploying..."
-  npx @scry/storybook-deployer --dir ./storybook-static
+  npx @scrymore/scry-deployer --dir ./storybook-static
 else
   echo "No Storybook changes, skipping deployment"
 fi

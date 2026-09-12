@@ -13,9 +13,13 @@
 - [ ] Completed the [Quick Start](/guide/quick-start) setup
 - [ ] Repository with GitHub Actions enabled
 
-## Generated Workflows
+## Example Workflows
 
-The `init` command creates two workflow files:
+The [setup skill](/guide/skill) can adapt workflows to your repository. The
+`init` command generates two workflow files and commits and pushes them. The
+examples below show basic hosting; generated templates also include coverage
+and analysis steps. For searchable components, keep those steps as described
+under [Index components for MCP](#index-components-for-mcp).
 
 ### Main Deployment (`.github/workflows/deploy-storybook.yml`)
 
@@ -52,7 +56,7 @@ jobs:
           STORYBOOK_DEPLOYER_API_KEY: ${{ secrets.SCRY_API_KEY }}
           STORYBOOK_DEPLOYER_PROJECT: ${{ vars.SCRY_PROJECT_ID }}
           STORYBOOK_DEPLOYER_VERSION: latest
-        run: npx @scry/storybook-deployer --dir ./storybook-static
+        run: npx @scrymore/scry-deployer --dir ./storybook-static --deploy-version latest
 ```
 
 ### PR Preview (`.github/workflows/deploy-pr-preview.yml`)
@@ -72,6 +76,7 @@ permissions:
 
 jobs:
   deploy:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -95,8 +100,8 @@ jobs:
           STORYBOOK_DEPLOYER_PROJECT: ${{ vars.SCRY_PROJECT_ID }}
           STORYBOOK_DEPLOYER_VERSION: pr-${{ github.event.pull_request.number }}
         run: |
-          npx @scry/storybook-deployer --dir ./storybook-static
-          echo "url=${{ vars.SCRY_VIEW_URL }}/${{ vars.SCRY_PROJECT_ID }}/pr-${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+          npx @scrymore/scry-deployer --dir ./storybook-static --deploy-version pr-${{ github.event.pull_request.number }}
+          echo "url=${{ vars.SCRY_VIEW_URL || 'https://view.scrymore.com' }}/${{ vars.SCRY_PROJECT_ID }}/pr-${{ github.event.pull_request.number }}/" >> $GITHUB_OUTPUT
 
       - name: Comment on PR
         uses: actions/github-script@v7
@@ -129,6 +134,23 @@ jobs:
               });
             }
 ```
+
+## Index components for MCP
+
+Use `--with-analysis` with coverage enabled to capture and upload the metadata
+and screenshots needed by search. Install the Playwright browser used by the
+coverage runner before deploying. The deployer's generated templates include
+this step; ensure its browser version matches your installed runner if you
+customize the dependencies.
+
+Keep these settings for PRs that need searchable previews too. A draft-PR
+`--no-coverage` condition prevents the metadata path from running. For a basic
+hosting-only workflow such as the examples above, indexing is not enabled.
+
+Check both the upload result and a project-filtered [MCP search](/guide/mcp).
+Processing is asynchronous, so components may become searchable after the
+Storybook is already live. The [setup skill](/guide/skill) can configure and
+check this complete path.
 
 ## Repository Variables
 
@@ -207,7 +229,7 @@ jobs:
       - name: Deploy
         env:
           STORYBOOK_DEPLOYER_PROJECT: my-project-${{ matrix.storybook }}
-        run: npx @scry/storybook-deployer --dir ./storybook-${{ matrix.storybook }}
+        run: npx @scrymore/scry-deployer --dir ./storybook-${{ matrix.storybook }}
 ```
 
 ### Conditional Deployment

@@ -24,7 +24,7 @@ Scry consists of multiple repositories:
 
 | Repository | Description |
 |------------|-------------|
-| `scry-node` | CLI tool (`@scry/storybook-deployer`) |
+| `scry-node` | CLI tool (`@scrymore/scry-deployer`) |
 | `scry-storybook-upload-service` | Upload Service (Cloudflare Worker) |
 | `scry-cdn-service` | CDN Service (Cloudflare Worker) |
 | `scry-developer-dashboard` | Dashboard (Next.js) |
