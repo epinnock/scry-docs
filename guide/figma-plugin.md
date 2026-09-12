@@ -65,7 +65,9 @@ Signed out, the plugin talks only to the Storybook URL you enter, and links neve
 
 ## Feedback and support
 
-Something broke or felt wrong? Tell us at [scrymore.com/feedback](https://scrymore.com/feedback) or email <epinnock@gmail.com>.
+Something broke or felt wrong? Tell us on the [feedback form](/feedback) (five questions, answer the ones you have an answer for) or email <feedback@scrymore.com>.
+
+You can also comment on the [Community listing](https://www.figma.com/community/plugin/1602918953997015259) — comments are answered within a day.
 
 ## Changelog
 

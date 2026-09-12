@@ -27,6 +27,7 @@ export default defineConfig({
       { text: 'Services', link: '/services/overview' },
       { text: 'API', link: '/api/' },
       { text: 'Contributing', link: '/contributing/' },
+      { text: 'Feedback', link: '/feedback' },
     ],
 
     sidebar: {
@@ -59,6 +60,7 @@ export default defineConfig({
           items: [
             { text: 'Troubleshooting', link: '/guide/troubleshooting' },
             { text: 'FAQ', link: '/reference/faq' },
+            { text: 'Feedback', link: '/feedback' },
           ]
         }
       ],
