@@ -29,7 +29,7 @@ scry-cdn-service/
 ## How It Works
 
 ```
-1. Request: https://view-{project}.scry.com/path/to/file.js
+1. Request: https://view-{project}.scrymore.com/path/to/file.js
                     │
                     ▼
 2. Parse subdomain to get project ID
@@ -56,13 +56,13 @@ scry-cdn-service/
 Storybooks are accessed via subdomain:
 
 ```
-https://view-{project-id}.scry.com/{path}
+https://view-{project-id}.scrymore.com/{path}
 ```
 
 Examples:
-- `https://view-my-design-system.scry.com/`
-- `https://view-my-design-system.scry.com/iframe.html`
-- `https://view-my-design-system.scry.com/static/main.js`
+- `https://view-my-design-system.scrymore.com/`
+- `https://view-my-design-system.scrymore.com/iframe.html`
+- `https://view-my-design-system.scrymore.com/static/main.js`
 
 ## Performance
 
@@ -95,10 +95,10 @@ For local development:
 
 ```bash
 # Access a deployed Storybook
-curl https://view-my-project.scry.com/
+curl https://view-my-project.scrymore.com/
 
 # Access a specific file
-curl https://view-my-project.scry.com/static/main.js
+curl https://view-my-project.scrymore.com/static/main.js
 ```
 
 ### Self-Hosting

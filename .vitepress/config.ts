@@ -59,7 +59,6 @@ export default defineConfig({
           text: 'Help',
           items: [
             { text: 'Troubleshooting', link: '/guide/troubleshooting' },
-            { text: 'FAQ', link: '/reference/faq' },
             { text: 'Feedback', link: '/feedback' },
           ]
         }
@@ -174,7 +173,6 @@ export default defineConfig({
         {
           text: 'Reference',
           items: [
-            { text: 'FAQ', link: '/reference/faq' },
             { text: 'Glossary', link: '/reference/glossary' },
             { text: 'Changelog', link: '/reference/changelog' },
             { text: 'Migration Guide', link: '/reference/migration' },

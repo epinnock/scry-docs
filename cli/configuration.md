@@ -17,7 +17,7 @@ Create `.storybook-deployer.json` in your project root:
 
 ```json
 {
-  "apiUrl": "https://api.scry.com",
+  "apiUrl": "https://upload.scrymore.com",
   "apiKey": null,
   "dir": "./storybook-static",
   "project": "my-project",
@@ -95,7 +95,7 @@ npx @scry/storybook-deployer --dir ./storybook-static
 # Using SCRY_ prefix (takes precedence)
 export SCRY_PROJECT_ID=my-project
 export SCRY_API_KEY=scry_proj_xxx
-export SCRY_API_URL=https://api.scry.com
+export SCRY_API_URL=https://upload.scrymore.com
 
 npx @scry/storybook-deployer --dir ./storybook-static
 ```
@@ -109,8 +109,8 @@ For GitHub Actions, set these as repository variables and secrets:
 | Variable | Value |
 |----------|-------|
 | `SCRY_PROJECT_ID` | Your project ID |
-| `SCRY_API_URL` | `https://api.scry.com` |
-| `SCRY_VIEW_URL` | `https://view.scry.com` |
+| `SCRY_API_URL` | `https://upload.scrymore.com` |
+| `SCRY_VIEW_URL` | `https://view.scrymore.com` |
 
 ### Secrets (Settings → Secrets and variables → Actions → Secrets)
 
@@ -158,7 +158,7 @@ When not specified, these defaults are used:
 
 ```json
 {
-  "apiUrl": "https://staging.api.scry.com",
+  "apiUrl": "https://upload-stage.scrymore.com",
   "project": "my-project-dev",
   "dir": "./storybook-static",
   "verbose": true
@@ -169,7 +169,7 @@ When not specified, these defaults are used:
 
 ```json
 {
-  "apiUrl": "https://api.scry.com",
+  "apiUrl": "https://upload.scrymore.com",
   "project": "my-project",
   "dir": "./storybook-static",
   "version": "latest",

@@ -57,7 +57,7 @@ preview_id = "your-preview-kv-id"
 
 # Worker Routes
 routes = [
-  { pattern = "view-*.scry.com/*", zone_name = "scry.com" }
+  { pattern = "view-*.scrymore.com/*", zone_name = "scrymore.com" }
 ]
 
 # Environment Variables
@@ -176,7 +176,7 @@ Point your domain to Cloudflare nameservers, then configure DNS in Cloudflare.
 ### Health Check
 
 ```bash
-curl https://view-test.scry.com/health
+curl https://view-test.scrymore.com/health
 ```
 
 Expected response:

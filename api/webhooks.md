@@ -31,7 +31,7 @@ Webhooks will notify your services when events occur in Scry.
       "versionId": "v1.0.0",
       "buildNumber": 42,
       "status": "active",
-      "url": "https://view-my-project.scry.com/"
+      "url": "https://view-my-project.scrymore.com/"
     }
   }
 }

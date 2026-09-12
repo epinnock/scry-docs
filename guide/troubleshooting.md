@@ -216,7 +216,7 @@ permissions:
 
 **Solution:**
 - Verify the deployment completed successfully
-- Check the URL format: `https://view.scry.com/{project}/{version}/`
+- Check the URL format: `https://view.scrymore.com/{project}/{version}/`
 - Ensure `index.html` exists in your build
 
 ### "Old version displayed"
@@ -252,7 +252,7 @@ npx @scry/storybook-deployer init --projectId xxx --apiKey yyy
 # Or create manually
 cat > .storybook-deployer.json << EOF
 {
-  "apiUrl": "https://api.scry.com",
+  "apiUrl": "https://upload.scrymore.com",
   "project": "my-project",
   "dir": "./storybook-static"
 }
@@ -300,7 +300,7 @@ git remote -v
 git status
 
 # Test API connectivity
-curl -I https://api.scry.com/health
+curl -I https://upload.scrymore.com/health
 
 # Verbose deployment
 npx @scry/storybook-deployer --dir ./storybook-static --verbose

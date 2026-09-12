@@ -16,7 +16,7 @@
 
 ## Step 1: Get Your Credentials
 
-Visit the [Scry Dashboard](https://dashboard.scry.com) and:
+Visit the [Scry Dashboard](https://dashboard.scrymore.com) and:
 
 1. Sign in with your GitHub account
 2. Create a new project
@@ -85,7 +85,7 @@ After the first workflow completes, you should see:
 
 ```bash
 # Check your deployment
-curl https://view.scry.com/{project}/latest/
+curl https://view.scrymore.com/{project}/latest/
 ```
 or simply visit the deployment URL in your browser.
 

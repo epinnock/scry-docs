@@ -22,7 +22,7 @@ The Developer Dashboard is a web application for managing Scry projects, API key
 
 ### Access the Hosted Dashboard
 
-Visit [dashboard.scry.com](https://dashboard.scry.com) to:
+Visit [dashboard.scrymore.com](https://dashboard.scrymore.com) to:
 
 1. Sign in with GitHub
 2. Create a new project

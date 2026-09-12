@@ -2,7 +2,7 @@
 
 ## Base URL
 
-- **Production:** `https://api.scry.com`
+- **Production:** `https://upload.scrymore.com`
 - **Self-hosted:** Your deployment URL
 
 ## Authentication
@@ -84,7 +84,7 @@ curl -X POST \
   -H "X-API-Key: scry_proj_my-project_xxx" \
   -H "Content-Type: application/zip" \
   --data-binary @storybook.zip \
-  https://api.scry.com/upload/my-project/v1.0.0
+  https://upload.scrymore.com/upload/my-project/v1.0.0
 ```
 
 ---
@@ -130,7 +130,7 @@ POST /presigned-url/:project/:version/:filename
 RESPONSE=$(curl -s -X POST \
   -H "X-API-Key: scry_proj_xxx" \
   -H "Content-Type: application/zip" \
-  https://api.scry.com/presigned-url/my-project/v1.0.0/storybook.zip)
+  https://upload.scrymore.com/presigned-url/my-project/v1.0.0/storybook.zip)
 
 # 2. Extract URL
 URL=$(echo $RESPONSE | jq -r '.url')

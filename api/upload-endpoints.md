@@ -5,7 +5,7 @@ API endpoints for uploading Storybook builds.
 ## Base URL
 
 ```
-https://api.scry.com
+https://upload.scrymore.com
 ```
 
 ## Health Check
@@ -81,7 +81,7 @@ curl -X POST \
   -H "X-API-Key: scry_proj_my-project_xxx" \
   -H "Content-Type: application/zip" \
   --data-binary @storybook.zip \
-  https://api.scry.com/upload/my-project/v1.0.0
+  https://upload.scrymore.com/upload/my-project/v1.0.0
 ```
 
 ---
@@ -131,7 +131,7 @@ Required. Include `X-API-Key` header.
 RESPONSE=$(curl -s -X POST \
   -H "X-API-Key: scry_proj_xxx" \
   -H "Content-Type: application/zip" \
-  https://api.scry.com/presigned-url/my-project/v1.0.0/storybook.zip)
+  https://upload.scrymore.com/presigned-url/my-project/v1.0.0/storybook.zip)
 
 # 2. Extract URL
 URL=$(echo $RESPONSE | jq -r '.url')

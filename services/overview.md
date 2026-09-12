@@ -139,7 +139,7 @@ sequenceDiagram
     participant KV as Cloudflare KV
     participant R2 as Cloudflare R2
     
-    User->>CDN: GET view-{project}.scry.com/file
+    User->>CDN: GET view-{project}.scrymore.com/file
     CDN->>CDN: Parse project from subdomain
     CDN->>KV: Lookup ZIP metadata
     alt Metadata in cache

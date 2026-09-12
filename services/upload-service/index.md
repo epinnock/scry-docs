@@ -54,7 +54,7 @@ curl -X POST \
   -H "X-API-Key: scry_proj_my-project_your-api-key-here" \
   -H "Content-Type: application/zip" \
   --data-binary @storybook.zip \
-  https://api.scry.com/upload/my-project/v1.0.0
+  https://upload.scrymore.com/upload/my-project/v1.0.0
 ```
 
 See [Authentication](/services/upload-service/authentication) for details.
@@ -87,7 +87,7 @@ projects/{projectId}/
 curl -X POST \
   -H "X-API-Key: scry_proj_xxx" \
   -H "Content-Type: application/zip" \
-  https://api.scry.com/presigned-url/my-project/v1.0.0/storybook.zip
+  https://upload.scrymore.com/presigned-url/my-project/v1.0.0/storybook.zip
 
 # Upload to returned URL
 curl -X PUT \

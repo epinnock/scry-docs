@@ -11,16 +11,16 @@ https://view-{project-id}.{domain}/{path}
 Components:
 - `view-` - Fixed prefix
 - `{project-id}` - Your project identifier
-- `{domain}` - Your domain (e.g., `scry.com`)
+- `{domain}` - Your domain (e.g., `scrymore.com`)
 - `{path}` - File path within the Storybook
 
 ## Examples
 
 | URL | Project | Path |
 |-----|---------|------|
-| `https://view-my-app.scry.com/` | `my-app` | `/` (index.html) |
-| `https://view-my-app.scry.com/iframe.html` | `my-app` | `/iframe.html` |
-| `https://view-design-system.scry.com/static/main.js` | `design-system` | `/static/main.js` |
+| `https://view-my-app.scrymore.com/` | `my-app` | `/` (index.html) |
+| `https://view-my-app.scrymore.com/iframe.html` | `my-app` | `/iframe.html` |
+| `https://view-design-system.scrymore.com/static/main.js` | `design-system` | `/static/main.js` |
 
 ## How It Works
 
@@ -29,7 +29,7 @@ Components:
 Wildcard DNS record points to Cloudflare:
 
 ```
-*.scry.com → Cloudflare Workers
+*.scrymore.com → Cloudflare Workers
 ```
 
 ### 2. Worker Route
@@ -39,7 +39,7 @@ Worker handles matching requests:
 ```toml
 # wrangler.toml
 routes = [
-  { pattern = "view-*.scry.com/*", zone_name = "scry.com" }
+  { pattern = "view-*.scrymore.com/*", zone_name = "scrymore.com" }
 ]
 ```
 
@@ -55,9 +55,9 @@ function extractProjectId(hostname: string): string | null {
 }
 
 // Examples:
-// view-my-app.scry.com → "my-app"
-// view-design-system.scry.com → "design-system"
-// my-app.scry.com → null (missing view- prefix)
+// view-my-app.scrymore.com → "my-app"
+// view-design-system.scrymore.com → "design-system"
+// my-app.scrymore.com → null (missing view- prefix)
 ```
 
 ### 4. File Resolution
@@ -103,7 +103,7 @@ Point wildcard to Cloudflare nameservers, then configure in Cloudflare.
 ```toml
 # wrangler.toml
 routes = [
-  { pattern = "view-*.scry.com/*", zone_name = "scry.com" }
+  { pattern = "view-*.scrymore.com/*", zone_name = "scrymore.com" }
 ]
 ```
 
@@ -111,8 +111,8 @@ routes = [
 
 ```toml
 routes = [
-  { pattern = "view-*.scry.com/*", zone_name = "scry.com" },
-  { pattern = "view-*.preview.scry.com/*", zone_name = "scry.com" },
+  { pattern = "view-*.scrymore.com/*", zone_name = "scrymore.com" },
+  { pattern = "view-*.preview.scrymore.com/*", zone_name = "scrymore.com" },
   { pattern = "view-*.mycompany.com/*", zone_name = "mycompany.com" }
 ]
 ```
@@ -131,16 +131,16 @@ routes = [
 ### Default Index
 
 ```
-view-my-app.scry.com/           → index.html
-view-my-app.scry.com/index.html → index.html
+view-my-app.scrymore.com/           → index.html
+view-my-app.scrymore.com/index.html → index.html
 ```
 
 ### Nested Paths
 
 ```
-view-my-app.scry.com/static/main.js     → static/main.js
-view-my-app.scry.com/assets/logo.png    → assets/logo.png
-view-my-app.scry.com/stories/button.html → stories/button.html
+view-my-app.scrymore.com/static/main.js     → static/main.js
+view-my-app.scrymore.com/assets/logo.png    → assets/logo.png
+view-my-app.scrymore.com/stories/button.html → stories/button.html
 ```
 
 ### SPA Fallback
@@ -162,15 +162,15 @@ if (!entry) {
 By default, subdomain routes to `latest.zip`. For specific versions, use path-based routing:
 
 ```
-view-my-app.scry.com/             → my-app/latest.zip
-view-my-app.scry.com/v1.0.0/      → my-app/v1.0.0.zip (with path middleware)
+view-my-app.scrymore.com/             → my-app/latest.zip
+view-my-app.scrymore.com/v1.0.0/      → my-app/v1.0.0.zip (with path middleware)
 ```
 
 Or use separate subdomains:
 
 ```
-view-my-app-v1.scry.com/          → my-app-v1/latest.zip
-view-my-app-pr-123.scry.com/      → my-app-pr-123/latest.zip
+view-my-app-v1.scrymore.com/          → my-app-v1/latest.zip
+view-my-app-pr-123.scrymore.com/      → my-app-pr-123/latest.zip
 ```
 
 ## Local Development
@@ -230,7 +230,7 @@ if (!entry) {
 ### Project Isolation
 
 Each subdomain is isolated to its project:
-- `view-project-a.scry.com` can only access `project-a` files
+- `view-project-a.scrymore.com` can only access `project-a` files
 - Cross-project access is not possible via subdomain manipulation
 
 ### CORS
