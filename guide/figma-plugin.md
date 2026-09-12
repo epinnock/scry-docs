@@ -7,7 +7,7 @@
 ## Install and connect
 
 1. Run the plugin from the [Community listing](https://www.figma.com/community/plugin/1602918953997015259), or in an open file: **Plugins → Scry - Storybook Linker → Run**.
-2. On the **Connect your Storybook** screen, paste a Storybook URL (for example `https://storybook.example.com`) and click **+ Add Storybook**. The plugin fetches `<your-url>/index.json` to list the stories.
+2. On the **Connect your Storybook** screen, paste a Storybook URL and click **+ Add Storybook**. The plugin fetches `<your-url>/index.json` to list the stories. To try it without one of your own, use the demo Storybook: `https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/`
 3. The URL is stored on the document, so collaborators opening that file are already connected. **Settings → Change Storybook** disconnects it; links stay on the layers.
 
 <figure class="step-video">
