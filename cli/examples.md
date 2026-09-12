@@ -199,7 +199,7 @@ jobs:
 npx @scry/storybook-deployer \
   --dir ./storybook-static \
   --project my-design-system \
-  --api-url https://staging.api.scry.com \
+  --api-url https://upload-stage.scrymore.com \
   --version staging
 ```
 
@@ -293,7 +293,7 @@ npx @scry/storybook-deployer \
 
 ```bash
 # Check API health
-curl -I https://api.scry.com/health
+curl -I https://upload.scrymore.com/health
 
 # Validate API key format
 echo $SCRY_API_KEY | grep -E "^scry_proj_"

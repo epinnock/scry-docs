@@ -7,12 +7,43 @@
 ## Install and connect
 
 1. Run the plugin from the [Community listing](https://www.figma.com/community/plugin/1602918953997015259), or in an open file: **Plugins → Scry - Storybook Linker → Run**.
-2. On the **Connect your Storybook** screen, paste a Storybook URL (for example `https://storybook.example.com`) and click **+ Add Storybook**. The plugin fetches `<your-url>/index.json` to list the stories.
+2. On the **Connect your Storybook** screen, paste a Storybook URL and click **+ Add Storybook**. The plugin fetches `<your-url>/index.json` to list the stories. To try it without one of your own, use the demo Storybook: `https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/`
 3. The URL is stored on the document, so collaborators opening that file are already connected. **Settings → Change Storybook** disconnects it; links stay on the layers.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-1-run-scry.mp4"></video>
+  <figcaption>Step 1 — running the plugin in an open Figma file.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-2-connect-storybook.mp4"></video>
+  <figcaption>Step 2 — pasting a Storybook URL on the <strong>Connect your Storybook</strong> screen.</figcaption>
+</figure>
 
 ### Sign in with Scrymore
 
-The connect screen also offers **Sign in with Scrymore**, a device-code flow: the plugin shows a one-time code and opens your browser, you approve it there, and the plugin picks the session up. Then choose a project — its Storybook is already configured, so there is no URL to paste.
+The connect screen also offers **Sign in with Scrymore**, a device-code flow. No URL to paste, and the project brings its own Storybook.
+
+**Start the flow.** The plugin shows a one-time code and opens your browser.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-1-start.mp4"></video>
+  <figcaption>The plugin hands over a one-time code.</figcaption>
+</figure>
+
+**Approve the code there.** The plugin is watching for it and picks the session up on its own.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-2-approve.mp4"></video>
+  <figcaption>Approving the code in the browser.</figcaption>
+</figure>
+
+**Choose a project.** Its Storybook is already configured, so connecting is done.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-3-project.mp4"></video>
+  <figcaption>Picking a project to work against.</figcaption>
+</figure>
 
 Signing in adds:
 
@@ -26,7 +57,17 @@ Signing in adds:
 
 Select a single component, component set, instance or frame, find its story in the list, and click **Link**. Instances inherit their main component's link, so linking a component covers everything placed from it.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-3-link-a-layer.mp4"></video>
+  <figcaption>Step 3 — selecting a layer and linking it to its story.</figcaption>
+</figure>
+
 A linked layer shows the story, an embedded preview, **Open in Browser**, **Change story** (relink without unlinking) and **Unlink**. Figma also adds the **View Story** relaunch button to the layer, so anyone can reach the live story without opening the plugin.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-4-open-live-story.mp4"></video>
+  <figcaption>Step 4 — opening the live story from the <strong>View Story</strong> relaunch button.</figcaption>
+</figure>
 
 Links are stored with Figma's `sharedPluginData` API (namespace `scry_storybook_linker`): the Storybook URL on the file, the story link on each node. It is part of the file, so collaborators see it and it survives duplication.
 
@@ -36,10 +77,25 @@ If the preview shows **Preview blocked**, that Storybook refuses to be framed (`
 
 Open **Suggest links** and pick a scope: **Selection**, **This page** or **Whole file**. The scan reads only the open file and uses no Figma API quota. It collects component-set variants, standalone components and screen-sized top-level frames, skipping instances, hidden layers, names starting with `_` or `iOS/`, and anything already linked.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-1-scan.mp4"></video>
+  <figcaption>Scanning — pick a scope and the plugin collects candidates from the open file.</figcaption>
+</figure>
+
 - **Signed out**, matching is by name: both sides are normalised, so `screen-04`, `Screen 04` and `screen04` are the same thing, and variant properties are compared with story names.
 - **Signed in with a project selected**, the thumbnails are also matched against the project's latest build screenshots. A story's score is the better of its name and visual score, and each row shows which matcher had an opinion. If that endpoint is unreachable, the review says *Visual matching unavailable — showing name matches only*.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-2-review.mp4"></video>
+  <figcaption>The review screen — each row pairs the Figma layer with its proposed story and shows which matcher had an opinion.</figcaption>
+</figure>
+
 Results are grouped into Components, Screens and a collapsed No match group, sorted by confidence. Nothing is linked until you accept it: accept rows one by one, or use **Accept _n_ high-confidence** in one click. Each accept writes the same link the manual flow writes and, when signed in with a project, syncs the Figma render.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-3-accept.mp4"></video>
+  <figcaption>Accepting — one row at a time, or every high-confidence row in a single click.</figcaption>
+</figure>
 
 ### Compare a pair before accepting
 
@@ -73,3 +129,21 @@ You can also comment on the [Community listing](https://www.figma.com/community/
 
 - **Current release** — Suggest links, private Storybook previews, project picker fixes.
 - **Initial release** — connect, browse, link, View Story.
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>

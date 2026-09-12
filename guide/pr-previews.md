@@ -43,12 +43,12 @@ PR #123 opened
 Each PR gets a unique URL:
 
 ```
-https://view.scry.com/{project}/pr-{number}/
+https://view.scrymore.com/{project}/pr-{number}/
 ```
 
 Examples:
-- `https://view.scry.com/my-design-system/pr-42/`
-- `https://view.scry.com/my-design-system/pr-123/`
+- `https://view.scrymore.com/my-design-system/pr-42/`
+- `https://view.scrymore.com/my-design-system/pr-123/`
 
 ## PR Comment
 
@@ -57,7 +57,7 @@ The workflow automatically posts a comment:
 ```markdown
 ## 🚀 Storybook Preview Deployed
 
-**Preview URL:** https://view.scry.com/my-project/pr-123
+**Preview URL:** https://view.scrymore.com/my-project/pr-123
 
 📌 **Details:**
 - **Commit:** `abc1234`

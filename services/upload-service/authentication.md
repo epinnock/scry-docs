@@ -85,7 +85,7 @@ projects/{projectId}/apiKeys/{keyId}
 ```bash
 curl -X POST \
   -H "X-API-Key: scry_proj_my-project_xxx" \
-  https://api.scry.com/upload/my-project/v1.0.0
+  https://upload.scrymore.com/upload/my-project/v1.0.0
 ```
 
 ### In Environment Variables

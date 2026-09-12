@@ -1,11 +1,12 @@
 # CDN Service
 
-The CDN Service is a Cloudflare Worker that serves Storybook builds from R2 storage using subdomain-based routing and partial ZIP extraction.
+The CDN Service is a Cloudflare Worker that serves Storybook builds from R2 storage, resolving the project and version from the request path and extracting only the bytes it needs from the stored ZIP.
 
 ## Features
 
 - **Partial ZIP Extraction** - Fetch only required bytes from ZIP archives
-- **Subdomain Routing** - Route requests by subdomain (`view-{uuid}.domain.com`)
+- **Path Routing** - One hostname, project and version resolved from the path
+- **Private Projects** - Firebase-authenticated access, plus signed preview tokens for in-plugin previews
 - **Multi-Platform Support** - Cloudflare Workers with R2 or Docker with filesystem
 - **Edge Caching** - Global edge caching with Cloudflare KV
 - **SPA Fallbacks** - Smart path resolution for single-page apps
@@ -29,10 +30,10 @@ scry-cdn-service/
 ## How It Works
 
 ```
-1. Request: https://view-{project}.scry.com/path/to/file.js
+1. Request: https://view.scrymore.com/{projectId}/{versionId}/path/to/file.js
                     │
                     ▼
-2. Parse subdomain to get project ID
+2. Parse the path for project and version, then check access
                     │
                     ▼
 3. Load ZIP central directory from KV cache
@@ -53,16 +54,16 @@ scry-cdn-service/
 
 ## URL Format
 
-Storybooks are accessed via subdomain:
+Storybooks are served from one hostname, with the project and version in the path:
 
 ```
-https://view-{project-id}.scry.com/{path}
+https://view.scrymore.com/{projectId}/{versionId}/{path}
 ```
 
-Examples:
-- `https://view-my-design-system.scry.com/`
-- `https://view-my-design-system.scry.com/iframe.html`
-- `https://view-my-design-system.scry.com/static/main.js`
+Examples, using the live demo Storybook:
+- `https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/`
+- `https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/iframe.html`
+- `https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/index.json`
 
 ## Performance
 
@@ -95,10 +96,10 @@ For local development:
 
 ```bash
 # Access a deployed Storybook
-curl https://view-my-project.scry.com/
+curl https://view.scrymore.com/{projectId}/{versionId}/
 
 # Access a specific file
-curl https://view-my-project.scry.com/static/main.js
+curl https://view.scrymore.com/{projectId}/{versionId}/index.json
 ```
 
 ### Self-Hosting
@@ -108,6 +109,6 @@ See [Deployment](/services/cdn-service/deployment) for self-hosting instructions
 ## Next Steps
 
 - [Architecture](/services/cdn-service/architecture) - Technical deep dive
-- [Subdomain Routing](/services/cdn-service/subdomain-routing) - URL routing details
+- [Path Routing](/services/cdn-service/path-routing) - URL routing details
 - [ZIP Extraction](/services/cdn-service/zip-extraction) - Partial extraction explained
 - [Deployment](/services/cdn-service/deployment) - Deploy your own instance

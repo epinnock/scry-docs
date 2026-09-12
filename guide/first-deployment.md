@@ -37,7 +37,7 @@ When you push to main or a workflow triggers, here's what happens:
 ├─────────────────────────────────────────────────────────────────┤
 │  5. AVAILABLE                                                   │
 │     CDN serves files from ZIP                                   │
-│     └── https://view.scry.com/{project}/{version}/              │
+│     └── https://view.scrymore.com/{project}/{version}/              │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -67,7 +67,7 @@ npx @scry/storybook-deployer \
 Check the deployment URL:
 
 ```bash
-curl -I https://view.scry.com/my-project/v1.0.0/
+curl -I https://view.scrymore.com/my-project/v1.0.0/
 ```
 
 Expected response:
@@ -94,12 +94,12 @@ Each deployment is identified by a version string:
 After deployment, your Storybook is available at:
 
 ```
-https://view.scry.com/{project}/{version}/
+https://view.scrymore.com/{project}/{version}/
 ```
 
 For example:
-- `https://view.scry.com/my-project/latest/`
-- `https://view.scry.com/my-project/pr-42/`
+- `https://view.scrymore.com/my-project/latest/`
+- `https://view.scrymore.com/my-project/pr-42/`
 
 ## Deployment Logs
 
@@ -114,7 +114,7 @@ The CLI outputs detailed logs:
 [scry] Uploading to cloud storage...
 [scry] ✓ Upload complete!
 [scry]
-[scry] Deployment URL: https://view.scry.com/my-project/v1.0.0/
+[scry] Deployment URL: https://view.scrymore.com/my-project/v1.0.0/
 [scry] Build ID: abc123def456
 [scry] Build Number: 42
 ```

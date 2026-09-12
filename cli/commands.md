@@ -101,7 +101,7 @@ npx @scry/storybook-deployer \
 [scry] Uploading to cloud storage...
 [scry] ✓ Upload complete!
 [scry]
-[scry] Deployment URL: https://view.scry.com/my-project/v1.0.0/
+[scry] Deployment URL: https://view.scrymore.com/my-project/v1.0.0/
 [scry] Build ID: abc123def456
 [scry] Build Number: 42
 ```
@@ -191,7 +191,7 @@ The CLI looks for `.storybook-deployer.json` in the current directory:
 
 ```json
 {
-  "apiUrl": "https://api.scry.com",
+  "apiUrl": "https://upload.scrymore.com",
   "dir": "./storybook-static",
   "project": "my-project",
   "version": "latest",

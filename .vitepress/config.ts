@@ -5,7 +5,6 @@ export default defineConfig({
   description: 'Deploy your Storybook to the cloud with one command',
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'theme-color', content: '#6366f1' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'en' }],
@@ -18,7 +17,6 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '/logo.svg',
     siteTitle: 'Scry',
 
     nav: [
@@ -52,6 +50,7 @@ export default defineConfig({
           text: 'Integrations',
           items: [
             { text: 'Figma Plugin', link: '/guide/figma-plugin' },
+            { text: 'MCP Server', link: '/guide/mcp' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]
         },
@@ -59,7 +58,6 @@ export default defineConfig({
           text: 'Help',
           items: [
             { text: 'Troubleshooting', link: '/guide/troubleshooting' },
-            { text: 'FAQ', link: '/reference/faq' },
             { text: 'Feedback', link: '/feedback' },
           ]
         }
@@ -99,9 +97,27 @@ export default defineConfig({
           items: [
             { text: 'Introduction', link: '/services/cdn-service/' },
             { text: 'Architecture', link: '/services/cdn-service/architecture' },
-            { text: 'Subdomain Routing', link: '/services/cdn-service/subdomain-routing' },
+            { text: 'Path Routing', link: '/services/cdn-service/path-routing' },
             { text: 'ZIP Extraction', link: '/services/cdn-service/zip-extraction' },
             { text: 'Deployment', link: '/services/cdn-service/deployment' },
+          ]
+        },
+        {
+          text: 'MCP Server',
+          items: [
+            { text: 'Introduction', link: '/services/mcp-server/' },
+            { text: 'Tools', link: '/services/mcp-server/tools' },
+            { text: 'Authentication', link: '/services/mcp-server/authentication' },
+            { text: 'Deployment', link: '/services/mcp-server/deployment' },
+          ]
+        },
+        {
+          text: 'Diff Service',
+          items: [
+            { text: 'Introduction', link: '/services/diff-service/' },
+            { text: 'API Reference', link: '/services/diff-service/api-reference' },
+            { text: 'Review Model', link: '/services/diff-service/review-model' },
+            { text: 'Deployment', link: '/services/diff-service/deployment' },
           ]
         },
         {
@@ -174,7 +190,6 @@ export default defineConfig({
         {
           text: 'Reference',
           items: [
-            { text: 'FAQ', link: '/reference/faq' },
             { text: 'Glossary', link: '/reference/glossary' },
             { text: 'Changelog', link: '/reference/changelog' },
             { text: 'Migration Guide', link: '/reference/migration' },
@@ -185,7 +200,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/epinnock/scry' },
+      { icon: 'github', link: 'https://github.com/epinnock/scry-docs' },
     ],
 
     footer: {
@@ -198,7 +213,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/epinnock/scry/edit/main/docs/:path',
+      pattern: 'https://github.com/epinnock/scry-docs/edit/master/:path',
       text: 'Edit this page on GitHub'
     },
 
@@ -212,6 +227,16 @@ export default defineConfig({
   },
 
   markdown: {
+    config(md) {
+      const defaultFence = md.renderer.rules.fence!
+      md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        if (tokens[idx].info.trim() === 'mermaid') {
+          const source = md.utils.escapeHtml(JSON.stringify(tokens[idx].content))
+          return `<MermaidDiagram :source="${source}" />\n`
+        }
+        return defaultFence(tokens, idx, options, env, self)
+      }
+    },
     lineNumbers: true,
     theme: {
       light: 'github-light',

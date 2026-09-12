@@ -137,8 +137,8 @@ Set these in **Settings → Secrets and variables → Actions → Variables**:
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `SCRY_PROJECT_ID` | Your project identifier | `my-storybook` |
-| `SCRY_API_URL` | Upload service endpoint | `https://api.scry.com` |
-| `SCRY_VIEW_URL` | CDN viewer URL | `https://view.scry.com` |
+| `SCRY_API_URL` | Upload service endpoint | `https://upload.scrymore.com` |
+| `SCRY_VIEW_URL` | CDN viewer URL | `https://view.scrymore.com` |
 
 ## Repository Secrets
 

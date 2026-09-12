@@ -10,8 +10,8 @@ Technical architecture of the CDN Service.
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                   │
-│  │   Request    │───▶│   Subdomain  │───▶│   Central    │                   │
-│  │   Handler    │    │   Router     │    │   Directory  │                   │
+│  │   Request    │───▶│   Path       │───▶│   Central    │                   │
+│  │   Handler    │    │   Resolver   │    │   Directory  │                   │
 │  └──────────────┘    └──────────────┘    │   Loader     │                   │
 │                                          └───────┬──────┘                   │
 │                                                  │                          │
@@ -50,16 +50,17 @@ app.get('/*', async (c) => {
 });
 ```
 
-### Subdomain Router
+### Path Resolver
 
-Extracts project ID from subdomain:
+Resolves the project and version from the path (`src/utils/subdomain.ts`, `parsePathForUUID` — the filename predates path routing):
 
 ```typescript
-function extractProjectId(hostname: string): string | null {
-  // Pattern: view-{projectId}.domain.com
-  const match = hostname.match(/^view-([^.]+)\./);
-  return match ? match[1] : null;
-}
+// /{projectId}/{versionId}/{file}
+function parsePathForUUID(pathname: string): PathInfo | null {
+  const segments = pathname.replace(/^\//, '').split('/').filter(Boolean);
+  if (segments.length === 0) return null;
+  const projectId = segments[0];
+  // …resolves the version and the remaining file path
 ```
 
 ### Central Directory Loader
@@ -153,7 +154,7 @@ function buildResponse(data: ArrayBuffer, path: string) {
 
 ```
 1. Request arrives at edge
-2. Subdomain parsed for project ID
+2. Path parsed for project and version, access checked
 3. Check KV for central directory → MISS
 4. Range request to R2 for ZIP end-of-file
 5. Parse central directory from response
@@ -168,7 +169,7 @@ function buildResponse(data: ArrayBuffer, path: string) {
 
 ```
 1. Request arrives at edge
-2. Subdomain parsed for project ID
+2. Path parsed for project and version, access checked
 3. Check KV for central directory → HIT
 4. Locate requested file in directory
 5. Range request to R2 for file bytes
@@ -233,7 +234,9 @@ if (!entry) {
 
 ```typescript
 if (!projectId) {
-  return new Response('Invalid subdomain', { status: 400 });
+  // A path with no resolvable project: try the Referer fallback for
+  // absolutely-referenced assets before giving up.
+  return new Response('Not found', { status: 404 });
 }
 ```
 
@@ -300,6 +303,6 @@ Files are stored compressed in ZIP; we decompress on the fly for supported types
 
 ## Next Steps
 
-- [Subdomain Routing](/services/cdn-service/subdomain-routing) - URL routing details
+- [Path Routing](/services/cdn-service/path-routing) - URL routing details
 - [ZIP Extraction](/services/cdn-service/zip-extraction) - Partial extraction explained
 - [Deployment](/services/cdn-service/deployment) - Self-hosting guide

@@ -7,7 +7,7 @@ API endpoints for serving Storybook files.
 Files are served via subdomain:
 
 ```
-https://view-{project}.scry.com
+https://view-{project}.scrymore.com
 ```
 
 ## Health Check
@@ -46,7 +46,7 @@ Not required. Files are publicly accessible.
 ### URL Format
 
 ```
-https://view-{project}.scry.com/{path}
+https://view-{project}.scrymore.com/{path}
 ```
 
 ### Path Resolution
@@ -73,13 +73,13 @@ ETag: "abc123"
 
 ```bash
 # Get homepage
-curl https://view-my-project.scry.com/
+curl https://view-my-project.scrymore.com/
 
 # Get specific file
-curl https://view-my-project.scry.com/static/main.js
+curl https://view-my-project.scrymore.com/static/main.js
 
 # Get with verbose headers
-curl -I https://view-my-project.scry.com/index.html
+curl -I https://view-my-project.scrymore.com/index.html
 ```
 
 ---
@@ -178,8 +178,8 @@ Server error (e.g., storage unavailable).
 For single-page applications, unknown paths fall back to `index.html`:
 
 ```
-view-my-project.scry.com/about       → index.html (if about not found)
-view-my-project.scry.com/users/123   → index.html (if users/123 not found)
+view-my-project.scrymore.com/about       → index.html (if about not found)
+view-my-project.scrymore.com/users/123   → index.html (if users/123 not found)
 ```
 
 This allows client-side routing to work correctly.
@@ -224,7 +224,7 @@ This allows Storybooks to be embedded in iframes from any origin.
 ### Latest Version
 
 ```
-https://view-my-project.scry.com/
+https://view-my-project.scrymore.com/
 ```
 
 Serves the most recently uploaded build.
@@ -234,8 +234,8 @@ Serves the most recently uploaded build.
 If configured with path-based versioning:
 
 ```
-https://view-my-project.scry.com/v1.0.0/
-https://view-my-project.scry.com/pr-123/
+https://view-my-project.scrymore.com/v1.0.0/
+https://view-my-project.scrymore.com/pr-123/
 ```
 
 ---

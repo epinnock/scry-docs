@@ -41,7 +41,7 @@ curl -X POST \
   -H "X-API-Key: scry_proj_my-project_xxx" \
   -H "Content-Type: application/zip" \
   --data-binary @storybook.zip \
-  https://api.scry.com/upload/my-project/v1.0.0
+  https://upload.scrymore.com/upload/my-project/v1.0.0
 ```
 
 ### Environment Variable
@@ -76,7 +76,7 @@ npx @scry/storybook-deployer --dir ./storybook-static
 
 ### Via Dashboard
 
-1. Log in to [dashboard.scry.com](https://dashboard.scry.com)
+1. Log in to [dashboard.scrymore.com](https://dashboard.scrymore.com)
 2. Select your project
 3. Go to **Settings → API Keys**
 4. Click **Generate New Key**

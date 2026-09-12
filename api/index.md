@@ -6,8 +6,8 @@ Scry provides REST APIs for uploading and serving Storybook builds.
 
 | Service | Base URL | Purpose |
 |---------|----------|---------|
-| Upload Service | `https://api.scry.com` | File uploads, build tracking |
-| CDN Service | `https://view-{project}.scry.com` | File serving |
+| Upload Service | `https://upload.scrymore.com` | File uploads, build tracking |
+| CDN Service | `https://view-{project}.scrymore.com` | File serving |
 
 ## Authentication
 
@@ -15,7 +15,7 @@ Protected endpoints require an API key in the `X-API-Key` header:
 
 ```bash
 curl -H "X-API-Key: scry_proj_my-project_xxx" \
-  https://api.scry.com/upload/my-project/v1.0.0
+  https://upload.scrymore.com/upload/my-project/v1.0.0
 ```
 
 See [Authentication](/api/authentication) for details.
@@ -96,20 +96,20 @@ npx @scry/storybook-deployer --dir ./storybook-static
 
 ```bash
 # Health check
-curl https://api.scry.com/health
+curl https://upload.scrymore.com/health
 
 # Upload
 curl -X POST \
   -H "X-API-Key: scry_proj_xxx" \
   -H "Content-Type: application/zip" \
   --data-binary @storybook.zip \
-  https://api.scry.com/upload/my-project/v1.0.0
+  https://upload.scrymore.com/upload/my-project/v1.0.0
 
 # Get presigned URL
 curl -X POST \
   -H "X-API-Key: scry_proj_xxx" \
   -H "Content-Type: application/zip" \
-  https://api.scry.com/presigned-url/my-project/v1.0.0/storybook.zip
+  https://upload.scrymore.com/presigned-url/my-project/v1.0.0/storybook.zip
 ```
 
 ## API Reference
