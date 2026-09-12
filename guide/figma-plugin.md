@@ -24,6 +24,21 @@
 
 The connect screen also offers **Sign in with Scrymore**, a device-code flow: the plugin shows a one-time code and opens your browser, you approve it there, and the plugin picks the session up. Then choose a project — its Storybook is already configured, so there is no URL to paste.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-1-start.mp4"></video>
+  <figcaption>Starting the flow — the plugin shows a one-time code and opens your browser.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-2-approve.mp4"></video>
+  <figcaption>Approving the code in the browser; the plugin picks the session up on its own.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-3-project.mp4"></video>
+  <figcaption>Choosing a project — its Storybook is already configured, so there is no URL to paste.</figcaption>
+</figure>
+
 Signing in adds:
 
 - Visual matching in Suggest links (layers matched against story screenshots, not only names)
