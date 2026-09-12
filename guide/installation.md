@@ -1,125 +1,103 @@
 # Installation
 
-> **TL;DR:** Use `npx` for one-off commands, or install as a dev dependency for local development.
-
-## Using npx (Recommended)
-
-The simplest way to use Scry is via `npx`. No installation required:
+For guided setup in Claude Code, Codex, Cursor, or another coding assistant,
+install the [Scry setup skill](/guide/skill):
 
 ```bash
-# Initialize a new project
-npx @scry/storybook-deployer init --projectId xxx --apiKey yyy
-
-# Deploy manually
-npx @scry/storybook-deployer --dir ./storybook-static
+npx skills add epinnock/scry-node --skill scry-setup
 ```
 
-This always uses the latest version and requires no local dependencies.
+The current skill installer requires Node.js 22.20 or newer. The sections below
+cover the deployment CLI, which requires Node.js 18 or newer. To connect only
+to an existing project's components, follow the [MCP guide](/guide/mcp).
 
-## Installing as a Dependency
+## Use the CLI with npx
 
-If you prefer to have the package in your `node_modules`:
+The package is **`@scrymore/scry-deployer`**. You can run it without adding a
+project dependency:
+
+```bash
+npx @scrymore/scry-deployer --help
+```
+
+Use `@scrymore/scry-deployer@0.6.0` to select that release explicitly. For
+repeatable CI, install the package as a development dependency and commit your
+lockfile. See [Quick Start](/guide/quick-start) before running `init`, which
+configures GitHub and commits and pushes changes.
+
+## Install as a development dependency
 
 ::: code-group
 
 ```bash [npm]
-npm install @scry/storybook-deployer --save-dev
+npm install @scrymore/scry-deployer --save-dev
+npm exec -- scry-deployer --help
 ```
 
 ```bash [pnpm]
-pnpm add @scry/storybook-deployer -D
+pnpm add @scrymore/scry-deployer -D
+pnpm exec scry-deployer --help
 ```
 
 ```bash [yarn]
-yarn add @scry/storybook-deployer --dev
+yarn add @scrymore/scry-deployer --dev
+yarn run scry-deployer --help
 ```
 
 :::
 
-After installation, you can run commands using:
+The package's postinstall can create `.storybook-deployer.json`. Set its
+nonsecret project, build directory, and API URL before deployment; the generic
+default API URL is a placeholder. Supply the key through `SCRY_API_KEY` or your
+CI secret store, rather than filling a key into this file.
+
+## Install from GitHub
+
+To use source from the development repository:
 
 ```bash
-# Using the full name
-npx storybook-deployer init --projectId xxx --apiKey yyy
-
-# Using the short alias
-npx scry init --projectId xxx --apiKey yyy
-```
-
-## Installing from GitHub
-
-For the latest development version:
-
-::: code-group
-
-```bash [npm]
 npm install github:epinnock/scry-node --save-dev
 ```
 
-```bash [pnpm]
-pnpm add github:epinnock/scry-node -D
-```
+Use your package manager's equivalent command if needed. This installs the CLI;
+skill installation is a separate step.
 
-```bash [yarn]
-yarn add github:epinnock/scry-node --dev
-```
-
-:::
-
-## Binary Aliases
-
-The package provides multiple binary names for convenience:
+## Binary aliases
 
 | Binary | Description |
-|--------|-------------|
-| `storybook-deployer` | Full name |
-| `storybook-deploy` | Short name for deploy commands |
-| `scry` | Shortest alias |
+| --- | --- |
+| `scry-deployer` | Full deployer binary name |
+| `storybook-deploy` | Storybook alias |
+| `scry` | Short alias |
 
-All binaries are equivalent:
+All three invoke the same CLI when provided by the installed package. Use the
+full scoped package name for one-off `npx` commands to select the right package.
 
-```bash
-npx storybook-deployer --help
-npx storybook-deploy --help
-npx scry --help
-```
+## Verify installation
 
-## Verifying Installation
-
-Check that the CLI is working:
+Run `--help` to check that the CLI loads. For an installed dependency, inspect
+its version with your package manager, for example:
 
 ```bash
-npx @scry/storybook-deployer --version
+npm ls @scrymore/scry-deployer --depth=0
 ```
 
-Expected output:
+`--version` and `--deploy-version` specify a **deployment version**; they do not
+print the installed package version.
 
-```
-@scry/storybook-deployer v1.0.0
-```
+## Configuration
 
-## System Requirements
+For deployment, configuration priority is:
 
-| Requirement | Version |
-|-------------|---------|
-| Node.js | 18.x or later |
-| npm/pnpm/yarn | Any recent version |
-| Git | 2.x or later |
-| GitHub CLI | 2.x or later (optional, for init) |
+1. Command-line arguments
+2. GitHub Actions context (deployment version)
+3. Environment variables (`SCRY_*`, then `STORYBOOK_DEPLOYER_*`)
+4. `.storybook-deployer.json` in the current working directory
+5. Defaults
 
-## Environment Setup
+The CLI does not automatically load `.env`. Use your existing environment
+loader or supply variables to the process. `init` requires project and key
+flags; its options differ from deployment's configuration resolution.
 
-The CLI reads configuration from multiple sources:
-
-1. **Command-line arguments** (highest priority)
-2. **Environment variables** (prefixed with `STORYBOOK_DEPLOYER_` or `SCRY_`)
-3. **Configuration file** (`.storybook-deployer.json`)
-4. **Default values** (lowest priority)
-
-See [Configuration](/cli/configuration) for details.
-
-## Next Steps
-
-- [Quick Start](/guide/quick-start) - Set up automatic deployments
-- [CLI Commands](/cli/commands) - Full command reference
-- [Configuration](/cli/configuration) - Configuration options
+See [Configuration](/cli/configuration) for details and
+[First Deployment](/guide/first-deployment) for the build/upload steps.

@@ -89,7 +89,7 @@ See [Authentication](/api/authentication) for details.
 The official CLI handles API communication:
 
 ```bash
-npx @scry/storybook-deployer --dir ./storybook-static
+npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ### cURL Examples

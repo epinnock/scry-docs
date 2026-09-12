@@ -84,6 +84,7 @@ permissions:
 
 jobs:
   deploy:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -102,10 +103,11 @@ jobs:
       - name: Deploy Preview
         id: deploy
         env:
+          STORYBOOK_DEPLOYER_API_URL: ${{ vars.SCRY_API_URL }}
           STORYBOOK_DEPLOYER_API_KEY: ${{ secrets.SCRY_API_KEY }}
           STORYBOOK_DEPLOYER_PROJECT: ${{ vars.SCRY_PROJECT_ID }}
           STORYBOOK_DEPLOYER_VERSION: pr-${{ github.event.pull_request.number }}
-        run: npx @scry/storybook-deployer --dir ./storybook-static
+        run: npx @scrymore/scry-deployer --dir ./storybook-static --deploy-version pr-${{ github.event.pull_request.number }}
 
       - name: Comment on PR
         uses: actions/github-script@v7

@@ -53,7 +53,7 @@ export STORYBOOK_DEPLOYER_API_KEY=scry_proj_my-project_xxx
 # or
 export SCRY_API_KEY=scry_proj_my-project_xxx
 
-npx @scry/storybook-deployer --dir ./storybook-static
+npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ### GitHub Actions Secret
@@ -69,7 +69,7 @@ npx @scry/storybook-deployer --dir ./storybook-static
 - name: Deploy
   env:
     STORYBOOK_DEPLOYER_API_KEY: ${{ secrets.SCRY_API_KEY }}
-  run: npx @scry/storybook-deployer --dir ./storybook-static
+  run: npx @scrymore/scry-deployer --dir ./storybook-static
 ```
 
 ## Getting API Keys

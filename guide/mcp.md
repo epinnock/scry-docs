@@ -6,6 +6,11 @@ It is a remote server: nothing to install, and it sees only the projects your ac
 
 ## Connect it
 
+To have your coding assistant configure the connection, install the
+[Scry setup skill](/guide/skill) and ask **“Connect Scry MCP only.”** The skill
+reuses your project settings and checks an authenticated, project-filtered
+search. Follow the manual steps below if you prefer to configure it directly.
+
 The server lives at `https://mcp.scrymore.com/mcp`.
 
 ### Claude Code

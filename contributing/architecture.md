@@ -109,7 +109,7 @@ Benefits:
 
 ## Component Details
 
-### CLI (`@scry/storybook-deployer`)
+### CLI (`@scrymore/scry-deployer`)
 
 **Purpose:** Build, package, and upload Storybook
 

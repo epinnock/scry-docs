@@ -1,135 +1,97 @@
 # Quick Start
 
-> **TL;DR:** Run one command to set up automatic Storybook deployments with PR previews.
+Set up Scry with your coding assistant, or use the CLI directly.
 
-## What You'll Learn
+## Set up with your assistant
 
-- How to get your Scry credentials
-- How to run the init command
-- What happens after setup
+From your application's repository:
 
-## Prerequisites
+```bash
+npx skills add epinnock/scry-node --skill scry-setup
+```
 
-- [ ] A Storybook project with a `build-storybook` script
-- [ ] A GitHub repository (public or private)
-- [ ] GitHub CLI installed and authenticated (`gh auth login`)
+The current installer requires Node.js 22.20 or newer. Choose your assistant,
+then ask: **“Set up Scry for this project and connect my assistant to its
+components.”**
 
-## Step 1: Get Your Credentials
+The skill checks your Storybook, configures the requested deployment and MCP
+integration, and verifies the result. You complete account sign-in in your
+browser. You can also ask for MCP alone if your project is already indexed.
 
-Visit the [Scry Dashboard](https://dashboard.scrymore.com) and:
+See [Set up with your AI assistant](/guide/skill) for client-specific commands,
+manual installation, and example requests.
 
-1. Sign in with your GitHub account
-2. Create a new project
-3. Copy your **Project ID** and **API Key**
+## Set up directly with the CLI
 
-::: tip
-Your API key starts with `scry_proj_` and is only shown once. Save it securely!
-:::
+This path needs an existing Storybook build script, a GitHub repository, Node.js
+18 or newer, and an authenticated GitHub CLI (`gh auth login`) for automatic
+repository secret setup.
 
-## Step 2: Run the Init Command
+### 1. Select a Scry project
 
-From your project's root directory:
+Sign in to the [Scry Dashboard](https://dashboard.scrymore.com), create or select
+a project, and save its **Project ID** and **API Key**. Keep the key in your
+local environment as `SCRY_API_KEY`; do not put it in committed configuration.
+Use the API URL supplied by the dashboard or your existing project settings.
+
+### 2. Run init
+
+`init` creates or overwrites `.storybook-deployer.json` and the generated
+workflows, configures GitHub variables/secrets, then **commits and pushes**.
+Check your working tree and staged changes first. If you want to prepare local
+files before publishing, use the skill or the
+[manual deployment guide](/guide/first-deployment).
+
+Run from the repository containing your Storybook:
 
 ::: code-group
 
 ```bash [npm]
-npx @scry/scry init \
-  --projectId YOUR_PROJECT_ID \
-  --apiKey YOUR_API_KEY
+npx @scrymore/scry-deployer init \
+  --project-id YOUR_PROJECT_ID \
+  --api-key "$SCRY_API_KEY"
 ```
 
 ```bash [pnpm]
-pnpm dlx @scry/scry init \
-  --projectId YOUR_PROJECT_ID \
-  --apiKey YOUR_API_KEY
+pnpm dlx @scrymore/scry-deployer init \
+  --project-id YOUR_PROJECT_ID \
+  --api-key "$SCRY_API_KEY"
 ```
 
 ```bash [yarn]
-yarn dlx @scry/scry init \
-  --projectId YOUR_PROJECT_ID \
-  --apiKey YOUR_API_KEY
+yarn dlx @scrymore/scry-deployer init \
+  --project-id YOUR_PROJECT_ID \
+  --api-key "$SCRY_API_KEY"
 ```
 
 :::
 
-## Step 3: Verify Setup
+Add `--api-url YOUR_UPLOAD_API_URL` if your project uses a different endpoint.
+The `--skip-gh-setup` option skips setting GitHub variables and secrets; it
+**still commits and pushes**. Its manual setup output can include the key, so
+do not share those logs. For manual CI configuration, see
+[GitHub Actions](/guide/github-actions#repository-variables).
 
-The init command automatically:
+### 3. Check the workflows and deployment
 
-- ✅ Creates `.storybook-deployer.json` configuration
-- ✅ Generates GitHub Actions workflows
-- ✅ Sets up repository variables and secrets
-- ✅ Commits and pushes to GitHub
-- ✅ Triggers the first deployment
+Check the repository's **Actions** tab and open the URL reported by the
+deployment. Adapt generated workflows for a monorepo, custom build output,
+package-manager version, or default branch as needed.
 
-Check your repository's **Actions** tab to see the deployment in progress.
+To maintain a `/latest/` URL for the main build, pass `--deploy-version latest`
+in its deployment step. GitHub context can override a version set only in the
+configuration file or environment. PR deployments should pass the PR number
+explicitly too, for example `--deploy-version pr-123`; the
+[workflow example](/guide/github-actions) uses the event's PR number.
 
-## What Happens Next?
+For searchable components, keep `--with-analysis` and coverage enabled, confirm
+that screenshots and metadata were uploaded, and wait for indexing to finish.
+Then [connect MCP](/guide/mcp) and search for a known component with your
+project's ID. A successful static upload alone does not confirm search is ready.
 
-Your Storybook now deploys automatically:
+## Next steps
 
-| Event | Result | URL Pattern |
-|-------|--------|-------------|
-| Push to main | Production deployment | `/{project}/latest` |
-| Open PR | Preview deployment | `/{project}/pr-{number}` |
-| Update PR | Preview updated | Same URL |
-| Merge PR | Main updated | `/{project}/latest` |
-
-## Verification
-
-After the first workflow completes, you should see:
-
-1. A successful workflow run in GitHub Actions
-2. Your Storybook live at the deployment URL
-3. A comment on PRs with preview links
-
-```bash
-# Check your deployment
-curl https://view.scrymore.com/{project}/latest/
-```
-or simply visit the deployment URL in your browser.
-
-## Troubleshooting
-
-### "Not a git repository"
-
-Initialize git first:
-
-```bash
-git init
-git remote add origin https://github.com/your-username/your-repo.git
-```
-
-### "GitHub CLI not found"
-
-Install and authenticate GitHub CLI:
-
-```bash
-# macOS
-brew install gh
-
-# Ubuntu/Debian
-sudo apt install gh
-
-# Then authenticate
-gh auth login
-```
-
-### Skip GitHub CLI Setup
-
-If you prefer to set up secrets manually:
-
-```bash
-npx @scry/scry init \
-  --projectId YOUR_PROJECT_ID \
-  --apiKey YOUR_API_KEY \
-  --skip-gh-setup
-```
-
-Then manually add variables in **Settings → Secrets and variables → Actions**.
-
-## Next Steps
-
-- [First Deployment](/guide/first-deployment) - Understand the deployment process
-- [GitHub Actions](/guide/github-actions) - Customize your workflows
-- [PR Previews](/guide/pr-previews) - Set up preview comments
+- [First Deployment](/guide/first-deployment) — deploy without running init
+- [GitHub Actions](/guide/github-actions) — customize deployment and previews
+- [MCP Server](/guide/mcp) — connect your assistant to indexed components
+- [Figma Plugin](/guide/figma-plugin) — link design layers to stories

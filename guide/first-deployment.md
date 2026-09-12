@@ -10,7 +10,7 @@
 
 ## Prerequisites
 
-- [ ] Completed the [Quick Start](/guide/quick-start) setup
+- [ ] A Scry project and deployment API key from the dashboard
 - [ ] Have a built Storybook in `./storybook-static`
 
 ## The Deployment Process
@@ -55,10 +55,23 @@ This creates the `storybook-static` directory with your built Storybook.
 
 ### Step 2: Deploy
 
+Set `SCRY_API_KEY` in your environment. If you have not configured the deployer,
+create `.storybook-deployer.json` in the directory where you run it:
+
+```json
+{
+  "project": "YOUR_PROJECT_ID",
+  "apiUrl": "https://storybook-deployment-service.epinnock.workers.dev",
+  "dir": "./storybook-static"
+}
+```
+
+Use your project's upload API URL if different. Keep the API key out of this
+file. This manual path does not require running `init` or configuring GitHub.
+
 ```bash
-npx @scry/storybook-deployer \
+npx @scrymore/scry-deployer \
   --dir ./storybook-static \
-  --project my-project \
   --version v1.0.0
 ```
 
@@ -77,6 +90,18 @@ HTTP/2 200
 content-type: text/html
 cache-control: public, max-age=31536000
 ```
+
+## Make components searchable
+
+To upload the screenshots and metadata used by component search, add
+`--with-analysis` to the deployment command and keep coverage enabled. Screenshot
+capture needs a Playwright browser matching the coverage runner. The generated
+CI workflows include a browser installation step; see
+[GitHub Actions](/guide/github-actions#index-components-for-mcp).
+
+Check that the metadata upload succeeded, then allow asynchronous indexing to
+finish. [Connect MCP](/guide/mcp) and search for a known component with the
+project ID. A live Storybook URL alone does not establish that search is ready.
 
 ## Understanding Versions
 
@@ -122,7 +147,7 @@ The CLI outputs detailed logs:
 Use `--verbose` for additional debug information:
 
 ```bash
-npx @scry/storybook-deployer --dir ./storybook-static --verbose
+npx @scrymore/scry-deployer --dir ./storybook-static --verbose
 ```
 
 ## Troubleshooting
@@ -146,7 +171,7 @@ npm run build-storybook
 Verify your API key:
 
 ```bash
-echo $STORYBOOK_DEPLOYER_API_KEY
+node -e 'console.log((process.env.SCRY_API_KEY || process.env.STORYBOOK_DEPLOYER_API_KEY) ? "API key is set" : "API key is missing")'
 ```
 
 The key should start with `scry_proj_`.
