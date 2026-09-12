@@ -10,6 +10,16 @@
 2. On the **Connect your Storybook** screen, paste a Storybook URL (for example `https://storybook.example.com`) and click **+ Add Storybook**. The plugin fetches `<your-url>/index.json` to list the stories.
 3. The URL is stored on the document, so collaborators opening that file are already connected. **Settings → Change Storybook** disconnects it; links stay on the layers.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-1-run-scry.mp4"></video>
+  <figcaption>Step 1 — running the plugin in an open Figma file.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-2-connect-storybook.mp4"></video>
+  <figcaption>Step 2 — pasting a Storybook URL on the <strong>Connect your Storybook</strong> screen.</figcaption>
+</figure>
+
 ### Sign in with Scrymore
 
 The connect screen also offers **Sign in with Scrymore**, a device-code flow: the plugin shows a one-time code and opens your browser, you approve it there, and the plugin picks the session up. Then choose a project — its Storybook is already configured, so there is no URL to paste.
@@ -26,7 +36,17 @@ Signing in adds:
 
 Select a single component, component set, instance or frame, find its story in the list, and click **Link**. Instances inherit their main component's link, so linking a component covers everything placed from it.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-3-link-a-layer.mp4"></video>
+  <figcaption>Step 3 — selecting a layer and linking it to its story.</figcaption>
+</figure>
+
 A linked layer shows the story, an embedded preview, **Open in Browser**, **Change story** (relink without unlinking) and **Unlink**. Figma also adds the **View Story** relaunch button to the layer, so anyone can reach the live story without opening the plugin.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-4-open-live-story.mp4"></video>
+  <figcaption>Step 4 — opening the live story from the <strong>View Story</strong> relaunch button.</figcaption>
+</figure>
 
 Links are stored with Figma's `sharedPluginData` API (namespace `scry_storybook_linker`): the Storybook URL on the file, the story link on each node. It is part of the file, so collaborators see it and it survives duplication.
 
@@ -73,3 +93,21 @@ You can also comment on the [Community listing](https://www.figma.com/community/
 
 - **Current release** — Suggest links, private Storybook previews, project picker fixes.
 - **Initial release** — connect, browse, link, View Story.
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>
