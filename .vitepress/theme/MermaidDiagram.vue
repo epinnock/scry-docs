@@ -17,6 +17,10 @@ async function renderDiagram() {
       startOnLoad: false,
       securityLevel: 'strict',
       theme: isDark.value ? 'dark' : 'default',
+      // A wide flowchart squeezed into the content column renders its labels
+      // too small to read. Draw at natural size instead and let the wrapper's
+      // overflow-x carry it.
+      flowchart: { useMaxWidth: false },
     })
     const id = `mermaid-${instanceId}-${current}`
     const result = await mermaid.render(id, props.source)

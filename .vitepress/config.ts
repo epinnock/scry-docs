@@ -5,7 +5,6 @@ export default defineConfig({
   description: 'Deploy your Storybook to the cloud with one command',
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'theme-color', content: '#6366f1' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'en' }],
@@ -18,7 +17,6 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '/logo.svg',
     siteTitle: 'Scry',
 
     nav: [
@@ -52,6 +50,7 @@ export default defineConfig({
           text: 'Integrations',
           items: [
             { text: 'Figma Plugin', link: '/guide/figma-plugin' },
+            { text: 'MCP Server', link: '/guide/mcp' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]
         },
@@ -101,6 +100,15 @@ export default defineConfig({
             { text: 'Subdomain Routing', link: '/services/cdn-service/subdomain-routing' },
             { text: 'ZIP Extraction', link: '/services/cdn-service/zip-extraction' },
             { text: 'Deployment', link: '/services/cdn-service/deployment' },
+          ]
+        },
+        {
+          text: 'MCP Server',
+          items: [
+            { text: 'Introduction', link: '/services/mcp-server/' },
+            { text: 'Tools', link: '/services/mcp-server/tools' },
+            { text: 'Authentication', link: '/services/mcp-server/authentication' },
+            { text: 'Deployment', link: '/services/mcp-server/deployment' },
           ]
         },
         {
