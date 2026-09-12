@@ -5,10 +5,14 @@ The Developer Dashboard is a web application for managing Scry projects, API key
 ## Features
 
 - **Project Management** - Create, view, and manage projects
-- **GitHub Integration** - Import projects from GitHub repositories
-- **API Key Management** - Generate and revoke API keys
+- **Organisations** - Share projects across a team, with members and invites
+- **API Key Management** - Generate and revoke project-scoped keys
 - **Build History** - View deployment history and status
-- **User Authentication** - GitHub OAuth via Firebase
+- **Design Sync** - Figma connection, linked screens, and imported designs
+- **Visual Review** - Compare a Figma layer with its story, and raise issues on the difference
+- **Private Previews** - Mint short-lived tokens so private stories render in the Figma plugin
+- **GitHub Integration** - Import projects from GitHub repositories
+- **User Authentication** - Firebase Auth: Google, GitHub, or email and password
 
 ## Tech Stack
 
@@ -90,16 +94,20 @@ Generate and manage API keys:
 
 ## Authentication Flow
 
-1. User clicks "Sign in with GitHub"
-2. Redirected to GitHub OAuth
-3. GitHub returns authorization code
-4. Firebase exchanges code for tokens
-5. User session created
-6. Redirected to dashboard
+Sign-in goes through Firebase Auth, which supports Google, GitHub and email/password. The dashboard never handles a provider credential itself — Firebase returns an ID token, and the dashboard exchanges it for its own session.
 
 ```
-User ──▶ Dashboard ──▶ GitHub OAuth ──▶ Firebase Auth ──▶ Dashboard
+User ──▶ Dashboard ──▶ Firebase Auth ──▶ provider (Google / GitHub / email) ──▶ session
 ```
+
+Two other credentials exist alongside that session, because not every client is a browser:
+
+| Credential | Prefix | Used by |
+| --- | --- | --- |
+| Project API key | `scry_proj_` | CI, via the upload service |
+| Personal access token | `scry_pat_` | The CLI and the Figma plugin |
+
+Both are stored as hashes. A project key is scoped to one project; a personal access token acts as the user and is what the Figma plugin's device-code sign-in produces.
 
 ## Data Model
 

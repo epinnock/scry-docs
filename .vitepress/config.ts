@@ -97,7 +97,7 @@ export default defineConfig({
           items: [
             { text: 'Introduction', link: '/services/cdn-service/' },
             { text: 'Architecture', link: '/services/cdn-service/architecture' },
-            { text: 'Subdomain Routing', link: '/services/cdn-service/subdomain-routing' },
+            { text: 'Path Routing', link: '/services/cdn-service/path-routing' },
             { text: 'ZIP Extraction', link: '/services/cdn-service/zip-extraction' },
             { text: 'Deployment', link: '/services/cdn-service/deployment' },
           ]

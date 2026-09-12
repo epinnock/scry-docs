@@ -213,3 +213,23 @@ Missing required variables cause startup failure:
 - [Deployment](/services/upload-service/deployment) - Deploy the service
 - [API Reference](/services/upload-service/api-reference) - Endpoint documentation
 - [Authentication](/services/upload-service/authentication) - API key setup
+
+## Cloudflare bindings and secrets
+
+Running on Workers, the service takes these in addition to the variables above:
+
+| Name | Kind | Purpose |
+| --- | --- | --- |
+| `STORYBOOK_BUCKET` | R2 binding | Where build archives are written |
+| `BUILD_PROCESSING_QUEUE` | Queue binding | Publishes the build event that triggers indexing |
+| `CLEANUP_TOKEN` | Secret | Authorizes `DELETE /cleanup/:project/:version` |
+| `FIREBASE_PROJECT_ID` | Secret | Firestore project for build records and API keys |
+| `FIREBASE_CLIENT_EMAIL` | Secret | Service account for Firestore |
+| `FIREBASE_PRIVATE_KEY` | Secret | Service account key |
+| `SENTRY_DSN` | Secret | Error reporting. `SENTRY_ENVIRONMENT`, `SENTRY_RELEASE` and `SENTRY_TRACES_SAMPLE_RATE` tune it |
+
+Without `BUILD_PROCESSING_QUEUE` bound, uploads still succeed and are still served — they are simply never indexed, which looks like a search problem rather than a configuration one.
+
+### Deploy stamp
+
+`SCRY_ENV`, `SCRY_SERVICE`, `SCRY_COMMIT`, `SCRY_BRANCH`, `SCRY_BUILD_TIME`, `SCRY_DEPLOY_ID` and `SCRY_ACTOR` are injected at build time and reported by `/healthz`, so a running deployment can say exactly what it is.

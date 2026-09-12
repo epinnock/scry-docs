@@ -308,5 +308,5 @@ Check the path within the ZIP. Paths are case-sensitive.
 ## Next Steps
 
 - [Architecture](/services/cdn-service/architecture) - Overall system design
-- [Subdomain Routing](/services/cdn-service/subdomain-routing) - URL routing
+- [Path Routing](/services/cdn-service/path-routing) - URL routing
 - [Deployment](/services/cdn-service/deployment) - Self-hosting guide

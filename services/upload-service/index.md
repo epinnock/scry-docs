@@ -9,6 +9,11 @@ The Upload Service is a Cloudflare Worker that handles Storybook build uploads a
 - **API Key Authentication** - Secure project-scoped authentication via Firebase
 - **Build Tracking** - Automatically track builds in Firestore with version history
 - **Auto-incrementing Build Numbers** - Each project gets sequential build numbers
+- **Processing handoff** - Publishes a build event so the build is captured and indexed
+- **Story metadata and coverage** - Attach what the capture step produced to the build
+- **Image uploads** - Multi-part image upload with an explicit completion step
+- **Cleanup** - Remove a build's artifacts, guarded by a separate token
+- **OpenAPI** - Routes are defined with OpenAPI; Swagger UI is served at `/docs`
 - **Multi-environment Support** - Run on Node.js, Docker, or Cloudflare Workers
 
 ## Architecture
@@ -25,6 +30,12 @@ src/
     ├── firestore/      # Firestore service for build tracking
     └── storage/        # Storage service abstraction (R2/S3)
 ```
+
+## Where a build goes next
+
+Uploading is only the first half. The service writes the archive to object storage and the build record to Firestore, then publishes an event on the build-processing queue. Processing extracts the archive, captures each story, and writes the search index.
+
+Those complete independently: the build is servable from the CDN as soon as the archive lands, while search results for it appear only once indexing finishes. A successful upload therefore does not mean a searchable build — the build record's status is what tells you where it got to.
 
 ## Storage Abstraction
 

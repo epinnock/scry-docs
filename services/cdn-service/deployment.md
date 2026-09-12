@@ -57,7 +57,7 @@ preview_id = "your-preview-kv-id"
 
 # Worker Routes
 routes = [
-  { pattern = "view-*.scrymore.com/*", zone_name = "scrymore.com" }
+  { pattern = "view.scrymore.com/*", zone_name = "scrymore.com" }
 ]
 
 # Environment Variables
@@ -70,9 +70,27 @@ ALLOWED_ORIGINS = "*"
 ### 5. Set Secrets (if needed)
 
 ```bash
-wrangler secret put FIREBASE_SERVICE_ACCOUNT
-wrangler secret put FIREBASE_API_KEY
+wrangler secret put FIREBASE_PROJECT_ID
+wrangler secret put FIREBASE_CLIENT_EMAIL
+wrangler secret put FIREBASE_PRIVATE_KEY
+wrangler secret put PREVIEW_TOKEN_SECRET
 ```
+
+#### Bindings and secrets
+
+| Name | Kind | Purpose |
+| --- | --- | --- |
+| `STATIC_SITES` | R2 binding | Bucket holding the build archives |
+| `CDN_CACHE` | KV binding | Cached ZIP central directories |
+| `FIREBASE_PROJECT_ID` / `FIREBASE_CLIENT_EMAIL` / `FIREBASE_PRIVATE_KEY` | Secrets | Verify sessions for private projects |
+| `PREVIEW_TOKEN_SECRET` | Secret | Verifies signed preview tokens minted by the dashboard |
+| `PREVIEW_TOKEN_SECRET_PREVIOUS` | Secret | Optional. Lets the secret rotate without invalidating live tokens |
+| `CORS_ALLOWED_ORIGINS` | Var | Origins allowed to embed a story |
+| `CORS_FORCE_WILDCARD` | Var | Development escape hatch; leave off in production |
+
+`PREVIEW_TOKEN_SECRET` must match the dashboard's, since the dashboard mints the token and the CDN verifies it. Rotate by setting the new value and moving the old one into `PREVIEW_TOKEN_SECRET_PREVIOUS` until outstanding tokens expire.
+
+Deploy stamps (`SCRY_ENV`, `SCRY_COMMIT`, `SCRY_BRANCH`, `SCRY_BUILD_TIME`, `SCRY_DEPLOY_ID`, `SCRY_ACTOR`) are injected at build time and reported by the health endpoints.
 
 ### 6. Deploy
 
@@ -196,8 +214,8 @@ Expected response:
 # Upload a test ZIP
 wrangler r2 object put STATIC_SITES/test-project.zip --file=test.zip
 
-# Access via subdomain
-curl -H "Host: view-test-project.localhost:8787" http://localhost:8787/index.html
+# Access by path
+curl http://localhost:8787/test-project/v1/index.html
 ```
 
 ## CI/CD Deployment
