@@ -200,7 +200,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/epinnock/scry' },
+      { icon: 'github', link: 'https://github.com/epinnock/scry-docs' },
     ],
 
     footer: {
@@ -213,7 +213,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/epinnock/scry/edit/main/docs/:path',
+      pattern: 'https://github.com/epinnock/scry-docs/edit/master/:path',
       text: 'Edit this page on GitHub'
     },
 

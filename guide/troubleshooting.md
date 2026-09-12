@@ -279,7 +279,7 @@ npx storybook-deploy --project other-project  # This wins
 If you can't resolve your issue:
 
 1. **Search existing issues:** [GitHub Issues](https://github.com/epinnock/scry-node/issues)
-2. **Check discussions:** [GitHub Discussions](https://github.com/epinnock/scry-node/discussions)
+2. **Tell us directly:** [feedback form](/feedback) or <feedback@scrymore.com>
 3. **Open a new issue** with:
    - Error message
    - Steps to reproduce

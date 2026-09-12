@@ -11,7 +11,7 @@ hero:
       link: /guide/quick-start
     - theme: alt
       text: View on GitHub
-      link: https://github.com/epinnock/scry
+      link: https://github.com/epinnock/scry-node
 
 features:
   - icon: ⚡

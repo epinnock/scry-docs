@@ -107,7 +107,7 @@ Until webhooks are implemented, use GitHub Actions for notifications:
 
 If you need webhooks, please:
 
-1. Open an issue on [GitHub](https://github.com/epinnock/scry)
+1. Open an issue on [GitHub](https://github.com/epinnock/scry-node/issues)
 2. Describe your use case
 3. Vote on existing feature requests
 
