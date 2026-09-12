@@ -22,21 +22,27 @@
 
 ### Sign in with Scrymore
 
-The connect screen also offers **Sign in with Scrymore**, a device-code flow: the plugin shows a one-time code and opens your browser, you approve it there, and the plugin picks the session up. Then choose a project — its Storybook is already configured, so there is no URL to paste.
+The connect screen also offers **Sign in with Scrymore**, a device-code flow. No URL to paste, and the project brings its own Storybook.
+
+**Start the flow.** The plugin shows a one-time code and opens your browser.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-1-start.mp4"></video>
-  <figcaption>Starting the flow — the plugin shows a one-time code and opens your browser.</figcaption>
+  <figcaption>The plugin hands over a one-time code.</figcaption>
 </figure>
+
+**Approve the code there.** The plugin is watching for it and picks the session up on its own.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-2-approve.mp4"></video>
-  <figcaption>Approving the code in the browser; the plugin picks the session up on its own.</figcaption>
+  <figcaption>Approving the code in the browser.</figcaption>
 </figure>
+
+**Choose a project.** Its Storybook is already configured, so connecting is done.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-3-project.mp4"></video>
-  <figcaption>Choosing a project — its Storybook is already configured, so there is no URL to paste.</figcaption>
+  <figcaption>Picking a project to work against.</figcaption>
 </figure>
 
 Signing in adds:
