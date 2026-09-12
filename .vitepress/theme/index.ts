@@ -2,6 +2,7 @@
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import MermaidDiagram from './MermaidDiagram.vue'
 import './custom.css'
 
 export default {
@@ -11,7 +12,7 @@ export default {
       // Add custom layout slots here if needed in the future
     })
   },
-  enhanceApp({ app, router, siteData }) {
-    // Register custom global components here if needed
+  enhanceApp({ app }) {
+    app.component('MermaidDiagram', MermaidDiagram)
   }
 } satisfies Theme
