@@ -1,14 +1,29 @@
 # Figma Plugin (Scry - Storybook Linker)
 
-[Scry - Storybook Linker](https://www.figma.com/community/plugin/1602918953997015259) links layers in a Figma file to stories in any hosted Storybook. Every linked layer gets a **View Story** relaunch button that opens the live story, and links live in the Figma file, so everyone editing it sees them. **Suggest links** scans a selection, a page or the whole file and proposes a story per layer, which you accept one at a time or in bulk.
+[Scry - Storybook Linker](https://www.figma.com/community/plugin/1602918953997015259) links layers in a Figma file to stories in any Storybook your computer can reach: hosted, on your company network, or running locally. Every linked layer gets a **View Story** relaunch button that opens the live story, and links live in the Figma file, so everyone editing it sees them. **Suggest links** scans a selection, a page or the whole file and proposes a story per layer, which you accept one at a time or in bulk.
 
-**No account is needed for linking.** Connecting, browsing, linking and Suggest links all work signed out; a free Scrymore account adds visual matching, screenshot sync and diffs.
+**No account is needed for linking, and linking uploads nothing.** Connecting, browsing, linking and Suggest links all work signed out: the plugin reads your Storybook's `index.json` directly and stores links in the Figma file. A free Scrymore account adds visual matching, screenshot sync and diffs, which work from screenshots of a Storybook build you deploy to a Scrymore project.
 
 ## Install and connect
 
 1. Run the plugin from the [Community listing](https://www.figma.com/community/plugin/1602918953997015259), or in an open file: **Plugins → Scry - Storybook Linker → Run**.
 2. On the **Connect your Storybook** screen, paste a Storybook URL and click **+ Add Storybook**. The plugin fetches `<your-url>/index.json` to list the stories. To try it without one of your own, use the demo Storybook: `https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/`
 3. The URL is stored on the document, so collaborators opening that file are already connected. **Settings → Change Storybook** disconnects it; links stay on the layers.
+
+::: tip Local and internal Storybooks
+The plugin requests `index.json` from inside Figma, where requests carry a `null` origin, so the Storybook must answer with CORS headers. A Storybook hosted on Scrymore, Chromatic or most static hosts already does. **A plain `storybook dev` server does not**, and the connection fails with a CORS error.
+
+To connect a Storybook on your own machine, build it and serve the build with CORS enabled:
+
+```bash
+npx storybook build
+npx http-server storybook-static --cors -p 6007
+```
+
+Then connect `http://localhost:6007`. The same applies to a Storybook on your company network: any address the computer running Figma can reach works, as long as the server sends `Access-Control-Allow-Origin`.
+
+Links store the Storybook URL. A `localhost` link opens only on a machine serving that Storybook at the same address, so for files you share with teammates, connect a hosted or shared internal URL.
+:::
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/step-1-run-scry.mp4"></video>
@@ -45,7 +60,7 @@ The connect screen also offers **Sign in with Scrymore**, a device-code flow. No
   <figcaption>Picking a project to work against.</figcaption>
 </figure>
 
-Signing in adds:
+Signing in adds the following. Each one works from screenshots of a Storybook build deployed to your Scrymore project, not from a Storybook you connect by URL:
 
 - Visual matching in Suggest links (layers matched against story screenshots, not only names)
 - Screenshot sync: the Figma render of a linked layer is uploaded to the project
@@ -99,17 +114,17 @@ Results are grouped into Components, Screens and a collapsed No match group, sor
 
 ### Compare a pair before accepting
 
-**Compare** on a row shows the pair two ways: **Side by side** (Figma export left, Storybook screenshot right) and **Overlay** (one box, with a Storybook opacity slider). Accept or skip moves to the next pending pair. Once a pair is linked and synced, **View diff in Scrymore ↗** opens its review in the dashboard.
+**Compare** needs a Scrymore account and a project with a deployed build, because its Storybook side is that build's screenshot. On a row it shows the pair two ways: **Side by side** (Figma export left, Storybook screenshot right) and **Overlay** (one box, with a Storybook opacity slider). Accept or skip moves to the next pending pair. Once a pair is linked and synced, **View diff in Scrymore ↗** opens its review in the dashboard.
 
 ## Private Storybooks
 
-The plugin fetches `index.json` from Figma's sandbox, so a Storybook behind a login, VPN or IP allowlist cannot be connected by URL.
+The plugin fetches `index.json` from the computer running Figma, without cookies. A Storybook behind a login therefore cannot be connected by URL. One on a VPN, an internal network or an IP allowlist can, as long as that computer can reach it and the server sends CORS headers (see **Local and internal Storybooks** above).
 
 Private Storybooks hosted on Scrymore are different: sign in, choose the project, and listing, search and linking work normally. For the story *preview* the plugin mints a short-lived signed token that the CDN exchanges for a partitioned cookie, so the story renders in the plugin. That needs partitioned-cookie support in the host browser (Chromium, including the Figma desktop app); without it the panel says **Previews of private Storybooks open in your browser**.
 
 ## Troubleshooting
 
-**The connection fails.** The URL must serve `index.json` — open `<your-url>/index.json` in a browser first. The failure card lists the usual causes: CORS blocked the request, the URL is wrong or unreachable, or the Storybook is down. CORS is the common one.
+**The connection fails.** The URL must serve `index.json` — open `<your-url>/index.json` in a browser first. The failure card lists the usual causes: CORS blocked the request, the URL is wrong or unreachable, or the Storybook is down. CORS is the common one, and it is what a plain `storybook dev` server hits: serve a build with CORS instead (see **Local and internal Storybooks** above).
 
 **"File unidentified" in the dashboard.** Figma exposes a file's key only to privately published plugins, so a synced screenshot arrives without one. Open the linked screen and paste the file's Figma URL into the **Identify file** box; Scrymore verifies it through the project's Figma connection and pairs the renders.
 
@@ -117,7 +132,7 @@ Private Storybooks hosted on Scrymore are different: sign in, choose the project
 
 ## Privacy and data
 
-Signed out, the plugin talks only to the Storybook URL you enter, and links never leave the Figma file. Signed in, it also talks to Scrymore for sign-in, your projects, visual matching and sync: scan thumbnails are sent for matching, and only the frames you accept or sync are uploaded as renders. The plugin never lists or exports your Figma files.
+Signed out, the plugin talks only to the Storybook URL you enter, and links never leave the Figma file, so a local or internal Storybook stays on your network. Signed in, it also talks to Scrymore for sign-in, your projects, visual matching and sync: scan thumbnails are sent for matching, and only the frames you accept or sync are uploaded as renders. The plugin never lists or exports your Figma files.
 
 ## Feedback and support
 
