@@ -1,6 +1,6 @@
 # MCP Server
 
-The Scry MCP server puts your indexed components in front of an AI assistant. Ask Claude, Cursor or any [MCP](https://modelcontextprotocol.io/) client for "the date picker we already have" and it searches your Storybook builds — by text, or by an image of a design — and answers with the component, the file to import, and a screenshot.
+The Scry MCP server puts your indexed components in front of an AI assistant. Ask Claude, Codex, Cursor, the Figma agent or any [MCP](https://modelcontextprotocol.io/) client for "the date picker we already have" and it searches your Storybook builds — by text, or by an image of a design — and answers with the component, the file to import, and a screenshot.
 
 It is a remote server: nothing to install, and it sees only the projects your account can already read.
 
@@ -18,6 +18,77 @@ The server lives at `https://mcp.scrymore.com/mcp`.
 ```bash
 claude mcp add --transport http scry https://mcp.scrymore.com/mcp
 ```
+
+### Codex
+
+The Codex CLI, the Codex IDE extension and the ChatGPT desktop app share one config file, `~/.codex/config.toml`. Add Scry in any of them and the other two see it too.
+
+**From the terminal:**
+
+```bash
+codex mcp add scry --url https://mcp.scrymore.com/mcp
+```
+
+Codex detects that Scry uses OAuth and starts sign-in straight away: it prints a URL, and opens it if it can. Sign in with the Scry account that can see your project. The terminal then prints `Successfully logged in.`
+
+If sign-in was interrupted, or you need to switch accounts later, run:
+
+```bash
+codex mcp login scry
+```
+
+**From the IDE extension or the desktop app:**
+
+1. Open the gear menu in the IDE extension, or **Settings** in the app.
+2. Select **MCP servers**, then **Add server**.
+3. Name it `scry`, choose **Streamable HTTP**, and paste `https://mcp.scrymore.com/mcp`.
+4. Select **Authenticate** and sign in.
+
+Either route leaves this in `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.scry]
+url = "https://mcp.scrymore.com/mcp"
+```
+
+Check the connection with `codex mcp list`: `scry` should show `enabled` with `OAuth` in the Auth column. Inside a session, `/mcp` lists the server and its tools.
+
+**Tool approval.** By default Codex asks before every MCP tool call. None of Scry's tools change your projects, so you can let them run without prompting:
+
+```toml
+[mcp_servers.scry]
+url = "https://mcp.scrymore.com/mcp"
+default_tools_approval_mode = "approve"
+```
+
+You need this setting for `codex exec` and other non-interactive runs. They cannot show a prompt, so a Scry call fails with `MCP tool call requires approval, but approval policy is never`.
+
+Try it:
+
+> Use the scry MCP server: run whoami, then search_components for "primary button" in this repository's Scry project.
+
+### Figma agent and Figma Make
+
+Add Scry as a custom connector and the Figma agent or Figma Make can look up components your team has already built while you design.
+
+**Before you start:**
+- Custom connectors need a paid Figma plan and edit access to the file.
+- On Organization and Enterprise plans, an admin can turn custom connectors off.
+- By default, only admins can create custom connectors.
+
+1. In a Figma agent or Figma Make chat, click **Add context**, hover **Connectors**, and select **Manage**.
+2. Open the **Created by you** tab and click **Create**.
+3. Enter **Scry** as the name. Icon, tagline and description are optional.
+4. Paste `https://mcp.scrymore.com/mcp` as the MCP server URL and click **Create**.
+5. Leave **Advanced settings** empty. Scry registers Figma as an OAuth client automatically, so there is no client ID, secret or API key to enter.
+6. Click **Connect** on the Scry connector and sign in with your Scry account.
+7. Review the tools and switch on the ones you want. Figma turns write tools off by default. Scry's tools may appear in that group even though they only read, so turn on `search_components`, `search_by_image`, `get_component_screenshot` and `whoami`.
+
+For each tool, choose **Ask to run**, **Always run** or **Never run**. The connector is visible only to you unless an admin publishes it to the organisation.
+
+**Give the agent your project id.** A coding assistant can read `project_id` from your repository, but the Figma agent has no repository to read. Without an id it searches every project your account can read (see [Scope](#scope-the-thing-to-get-right) below). Copy the id from your project's dashboard URL, `dashboard.scrymore.com/projects/<id>`, and put it in the prompt:
+
+> Search Scry project `<id>` for the card component we already have, and show me its screenshot.
 
 ### Claude Desktop, Cursor, and other clients
 
@@ -96,7 +167,19 @@ Three fields matter more than they look:
 
 ## Troubleshooting
 
-**The client shows no tools, or every call fails with 401.** The sign-in did not complete. Trigger any tool to reopen the browser flow, and check you approved it for the account that can see the project.
+**The client shows no tools, or every call fails with 401.** The sign-in did not complete. Trigger any tool to reopen the browser flow, and check you approved it for the account that can see the project. In Codex, run `codex mcp login scry`. In Figma, click **Connect** on the connector again.
+
+**Codex sign-in on a remote machine ends on a page that won't load.** Codex waits for the sign-in redirect on `127.0.0.1` on the machine where Codex runs. If your browser is on another computer, as with SSH or a dev box, the final redirect can't reach it. Copy the full URL from the browser's address bar, then request it on the Codex machine while `codex mcp login` is still waiting:
+
+```bash
+curl "http://127.0.0.1:<port>/callback/…"
+```
+
+Codex prints `Successfully logged in.`
+
+**Codex: `MCP tool call requires approval, but approval policy is never`.** A non-interactive run tried to call a Scry tool that needs approval. Set `default_tools_approval_mode = "approve"` under `[mcp_servers.scry]`; see [Codex](#codex).
+
+**Figma: the Scry tools are there but never run.** They are probably switched off. Open **Manage** on the connector and turn them on.
 
 **`RATE_LIMITED`.** The server allows 60 requests per minute per user. Wait and retry.
 

@@ -31,6 +31,21 @@ sequenceDiagram
 
 Clients that speak Streamable HTTP natively skip `mcp-remote` and perform the same exchange directly.
 
+## Client registration
+
+Before a client can start the flow, the Worker has to know who the client is. Clients identify themselves in one of two ways, and the Worker accepts both:
+
+| How the client identifies itself | Clients seen doing it | Worker setting |
+| --- | --- | --- |
+| **Client ID Metadata Document**: `client_id` is an HTTPS URL to a JSON document describing the client | Claude Code (`https://claude.ai/oauth/claude-code-client-metadata`), Codex CLI (`https://chatgpt.com/oauth/codex/…/client.json`) | `clientIdMetadataDocumentEnabled: true` |
+| **Dynamic Client Registration**: the client `POST`s its redirect URIs to `/register` and receives a `client_id` | Clients that don't publish a metadata document | `clientRegistrationEndpoint: "/register"` |
+
+Both are advertised in `/.well-known/oauth-authorization-server`. Keep both on:
+- Without the metadata-document setting, Claude Code and Codex fail at `/authorize` with an opaque 500. The client is looked up in KV and never found.
+- Without `/register`, clients that rely on dynamic registration cannot connect.
+
+Neither path involves a redirect-URI allowlist, so a new client needs no server change. Figma's custom connectors return to `https://www.figma.com/oauth/mcp/callback`. Codex returns to a loopback `http://127.0.0.1:<port>/callback/…` on the user's machine.
+
 ## Token isolation
 
 - The Firebase ID token is **verified and then encrypted into KV**. It is never returned to the client.

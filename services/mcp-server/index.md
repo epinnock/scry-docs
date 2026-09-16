@@ -19,7 +19,7 @@ For connecting a client, see the [MCP guide](/guide/mcp).
 
 ```mermaid
 flowchart TD
-    Client["MCP client<br/>Claude · Cursor · ChatGPT"]
+    Client["MCP client<br/>Claude · Codex · Cursor · Figma"]
     Remote["mcp-remote<br/>local stdio proxy"]
     subgraph Worker["Cloudflare Worker"]
         OAuth["OAuthProvider<br/>token management"]
