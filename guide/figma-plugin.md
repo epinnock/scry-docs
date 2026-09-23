@@ -67,6 +67,7 @@ Signing in adds the following. Each one works from screenshots of a Storybook bu
 - Side-by-side and overlay diffs, and **View diff in Scrymore** on a synced pair
 - Previews of private Scrymore-hosted Storybooks inside the plugin
 - A Dev Mode resource on linked layers, once the project is connected to Figma in the dashboard
+- **Request this component**: file a GitHub issue for a component that has no story yet (see [Component Requests](/guide/component-requests))
 
 ## Link a layer
 
@@ -115,6 +116,10 @@ Results are grouped into Components, Screens and a collapsed No match group, sor
 ### Compare a pair before accepting
 
 **Compare** needs a Scrymore account and a project with a deployed build, because its Storybook side is that build's screenshot. On a row it shows the pair two ways: **Side by side** (Figma export left, Storybook screenshot right) and **Overlay** (one box, with a Storybook opacity slider). Accept or skip moves to the next pending pair. Once a pair is linked and synced, **View diff in Scrymore ↗** opens its review in the dashboard.
+
+## Request a component that has no story
+
+When a component has no story yet, the node screen shows **No story for this yet?** with **Request this component**. Signed in, with a GitHub repository connected to the project, it opens a GitHub issue for engineering with a preview, the variants and properties, and your notes, and the node then shows **Requested · #N** to everyone in the file. See [Component Requests](/guide/component-requests) for setup and the full flow.
 
 ## Private Storybooks
 

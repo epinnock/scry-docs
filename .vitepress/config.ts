@@ -51,6 +51,7 @@ export default defineConfig({
           text: 'Integrations',
           items: [
             { text: 'Figma Plugin', link: '/guide/figma-plugin' },
+            { text: 'Component Requests', link: '/guide/component-requests' },
             { text: 'MCP Server', link: '/guide/mcp' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]
