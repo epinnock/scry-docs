@@ -4,10 +4,6 @@ A designer draws a component in Figma that has no code yet. With **component req
 
 It is for design-system teams where designers work in Figma and engineers work from GitHub issues. Designers don't need a GitHub account: the issue is opened by the Scry GitHub App and names the person who asked.
 
-::: info Availability
-Component requests are in preview. They need a Scrymore account, a project with a connected GitHub repository, and a Scry Link release that includes **Request this component**.
-:::
-
 ## Before you start
 
 You need:
