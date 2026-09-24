@@ -3,7 +3,7 @@
 > **TL;DR:** Every AI task in Scry uses credits. Your personal workspace gets 2,000 free credits each month. Credits belong to an organization, and Scry picks which one pays.
 
 ::: info Rollout
-Credits start with a shadow week, until 2026-10-01. During it, usage is counted and shown on the Credits page as **counted, not enforced yet**, but nothing is blocked or paused. Enforcement starts after the shadow week.
+Credits are enforced since 2026-09-24. When a balance can't cover a task, the task pauses until credits reset or are granted. See [When you run out](#when-you-run-out).
 :::
 
 ## What costs credits
