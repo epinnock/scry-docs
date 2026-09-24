@@ -84,7 +84,7 @@ When it's off:
 
 These send data to Scrymore only when you use them.
 
-- **Sync:** a rendered image of the linked layer, plus what we need to pair it with its story: the layer's name, node id and size, its page and file names, the file key when Figma provides it (otherwise an id the plugin generates for the file), any Dev Mode links on the layer, and the story's id, title, name and Storybook URL. It's stored in your Scry project.
+- **Sync:** a rendered image of the linked layer and its layer structure (the names, types, positions and text of its layers, sent for the frames you choose to sync, from plugin v0.9.0; it makes design diffs more accurate), plus what we need to pair it with its story: the layer's name, node id and size, its page and file names, the file key when Figma provides it (otherwise an id the plugin generates for the file), any Dev Mode links on the layer, and the story's id, title, name and Storybook URL. It's stored in your Scry project.
 - **Suggest links:** small thumbnails (up to 320 px wide) of the layers being matched. They are used to search your project and are not stored.
 - **Component requests:** the component's name, a preview image and your notes. If your project has a GitHub repository connected, they become a GitHub issue there.
 
@@ -109,4 +109,4 @@ In Figma's plugin storage for your account: your Storybook settings, your sign-i
 
 ## Figma Community listing text
 
-> **Privacy.** Scry Link sends anonymous usage events (for example, "a layer was linked") and error reports to Scrymore, using PostHog and Sentry. These usage events never include layer names, text, file names or designs; turn them off in Settings → Privacy. When you're signed in and choose to sync a frame, Scry Link sends its image plus the layer, page and file names, story id and title, and Storybook URL. Details: https://docs.scrymore.com/figma-plugin/what-we-collect · Privacy policy: https://docs.scrymore.com/privacy
+> **Privacy.** Scry Link sends anonymous usage events (for example, "a layer was linked") and error reports to Scrymore, using PostHog and Sentry. These usage events never include layer names, text, file names or designs; turn them off in Settings → Privacy. When you're signed in and choose to sync a frame, Scry Link sends its image and layer structure (the names, types, positions and text of its layers) plus the layer, page and file names, story id and title, and Storybook URL. Details: https://docs.scrymore.com/figma-plugin/what-we-collect · Privacy policy: https://docs.scrymore.com/privacy

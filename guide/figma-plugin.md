@@ -63,7 +63,7 @@ The connect screen also offers **Sign in with Scrymore**, a device-code flow. No
 Signing in adds the following. Each one works from screenshots of a Storybook build deployed to your Scrymore project, not from a Storybook you connect by URL:
 
 - Visual matching in Suggest links (layers matched against story screenshots, not only names)
-- Screenshot sync: the Figma render of a linked layer is uploaded to the project
+- Screenshot sync: the Figma render of a linked layer, with its layer structure (names, types, positions and text), is uploaded to the project
 - Side-by-side and overlay diffs, and **View diff in Scrymore** on a synced pair
 - Previews of private Scrymore-hosted Storybooks inside the plugin
 - A Dev Mode resource on linked layers, once the project is connected to Figma in the dashboard

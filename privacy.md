@@ -43,7 +43,7 @@ When you sign in with GitHub or Google, we receive your name, email address, ava
 
 - **Scry Link plugin, signed out.** The plugin talks only to the Storybook URL you enter. Links between layers and stories are stored inside your Figma file, not by us.
 - **Scry Link plugin, signed in.** Only what you choose to send:
-  - When you **sync** a linked layer, we receive a rendered image of it and what we need to pair it with the story: the layer's name, node id and size, its page and file names, the file key when Figma provides it (otherwise an id the plugin generates for the file), any Dev Mode links on the layer, and the linked story's id, title, name and Storybook URL.
+  - When you **sync** a linked layer, we receive a rendered image of it, its layer structure (the names, types, positions and text of its layers, for the frames you choose to sync) and what we need to pair it with the story: the layer's name, node id and size, its page and file names, the file key when Figma provides it (otherwise an id the plugin generates for the file), any Dev Mode links on the layer, and the linked story's id, title, name and Storybook URL.
   - When you run **Suggest links**, we receive small thumbnails of the layers being matched. They are used to search your project and are not stored.
   - When you **request a component**, we receive its name, a preview image and your notes, and open a GitHub issue if your project has a repository connected.
 - **Figma connection in the dashboard.** If you connect a Figma account to a project, we store its access token encrypted and use it to read the files and layers you have linked, so we can compare them with your Storybook.
