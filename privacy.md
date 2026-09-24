@@ -167,6 +167,10 @@ Scry is a tool for software teams and is not meant for anyone under [TO CONFIRM:
 
 When we change this policy, we update the date at the top. If a change is significant, we will email account holders at least [TO CONFIRM: notice period] before it takes effect.
 
+## Governing law
+
+This policy is governed by the laws of [TO CONFIRM: governing law, e.g. the State of Texas, USA], except where the privacy law of the place you live gives you rights that cannot be waived.
+
 ## Contact
 
 [TO CONFIRM: legal entity name and postal address] · [TO CONFIRM: privacy contact address]
