@@ -4,11 +4,13 @@ API endpoints for serving Storybook files.
 
 ## Base URL
 
-Files are served via subdomain:
+Every project is served from one hostname, with the project and version in the path:
 
 ```
-https://view-{project}.scrymore.com
+https://view.scrymore.com/{projectId}/{versionId}/{path}
 ```
+
+`versionId` is whatever the build was uploaded as, for example `main`, `pr-123` or `v1.0.0`. See [Path Routing](/services/cdn-service/path-routing) for how a request resolves.
 
 ## Health Check
 
@@ -18,68 +20,42 @@ Check if the CDN service is running.
 GET /health
 ```
 
-### Response
-
-```json
-{
-  "status": "healthy",
-  "service": "scry-cdn-service",
-  "platform": "cloudflare",
-  "timestamp": "2024-01-15T10:30:00.000Z"
-}
-```
+Returns `200` with a JSON body that includes `"ok": true`, the service name, environment and deployed commit. `/healthz` returns the same.
 
 ---
 
 ## Serve Static File
 
-Serve any file from the project's Storybook build.
+Serve any file from a project's Storybook build.
 
 ```http
-GET /{path}
+GET /{projectId}/{versionId}/{path}
 ```
 
 ### Authentication
 
-Not required. Files are publicly accessible.
-
-### URL Format
-
-```
-https://view-{project}.scrymore.com/{path}
-```
+Public projects: none. Private projects need a signed-in Scrymore session (or a short-lived signed preview token), otherwise the CDN answers `401` or `403`.
 
 ### Path Resolution
 
 | Request Path | Resolved File |
 |--------------|---------------|
-| `/` | `index.html` |
-| `/index.html` | `index.html` |
-| `/iframe.html` | `iframe.html` |
-| `/static/main.js` | `static/main.js` |
-| `/assets/logo.png` | `assets/logo.png` |
-
-### Response Headers
-
-```http
-HTTP/2 200
-Content-Type: text/html
-Cache-Control: public, max-age=31536000, immutable
-Access-Control-Allow-Origin: *
-ETag: "abc123"
-```
+| `/{projectId}/{versionId}/` | `index.html` |
+| `/{projectId}/{versionId}/iframe.html` | `iframe.html` |
+| `/{projectId}/{versionId}/index.json` | `index.json` |
+| `/{projectId}/{versionId}/assets/main.js` | `assets/main.js` |
 
 ### Examples
 
 ```bash
-# Get homepage
-curl https://view-my-project.scrymore.com/
+# The demo Storybook
+curl https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/
 
-# Get specific file
-curl https://view-my-project.scrymore.com/static/main.js
+# Its story index
+curl https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/index.json
 
-# Get with verbose headers
-curl -I https://view-my-project.scrymore.com/index.html
+# Headers only
+curl -I https://view.scrymore.com/U9m2H2yeC9wFiR4hlMta/demo-1786260947/iframe.html
 ```
 
 ---
@@ -109,80 +85,24 @@ Files are served with appropriate MIME types:
 
 ## Caching
 
-### Edge Caching
+- HTML pages are sent with `Cache-Control: public, max-age=0, must-revalidate`, so a new upload to the same version shows up right away.
+- Other files (JS, CSS, `index.json`, images) are sent with `Cache-Control: public, max-age=3600`.
 
-Files are cached at Cloudflare's edge locations worldwide:
-
-```
-Cache-Control: public, max-age=31536000, immutable
-```
-
-- **max-age:** 1 year (31,536,000 seconds)
-- **immutable:** Content won't change, skip revalidation
-
-### Cache Invalidation
-
-Cached content is invalidated when:
-
-1. New ZIP is uploaded (new version)
-2. Cache TTL expires
-3. Manual purge (via Cloudflare dashboard)
-
-### Browser Caching
-
-Browsers cache files according to response headers. Use unique filenames (e.g., with hashes) for cache busting.
+Use hashed filenames (Storybook's default build does) if you need longer browser caching.
 
 ---
 
 ## Error Responses
 
-### 400 Bad Request
-
-Invalid subdomain format.
-
-```json
-{
-  "error": "Invalid subdomain. Use view-{project}.domain.com"
-}
-```
-
-### 404 Not Found
-
-File not found in the archive.
-
-```html
-<!DOCTYPE html>
-<html>
-<head><title>404 Not Found</title></head>
-<body>
-<h1>Not Found</h1>
-<p>The requested file was not found.</p>
-</body>
-</html>
-```
-
-### 500 Internal Server Error
-
-Server error (e.g., storage unavailable).
-
-```json
-{
-  "error": "Internal server error"
-}
-```
-
----
+| Status | When |
+|--------|------|
+| `401` / `403` | Private project and you're not signed in, or not a member |
+| `404` | Unknown project, version or file. The body is plain text `Not Found` |
+| `500` | Server error (e.g. storage unavailable) |
 
 ## SPA Fallback
 
-For single-page applications, unknown paths fall back to `index.html`:
-
-```
-view-my-project.scrymore.com/about       → index.html (if about not found)
-view-my-project.scrymore.com/users/123   → index.html (if users/123 not found)
-```
-
-This allows client-side routing to work correctly.
+Paths without a file extension that don't exist in the build fall back to the version's `index.html`, so client-side routing works. A missing file with an extension (say `/missing.html`) is a `404`.
 
 ---
 
@@ -193,7 +113,7 @@ All responses include CORS headers:
 ```http
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: GET, HEAD, OPTIONS
-Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Headers: Content-Type, Accept, Cookie, Authorization
 ```
 
 This allows Storybooks to be embedded in iframes from any origin.
@@ -221,22 +141,15 @@ This allows Storybooks to be embedded in iframes from any origin.
 
 ## Version Access
 
-### Latest Version
+Each upload lives at its own `versionId`:
 
 ```
-https://view-my-project.scrymore.com/
+https://view.scrymore.com/{projectId}/main/
+https://view.scrymore.com/{projectId}/pr-123/
+https://view.scrymore.com/{projectId}/v1.0.0/
 ```
 
-Serves the most recently uploaded build.
-
-### Specific Version (Optional)
-
-If configured with path-based versioning:
-
-```
-https://view-my-project.scrymore.com/v1.0.0/
-https://view-my-project.scrymore.com/pr-123/
-```
+Each project keeps its 10 most recent builds. Older builds are deleted automatically once they are 90 days old, and their URLs then return `404` (see [Privacy](/privacy)).
 
 ---
 

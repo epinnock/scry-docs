@@ -197,7 +197,7 @@ id = "your-kv-namespace-id"
 preview_id = "your-preview-id"
 
 routes = [
-  { pattern = "view-*.yourdomain.com/*", zone_name = "yourdomain.com" }
+  { pattern = "view.yourdomain.com/*", zone_name = "yourdomain.com" }
 ]
 ```
 
@@ -260,17 +260,11 @@ Or deploy via Vercel dashboard:
 
 ### Custom Domain for CDN
 
-Add DNS record:
+The CDN routes by path, so one hostname is enough (no wildcard). Add a proxied DNS record:
 
 | Type | Name | Content | Proxy |
 |------|------|---------|-------|
-| AAAA | `view-*` | `100::` | Yes |
-
-Or CNAME:
-
-| Type | Name | Content | Proxy |
-|------|------|---------|-------|
-| CNAME | `*` | `scry-cdn-service.workers.dev` | Yes |
+| AAAA | `view` | `100::` | Yes |
 
 ### Custom Domain for Dashboard
 
@@ -285,7 +279,7 @@ If using custom domain, update wrangler.toml:
 
 ```toml
 routes = [
-  { pattern = "view-*.yourdomain.com/*", zone_name = "yourdomain.com" }
+  { pattern = "view.yourdomain.com/*", zone_name = "yourdomain.com" }
 ]
 ```
 
@@ -380,7 +374,7 @@ curl https://view-test-project.yourdomain.com/test.txt
 ### "CDN returns 404"
 
 - Verify file was uploaded successfully
-- Check subdomain routing configuration
+- Check the URL has the form `/{projectId}/{versionId}/{file}` (the CDN routes by path)
 - Verify KV namespace binding
 
 ## Next Steps

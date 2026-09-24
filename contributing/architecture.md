@@ -188,7 +188,7 @@ src/
 **Partial extraction:**
 
 ```
-1. Parse subdomain for project ID
+1. Parse the path for project and version IDs
 2. Load central directory from KV (or R2)
 3. Find file entry in directory
 4. Calculate byte offset and size

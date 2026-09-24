@@ -7,7 +7,7 @@ editLink: false
 # What Scry Link collects
 
 ::: info
-This page describes Scry Link from the analytics release onwards. Earlier versions do not send usage events or error reports to PostHog or Sentry.
+This page describes Scry Link v0.8.0 (Figma version 8, released September 24, 2026) and later. Earlier versions do not send usage events or error reports to PostHog or Sentry.
 :::
 
 This page lists everything the Scry Link Figma plugin sends, what it stores in your Figma file, and what it keeps on your device. The [privacy policy](/privacy) covers the rest of Scry.

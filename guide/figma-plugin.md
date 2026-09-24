@@ -100,6 +100,7 @@ Open **Suggest links** and pick a scope: **Selection**, **This page** or **Whole
 
 - **Signed out**, matching is by name: both sides are normalised, so `screen-04`, `Screen 04` and `screen04` are the same thing, and variant properties are compared with story names.
 - **Signed in with a project selected**, the thumbnails are also matched against the project's latest build screenshots. A story's score is the better of its name and visual score, and each row shows which matcher had an opinion. If that endpoint is unreachable, the review says *Visual matching unavailable — showing name matches only*.
+- Name matching is free. Visual matching uses [credits](/guide/credits). For now (at least until October 1, 2026) credits are only counted, not charged, so nothing is blocked.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-2-review.mp4"></video>
@@ -137,7 +138,9 @@ Private Storybooks hosted on Scrymore are different: sign in, choose the project
 
 ## Privacy and data
 
-Signed out, the plugin talks only to the Storybook URL you enter, and links never leave the Figma file, so a local or internal Storybook stays on your network. Signed in, it also talks to Scrymore for sign-in, your projects, visual matching and sync: scan thumbnails are sent for matching, and only the frames you accept or sync are uploaded as renders. The plugin never lists or exports your Figma files.
+Your links and designs stay in the Figma file. Linking talks only to the Storybook URL you enter, so a local or internal Storybook stays on your network. Signed in, the plugin also talks to Scrymore for sign-in, your projects, visual matching and sync: scan thumbnails are sent for matching, and only the frames you accept or sync are uploaded as renders. The plugin never lists or exports your Figma files.
+
+Since v0.8.0 (Figma version 8) the plugin also sends anonymous usage events and scrubbed error reports (PostHog and Sentry), signed in or not. They never include layer names, text, file names or designs. Turn them off in **Settings → Privacy → Share anonymous usage data and error reports**; the plugin works exactly the same. The full list is on [What Scry Link collects](/figma-plugin/what-we-collect).
 
 ## Feedback and support
 
@@ -147,7 +150,8 @@ You can also comment on the [Community listing](https://www.figma.com/community/
 
 ## Changelog
 
-- **Current release** — Suggest links, private Storybook previews, project picker fixes.
+- **v0.8.0 (Figma version 8, September 24, 2026)** — anonymous usage stats and error reports, with an off switch in **Settings → Privacy** ([what we collect](/figma-plugin/what-we-collect)). Fixed: the plugin no longer misses the current selection or Storybook settings when it first opens.
+- **Earlier** — Suggest links, private Storybook previews, project picker fixes.
 - **Initial release** — connect, browse, link, View Story.
 
 <style>

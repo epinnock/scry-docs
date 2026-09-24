@@ -7,7 +7,7 @@ Scry provides REST APIs for uploading and serving Storybook builds.
 | Service | Base URL | Purpose |
 |---------|----------|---------|
 | Upload Service | `https://upload.scrymore.com` | File uploads, build tracking |
-| CDN Service | `https://view-{project}.scrymore.com` | File serving |
+| CDN Service | `https://view.scrymore.com/{projectId}/{versionId}/` | File serving |
 
 ## Authentication
 
