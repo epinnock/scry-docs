@@ -5,7 +5,7 @@ editLink: false
 ---
 
 ::: danger Draft — not yet reviewed
-This page is a draft. It has not been reviewed by a lawyer or approved by Scrymore, and it describes the analytics release before it ships. Items marked **TO CONFIRM** still need to be checked.
+This page is a draft. It has not been reviewed by a lawyer or approved by Scrymore, and it describes the analytics release before it ships.
 :::
 
 # What Scry Link collects

@@ -5,7 +5,7 @@ editLink: false
 ---
 
 ::: danger Draft — not yet reviewed
-This page is a draft. It has not been reviewed by a lawyer or approved by Scrymore, and it is not yet in effect. Items marked **TO CONFIRM** still need to be checked or decided.
+This page is a draft. It has not been reviewed by a lawyer or approved by Scrymore, and it is not yet in effect.
 :::
 
 # Privacy policy
@@ -22,7 +22,7 @@ In short:
 - We never store the text of your searches.
 - Our usage analytics never contain file, layer or story names, email addresses or design content. You can turn them off.
 - When our AI features call a model, the gateway in front of it does not store the prompt, the images or the answer.
-- Your data is processed in the United States [TO CONFIRM: Jina AI's region], by the companies on our [subprocessor list](/subprocessors).
+- Your data is stored in the United States. A few providers may process it elsewhere; see [Where your data is processed](#where-your-data-is-processed) and our [subprocessor list](/subprocessors).
 
 ## What we collect
 
@@ -103,7 +103,7 @@ We do not sell your data or share it for advertising.
 
 ## AI features
 
-- **No training.** We do not train AI models on your data, and our model providers are set up not to keep it or train on it. Design-diff requests go through OpenRouter with `data_collection: deny`, so they are only sent to providers that do not store or train on them.
+- **No training.** We do not train AI models on your data, and we only use model providers whose terms for our account say they do not train on it. Design-diff requests go through OpenRouter with `data_collection: deny`, so OpenRouter only routes them to providers that do not collect the data. Some providers keep requests for a limited time under their own terms, for example to detect abuse.
 - **The gateway does not keep content.** Starting with the AI telemetry release, our AI requests go through Cloudflare AI Gateway with body logging turned off. It keeps one row per request (model, tokens, cost, time, status, and ids for the service, project, user and run), but **never the prompt, images or answer**.
 - **Traces for debugging.** Starting with the AI telemetry release, we keep a trace of each AI call in Langfuse (prompts, outputs, and references to screenshots, not the images) so we can debug a bad result. We delete these after 30 days.
 - **Research use is off unless you turn it on.** A project owner or admin can turn on **Research use** for a project. Then Scry may use that project's screens, diffs and review decisions to evaluate and improve Scry's own AI. It is never used to train third-party models. Turning it off stops new use. To remove data already used, email us.
@@ -121,17 +121,17 @@ We do not sell your data or share it for advertising.
 | Data | How long |
 |---|---|
 | Account, organisations, projects, membership | Until you ask us to delete your account |
-| Storybook builds, screenshots, descriptions, search index | Until you delete the project or ask us to. **Today we keep every build's data. Nothing is deleted automatically.** [TO CONFIRM: whether to add an automatic policy] |
+| Storybook builds, screenshots, descriptions, search index | Until you delete the project or ask us to. We keep every build; older builds are not deleted automatically. |
 | Search query text | Never stored |
 | Figma renders you sync, link records, diff results and review decisions | Until you delete the project or ask us to |
 | Figma connection token | Until you disconnect Figma or delete the project |
-| Usage analytics (PostHog) | [TO CONFIRM: PostHog retention on our plan] |
+| Usage analytics (PostHog) | Available to us for analysis for 1 year on our current PostHog plan. PostHog does not delete older events automatically; we delete your events when you ask us to delete your account. |
 | Usage event counts stored before the analytics release (our database) | Kept as an archive. From the analytics release, new events go to PostHog only, after a 30-day overlap. |
-| Error reports and session replays (Sentry) | [TO CONFIRM: Sentry retention on our plan] |
+| Error reports and session replays (Sentry) | 30 days, Sentry's retention on our plan |
 | AI call traces (Langfuse) | 30 days |
-| Archived AI traces (our own storage) | [TO CONFIRM: retention for projects without Research use] |
-| AI gateway request rows (no content) | Oldest rows are deleted automatically once the gateway's row limit is reached [TO CONFIRM: set a time limit] |
-| Feedback form answers and support email | [TO CONFIRM: retention] |
+| Archived AI traces (our own storage, starting with the AI telemetry release) | Not deleted automatically yet. We delete a project's traces when you ask us to. |
+| AI gateway request rows (no content) | Deleted automatically, oldest first, once the gateway's storage limit is reached |
+| Feedback form answers and support email | Until you ask us to delete them. They are not deleted automatically yet. |
 
 ## Your choices
 
@@ -145,7 +145,13 @@ We do not sell your data or share it for advertising.
 
 You can ask us for a copy of your data, to correct it, or to delete it. Email [privacy@scrymore.com](mailto:privacy@scrymore.com) from the address on your account. Deletion is done by hand for now, so allow a few working days. We will confirm when it is done, including the copies held by our subprocessors that we can delete.
 
-[TO CONFIRM: rights wording for GDPR (EU/UK) and US state privacy laws such as CCPA, depending on who the customers are]
+You can also ask for your data in a portable format, or object to a use of it. We reply within 30 days. We will not treat you differently for using these rights. We may need to confirm that a request really comes from you.
+
+**Data your organisation controls.** When your company uses Scry, the projects, builds and designs it uploads belong to it. For that data we act on your company's instructions, so we may pass your request to your organisation's admin.
+
+**Europe and the UK.** If data protection law such as the GDPR applies to you, we rely on these legal bases: running the service you signed up for (contract); fixing errors, keeping Scry secure and improving it through usage analytics and error reports (our legitimate interests, which you can object to with the opt-outs above); and Research use (your organisation's choice to turn it on). Transfers to the United States are covered by our providers' standard contractual clauses where they offer them. You may complain to your local data protection authority.
+
+**California and other US states.** We do not sell personal information, and we do not share it for cross-context behavioural advertising. We collect the categories of data described above, for the purposes described above.
 
 ## Security
 
@@ -157,11 +163,19 @@ We don't hold a SOC 2 or similar certification yet.
 
 ## Where your data is processed
 
-In the United States [TO CONFIRM: Jina AI's region]. Some of our providers use global networks to deliver requests. We don't currently offer an EU data residency option.
+We store your data in the United States: our database (Google Cloud Firestore, US multi-region), our file storage (Cloudflare R2), our search index (Zilliz, Google Cloud us-west1) and our dashboard and search API (Vercel, Washington, D.C.).
+
+Some processing can happen outside the United States:
+
+- **Embeddings.** Jina AI GmbH (Germany, part of Elastic) turns screenshots, descriptions and search text into embeddings. Jina does not publish where its API servers run.
+- **Image generation.** If you use the MCP server's `generate_image` tool, Google may process your prompt in any country where it has facilities.
+- **Networks.** Cloudflare and Vercel deliver requests through global networks, so a request may pass through a location near you.
+
+We don't currently offer an EU data residency option.
 
 ## Children
 
-Scry is a tool for software teams and is not meant for anyone under [TO CONFIRM: 13 or 16].
+Scry is a tool for software teams. You must be at least 18 to use it, and we do not knowingly collect data from anyone younger. If you think a child has given us data, email us and we will delete it.
 
 ## Changes to this policy
 
