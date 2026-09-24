@@ -5,5 +5,17 @@
   "outputDirectory": ".vitepress/dist",
   "installCommand": "pnpm install",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/legal/privacy",
+      "destination": "/privacy",
+      "permanent": false
+    },
+    {
+      "source": "/legal/subprocessors",
+      "destination": "/subprocessors",
+      "permanent": false
+    }
+  ]
 }

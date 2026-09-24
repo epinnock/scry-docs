@@ -26,6 +26,14 @@ export default defineConfig({
       { text: 'API', link: '/api/' },
       { text: 'Contributing', link: '/contributing/' },
       { text: 'Feedback', link: '/feedback' },
+      {
+        text: 'Privacy',
+        items: [
+          { text: 'Privacy Policy', link: '/privacy' },
+          { text: 'Subprocessors', link: '/subprocessors' },
+          { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
+        ]
+      },
     ],
 
     sidebar: {
@@ -51,6 +59,7 @@ export default defineConfig({
           text: 'Integrations',
           items: [
             { text: 'Figma Plugin', link: '/guide/figma-plugin' },
+            { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
             { text: 'Component Requests', link: '/guide/component-requests' },
             { text: 'MCP Server', link: '/guide/mcp' },
             { text: 'Notifications', link: '/guide/notifications' },
@@ -61,6 +70,30 @@ export default defineConfig({
           items: [
             { text: 'Troubleshooting', link: '/guide/troubleshooting' },
             { text: 'Feedback', link: '/feedback' },
+          ]
+        },
+        {
+          text: 'Privacy',
+          items: [
+            { text: 'Privacy Policy', link: '/privacy' },
+            { text: 'Subprocessors', link: '/subprocessors' },
+          ]
+        }
+      ],
+
+      '/figma-plugin/': [
+        {
+          text: 'Scry Link (Figma plugin)',
+          items: [
+            { text: 'Plugin guide', link: '/guide/figma-plugin' },
+            { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
+          ]
+        },
+        {
+          text: 'Privacy',
+          items: [
+            { text: 'Privacy Policy', link: '/privacy' },
+            { text: 'Subprocessors', link: '/subprocessors' },
           ]
         }
       ],
@@ -206,7 +239,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License.',
+      message: 'Released under the MIT License. · <a href="/privacy">Privacy</a> · <a href="/subprocessors">Subprocessors</a>',
       copyright: 'Copyright © 2024-present Scry'
     },
 
