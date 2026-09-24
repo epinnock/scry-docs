@@ -18,6 +18,11 @@
       "permanent": true
     },
     {
+      "source": "/legal/terms",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
       "source": "/legal/subprocessors",
       "destination": "/subprocessors",
       "permanent": true
