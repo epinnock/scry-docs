@@ -4,13 +4,9 @@ description: The short, plain-English rules for using Scry.
 editLink: false
 ---
 
-::: danger Draft — not yet reviewed
-This page is a draft. It has not been reviewed by a lawyer or approved by Scrymore, and it is not yet in effect.
-:::
-
 # Terms of Service
 
-**Effective date:** EFFECTIVE_DATE
+**Effective date:** September 24, 2026
 
 Scry is run by **Scrymore** ("we"). These terms cover the dashboard, CLI, Storybook viewer, search API, MCP server, design-diff service, the Scry Link Figma plugin and this site. By using Scry you agree to them. How we handle personal data is in the [privacy policy](/privacy).
 
