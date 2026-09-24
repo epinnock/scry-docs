@@ -121,7 +121,7 @@ We do not sell your data or share it for advertising.
 | Data | How long |
 |---|---|
 | Account, organisations, projects, membership | Until you ask us to delete your account |
-| Storybook builds, screenshots, descriptions, search index | Until you delete the project or ask us to. We keep every build; older builds are not deleted automatically. |
+| Storybook builds, screenshots, descriptions, search index | Until you delete the project or ask us to. We always keep each project's 10 most recent builds; older builds are deleted once they are 90 days old. We are rolling out this automatic deletion; until it is on, older builds are kept. |
 | Search query text | Never stored |
 | Figma renders you sync, link records, diff results and review decisions | Until you delete the project or ask us to |
 | Figma connection token | Until you disconnect Figma or delete the project |
@@ -129,9 +129,10 @@ We do not sell your data or share it for advertising.
 | Usage event counts stored before the analytics release (our database) | Kept as an archive. From the analytics release, new events go to PostHog only, after a 30-day overlap. |
 | Error reports and session replays (Sentry) | 30 days, Sentry's retention on our plan |
 | AI call traces (Langfuse) | 30 days |
-| Archived AI traces (our own storage, starting with the AI telemetry release) | Not deleted automatically yet. We delete a project's traces when you ask us to. |
-| AI gateway request rows (no content) | Deleted automatically, oldest first, once the gateway's storage limit is reached |
-| Feedback form answers and support email | Until you ask us to delete them. They are not deleted automatically yet. |
+| Archived AI traces (our own storage, starting with the AI telemetry release) | 90 days. We are rolling out automatic deletion; until it is on, archived traces are kept longer. We delete a project's traces when you ask us to. |
+| AI gateway request rows (no content) | 90 days. We are rolling out automatic deletion; until it is on, rows are deleted automatically, oldest first, only once the gateway's storage limit is reached. |
+| Feedback form answers | 24 months. We are rolling out automatic deletion; until it is on, answers are kept until you ask us to delete them. |
+| Support email | Until you ask us to delete it |
 
 ## Your choices
 

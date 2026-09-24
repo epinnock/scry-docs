@@ -8,14 +8,29 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/legal",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
       "source": "/legal/privacy",
       "destination": "/privacy",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/legal/subprocessors",
       "destination": "/subprocessors",
-      "permanent": false
+      "permanent": true
+    },
+    {
+      "source": "/legal/what-we-collect",
+      "destination": "/figma-plugin/what-we-collect",
+      "permanent": true
+    },
+    {
+      "source": "/legal/figma-plugin/what-we-collect",
+      "destination": "/figma-plugin/what-we-collect",
+      "permanent": true
     }
   ]
 }
