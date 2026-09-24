@@ -34,6 +34,10 @@ The bucket is shared with build processing and the dashboard. This service reads
 | `ANNOTATOR_MAX_TOKENS` | `16000` |
 | `FIGMA_APP_KIND` | Which kind of Figma app the connection uses |
 | `ANNOTATOR_BASE_URL` | Override the provider endpoint |
+| `DIFF_TIERS_ENABLED` | `1`: Basic/Plus tier pipeline. `0` runs the pre-tier pipeline |
+| `PREFILTER_IMPL` | `ts` (in-process pre-filter); `python` uses the separate pre-filter Worker |
+| `PLUS_BUSY_THRESHOLD` | `49`: pre-filter candidates at which Plus adds the Opus check |
+| `CREDITS_MODE` | `enforce` (production and stage): refuses runs without credits (402). `shadow`: credits are counted, not enforced. `off` skips the ledger |
 
 Deploy stamps — `SCRY_ENV`, `SCRY_COMMIT`, `SCRY_BRANCH`, `SCRY_BUILD_TIME`, `SCRY_DEPLOY_ID`, `SCRY_ACTOR` — are injected at build time and reported by `/healthz`.
 

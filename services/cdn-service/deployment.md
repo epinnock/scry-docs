@@ -159,17 +159,11 @@ services:
 
 ### Cloudflare DNS
 
-Add a wildcard record:
+The CDN routes by path (`/{projectId}/{versionId}/{file}`), so it needs one hostname, not a wildcard:
 
 | Type | Name | Content | Proxy |
 |------|------|---------|-------|
-| AAAA | `view-*` | `100::` | Enabled |
-
-Or use CNAME:
-
-| Type | Name | Content | Proxy |
-|------|------|---------|-------|
-| CNAME | `*` | `scry-cdn-service.workers.dev` | Enabled |
+| AAAA | `view` | `100::` | Enabled |
 
 ### Other DNS Providers
 

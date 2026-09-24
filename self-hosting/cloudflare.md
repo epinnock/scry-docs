@@ -151,37 +151,27 @@ If not already using Cloudflare for DNS:
 4. Select a plan (Free works)
 5. Update nameservers at your registrar
 
-### Configure DNS for CDN
+### Configure a Domain for the CDN
 
-Add a wildcard record for subdomain routing:
+The CDN routes by path (`/{projectId}/{versionId}/{file}`), so it needs one hostname, not a wildcard. Give the CDN worker a custom domain such as `view.yourdomain.com`:
 
-**Option 1: AAAA Record (Recommended)**
+1. Go to Workers → your CDN worker → Triggers
+2. Click **Add Custom Domain**
+3. Enter `view.yourdomain.com`
 
-| Type | Name | Content | Proxy |
-|------|------|---------|-------|
-| AAAA | `view-*` | `100::` | Proxied |
-
-**Option 2: CNAME Record**
-
-| Type | Name | Content | Proxy |
-|------|------|---------|-------|
-| CNAME | `*` | `your-cdn-worker.workers.dev` | Proxied |
-
-### Configure Worker Routes
-
-Update CDN Service `wrangler.toml`:
+Or add a proxied DNS record for `view` (AAAA `100::`) and a route in the CDN Service `wrangler.toml`, then redeploy:
 
 ```toml
 routes = [
-  { pattern = "view-*.yourdomain.com/*", zone_name = "yourdomain.com" }
+  { pattern = "view.yourdomain.com/*", zone_name = "yourdomain.com" }
 ]
 ```
-
-Redeploy:
 
 ```bash
 wrangler deploy
 ```
+
+Builds are then served at `https://view.yourdomain.com/{projectId}/{versionId}/`. See [Path Routing](/services/cdn-service/path-routing).
 
 ### Configure Custom Domain for Upload Service
 

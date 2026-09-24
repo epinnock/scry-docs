@@ -100,6 +100,7 @@ Open **Suggest links** and pick a scope: **Selection**, **This page** or **Whole
 
 - **Signed out**, matching is by name: both sides are normalised, so `screen-04`, `Screen 04` and `screen04` are the same thing, and variant properties are compared with story names.
 - **Signed in with a project selected**, the thumbnails are also matched against the project's latest build screenshots. A story's score is the better of its name and visual score, and each row shows which matcher had an opinion. If that endpoint is unreachable, the review says *Visual matching unavailable — showing name matches only*.
+- Name matching is free. Visual matching uses [credits](/guide/credits). At zero credits, Suggest matches by name only.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-2-review.mp4"></video>
@@ -116,6 +117,21 @@ Results are grouped into Components, Screens and a collapsed No match group, sor
 ### Compare a pair before accepting
 
 **Compare** needs a Scrymore account and a project with a deployed build, because its Storybook side is that build's screenshot. On a row it shows the pair two ways: **Side by side** (Figma export left, Storybook screenshot right) and **Overlay** (one box, with a Storybook opacity slider). Accept or skip moves to the next pending pair. Once a pair is linked and synced, **View diff in Scrymore ↗** opens its review in the dashboard.
+
+### Diff tiers: Basic and Plus
+
+Diffs run in the dashboard (**Design Sync → Run diff**, or **Re-run AI annotate** in the editor) at one of two tiers:
+
+| Tier | What it does | Credits |
+|------|--------------|---------|
+| **Basic** | The standard check. Finds most defects, about a minute | 10 |
+| **Plus** | Adds an Opus check on busy screens, 1-2 minutes | 40 when it escalates, otherwise 10 |
+
+- Every project starts on **Basic** with Plus off. A project owner or admin, signed in to the dashboard, turns on **Let members choose Plus per run** and picks the default tier in the project's **Settings** tab. Personal access tokens can't change the tier.
+- A Plus run on a screen that isn't busy runs the same pipeline as Basic and is billed at the Basic price.
+- Every project member, viewers included, can see who ran each diff and what it cost in the screen's run history. The project's **Usage** tab shows the month's runs, spend and credits; the per-member breakdown is for owners and admins.
+- Plus needs the screen's Figma layer data, which comes from the project's Figma connection. Without it, Plus runs as Basic and is billed as Basic.
+- See [How Credits Work](/guide/credits) for who pays. Credits are enforced: tasks pause when the paying balance runs out.
 
 ## Request a component that has no story
 
@@ -137,7 +153,9 @@ Private Storybooks hosted on Scrymore are different: sign in, choose the project
 
 ## Privacy and data
 
-Signed out, the plugin talks only to the Storybook URL you enter, and links never leave the Figma file, so a local or internal Storybook stays on your network. Signed in, it also talks to Scrymore for sign-in, your projects, visual matching and sync: scan thumbnails are sent for matching, and only the frames you accept or sync are uploaded as renders. The plugin never lists or exports your Figma files.
+Your links and designs stay in the Figma file. Linking talks only to the Storybook URL you enter, so a local or internal Storybook stays on your network. Signed in, the plugin also talks to Scrymore for sign-in, your projects, visual matching and sync: scan thumbnails are sent for matching, and only the frames you accept or sync are uploaded as renders. The plugin never lists or exports your Figma files.
+
+Since v0.8.0 (Figma version 8) the plugin also sends anonymous usage events and scrubbed error reports (PostHog and Sentry), signed in or not. They never include layer names, text, file names or designs. Turn them off in **Settings → Privacy → Share anonymous usage data and error reports**; the plugin works exactly the same. The full list is on [What Scry Link collects](/figma-plugin/what-we-collect).
 
 ## Feedback and support
 
@@ -147,7 +165,8 @@ You can also comment on the [Community listing](https://www.figma.com/community/
 
 ## Changelog
 
-- **Current release** — Suggest links, private Storybook previews, project picker fixes.
+- **v0.8.0 (Figma version 8, September 24, 2026)** — anonymous usage stats and error reports, with an off switch in **Settings → Privacy** ([what we collect](/figma-plugin/what-we-collect)). Fixed: the plugin no longer misses the current selection or Storybook settings when it first opens.
+- **Earlier** — Suggest links, private Storybook previews, project picker fixes.
 - **Initial release** — connect, browse, link, View Story.
 
 <style>

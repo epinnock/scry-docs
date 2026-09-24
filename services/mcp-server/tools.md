@@ -48,10 +48,12 @@ Generates a reference image from a prompt, optionally guided by reference images
 | Parameter | Type | Notes |
 | --- | --- | --- |
 | `prompt` | string | Required. Description of the image |
-| `aspect_ratio` | enum | Optional, default `1:1` |
-| `quality` | `fast` \| `quality` | Optional. Selects the generation model |
+| `aspect_ratio` | enum | Optional, default `1:1`. One of `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9` |
+| `quality` | `fast` \| `quality` | Optional. `fast` (Gemini 3.1 Flash) or `quality` (Gemini 3 Pro) |
 | `reference_images` | string[] | Optional. Base64 images for img2img |
 | `reference_image` | string | Deprecated — use `reference_images` |
+
+Each image uses [credits](/guide/credits): 40 for `fast`, 150 for `quality` (see [who pays](/guide/credits#who-pays)). If the wallet can't cover the price, the tool returns `INSUFFICIENT_CREDITS` (with the balance and a link to the Credits page) and no image is generated.
 
 ## `whoami`
 
