@@ -2,14 +2,16 @@
 
 > **TL;DR:** Every AI task in Scry uses credits. Your personal workspace gets 2,000 free credits each month. Credits belong to an organization, and Scry picks which one pays.
 
-Credits are rolling out across Scry, so you may see them in some places before others.
+::: info Rollout
+Credits start with a shadow week, until 2026-10-01. During it, usage is counted and shown on the Credits page as **counted, not enforced yet**, but nothing is blocked or paused. Enforcement starts after the shadow week.
+:::
 
 ## What costs credits
 
 | Task | Credits |
 |------|---------|
 | Design Sync diff, Basic | 10 |
-| Design Sync diff, Plus | 40 |
+| Design Sync diff, Plus | 40 if it escalates to the deeper check, otherwise 10 |
 | Refine and recheck a diff | Free |
 | MCP `generate_image`, fast | 40 |
 | MCP `generate_image`, quality | 150 |
@@ -17,14 +19,15 @@ Credits are rolling out across Scry, so you may see them in some places before o
 | Image search | 1 per search |
 | AI text search | 1 per 100 searches |
 | Scry Link Suggest, name matching | Free |
-| Scry Link Suggest, visual matching | 1 per 10 frames, rounded up |
+| Scry Link Suggest, visual matching | 1 per 10 frames per scan, rounded up |
 
 A few details:
 
-- **Plus diffs.** If a Plus run falls back to Basic, you are charged 10, not 40.
+- **Plus diffs.** A Plus run holds 40 credits up front. If the screen isn't busy enough to escalate to the deeper check, or Plus falls back to Basic, you are charged 10 and the other 30 go straight back. A failed run is refunded in full.
+- **Diff tier.** Only a project owner or admin signed in to the dashboard can change a project's diff tier. Personal access tokens can't change it.
 - **Build indexing.** Stories that didn't change since an earlier build are reused. They cost nothing.
 - **AI text search.** The first search of each block of 100 charges 1 credit. The next 99 are free.
-- **Suggest.** A page with 24 frames costs 3 credits for visual matching.
+- **Suggest.** Visual matching is charged once per scan, not per request. All frames in the scan are counted together and rounded up once, so a scan of 24 frames costs 3 credits.
 
 ## Where credits come from
 
@@ -63,6 +66,7 @@ Open the **Credits** page at [dashboard.scrymore.com/credits](https://dashboard.
 
 - Every member of an organization sees its balance and their own usage.
 - The organization owner also sees every charge and can export it as CSV.
+- Project members can see the project's diff run history: who ran each diff and what it cost.
 
 When 80% of the monthly credits are used (400 or fewer left) and there are no bonus credits, the dashboard shows a warning.
 
