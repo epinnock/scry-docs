@@ -53,7 +53,7 @@ Generates a reference image from a prompt, optionally guided by reference images
 | `reference_images` | string[] | Optional. Base64 images for img2img |
 | `reference_image` | string | Deprecated — use `reference_images` |
 
-Each image uses [credits](/guide/credits): 40 for `fast`, 150 for `quality` (see [who pays](/guide/credits#who-pays)). For now (at least until October 1, 2026) credits are only counted, not charged, so generation is never refused for credits.
+Each image uses [credits](/guide/credits): 40 for `fast`, 150 for `quality` (see [who pays](/guide/credits#who-pays)). If the wallet can't cover the price, the tool returns `INSUFFICIENT_CREDITS` (with the balance and a link to the Credits page) and no image is generated.
 
 ## `whoami`
 

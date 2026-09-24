@@ -100,7 +100,7 @@ Open **Suggest links** and pick a scope: **Selection**, **This page** or **Whole
 
 - **Signed out**, matching is by name: both sides are normalised, so `screen-04`, `Screen 04` and `screen04` are the same thing, and variant properties are compared with story names.
 - **Signed in with a project selected**, the thumbnails are also matched against the project's latest build screenshots. A story's score is the better of its name and visual score, and each row shows which matcher had an opinion. If that endpoint is unreachable, the review says *Visual matching unavailable — showing name matches only*.
-- Name matching is free. Visual matching uses [credits](/guide/credits). For now (at least until October 1, 2026) credits are only counted, not charged, so nothing is blocked.
+- Name matching is free. Visual matching uses [credits](/guide/credits). At zero credits, Suggest matches by name only.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-2-review.mp4"></video>
@@ -131,7 +131,7 @@ Diffs run in the dashboard (**Design Sync → Run diff**, or **Re-run AI annotat
 - A Plus run on a screen that isn't busy runs the same pipeline as Basic and is billed at the Basic price.
 - Every project member, viewers included, can see who ran each diff and what it cost in the screen's run history. The project's **Usage** tab shows the month's runs, spend and credits; the per-member breakdown is for owners and admins.
 - Plus needs the screen's Figma layer data, which comes from the project's Figma connection. Without it, Plus runs as Basic and is billed as Basic.
-- See [How Credits Work](/guide/credits) for who pays. Credits are counted, not charged, until at least October 1, 2026.
+- See [How Credits Work](/guide/credits) for who pays. Credits are enforced: tasks pause when the paying balance runs out.
 
 ## Request a component that has no story
 

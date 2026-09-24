@@ -138,7 +138,7 @@ With a `project_id` you can also choose how far to look:
 
 `search_by_image` takes base64 (up to 10MB, data-URI prefix optional) and accepts an optional text query alongside it for a hybrid match. Both searches return at most 50 results per page.
 
-`generate_image` takes an optional `aspect_ratio` (`1:1` by default; also `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`) and `quality` (`fast` or `quality`). Image generation and search use [credits](/guide/credits); they're counted but not charged yet, so nothing is blocked today.
+`generate_image` takes an optional `aspect_ratio` (`1:1` by default; also `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`) and `quality` (`fast` or `quality`). Image generation and search use [credits](/guide/credits); at zero credits `generate_image` and image search are refused with a link to the Credits page, and text search falls back to keyword search.
 
 ## Reading a result
 
