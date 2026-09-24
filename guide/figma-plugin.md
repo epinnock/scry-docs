@@ -118,6 +118,21 @@ Results are grouped into Components, Screens and a collapsed No match group, sor
 
 **Compare** needs a Scrymore account and a project with a deployed build, because its Storybook side is that build's screenshot. On a row it shows the pair two ways: **Side by side** (Figma export left, Storybook screenshot right) and **Overlay** (one box, with a Storybook opacity slider). Accept or skip moves to the next pending pair. Once a pair is linked and synced, **View diff in Scrymore ↗** opens its review in the dashboard.
 
+### Diff tiers: Basic and Plus
+
+Diffs run in the dashboard (**Design Sync → Run diff**, or **Re-run AI annotate** in the editor) at one of two tiers:
+
+| Tier | What it does | Credits |
+|------|--------------|---------|
+| **Basic** | The standard check. Finds most defects, about a minute | 10 |
+| **Plus** | Adds an Opus check on busy screens, 1-2 minutes | 40 when it escalates, otherwise 10 |
+
+- Every project starts on **Basic** with Plus off. A project owner or admin, signed in to the dashboard, turns on **Let members choose Plus per run** and picks the default tier in the project's **Settings** tab. Personal access tokens can't change the tier.
+- A Plus run on a screen that isn't busy runs the same pipeline as Basic and is billed at the Basic price.
+- Every project member, viewers included, can see who ran each diff and what it cost in the screen's run history. The project's **Usage** tab shows the month's runs, spend and credits; the per-member breakdown is for owners and admins.
+- Plus needs the screen's Figma layer data, which comes from the project's Figma connection. Without it, Plus runs as Basic and is billed as Basic.
+- See [How Credits Work](/guide/credits) for who pays. Credits are counted, not charged, until at least October 1, 2026.
+
 ## Request a component that has no story
 
 When a component has no story yet, the node screen shows **No story for this yet?** with **Request this component**. Signed in, with a GitHub repository connected to the project, it opens a GitHub issue for engineering with a preview, the variants and properties, and your notes, and the node then shows **Requested · #N** to everyone in the file. See [Component Requests](/guide/component-requests) for setup and the full flow.

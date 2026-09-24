@@ -9,6 +9,7 @@ It owns the review domain — pairs, issues, severity, review locks — and the 
 - **Pairs** - A Figma reference and a Storybook capture, registered by R2 key rather than copied
 - **Issues** - Boxed, labelled findings against a pair, with a full lifecycle
 - **AI annotation** - A structural pass over the pair that proposes findings as candidates
+- **Diff tiers** - Basic, or Plus which adds an Opus check on busy screens; each run is metered and charged in [credits](/guide/credits)
 - **Candidates and severity** - Nothing becomes a real issue until a person promotes it
 - **Review queue** - Claim, release, done, and next-pair traversal with stale-lock recovery
 - **Figma integration** - OAuth connection, file resolution, and design snapshot ingestion
