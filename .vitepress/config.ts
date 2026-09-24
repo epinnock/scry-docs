@@ -59,6 +59,7 @@ export default defineConfig({
         {
           text: 'Help',
           items: [
+            { text: 'How Credits Work', link: '/guide/credits' },
             { text: 'Troubleshooting', link: '/guide/troubleshooting' },
             { text: 'Feedback', link: '/feedback' },
           ]
