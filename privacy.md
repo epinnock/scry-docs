@@ -10,7 +10,7 @@ This page is a draft. It has not been reviewed by a lawyer or approved by Scrymo
 
 # Privacy policy
 
-**Effective date:** [TO CONFIRM: effective date]
+**Effective date:** EFFECTIVE_DATE
 
 This policy covers Scry: the developer dashboard (dashboard.scrymore.com), the Scry CLI (`@scrymore/scry-deployer`), the Storybook viewer (view.scrymore.com), the search API, the MCP server, the design-diff service, the **Scry Link** Figma plugin, this documentation site and scrymore.com.
 
@@ -165,11 +165,11 @@ Scry is a tool for software teams and is not meant for anyone under [TO CONFIRM:
 
 ## Changes to this policy
 
-When we change this policy, we update the date at the top. If a change is significant, we will email account holders at least [TO CONFIRM: notice period] before it takes effect.
+When we change this policy, we update the date at the top. If a change is significant, we will email account holders at least 14 days before it takes effect.
 
 ## Governing law
 
-This policy is governed by the laws of [TO CONFIRM: governing law, e.g. the State of Texas, USA], except where the privacy law of the place you live gives you rights that cannot be waived.
+This policy is governed by the laws of the State of Texas, USA, except where the privacy law of the place you live gives you rights that cannot be waived.
 
 ## Contact
 

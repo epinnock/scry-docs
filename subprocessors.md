@@ -10,7 +10,7 @@ This page is a draft. It has not been reviewed by a lawyer or approved by Scrymo
 
 # Subprocessors
 
-**Last updated:** [TO CONFIRM: effective date]
+**Last updated:** EFFECTIVE_DATE
 
 A subprocessor is an outside company that stores or processes customer data so that Scry can run. This page lists every one we use, what it gets, and where it runs. We built this list from our own code, not from memory. How we use the data is covered in the [privacy policy](/privacy).
 
