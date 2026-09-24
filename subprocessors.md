@@ -4,13 +4,9 @@ description: The outside services that process customer data for Scry, what each
 editLink: false
 ---
 
-::: danger Draft — not yet reviewed
-This page is a draft. It has not been reviewed by a lawyer or approved by Scrymore, and it is not yet in effect.
-:::
-
 # Subprocessors
 
-**Last updated:** EFFECTIVE_DATE
+**Last updated:** September 24, 2026
 
 A subprocessor is an outside company that stores or processes customer data so that Scry can run. This page lists every one we use, what it gets, and where it runs. We built this list from our own code, not from memory. How we use the data is covered in the [privacy policy](/privacy).
 
@@ -34,10 +30,10 @@ We use these services to process data for you. **None of them may train models o
 |---|---|---|---|---|
 | **OpenAI, L.L.C.** (API) | Writes a short description of each story screenshot when a Storybook is indexed | Story screenshots and their file names, which are derived from story ids | United States | [DPA](https://openai.com/policies/data-processing-addendum/) · [Subprocessors](https://openai.com/policies/sub-processor-list/) |
 | **Jina AI GmbH** (Embeddings API; acquired by Elastic N.V. in October 2025) | Turns screenshots, descriptions and search queries into embeddings for search and for matching Figma layers to stories | Story screenshots, generated descriptions, search query text (not stored by Scry), thumbnails of Figma layers when you run Suggest links. Jina's terms say it does not use customer inputs to train its models. | Not published by Jina (Jina AI GmbH is in Berlin, Germany) | [Elastic customer DPA](https://www.elastic.co/pdf/v100623-0-elastic-customer-dpa.pdf) · [Jina legal](https://jina.ai/legal) |
-| **OpenRouter, Inc.** | Routes design-diff requests to the model provider. Every request is sent with OpenRouter's `data_collection: deny` setting, so it is only routed to providers that do not collect the data. By default OpenRouter does not store prompts or responses; it keeps request metadata such as token counts. | Figma and Storybook screenshots, the Figma layer structure, the rendered page structure (DOM) and implementation source used for the comparison | United States | [Terms](https://openrouter.ai/terms) · [Privacy](https://openrouter.ai/privacy) |
+| **OpenRouter, Inc.** | Routes design-diff requests to the model provider. Every request is sent with OpenRouter's `data_collection: deny` setting, so it is only routed to providers that do not collect the data. Prompt logging and training are turned off in our OpenRouter account, so it does not store prompts or responses; it keeps request metadata such as token counts. | Figma and Storybook screenshots, the Figma layer structure, the rendered page structure (DOM) and implementation source used for the comparison | United States | [Terms](https://openrouter.ai/terms) · [Privacy](https://openrouter.ai/privacy) |
 | Model providers reached through OpenRouter: **OpenAI** (GPT models) and **Anthropic, PBC** (Claude models) | Run the design-diff models | Same as OpenRouter, per request. So far every design-diff request has been served by OpenAI; for the Claude model we use, OpenRouter lists Anthropic as the only provider. | United States | [OpenAI DPA](https://openai.com/policies/data-processing-addendum/) · [Anthropic commercial terms](https://www.anthropic.com/legal/commercial-terms) |
 | **Anthropic, PBC** (API, direct) | Fallback for design diff when OpenRouter is unavailable. Off in production. | Same as OpenRouter | United States | [Commercial terms](https://www.anthropic.com/legal/commercial-terms) |
-| **Google LLC** (Gemini API) | The MCP server's `generate_image` tool | The prompt and any reference images you send to that tool. We use paid-tier image models, so Google does not use them to improve its products; it keeps them for a limited time to detect abuse. | Any country where Google has facilities (Google's terms for the Gemini API) | [Gemini API terms](https://ai.google.dev/gemini-api/terms) · [Data processing terms](https://business.safety.google/processorterms/) |
+| **Google LLC** (Gemini API) | The MCP server's `generate_image` tool | The prompt and any reference images you send to that tool. We use paid-tier image models on a billing-enabled account, so Google does not use them to improve its products; it keeps them for a limited time to detect abuse. | Any country where Google has facilities (Google's terms for the Gemini API) | [Gemini API terms](https://ai.google.dev/gemini-api/terms) · [Data processing terms](https://business.safety.google/processorterms/) |
 
 ## Monitoring and analytics
 

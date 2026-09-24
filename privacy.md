@@ -4,13 +4,9 @@ description: What Scry collects, why, who processes it, how long we keep it, and
 editLink: false
 ---
 
-::: danger Draft — not yet reviewed
-This page is a draft. It has not been reviewed by a lawyer or approved by Scrymore, and it is not yet in effect.
-:::
-
 # Privacy policy
 
-**Effective date:** EFFECTIVE_DATE
+**Effective date:** September 24, 2026
 
 This policy covers Scry: the developer dashboard (dashboard.scrymore.com), the Scry CLI (`@scrymore/scry-deployer`), the Storybook viewer (view.scrymore.com), the search API, the MCP server, the design-diff service, the **Scry Link** Figma plugin, this documentation site and scrymore.com.
 

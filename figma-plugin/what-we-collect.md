@@ -4,11 +4,11 @@ description: Exactly what the Scry Link Figma plugin sends, stores in your file,
 editLink: false
 ---
 
-::: danger Draft — not yet reviewed
-This page is a draft. It has not been reviewed by a lawyer or approved by Scrymore, and it describes the analytics release before it ships.
-:::
-
 # What Scry Link collects
+
+::: info
+This page describes Scry Link from the analytics release onwards. Earlier versions do not send usage events or error reports to PostHog or Sentry.
+:::
 
 This page lists everything the Scry Link Figma plugin sends, what it stores in your Figma file, and what it keeps on your device. The [privacy policy](/privacy) covers the rest of Scry.
 
