@@ -14,7 +14,7 @@ This page is a draft. It has not been reviewed by a lawyer or approved by Scrymo
 
 A subprocessor is an outside company that stores or processes customer data so that Scry can run. This page lists every one we use, what it gets, and where it runs. We built this list from our own code, not from memory. How we use the data is covered in the [privacy policy](/privacy).
 
-**Changes.** We update this page before a new subprocessor starts receiving customer data. Customers with an agreement that names our subprocessors get an email at least [TO CONFIRM: notice period, recommended 14 days] before the change.
+**Changes.** We update this page before a new subprocessor starts receiving customer data. Customers with an agreement that names our subprocessors get an email at least 14 days before the change.
 
 ## Infrastructure and storage
 
@@ -63,4 +63,4 @@ These companies receive data only when you connect them, and you can disconnect 
 
 ## Questions
 
-Email [TO CONFIRM: privacy contact address].
+Email [privacy@scrymore.com](mailto:privacy@scrymore.com).

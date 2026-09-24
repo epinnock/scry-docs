@@ -14,7 +14,7 @@ This page is a draft. It has not been reviewed by a lawyer or approved by Scrymo
 
 This policy covers Scry: the developer dashboard (dashboard.scrymore.com), the Scry CLI (`@scrymore/scry-deployer`), the Storybook viewer (view.scrymore.com), the search API, the MCP server, the design-diff service, the **Scry Link** Figma plugin, this documentation site and scrymore.com.
 
-Scry is operated by **[TO CONFIRM: legal entity name]** ("Scrymore", "we"). Questions go to **[TO CONFIRM: privacy contact address]**.
+Scry is operated by **Scrymore** ("we"). Questions go to [privacy@scrymore.com](mailto:privacy@scrymore.com).
 
 In short:
 
@@ -143,7 +143,7 @@ We do not sell your data or share it for advertising.
 
 ## Your rights
 
-You can ask us for a copy of your data, to correct it, or to delete it. Email [TO CONFIRM: privacy contact address] from the address on your account. Deletion is done by hand for now, so allow a few working days. We will confirm when it is done, including the copies held by our subprocessors that we can delete.
+You can ask us for a copy of your data, to correct it, or to delete it. Email [privacy@scrymore.com](mailto:privacy@scrymore.com) from the address on your account. Deletion is done by hand for now, so allow a few working days. We will confirm when it is done, including the copies held by our subprocessors that we can delete.
 
 [TO CONFIRM: rights wording for GDPR (EU/UK) and US state privacy laws such as CCPA, depending on who the customers are]
 
@@ -173,4 +173,4 @@ This policy is governed by the laws of [TO CONFIRM: governing law, e.g. the Stat
 
 ## Contact
 
-[TO CONFIRM: legal entity name and postal address] · [TO CONFIRM: privacy contact address]
+Scrymore · [privacy@scrymore.com](mailto:privacy@scrymore.com). We handle privacy requests by email only. To report a security vulnerability, email [security@scrymore.com](mailto:security@scrymore.com).
