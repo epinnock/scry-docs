@@ -30,6 +30,7 @@ export default defineConfig({
         text: 'Privacy',
         items: [
           { text: 'Privacy Policy', link: '/privacy' },
+          { text: 'Terms of Service', link: '/terms' },
           { text: 'Subprocessors', link: '/subprocessors' },
           { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
         ]
@@ -76,6 +77,7 @@ export default defineConfig({
           text: 'Privacy',
           items: [
             { text: 'Privacy Policy', link: '/privacy' },
+            { text: 'Terms of Service', link: '/terms' },
             { text: 'Subprocessors', link: '/subprocessors' },
           ]
         }
@@ -93,6 +95,7 @@ export default defineConfig({
           text: 'Privacy',
           items: [
             { text: 'Privacy Policy', link: '/privacy' },
+            { text: 'Terms of Service', link: '/terms' },
             { text: 'Subprocessors', link: '/subprocessors' },
           ]
         }
@@ -239,7 +242,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License. · <a href="/privacy">Privacy</a> · <a href="/subprocessors">Subprocessors</a>',
+      message: 'Released under the MIT License. · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/subprocessors">Subprocessors</a>',
       copyright: 'Copyright © 2024-present Scry'
     },
 
