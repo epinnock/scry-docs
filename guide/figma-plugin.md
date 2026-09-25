@@ -65,6 +65,7 @@ Signing in adds the following. Each one works from screenshots of a Storybook bu
 - Visual matching in Suggest links (layers matched against story screenshots, not only names)
 - Screenshot sync: the Figma render of a linked layer, with its layer structure (names, types, positions and text), is uploaded to the project
 - Side-by-side and overlay diffs, and **View diff in Scrymore** on a synced pair
+- **N open issues · View in dashboard ↗** on a linked frame that has open drift issues (see [Fix in Figma or Code](/guide/fix-in-figma-or-code))
 - Previews of private Scrymore-hosted Storybooks inside the plugin
 - A Dev Mode resource on linked layers, once the project is connected to Figma in the dashboard
 - **Request this component**: file a GitHub issue for a component that has no story yet (see [Component Requests](/guide/component-requests))

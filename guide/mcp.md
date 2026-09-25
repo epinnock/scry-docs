@@ -53,7 +53,7 @@ url = "https://mcp.scrymore.com/mcp"
 
 Check the connection with `codex mcp list`: `scry` should show `enabled` with `OAuth` in the Auth column. Inside a session, `/mcp` lists the server and its tools.
 
-**Tool approval.** By default Codex asks before every MCP tool call. None of Scry's tools change your projects, so you can let them run without prompting:
+**Tool approval.** By default Codex asks before every MCP tool call. The search tools only read, so you can let them run without prompting. The [issue tools](/guide/mcp-issues) can claim and mark issues fixed, so decide whether you want those to ask first:
 
 ```toml
 [mcp_servers.scry]
@@ -82,7 +82,7 @@ Add Scry as a custom connector and the Figma agent or Figma Make can look up com
 4. Paste `https://mcp.scrymore.com/mcp` as the MCP server URL and click **Create**.
 5. Leave **Advanced settings** empty. Scry registers Figma as an OAuth client automatically, so there is no client ID, secret or API key to enter.
 6. Click **Connect** on the Scry connector and sign in with your Scry account.
-7. Review the tools and switch on the ones you want. Figma turns write tools off by default. Scry's tools may appear in that group even though they only read, so turn on `search_components`, `search_by_image`, `get_component_screenshot` and `whoami`.
+7. Review the tools and switch on the ones you want. Figma turns write tools off by default. The search tools may appear in that group even though they only read, so turn on `search_components`, `search_by_image`, `get_component_screenshot` and `whoami`. The issue tools (`claim_design_issue`, `mark_design_issue_fixed`, `request_verify`, `comment_design_issue`) do write, so leave them on **Ask to run** unless you want the agent to act on its own.
 
 For each tool, choose **Ask to run**, **Always run** or **Never run**. The connector is visible only to you unless an admin publishes it to the organisation.
 
@@ -135,6 +135,7 @@ With a `project_id` you can also choose how far to look:
 | `get_component_screenshot` | Fetch a result's screenshot as an image the assistant can actually look at |
 | `generate_image` | Generate a reference image from a prompt, optionally guided by reference images |
 | `whoami` | Which account is connected |
+| `list_design_issues`, `get_design_issue`, `claim_design_issue`, `mark_design_issue_fixed`, `request_verify`, `comment_design_issue` | Pick up promoted Figma↔Storybook drift issues and fix them in code or in Figma. See [Agents: resolving issues over MCP](/guide/mcp-issues) |
 
 `search_by_image` takes base64 (up to 10MB, data-URI prefix optional) and accepts an optional text query alongside it for a hybrid match. Both searches return at most 50 results per page.
 
