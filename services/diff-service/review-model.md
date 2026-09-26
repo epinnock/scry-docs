@@ -107,7 +107,8 @@ Pixels are drawn square (nearest-neighbour), so a 1 px edge stays a crisp 1 px s
 Some captions tell you the view is limited:
 
 - **`same region · no Storybook box`** (or `no Figma box`): the finding has a box on one side only, like a missing divider or an extra line. The other tile shows the same region of its own image, with a dashed outline.
-- **`· downsampled`**: the region is over 400 000 source pixels. It's shown at **Fit**, and the diff is computed on the smaller grid, so counts are approximate.
+- **`· downsampled`**: the region is over 400 000 source pixels, so it's shown at **Fit**. Only the picture is shrunk. The diff is still counted at source resolution, so a 2 px shift in a large box still shows its real count. Differing pixels stay visible in the shrunk diff tile.
+- **`· counted at ½ res`** (or another factor) on the Diff caption: the region is so large (over 4 megapixels once both crops are lined up) that the count was taken at that reduced resolution. Treat the count as approximate.
 - **`· boxes differ in size · diff approximate`**: the two boxes differ by more than 25% in width or height. This happens mostly with issues a person drew separately on each pane. The count is still shown.
 
 ### Magnification
