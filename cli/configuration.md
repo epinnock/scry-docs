@@ -50,6 +50,14 @@ Never commit API keys in the configuration file. Use environment variables for s
 | `screenshotsDir` | string | `./screenshots` | Screenshots output |
 | `storybookUrl` | string | `http://localhost:6006` | Running Storybook URL |
 
+### Version names
+
+A deployment version may use letters, digits, `.`, `_` and `-` (up to 128
+characters, starting with a letter or digit). Every name the upload accepts
+opens in the viewer at `https://view.scrymore.com/{project}/{version}/`,
+including dotted names such as git tags (`1.2.3`, `v1.2.3-rc.1`,
+`2026.09.26`). Keep the trailing `/` when you link a version on its own.
+
 Use `--deploy-version latest` when the main build must publish a `/latest/`
 alias. GitHub Actions context can override version values supplied only through
 the environment or configuration file. The CLI does not automatically load
