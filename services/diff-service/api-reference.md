@@ -41,7 +41,7 @@ The evidence keys are optional and unlock better analysis — see [Review Model]
 
 | Route | Purpose |
 | --- | --- |
-| `GET /api/issues?pair=` | List issues for a pair |
+| `GET /api/issues?pair=` | List issues for a pair, each with its `evidence` (object or null) |
 | `POST /api/issues` | Create one. Needs a note or at least one box |
 | `PATCH /api/issues/:id` | Update the note |
 | `DELETE /api/issues/:id` | Delete |
@@ -49,6 +49,25 @@ The evidence keys are optional and unlock better analysis — see [Review Model]
 | `PATCH /api/issues/:id/severity` | Change severity on a promoted issue |
 
 Boxes are `{x, y, w, h}` normalised 0..1. On list responses `box_a`/`box_b` come back as JSON strings or null, and `labels` as an array — shapes kept compatible with the reference implementation.
+
+Each issue row also carries `evidence`: an object, or `null` for issues people add and for rows created before the field existed (treat a missing field as `null`). It holds what the pre-filter measured for an AI finding, and the dashboard's [Evidence strip](/services/diff-service/review-model#inspect-a-finding-pixel-by-pixel) uses it for the measured delta. Unlike `box_a`/`box_b`, it comes back parsed, not as a JSON string. It's unrelated to the pair's [hybrid evidence](/services/diff-service/review-model#hybrid-evidence) keys.
+
+```ts
+interface IssueEvidence {
+  kind: string;              // pre-filter finding kind, e.g. row_gap, text_style, h_shift,
+                             // global_offset, missing_divider, line_missing, line_extra
+  measure?: {                // only when both sides were measured on one axis
+    axis: 'x' | 'y' | 'w' | 'h';  // x/y = position, w/h = size
+    a: number;               // Figma side, px of image A
+    b: number;               // Storybook side, px of image B
+    delta: number;           // b - a, px, sign kept
+    unit: 'px';
+  };
+  [extra: string]: unknown;  // anything else the pre-filter recorded, passed through
+}
+```
+
+`measure` is left out when the pre-filter recorded only a delta, so no values are invented. Nothing is backfilled for older rows.
 
 `transition` takes `{action, who, ...}` where action is `promote | dismiss | restore | fix | verify | reopen`. `promote` requires a `severity`; `dismiss` requires a `reason`.
 
