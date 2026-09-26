@@ -9,7 +9,7 @@ The Developer Dashboard is a web application for managing Scry projects, API key
 - **API Key Management** - Generate and revoke project-scoped keys
 - **Build History** - View deployment history and status
 - **Design Sync** - Figma connection, linked screens, and imported designs
-- **Visual Review** - Compare a Figma layer with its story, and raise issues on the difference
+- **Visual Review** - Compare a Figma layer with its story, and raise issues on the difference, with an [Evidence strip](/services/diff-service/review-model#inspect-a-finding-pixel-by-pixel) to inspect a finding pixel by pixel
 - **Private Previews** - Mint short-lived tokens so private stories render in the Figma plugin
 - **GitHub Integration** - Import projects from GitHub repositories
 - **User Authentication** - Firebase Auth: Google, GitHub, or email and password
