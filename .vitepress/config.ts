@@ -60,6 +60,8 @@ export default defineConfig({
           text: 'Integrations',
           items: [
             { text: 'Figma Plugin', link: '/guide/figma-plugin' },
+            { text: 'Design Sync Run Details', link: '/guide/design-sync-run-details' },
+            { text: 'Storybook Capture Settings', link: '/guide/storybook-capture-settings' },
             { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
             { text: 'Component Requests', link: '/guide/component-requests' },
             { text: 'MCP Server', link: '/guide/mcp' },
@@ -89,6 +91,8 @@ export default defineConfig({
           text: 'Scry Link (Figma plugin)',
           items: [
             { text: 'Plugin guide', link: '/guide/figma-plugin' },
+            { text: 'Design Sync Run Details', link: '/guide/design-sync-run-details' },
+            { text: 'Storybook Capture Settings', link: '/guide/storybook-capture-settings' },
             { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
           ]
         },

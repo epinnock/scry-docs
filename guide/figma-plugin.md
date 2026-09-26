@@ -133,6 +133,12 @@ Diffs run in the dashboard (**Design Sync → Run diff**, or **Re-run AI annotat
 - Plus needs the screen's Figma layer data, which comes from the project's Figma connection. Without it, Plus runs as Basic and is billed as Basic.
 - See [How Credits Work](/guide/credits) for who pays. Credits are enforced: tasks pause when the paying balance runs out.
 
+### What each run records
+
+Every run records which judge produced it (`judge_version`, `judge_label`, `judge_arm`) and how its two images were made (`input_version`), and flags five kinds of capture problem (scale, size, alpha, viewport framing, missing details) on the run's **Capture card**. See [What a Design Sync run records](/guide/design-sync-run-details).
+
+Diffs are most accurate when Storybook screenshots match the Figma export: 2×, cropped to the component. That is the default from sbcov 0.6.0; see [Storybook capture settings](/guide/storybook-capture-settings) to set it, or to mark the component with `data-scry-root`.
+
 ## Request a component that has no story
 
 When a component has no story yet, the node screen shows **No story for this yet?** with **Request this component**. Signed in, with a GitHub repository connected to the project, it opens a GitHub issue for engineering with a preview, the variants and properties, and your notes, and the node then shows **Requested · #N** to everyone in the file. See [Component Requests](/guide/component-requests) for setup and the full flow.
