@@ -72,6 +72,10 @@ We use Sentry to learn when something breaks.
 - When a dashboard session hits an error, Sentry keeps a recording of that session. All text is masked, and all images and form inputs are blocked, so it shows the layout but not your content. Sessions without an error are not recorded.
 - Starting with the analytics release, the Figma plugin sends error reports too. Before sending, it replaces quoted names (which is how layer and story names appear in messages) with `<redacted>`, and removes Figma file links, tokens and your Storybook's address.
 
+### Request ids
+
+Each request to the dashboard, the diff service, the search API and the MCP server gets a request id, so we can follow one request across our services and match it to the **Ref** you quote to support. The id is random: it contains no personal data and isn't derived from you, your account or your content, and it grants no access. We attach it to our request logs, error reports and AI call traces, and store it with each diff run it starts. Those logs record the route, status, timing and opaque project and run ids. They never record your search text, images, email address or name, API keys, personal access tokens or other credentials, request or response bodies, or full URLs with their query strings.
+
 ### Design comparison
 
 The design-diff service compares a Figma design with your Storybook. To do that it sends model providers the screenshots, the Figma layer structure, the rendered page structure (DOM) and, when available, the implementation source. See [AI features](#ai-features) below.

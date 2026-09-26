@@ -15,6 +15,16 @@ Authorization: Bearer <SERVICE_AUTH_TOKEN>
 
 Only the dashboard server holds this token. Browser traffic goes through the dashboard's `/api/diff` proxy, which is where per-user authorization happens.
 
+## Request ids
+
+Every response, `GET /healthz` and `401`s included, carries an `x-scry-request-id` header. The service keeps the id the dashboard forwards (a ULID or a lowercase UUID v4) and makes a new ULID for anything else. Every JSON error body repeats it as `request_id`:
+
+```json
+{ "error": "Unauthorized", "request_id": "01M3EQG44Y0J8F2K6ZP9RX1T7C" }
+```
+
+The id is stored on the diff run it starts, as the run's `request_id` (see [Runs](#runs)). Format, accepted values and what to send support: [Request ids and support references](/api/request-ids).
+
 ## Pairs
 
 | Route | Purpose |
@@ -83,6 +93,57 @@ interface IssueEvidence {
 `artifact` is one of `prediction`, `main-pass`, `icon-pass`, `raw-pass-findings`, `hybrid-report`.
 
 `annotate` returns `{format, run_id, prediction, created, detected, refreshed, superseded, candidates, count, passes, artifacts}` — the counts describe reconciliation against existing candidates, not just what was found.
+
+## Runs
+
+Every AI run is recorded, with the request id that started it.
+
+| Route | Purpose |
+| --- | --- |
+| `GET /api/projects/:projectId/runs?from=&to=&request_id=` | A project's runs in a time window, newest first |
+| `GET /api/pairs/:pairId/runs` | A pair's runs |
+| `GET /api/agent/runs/:runId` | One run |
+
+All three return run objects with a `request_id` field. It's `null` for runs started before request ids existed; nothing is backfilled.
+
+The project route takes:
+
+| Param | Default | Notes |
+| --- | --- | --- |
+| `from` | 24 hours ago | ISO 8601 time, e.g. `2026-09-26T14:00:00Z`. Compared with the run's `started_at` |
+| `to` | Now | ISO 8601 time |
+| `request_id` | None | Only the runs started by this request |
+
+It returns at most 200 runs. A malformed parameter is a `400`. To go further back, set `to` to the `started_at` of the oldest run you have.
+
+```json
+{
+  "runs": [
+    {
+      "run_id": "6fc0a1a8-f408-4725-b426-617a35de8d44",
+      "request_id": "01M3EQG44Y0J8F2K6ZP9RX1T7C",
+      "pair_id": "…",
+      "status": "complete",
+      "tier": "plus",
+      "started_at": "2026-09-26T14:32:07.120Z",
+      "latency_ms": 41250,
+      "cost_usd": 0.083
+    }
+  ],
+  "count": 1
+}
+```
+
+| Field | Values |
+| --- | --- |
+| `status` | `queued`, `running`, `complete`, `degraded` or `errored` |
+| `tier` | The tier the run used: `basic`, `plus`, `legacy` or `n/a` |
+| `latency_ms` | `null` until the run finishes |
+| `cost_usd` | Model spend for the run, in US dollars |
+
+`count` is the number of runs in `runs`. The `request_id` filter never widens access: the query always stays inside `:projectId`.
+
+From a browser or a personal access token, call it through the dashboard proxy as `GET /api/diff/api/projects/:projectId/runs`, with the same parameters. The proxy checks that you're a member of the project, as it does for every project route.
 
 ## Bulk
 
