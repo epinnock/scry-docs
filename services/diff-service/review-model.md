@@ -82,7 +82,7 @@ A reviewer claims a pair before working on it. Claims go stale after 180 seconds
 Many findings describe drift too small to see at a glance: *glyph height 14 → 16 px*, *gap changes by 3 px*, *shifted horizontally by 2 px*. In the dashboard's diff editor, the **Evidence** strip under the Figma and Storybook panes shows the pixels behind one finding, so you can check it before you promote or dismiss it. The strip only reads the two screenshots you already have open. It writes nothing and costs nothing.
 
 <figure>
-  <img src="/images/pixel-diff-evidence/evidence-strip.png" alt="Diff editor with a candidate selected: a dashed box on both panes, and below them the Evidence strip with Figma, Storybook and Diff tiles, magnification 2× 4× 8× Fit, and Blink" width="1072" height="1095">
+  <img src="/images/pixel-diff-evidence/evidence-strip.png" alt="Diff editor with a candidate selected: a dashed box on both panes, and below them the Evidence strip with Figma, Storybook and Diff tiles, magnification 2× 4× 8× Fit, and Blink" width="974" height="990">
   <figcaption>The Evidence strip with a candidate selected. Magenta pixels in the Diff tile are the ones that differ.</figcaption>
 </figure>
 
