@@ -5,6 +5,9 @@ export default defineConfig({
   description: 'Deploy your Storybook to the cloud with one command',
 
   head: [
+    // Vercel Web Analytics (page views only; the project must also have Web Analytics enabled in Vercel).
+    ['script', {}, 'window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };'],
+    ['script', { defer: '', src: '/_vercel/insights/script.js' }],
     ['meta', { name: 'theme-color', content: '#6366f1' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'en' }],
