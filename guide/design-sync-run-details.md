@@ -16,8 +16,8 @@ The images on this page are the approved Figma designs for these screens. They w
 Runs from before these fields existed read back `null`. Capture details are visible only to members of the run's project, like the run itself.
 
 <figure>
-  <img src="/images/capture-provenance/design-sync-run-detail-capture-warnings.png" alt="Design Diff Review for Slack / Message composer. The Capture card shows Figma 2x, 780x1688 px, alpha not flattened, plugin v7 tree with 96 nodes; Storybook 1x, 390x844 px, viewport mode. Warning chips: Scale mismatch 2x vs 1x, Alpha not flattened, Viewport capture, Sizes differ 6 px. Tags input_version e41b07d93a26 and judge_version 9c5cc6bc8e71, frozen at run start. Below, two issues carry a Likely capture artefact chip" width="1024" height="978">
-  <figcaption>The Capture card on a run with four capture warnings (design preview).</figcaption>
+  <img src="/images/capture-provenance/design-sync-run-detail-capture-warnings.png" alt="Design Diff Review for Components/PricingCard / Tier Row. The Capture card shows Figma 1x, 876x387 px, alpha not flattened, plugin tree with 65 nodes; Storybook 1x (assumed), 1280x720 px. Warning chips: Scale mismatch (Figma 0.68x the story), Sizes differ 404 px, Alpha not flattened, Viewport capture. Tags input_version and judge_version, frozen at run start" width="1024" height="900">
+  <figcaption>The Capture card on a run with four capture warnings (staging).</figcaption>
 </figure>
 
 ## The judge: `judge_version`, `judge_label`, `judge_arm`
@@ -80,15 +80,15 @@ The pair carries no producer facts: it was registered before this feature, or by
 **What to do:** nothing. The next sync from an up-to-date dashboard or Scry Link records them. To force it, re-register the pair by syncing the layer again.
 
 <figure>
-  <img src="/images/capture-provenance/design-sync-run-detail-capture-unknown.png" alt="Capture card empty state reading Capture details not recorded for this run" width="1024" height="683">
-  <figcaption>A run whose pair predates capture details (design preview).</figcaption>
+  <img src="/images/capture-provenance/design-sync-run-detail-capture-unknown.png" alt="Design Diff Review for Components/Modal / With Actions. The Capture card reads Capture details not recorded for this run: this pair was registered before 2026-09-26, when Scry started recording capture details" width="1024" height="900">
+  <figcaption>A run whose pair predates capture details (staging).</figcaption>
 </figure>
 
 A run with facts and no warnings shows **No capture warnings**:
 
 <figure>
-  <img src="/images/capture-provenance/design-sync-run-detail-capture-ok.png" alt="Capture card for a clean run: Figma 2x and Storybook 2x root capture, the same size, No capture warnings, with input_version and judge_version tags" width="1024" height="879">
-  <figcaption>A 2× Figma export against a 2× root capture: no warnings (design preview).</figcaption>
+  <img src="/images/capture-provenance/design-sync-run-detail-capture-ok.png" alt="Design Diff Review for Screens/App / Project Picker Empty on production. The Capture card reads No capture warnings: Figma 2x and Storybook 2x, both 720x1040 px, Storybook mode root, Figma alpha flattened, plugin tree with 51 nodes; tags input_version 56f2dfdbc19c and judge_version 05c3073e825a, frozen at run start" width="1024" height="900">
+  <figcaption>A 2× Figma export against a 2× root capture from sbcov 0.6.0: no warnings (production).</figcaption>
 </figure>
 
 ## The "Likely capture artefact" hint
@@ -103,8 +103,8 @@ On an issue whose label is spacing/layout, size, inset/shift or colour/backgroun
 **It is a hint, never a status change.** Nothing reads the warnings back: the issue keeps its status and severity, and the project's counts, badges and "to triage" roll-up are unchanged. Promote or dismiss it as you would any issue. If the hint is right, the better fix is usually the capture setting the warning names; the next run then compares like with like.
 
 <figure>
-  <img src="/images/capture-provenance/design-sync-links-warning-badge.png" alt="Design Sync links list where the Inbox / Thread list row shows a 2 capture warnings badge" width="1440" height="628">
-  <figcaption>The link list badge counts the latest run's warnings (design preview).</figcaption>
+  <img src="/images/capture-provenance/design-sync-links-warning-badge.png" alt="Design Sync links list where the PricingCard / Tier row link shows a 4 capture warnings badge next to its triage counts" width="1440" height="1000">
+  <figcaption>The link list badge counts the latest run's warnings (staging).</figcaption>
 </figure>
 
 ## Related

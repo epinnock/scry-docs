@@ -98,8 +98,8 @@ Settings take effect on the next deploy; nothing already deployed is re-captured
 **Project → Settings → Storybook** shows the capture settings of the latest build: capture scale, capture mode and viewport, and the sbcov version. When the latest build was captured at anything other than 2× in root mode, it shows a one-line hint recommending `captureScale: 2` and `captureMode: 'root'`, with a link to this page. After your next deploy the hint disappears.
 
 <figure>
-  <img src="/images/capture-provenance/project-settings-storybook-capture-hint.png" alt="Project Settings, Storybook section: Capture settings from the latest build #129, sbcov 0.5.1, capture scale 1x, capture mode viewport 1280x720, and a hint: Latest build captured at 1x in viewport mode. For accurate Design Sync set captureScale: 2 and captureMode: 'root' (docs)" width="1440" height="691">
-  <figcaption>The Settings hint on a project whose latest build used the old 1× viewport defaults (design preview).</figcaption>
+  <img src="/images/capture-provenance/project-settings-storybook-capture-hint.png" alt="Project Settings, Storybook section: Capture settings from the latest build #7, and a hint: Latest build #7 did not record its capture settings. For accurate Design Sync set captureScale: 2 and captureMode: 'root' (docs)" width="1440" height="1000">
+  <figcaption>The Settings hint on a project whose latest build predates recorded capture settings (staging).</figcaption>
 </figure>
 
 Then open a linked screen in **Design Sync**, run a diff, and read the **Capture card**: the Storybook column should show `2×` and `root`, the size should match the Figma column, and the card should read **No capture warnings**. See [What a Design Sync run records](/guide/design-sync-run-details) for every field on the card.
