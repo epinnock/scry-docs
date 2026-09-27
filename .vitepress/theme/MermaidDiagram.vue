@@ -16,7 +16,11 @@ async function renderDiagram() {
     mermaid.initialize({
       startOnLoad: false,
       securityLevel: 'strict',
-      theme: isDark.value ? 'dark' : 'default',
+      // Diagrams in the shared ink-on-paper language: square boxes, ink lines, Plex type.
+      theme: 'base',
+      themeVariables: isDark.value
+        ? { background: '#141410', primaryColor: '#1a1a15', primaryTextColor: '#fffef0', primaryBorderColor: '#fffef0', lineColor: '#fffef0', secondaryColor: '#24241d', tertiaryColor: '#1a1a15', fontFamily: 'IBM Plex Mono, ui-monospace, monospace', fontSize: '13px' }
+        : { background: '#fcfbf7', primaryColor: '#f4f3ec', primaryTextColor: '#1c1b17', primaryBorderColor: '#1c1b17', lineColor: '#1c1b17', secondaryColor: '#ebeae0', tertiaryColor: '#f4f3ec', fontFamily: 'IBM Plex Mono, ui-monospace, monospace', fontSize: '13px' },
       // A wide flowchart squeezed into the content column renders its labels
       // too small to read. Draw at natural size instead and let the wrapper's
       // overflow-x carry it.

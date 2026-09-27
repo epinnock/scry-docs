@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { scryTerminal } from './theme/scry-terminal'
 
 export default defineConfig({
   title: 'Scry',
@@ -8,7 +9,14 @@ export default defineConfig({
     // Vercel Web Analytics (page views only; the project must also have Web Analytics enabled in Vercel).
     ['script', {}, 'window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };'],
     ['script', { defer: '', src: '/_vercel/insights/script.js' }],
-    ['meta', { name: 'theme-color', content: '#6366f1' }],
+    ['meta', { name: 'theme-color', content: '#1c1b17' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' }],
+    ['link', { rel: 'icon', href: '/favicon.ico', sizes: '48x48' }],
+    ['link', { rel: 'apple-touch-icon', href: '/apple-icon.png' }],
+    // Shared type with www.scrymore.com and blog.scrymore.com: Martian Mono display, the IBM Plex family.
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'en' }],
     ['meta', { property: 'og:site_name', content: 'Scry' }],
@@ -20,7 +28,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    siteTitle: 'Scry',
+    siteTitle: 'Docs',
 
     nav: [
       { text: 'Guide', link: '/guide/' },
@@ -284,9 +292,10 @@ export default defineConfig({
       }
     },
     lineNumbers: true,
+    // Code blocks are the landing page's terminal in both color modes.
     theme: {
-      light: 'github-light',
-      dark: 'github-dark'
+      light: scryTerminal,
+      dark: scryTerminal
     }
   },
 

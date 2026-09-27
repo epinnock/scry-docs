@@ -9,7 +9,9 @@ export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      // Add custom layout slots here if needed in the future
+      // The SCRY wordmark block, shared with www.scrymore.com and blog.scrymore.com;
+      // siteTitle ("Docs") follows it inside the same link.
+      'nav-bar-title-before': () => h('span', { class: 'scry-mark' }, 'SCRY'),
     })
   },
   enhanceApp({ app }) {
