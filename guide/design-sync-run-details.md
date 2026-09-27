@@ -2,10 +2,6 @@
 
 > **TL;DR:** Every Design Sync diff run records which judge produced it (`judge_version`, `judge_label`, `judge_arm`) and how its two images were made (`input_version` plus up to five capture warnings). When a warning fires, some findings may come from how the screenshots were taken rather than from the component. Those findings get a **Likely capture artefact** hint. The hint never changes an issue's status, severity or counts.
 
-::: info Design previews
-The images on this page are the approved Figma designs for these screens. They will be replaced with captures of the live dashboard.
-:::
-
 ## Where you see it
 
 - **Run detail → Capture card.** Open a linked screen in **Design Sync**. The Capture card sits under the run summary: two columns (Figma, Storybook) with export or capture scale, pixel size, capture mode, alpha and tree source, then a row of warning chips, then `input_version` and `judge_version` as small tags you can copy.

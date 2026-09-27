@@ -2,10 +2,6 @@
 
 > **TL;DR:** Design Sync is most accurate when each story is screenshotted cropped to its component at 2×, the same way Figma exports it. From sbcov 0.6.0 that is the default: `captureScale: 2` and `captureMode: 'root'`. Add `data-scry-root` when a story wraps the component in padding or a decorator. The change applies from your next deploy.
 
-::: info Design previews
-The images on this page are the approved Figma designs for these screens. They will be replaced with captures of the live dashboard.
-:::
-
 When you deploy with analysis on (`--with-analysis`), the Scry deployer runs [scry-sbcov](https://www.npmjs.com/package/@scrymore/scry-sbcov) to screenshot every story. Those screenshots are the Storybook side of every Design Sync diff. If they are taken at a different scale or framing than the Figma export, the diff sees differences that are not in your component, and the run shows [capture warnings](/guide/design-sync-run-details#capture-warnings).
 
 ## The settings
