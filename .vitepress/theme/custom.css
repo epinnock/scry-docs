@@ -737,3 +737,31 @@
     transition: none !important;
   }
 }
+
+/* ---------- search sits on the right, just before the light/dark toggle ---------- */
+@media (min-width: 768px) {
+  .VPNavBar .content-body .menu { order: 1; }
+  .VPNavBar .content-body .translations { order: 2; }
+  .VPNavBar .content-body .search {
+    order: 3;
+    flex-grow: 0 !important;
+    padding-left: 0 !important;
+    margin-left: 20px;
+  }
+  .VPNavBar .content-body .appearance { order: 4; }
+  .VPNavBar .content-body .social-links { order: 5; }
+  .VPNavBar .content-body .extra { order: 6; }
+  .VPNavBar .content-body .hamburger { order: 7; }
+}
+
+/* between tablet and small desktop the menu needs the room: search collapses to its icon */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .VPNavBar .content-body .search { margin-left: 12px; }
+  .VPNavBar .DocSearch-Button-Placeholder,
+  .VPNavBar .DocSearch-Button-Keys {
+    display: none !important;
+  }
+  .VPNavBar .DocSearch-Button {
+    padding: 0 10px !important;
+  }
+}
