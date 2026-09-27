@@ -7,7 +7,8 @@
    - docs.scrymore.com functional (this file): a bright reading surface, the
      standard docs layout, and the landing page's three colors used only as
      signals — teal = you are here / tip, yellow = warning / search match,
-     coral = danger. Code blocks are the landing page's dark terminal.
+     coral = danger. Code blocks: a light "printed" code sheet in light mode,
+     the landing page's dark terminal in dark mode.
 
    Shared everywhere: Martian Mono display, the IBM Plex family, ink #1c1b17,
    square corners, a 2px ink rule under the masthead, the SCRY wordmark block.
@@ -35,11 +36,14 @@
   --scry-coral-ink: #b3261e;
   --scry-coral-soft: rgba(255, 107, 107, 0.13);
 
-  /* the terminal (code blocks), same in both modes */
-  --scry-term: #111110;
-  --scry-term-2: #1d1d1a;
-  --scry-term-ink: #fffef0;
-  --scry-term-dim: rgba(255, 254, 240, 0.5);
+  /* code blocks: light sheet here, the dark terminal under .dark */
+  --scry-term: #f4f3ec;
+  --scry-term-2: #ebeae0;
+  --scry-term-ink: #1c1b17;
+  --scry-term-dim: #86847a;
+  --scry-term-edge: #1c1b17;
+  --scry-term-line: rgba(28, 27, 23, 0.06);
+  --scry-term-rule: rgba(28, 27, 23, 0.14);
 
   --scry-display: 'Martian Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -94,14 +98,14 @@
   --vp-code-block-divider-color: var(--scry-term-2);
   --vp-code-line-number-color: var(--scry-term-dim);
   --vp-code-lang-color: var(--scry-term-dim);
-  --vp-code-line-highlight-color: rgba(255, 254, 240, 0.07);
+  --vp-code-line-highlight-color: var(--scry-term-line);
   --vp-code-copy-code-bg: var(--scry-term-2);
   --vp-code-copy-code-hover-bg: var(--scry-term-2);
-  --vp-code-copy-code-border-color: rgba(255, 254, 240, 0.25);
+  --vp-code-copy-code-border-color: var(--scry-term-rule);
   --vp-code-copy-code-hover-border-color: var(--scry-teal);
   --vp-code-copy-code-active-text: var(--scry-teal);
   --vp-code-tab-bg: var(--scry-term-2);
-  --vp-code-tab-divider: rgba(255, 254, 240, 0.12);
+  --vp-code-tab-divider: var(--scry-term-rule);
   --vp-code-tab-text-color: var(--scry-term-dim);
   --vp-code-tab-hover-text-color: var(--scry-term-ink);
   --vp-code-tab-active-text-color: var(--scry-term-ink);
@@ -173,6 +177,11 @@
   --scry-coral-soft: rgba(255, 107, 107, 0.12);
   --scry-term: #0b0b09;
   --scry-term-2: #1a1a16;
+  --scry-term-ink: #fffef0;
+  --scry-term-dim: rgba(255, 254, 240, 0.5);
+  --scry-term-edge: rgba(255, 254, 240, 0.14);
+  --scry-term-line: rgba(255, 254, 240, 0.07);
+  --scry-term-rule: rgba(255, 254, 240, 0.2);
 
   --vp-c-brand-2: #7eddd6;
   --vp-c-default-soft: rgba(255, 254, 240, 0.06);
@@ -459,10 +468,10 @@
   color: var(--scry-ink);
 }
 
-/* code blocks: the landing page's terminal */
+/* code blocks: light sheet in light mode, the landing page's terminal in dark mode */
 .vp-doc div[class*='language-'],
 .vp-block {
-  border: 1px solid var(--scry-term);
+  border: 1px solid var(--scry-term-edge);
   box-shadow: 4px 4px 0 var(--scry-hair);
 }
 
@@ -480,7 +489,7 @@
 }
 
 .vp-code-group .tabs {
-  border-bottom: 1px solid rgba(255, 254, 240, 0.1);
+  border-bottom: 1px solid var(--scry-term-rule);
 }
 
 .vp-code-group .tabs label {
