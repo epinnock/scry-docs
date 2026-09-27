@@ -36,6 +36,11 @@
       "source": "/legal/figma-plugin/what-we-collect",
       "destination": "/figma-plugin/what-we-collect",
       "permanent": true
+    },
+    {
+      "source": "/storybook/capture-settings",
+      "destination": "/guide/storybook-capture-settings",
+      "permanent": false
     }
   ]
 }
