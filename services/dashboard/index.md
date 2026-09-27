@@ -10,9 +10,30 @@ The Developer Dashboard is a web application for managing Scry projects, API key
 - **Build History** - View deployment history and status
 - **Design Sync** - Figma connection, linked screens, and imported designs
 - **Visual Review** - Compare a Figma layer with its story, and raise issues on the difference, with an [Evidence strip](/services/diff-service/review-model#inspect-a-finding-pixel-by-pixel) to inspect a finding pixel by pixel
+- **Support references** - Failed actions show a [Ref](#support-references) you can quote to us, and each diff run keeps one
 - **Private Previews** - Mint short-lived tokens so private stories render in the Figma plugin
 - **GitHub Integration** - Import projects from GitHub repositories
 - **User Authentication** - Firebase Auth: Google, GitHub, or email and password
+
+## Support references
+
+When an action in the dashboard fails, the red error message keeps its title and description and adds a line **Ref:** with the request id, plus a **Copy reference** button. After you click it, the button shows **Copied** for two seconds. On a narrow screen the id wraps onto its own line rather than being cut off.
+
+<figure>
+  <img src="/images/observability-request-id/toast-with-ref.png" alt="A red error message titled Could not run the diff, saying the diff service did not answer in time (504), with a line Ref: 01M3F9V0Z3K7P2Q8R4S6T1W5X9 and a copy button, and a Dismiss button" width="420" height="222">
+  <figcaption>An error with its reference. Copy it with the button next to the id.</figcaption>
+</figure>
+
+There's no Ref line when the request never reached Scry, for example when you're offline.
+
+Diff runs keep their reference too. The **Runs for this link** card has a **Run** column after **When**: the short run id (`6fc0a1…`) with a copy button, and under it `ref` with the first characters of the request id that started the run. Hover for the full run id and reference. The copy menu has **Copy run id** and **Copy reference**. Runs from before references existed show `ref —` and only the run id.
+
+<figure>
+  <img src="/images/observability-request-id/runs-run-id-column.png" alt="The Runs for this link card with columns When, Run, Who, Tier, Candidates, Cost and Status; each row's Run cell shows a short run id and a ref line with copy buttons, and the oldest row shows ref with a dash" width="880" height="354">
+  <figcaption>Run history with the Run column. The oldest run predates references.</figcaption>
+</figure>
+
+A reference is safe to paste into an email or a GitHub issue: it's random and grants no access. What to send us with it, and how the id works across services: [Request ids and support references](/api/request-ids#support-references).
 
 ## Tech Stack
 

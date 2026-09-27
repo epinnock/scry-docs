@@ -110,4 +110,10 @@ Tools return a typed error rather than an empty result, so a client can branch o
 | `PROJECT_REQUIRED` | `scope: "org"` without a `project_id` |
 | `PROJECT_HAS_NO_ORG` | `scope: "org"` on a project with no organisation |
 
+The error comes back as JSON text in a result with `isError: true`. It has `error` (the code above), `message`, `retryable` and `request_id`, the id of this tool call. Quote `request_id` if you report the failure; see [Request ids and support references](/api/request-ids).
+
+```json
+{ "error": "VALIDATION_ERROR", "message": "…", "retryable": false, "request_id": "01M3EQG44Y0J8F2K6ZP9RX1T7C" }
+```
+
 Input limits are enforced by Zod schemas: 500-character queries, 10MB images, 128-character project ids, and a 30-second timeout on upstream calls.

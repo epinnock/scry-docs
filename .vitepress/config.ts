@@ -197,6 +197,7 @@ export default defineConfig({
             { text: 'CDN Endpoints', link: '/api/cdn-endpoints' },
             { text: 'Authentication', link: '/api/authentication' },
             { text: 'Webhooks', link: '/api/webhooks' },
+            { text: 'Request Ids', link: '/api/request-ids' },
           ]
         }
       ],

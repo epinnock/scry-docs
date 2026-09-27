@@ -281,6 +281,7 @@ If you can't resolve your issue:
 1. **Search existing issues:** [GitHub Issues](https://github.com/epinnock/scry-node/issues)
 2. **Tell us directly:** [feedback form](/feedback) or <feedback@scrymore.com>
 3. **Open a new issue** with:
+   - The **Ref** from the error, if the dashboard showed one (the **Copy reference** button copies it). See [Support references](/api/request-ids#support-references)
    - Error message
    - Steps to reproduce
    - Environment details (OS, Node version, etc.)

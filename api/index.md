@@ -20,6 +20,8 @@ curl -H "X-API-Key: scry_proj_my-project_xxx" \
 
 See [Authentication](/api/authentication) for details.
 
+The dashboard, diff service and search API return an `x-scry-request-id` header on every response. Quote it when you contact us: see [Request ids and support references](/api/request-ids).
+
 ## Quick Reference
 
 ### Upload Service
