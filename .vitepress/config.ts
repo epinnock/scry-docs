@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { scryTerminal } from './theme/scry-terminal'
+import { scryPaper, scryTerminal } from './theme/scry-terminal'
 
 export default defineConfig({
   title: 'Scry',
@@ -292,9 +292,9 @@ export default defineConfig({
       }
     },
     lineNumbers: true,
-    // Code blocks are the landing page's terminal in both color modes.
+    // Light mode: a printed code sheet. Dark mode: the landing page's terminal.
     theme: {
-      light: scryTerminal,
+      light: scryPaper,
       dark: scryTerminal
     }
   },
