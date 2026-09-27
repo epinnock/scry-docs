@@ -1,138 +1,739 @@
-/**
- * Customize default theme styling by overriding CSS variables:
- * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
- */
+/* ===========================================================================
+   Scry Docs theme — "the manual"
 
-/**
- * Colors
- *
- * Each colors have exact same color scale system with 3 levels of solid
- * colors with different brightness, and 1 soft color.
- * 
- * - `XXX-1`: The most solid color used mainly for colored text. It must
- *   satisfy the contrast ratio against when used on top of `XXX-soft`.
- *
- * - `XXX-2`: The color used mainly for hover state of the button.
- *
- * - `XXX-3`: The color for solid background, such as bg color of the button.
- *   It must satisfy the contrast ratio with pure white (#ffffff) text on
- *   top of it.
- *
- * - `XXX-soft`: The color used for subtle background such as custom container
- *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
- *   on top of it.
- *
- *   The soft color must be semi transparent alpha channel. This is crucial
- *   because it allows adding multiple "soft" colors on top of each other
- *   to create a accent, such as when having inline code block inside
- *   custom containers.
- *
- * - `default`: The color used purely for subtle indication without any
- *   special meanings attached to it such as bg color for menu hover state.
- *
- * - `brand`: Used for primary brand colors, such as link text, button with
- *   brand theme, etc.
- *
- * - `tip`: Used to indicate useful information. The default theme uses the
- *   brand color for this by default.
- *
- * - `warning`: Used to indicate warning to the users. Used in custom
- *   container, badges, etc.
- *
- * - `danger`: Used to show error, or dangerous message to the users. Used
- *   in custom container, badges, etc.
- * -------------------------------------------------------------------------- */
+   One design language, three personalities:
+   - www.scrymore.com  loud: cream, coral/teal/yellow blocks, hard shadows
+   - blog.scrymore.com quiet: paper, one ink, no color
+   - docs.scrymore.com functional (this file): a bright reading surface, the
+     standard docs layout, and the landing page's three colors used only as
+     signals — teal = you are here / tip, yellow = warning / search match,
+     coral = danger. Code blocks are the landing page's dark terminal.
 
- :root {
-  --vp-c-default-1: var(--vp-c-gray-1);
-  --vp-c-default-2: var(--vp-c-gray-2);
-  --vp-c-default-3: var(--vp-c-gray-3);
-  --vp-c-default-soft: var(--vp-c-gray-soft);
+   Shared everywhere: Martian Mono display, the IBM Plex family, ink #1c1b17,
+   square corners, a 2px ink rule under the masthead, the SCRY wordmark block.
+   =========================================================================== */
 
-  --vp-c-brand-1: #007acc;
-  --vp-c-brand-2: #005a9e;
-  --vp-c-brand-3: #004578;
-  --vp-c-brand-soft: #007acc1a;
-
-  --vp-c-tip-1: var(--vp-c-brand-1);
-  --vp-c-tip-2: var(--vp-c-brand-2);
-  --vp-c-tip-3: var(--vp-c-brand-3);
-  --vp-c-tip-soft: var(--vp-c-brand-soft);
-
-  --vp-c-warning-1: #e7c000;
-  --vp-c-warning-2: #b39601;
-  --vp-c-warning-3: #8d7500;
-  --vp-c-warning-soft: #e7c0001a;
-
-  --vp-c-danger-1: #e0245e;
-  --vp-c-danger-2: #b31d4e;
-  --vp-c-danger-3: #8a163d;
-  --vp-c-danger-soft: #e0245e1a;
-}
-
-/**
- * Component: Button
- * -------------------------------------------------------------------------- */
-
+/* ---------- tokens ---------- */
 :root {
-  --vp-button-brand-border: transparent;
-  --vp-button-brand-text: var(--vp-c-white);
-  --vp-button-brand-bg: var(--vp-c-brand-3);
-  --vp-button-brand-hover-border: transparent;
-  --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
-  --vp-button-brand-active-border: transparent;
-  --vp-button-brand-active-text: var(--vp-c-white);
-  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  --scry-ink: #1c1b17;
+  --scry-ink-2: #55534a;
+  --scry-ink-3: #86847a;
+  --scry-surface: #fcfbf7;
+  --scry-paper: #f4f3ec;
+  --scry-paper-2: #ebeae0;
+  --scry-hair: #dcdacd;
+  --scry-dot: rgba(28, 27, 23, 0.09);
+
+  /* the landing page's palette, as signals */
+  --scry-teal: #4ecdc4;
+  --scry-teal-ink: #0b6b65;
+  --scry-teal-soft: rgba(78, 205, 196, 0.14);
+  --scry-yellow: #ffd93d;
+  --scry-yellow-ink: #7a5c00;
+  --scry-yellow-soft: rgba(255, 217, 61, 0.22);
+  --scry-coral: #ff6b6b;
+  --scry-coral-ink: #b3261e;
+  --scry-coral-soft: rgba(255, 107, 107, 0.13);
+
+  /* the terminal (code blocks), same in both modes */
+  --scry-term: #111110;
+  --scry-term-2: #1d1d1a;
+  --scry-term-ink: #fffef0;
+  --scry-term-dim: rgba(255, 254, 240, 0.5);
+
+  --scry-display: 'Martian Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* VitePress mapping */
+  --vp-font-family-base: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --vp-font-family-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --vp-c-bg: var(--scry-surface);
+  --vp-c-bg-alt: var(--scry-paper);
+  --vp-c-bg-elv: var(--scry-surface);
+  --vp-c-bg-soft: var(--scry-paper);
+
+  --vp-c-text-1: var(--scry-ink);
+  --vp-c-text-2: var(--scry-ink-2);
+  --vp-c-text-3: var(--scry-ink-3);
+
+  --vp-c-divider: var(--scry-hair);
+  --vp-c-border: var(--scry-hair);
+  --vp-c-gutter: var(--scry-hair);
+
+  --vp-c-default-1: var(--scry-ink-2);
+  --vp-c-default-2: var(--scry-paper-2);
+  --vp-c-default-3: var(--scry-hair);
+  --vp-c-default-soft: rgba(28, 27, 23, 0.06);
+
+  --vp-c-brand-1: var(--scry-teal-ink);
+  --vp-c-brand-2: #095a55;
+  --vp-c-brand-3: var(--scry-ink);
+  --vp-c-brand-soft: var(--scry-teal-soft);
+
+  --vp-c-tip-1: var(--scry-teal-ink);
+  --vp-c-tip-2: var(--scry-teal-ink);
+  --vp-c-tip-3: var(--scry-teal);
+  --vp-c-tip-soft: var(--scry-teal-soft);
+  --vp-c-warning-1: var(--scry-yellow-ink);
+  --vp-c-warning-2: var(--scry-yellow-ink);
+  --vp-c-warning-3: var(--scry-yellow);
+  --vp-c-warning-soft: var(--scry-yellow-soft);
+  --vp-c-danger-1: var(--scry-coral-ink);
+  --vp-c-danger-2: var(--scry-coral-ink);
+  --vp-c-danger-3: var(--scry-coral);
+  --vp-c-danger-soft: var(--scry-coral-soft);
+
+  --vp-nav-bg-color: var(--scry-surface);
+  --vp-sidebar-bg-color: var(--scry-paper);
+  --vp-local-nav-bg-color: var(--scry-surface);
+
+  --vp-code-bg: var(--scry-paper-2);
+  --vp-code-color: var(--scry-ink);
+  --vp-code-block-bg: var(--scry-term);
+  --vp-code-block-color: var(--scry-term-ink);
+  --vp-code-block-divider-color: var(--scry-term-2);
+  --vp-code-line-number-color: var(--scry-term-dim);
+  --vp-code-lang-color: var(--scry-term-dim);
+  --vp-code-line-highlight-color: rgba(255, 254, 240, 0.07);
+  --vp-code-copy-code-bg: var(--scry-term-2);
+  --vp-code-copy-code-hover-bg: var(--scry-term-2);
+  --vp-code-copy-code-border-color: rgba(255, 254, 240, 0.25);
+  --vp-code-copy-code-hover-border-color: var(--scry-teal);
+  --vp-code-copy-code-active-text: var(--scry-teal);
+  --vp-code-tab-bg: var(--scry-term-2);
+  --vp-code-tab-divider: rgba(255, 254, 240, 0.12);
+  --vp-code-tab-text-color: var(--scry-term-dim);
+  --vp-code-tab-hover-text-color: var(--scry-term-ink);
+  --vp-code-tab-active-text-color: var(--scry-term-ink);
+  --vp-code-tab-active-bar-color: var(--scry-teal);
+
+  --vp-custom-block-font-size: 14px;
+  --vp-custom-block-code-font-size: 13px;
+
+  --vp-button-brand-border: var(--scry-ink);
+  --vp-button-brand-text: var(--scry-ink);
+  --vp-button-brand-bg: var(--scry-yellow);
+  --vp-button-brand-hover-border: var(--scry-ink);
+  --vp-button-brand-hover-text: var(--scry-ink);
+  --vp-button-brand-hover-bg: var(--scry-yellow);
+  --vp-button-brand-active-border: var(--scry-ink);
+  --vp-button-brand-active-text: var(--scry-ink);
+  --vp-button-brand-active-bg: var(--scry-yellow);
+  --vp-button-alt-border: var(--scry-ink);
+  --vp-button-alt-text: var(--scry-ink);
+  --vp-button-alt-bg: var(--scry-surface);
+  --vp-button-alt-hover-border: var(--scry-ink);
+  --vp-button-alt-hover-text: var(--scry-ink);
+  --vp-button-alt-hover-bg: var(--scry-paper);
+  --vp-button-alt-active-border: var(--scry-ink);
+  --vp-button-alt-active-text: var(--scry-ink);
+  --vp-button-alt-active-bg: var(--scry-paper-2);
+
+  --vp-home-hero-name-color: var(--scry-ink);
+  --vp-home-hero-name-background: none;
+  --vp-home-hero-image-background-image: none;
+  --vp-home-hero-image-filter: none;
+
+  --vp-local-search-bg: var(--scry-surface);
+  --vp-local-search-result-bg: var(--scry-surface);
+  --vp-local-search-result-border: var(--scry-hair);
+  --vp-local-search-result-selected-bg: var(--scry-paper);
+  --vp-local-search-result-selected-border: var(--scry-ink);
+  --vp-local-search-highlight-bg: var(--scry-yellow);
+  --vp-local-search-highlight-text: var(--scry-ink);
+
+  --vp-badge-tip-border: var(--scry-teal-ink);
+  --vp-badge-tip-text: var(--scry-teal-ink);
+  --vp-badge-tip-bg: var(--scry-teal-soft);
+  --vp-badge-warning-border: var(--scry-yellow-ink);
+  --vp-badge-warning-text: var(--scry-yellow-ink);
+  --vp-badge-warning-bg: var(--scry-yellow-soft);
+  --vp-badge-danger-border: var(--scry-coral-ink);
+  --vp-badge-danger-text: var(--scry-coral-ink);
+  --vp-badge-danger-bg: var(--scry-coral-soft);
+  --vp-badge-info-border: var(--scry-hair);
+  --vp-badge-info-text: var(--scry-ink-2);
+  --vp-badge-info-bg: var(--scry-paper);
 }
 
-/**
- * Component: Home
- * -------------------------------------------------------------------------- */
+.dark {
+  --scry-ink: #fffef0;
+  --scry-ink-2: rgba(255, 254, 240, 0.7);
+  --scry-ink-3: rgba(255, 254, 240, 0.46);
+  --scry-surface: #141410;
+  --scry-paper: #1a1a15;
+  --scry-paper-2: #24241d;
+  --scry-hair: rgba(255, 254, 240, 0.14);
+  --scry-dot: rgba(255, 254, 240, 0.08);
+  --scry-teal-ink: #4ecdc4;
+  --scry-teal-soft: rgba(78, 205, 196, 0.12);
+  --scry-yellow-ink: #ffd93d;
+  --scry-yellow-soft: rgba(255, 217, 61, 0.1);
+  --scry-coral-ink: #ff8a80;
+  --scry-coral-soft: rgba(255, 107, 107, 0.12);
+  --scry-term: #0b0b09;
+  --scry-term-2: #1a1a16;
 
-:root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #007acc 30%,
-    #41d1ff
-  );
-
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #007acc50 50%,
-    #41d1ff50 50%
-  );
-  --vp-home-hero-image-filter: blur(44px);
+  --vp-c-brand-2: #7eddd6;
+  --vp-c-default-soft: rgba(255, 254, 240, 0.06);
+  --vp-button-brand-text: #0a0a08;
+  --vp-button-brand-hover-text: #0a0a08;
+  --vp-button-brand-active-text: #0a0a08;
+  --vp-button-brand-border: var(--scry-yellow);
+  --vp-button-brand-hover-border: var(--scry-yellow);
+  --vp-local-search-highlight-text: #0a0a08;
 }
 
-@media (min-width: 640px) {
-  :root {
-    --vp-home-hero-image-filter: blur(56px);
-  }
+/* ---------- geometry: square corners everywhere, no soft shadows ---------- */
+.VPNav *,
+.VPSidebar *,
+.VPDoc *,
+.VPHome *,
+.VPContent *,
+.VPLocalSearchBox *,
+.VPFooter *,
+.VPButton,
+.VPBadge,
+.DocSearch-Button {
+  border-radius: 0 !important;
+}
+
+.VPNavBarMenuGroup .VPMenu,
+.VPFlyout .menu,
+.VPLocalSearchBox .shell {
+  box-shadow: 4px 4px 0 var(--scry-ink) !important;
+  border: 2px solid var(--scry-ink) !important;
+}
+
+::selection {
+  background: var(--scry-yellow);
+  color: #0a0a08;
+}
+
+:focus-visible {
+  outline: 2px solid var(--scry-teal-ink);
+  outline-offset: 2px;
+}
+
+/* ---------- masthead ---------- */
+.VPNav {
+  border-bottom: 2px solid var(--scry-ink);
+}
+
+.VPNavBar .divider-line,
+.VPNavBar.has-sidebar .divider,
+.VPNavBar .divider {
+  display: none !important;
 }
 
 @media (min-width: 960px) {
-  :root {
-    --vp-home-hero-image-filter: blur(68px);
+  .VPNavBar.has-sidebar .title {
+    border-bottom: 0 !important;
   }
 }
 
-/**
- * Component: Custom Block
- * -------------------------------------------------------------------------- */
-
-:root {
-  --vp-custom-block-tip-border: transparent;
-  --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+.VPNavBarTitle .title {
+  gap: 8px;
+  font-family: var(--scry-display);
+  font-stretch: 80%;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
 }
 
-/**
- * Component: Algolia
- * -------------------------------------------------------------------------- */
+.scry-mark {
+  display: inline-block;
+  background: var(--scry-ink);
+  color: var(--scry-surface);
+  font-family: var(--scry-display);
+  font-stretch: 80%;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 7px 9px 6px;
+}
 
-.DocSearch {
-  --docsearch-primary-color: var(--vp-c-brand-1) !important;
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .button .text {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.VPNavBarMenuLink.active {
+  color: var(--scry-ink) !important;
+  box-shadow: inset 0 -2px 0 var(--scry-teal);
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuGroup .button:hover .text {
+  color: var(--scry-ink) !important;
+}
+
+/* search button: the one hard-shadow control in the bar, like the landing page's buttons */
+.DocSearch-Button,
+.VPNavBarSearchButton {
+  border: 1px solid var(--scry-ink) !important;
+  background: var(--scry-surface) !important;
+  box-shadow: 3px 3px 0 var(--scry-ink);
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.DocSearch-Button:hover,
+.VPNavBarSearchButton:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--scry-ink);
+}
+
+.DocSearch-Button .DocSearch-Button-Key,
+.VPNavBarSearchButton .keys {
+  font-family: var(--vp-font-family-mono);
+}
+
+/* ---------- sidebar ---------- */
+.VPSidebar {
+  border-right: 1px solid var(--scry-hair);
+}
+
+.VPSidebarItem.level-0 > .item > .text,
+.VPSidebarItem.level-0 > .item .text {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--scry-ink-2) !important;
+}
+
+.VPSidebarItem.level-1 .text {
+  font-size: 14px;
+  color: var(--scry-ink-2);
+}
+
+.VPSidebarItem.level-1 .link:hover .text {
+  color: var(--scry-ink);
+}
+
+.VPSidebarItem.is-active > .item .link > .text,
+.VPSidebarItem.level-1.is-active > .item .text {
+  color: var(--scry-ink) !important;
+  font-weight: 600;
+}
+
+.VPSidebarItem .indicator {
+  width: 3px !important;
+  left: -17px !important;
+}
+
+.VPSidebarItem.is-active > .item > .indicator,
+.VPSidebarItem.level-1.is-active > .item > .indicator {
+  background-color: var(--scry-teal) !important;
+}
+
+.VPSidebar .group + .group {
+  border-top: 1px solid var(--scry-hair) !important;
+}
+
+/* ---------- outline ("On this page") ---------- */
+.VPDocAsideOutline .outline-title {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--scry-ink-2);
+}
+
+.VPDocAsideOutline .outline-link {
+  font-size: 13px;
+}
+
+.VPDocAsideOutline .outline-link.active {
+  color: var(--scry-ink) !important;
+  font-weight: 600;
+}
+
+.VPDocAsideOutline .outline-marker {
+  background-color: var(--scry-teal) !important;
+  width: 3px !important;
+  left: -2px !important;
+}
+
+/* ---------- document ---------- */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  font-family: var(--scry-display);
+  font-stretch: 80%;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.vp-doc h1 {
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.vp-doc h2 {
+  font-size: 23px;
+  line-height: 1.2;
+  border-top: 2px solid var(--scry-ink);
+  padding-top: 20px;
+  margin-top: 52px;
+}
+
+.vp-doc h3 {
+  font-size: 17.5px;
+  line-height: 1.3;
+}
+
+.vp-doc h4 {
+  font-size: 15px;
+}
+
+.vp-doc .header-anchor {
+  color: var(--scry-teal-ink);
+  font-family: var(--vp-font-family-mono);
+}
+
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.72;
+}
+
+.vp-doc a {
+  color: var(--scry-ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--scry-teal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: background-color 0.12s ease-out;
+}
+
+.vp-doc a:hover {
+  color: var(--scry-ink);
+  background-color: var(--scry-teal-soft);
+  text-decoration-color: var(--scry-teal-ink);
+}
+
+.vp-doc a.header-anchor,
+.vp-doc a.header-anchor:hover {
+  background: none;
+  text-decoration: none;
+}
+
+.vp-doc strong {
+  font-weight: 600;
+}
+
+.vp-doc blockquote {
+  border-left: 2px solid var(--scry-ink);
+}
+
+.vp-doc blockquote > p {
+  color: var(--scry-ink-2);
+}
+
+.vp-doc hr {
+  border-top: 1px solid var(--scry-hair);
+}
+
+.vp-doc img {
+  border: 1px solid var(--scry-hair);
+}
+
+/* inline code */
+.vp-doc :not(pre) > code {
+  font-size: 0.88em;
+  padding: 2px 5px;
+  border: 1px solid var(--scry-hair);
+}
+
+.vp-doc a > code {
+  color: var(--scry-ink);
+}
+
+/* code blocks: the landing page's terminal */
+.vp-doc div[class*='language-'],
+.vp-block {
+  border: 1px solid var(--scry-term);
+  box-shadow: 4px 4px 0 var(--scry-hair);
+}
+
+.dark .vp-doc div[class*='language-'] {
+  border-color: rgba(255, 254, 240, 0.14);
+  box-shadow: none;
+}
+
+.vp-doc div[class*='language-'] > span.lang {
+  font-family: var(--vp-font-family-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.vp-code-group .tabs {
+  border-bottom: 1px solid rgba(255, 254, 240, 0.1);
+}
+
+.vp-code-group .tabs label {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px;
+}
+
+/* tables: same ruled table as the blog */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.vp-doc tr {
+  background: transparent !important;
+  border-top: 0;
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: 0;
+  border-bottom: 1px solid var(--scry-hair);
+  padding: 9px 12px;
+}
+
+.vp-doc th {
+  background: transparent;
+  border-bottom: 2px solid var(--scry-ink);
+  color: var(--scry-ink-2);
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: bottom;
+}
+
+.vp-doc td {
+  font-size: 14px;
+}
+
+.vp-doc tbody tr:last-child td {
+  border-bottom: 1px solid var(--scry-ink);
+}
+
+/* callouts: a 4px signal bar, a soft wash, a caps title */
+.vp-doc .custom-block {
+  border: 1px solid var(--scry-hair);
+  border-left-width: 4px;
+  padding: 14px 18px 4px;
+}
+
+.vp-doc .custom-block .custom-block-title {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.vp-doc .custom-block.tip {
+  border-left-color: var(--scry-teal);
+  background: var(--scry-teal-soft);
+}
+
+.vp-doc .custom-block.warning {
+  border-left-color: var(--scry-yellow);
+  background: var(--scry-yellow-soft);
+}
+
+.vp-doc .custom-block.danger,
+.vp-doc .custom-block.caution {
+  border-left-color: var(--scry-coral);
+  background: var(--scry-coral-soft);
+}
+
+.vp-doc .custom-block.info,
+.vp-doc .custom-block.note,
+.vp-doc .custom-block.details {
+  border-left-color: var(--scry-ink);
+  background: var(--scry-paper);
+}
+
+.vp-doc .custom-block.tip .custom-block-title { color: var(--scry-teal-ink); }
+.vp-doc .custom-block.warning .custom-block-title { color: var(--scry-yellow-ink); }
+.vp-doc .custom-block.danger .custom-block-title,
+.vp-doc .custom-block.caution .custom-block-title { color: var(--scry-coral-ink); }
+.vp-doc .custom-block.info .custom-block-title,
+.vp-doc .custom-block.details .custom-block-title { color: var(--scry-ink-2); }
+
+.vp-doc .custom-block a {
+  color: var(--scry-ink);
+}
+
+/* badges */
+.VPBadge {
+  font-family: var(--vp-font-family-mono);
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- page footer: edit link, last updated, prev/next ---------- */
+.VPDocFooter .edit-link-button,
+.VPLastUpdated {
+  font-family: var(--vp-font-family-mono);
+  font-size: 12px !important;
+}
+
+.VPDocFooter .edit-link-button {
+  color: var(--scry-ink-2) !important;
+}
+
+.VPDocFooter .edit-link-button:hover {
+  color: var(--scry-ink) !important;
+}
+
+.VPDocFooter .prev-next {
+  border-top: 1px solid var(--scry-hair) !important;
+}
+
+.VPDocFooter .pager-link {
+  border: 1px solid var(--scry-hair) !important;
+  transition: border-color 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.VPDocFooter .pager-link:hover {
+  border-color: var(--scry-ink) !important;
+  box-shadow: 3px 3px 0 var(--scry-ink);
+}
+
+.VPDocFooter .pager-link .desc {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.VPDocFooter .pager-link .title {
+  color: var(--scry-ink) !important;
+  font-family: var(--scry-display);
+  font-stretch: 80%;
+  font-weight: 700;
+}
+
+/* ---------- site footer ---------- */
+.VPFooter {
+  border-top: 2px solid var(--scry-ink) !important;
+  background: var(--scry-surface) !important;
+}
+
+.VPFooter .message,
+.VPFooter .copyright {
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--scry-ink-2) !important;
+}
+
+.VPFooter a {
+  color: var(--scry-ink) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--scry-teal);
+  text-underline-offset: 3px;
+}
+
+/* ---------- home ---------- */
+.VPHome {
+  background-image: radial-gradient(var(--scry-dot) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  background-position: 12px 12px;
+}
+
+.VPHero .name,
+.VPHero .text {
+  font-family: var(--scry-display);
+  font-stretch: 80%;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.VPHero .name {
+  display: inline-block;
+  background: var(--scry-ink);
+  color: var(--scry-surface) !important;
+  -webkit-text-fill-color: var(--scry-surface) !important;
+  padding: 2px 16px 0;
+  margin-bottom: 14px;
+}
+
+.VPHero .tagline {
+  color: var(--scry-ink-2);
+  font-size: 18px;
+  line-height: 1.55 !important;
+}
+
+.VPHero .VPButton {
+  font-family: var(--vp-font-family-mono);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-width: 2px;
+  box-shadow: 4px 4px 0 var(--scry-ink);
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.dark .VPHero .VPButton {
+  box-shadow: 4px 4px 0 rgba(255, 254, 240, 0.35);
+}
+
+.VPHero .VPButton:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--scry-ink);
+}
+
+.VPHero .VPButton:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--scry-ink);
+}
+
+.VPFeature {
+  background: var(--scry-surface) !important;
+  border: 1px solid var(--scry-hair) !important;
+  transition: border-color 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.VPFeature:hover {
+  border-color: var(--scry-ink) !important;
+}
+
+.VPFeature .title {
+  font-family: var(--scry-display);
+  font-stretch: 80%;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.VPFeature .details {
+  color: var(--scry-ink-2) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPHero .VPButton,
+  .DocSearch-Button,
+  .VPNavBarSearchButton,
+  .VPDocFooter .pager-link,
+  .vp-doc a {
+    transition: none !important;
+  }
 }

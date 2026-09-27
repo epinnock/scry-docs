@@ -14,23 +14,17 @@ hero:
       link: https://github.com/epinnock/scry-node
 
 features:
-  - icon: ⚡
-    title: Set Up with Your Assistant
+  - title: Set Up with Your Assistant
     details: Install the Scry skill to configure deployments, MCP, and component indexing for your project
-  - icon: 🔍
-    title: Automatic PR Previews
+  - title: Automatic PR Previews
     details: Every pull request gets its own preview URL for visual review
-  - icon: 🚀
-    title: Seamless CI/CD
+  - title: Seamless CI/CD
     details: Automatic GitHub Actions workflows for main and PR deployments
-  - icon: 🔒
-    title: Secure by Default
+  - title: Secure by Default
     details: API key authentication, presigned URLs, and Firebase integration
-  - icon: 📦
-    title: Cloudflare Powered
+  - title: Cloudflare Powered
     details: R2 storage and Workers for global, low-latency delivery
-  - icon: 🛠️
-    title: Self-Hostable
+  - title: Self-Hostable
     details: Deploy the complete stack on your own infrastructure
 ---
 
