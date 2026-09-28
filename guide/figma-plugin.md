@@ -46,12 +46,19 @@ The connect screen also offers **Sign in with Scrymore**, a device-code flow. No
   <figcaption>The plugin hands over a one-time code.</figcaption>
 </figure>
 
-**Approve the code there.** The plugin is watching for it and picks the session up on its own.
+**Approve the code there.** Opening the code from the plugin takes you to `/figma-auth?code=…` in the dashboard,
+where you confirm "Approve Figma plugin access?" signed in as your account. The plugin is watching for it and picks
+the session up on its own once you approve.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-2-approve.mp4"></video>
   <figcaption>Approving the code in the browser.</figcaption>
 </figure>
+
+Approving mints a personal access token scoped to this sign-in. It shows up afterwards under **Account ▸ Tokens**
+(`/account/tokens`) as a **plugin session**, named after the day you approved it — not under API keys, which are
+project-scoped and for CI. Revoke a plugin session from that page the same way you'd revoke any token; the plugin
+simply asks you to sign in again the next time it needs one.
 
 **Choose a project.** Its Storybook is already configured, so connecting is done.
 
