@@ -69,6 +69,14 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Capture sources',
+          items: [
+            { text: 'Capture sources', link: '/guide/capture-sources' },
+            { text: 'React Native', link: '/guide/react-native' },
+            { text: 'Capture bundle format', link: '/guide/capture-bundle-format' },
+          ]
+        },
+        {
           text: 'Integrations',
           items: [
             { text: 'Figma Plugin', link: '/guide/figma-plugin' },
