@@ -55,7 +55,7 @@ the session up on its own once you approve.
   <figcaption>Approving the code in the browser.</figcaption>
 </figure>
 
-Approving mints a personal access token scoped to this sign-in. It shows up afterwards under **Account ▸ Tokens**
+Approving mints a personal access token scoped to this sign-in. It shows up afterwards under **Account ▸ Access tokens**
 (`/account/tokens`) as a **plugin session**, named after the day you approved it — not under API keys, which are
 project-scoped and for CI. Revoke a plugin session from that page the same way you'd revoke any token; the plugin
 simply asks you to sign in again the next time it needs one.
