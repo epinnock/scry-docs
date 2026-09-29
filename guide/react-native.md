@@ -57,6 +57,45 @@ Before capturing, the CLI fixes the parts of the screen that would otherwise var
 
 Both are undone when the capture finishes, so your simulator or emulator is left as it was.
 
+### The Dynamic Island and other hardware overlays
+
+A simulator screenshot includes the hardware overlays: the Dynamic Island, the notch, the status
+bar. `capture rn` crops to your story's `scry-root` view but never hides or moves an overlay, so a
+component that renders at the very top of the screen is captured with the island painted over it.
+
+On iOS the CLI checks for this. It reads the story root's position and, when it starts inside the
+device's top unsafe area (about 59 pt on an iPhone 15 or 16), prints a warning for that story and
+records `"x-scry": { "captureWarnings": ["overlaps_top_unsafe_area"] }` on its capture. The capture
+is still taken and still uploaded; the warning is there so you can fix the story rather than find
+the overlay in a diff.
+
+To fix it, wrap your stories in a `SafeAreaView` decorator (from `react-native-safe-area-context`)
+in `.rnstorybook/preview.tsx`, so components render below the island:
+
+```tsx
+decorators: [
+  (Story) => (
+    <SafeAreaProvider>
+      <SafeAreaView edges={['top']}><Story /></SafeAreaView>
+    </SafeAreaProvider>
+  ),
+],
+```
+
+If your device isn't in the CLI's table of unsafe-area heights, or you want a stricter check, pass
+`--safe-area-inset <points>` to `capture rn`. It only changes the height the check uses; it
+doesn't crop or move anything. The check needs Scry's dev-only probe in your app (see below), since
+the story's position comes from it.
+
+## Structure trees (optional)
+
+If your app includes Scry's small, dev-only probe (the
+[sample app](https://github.com/scryorg/scry-sample-rn) shows how, in `.rnstorybook/scryProbe.tsx`),
+each story also gets a structure tree of the React Native view hierarchy. It's a development-only
+addition that never ships in your release build. Without the probe the capture still works; it just
+has no tree and no overlay check. See
+[Capture bundle format](/guide/capture-bundle-format#structure-trees-and-source-text-both-opt-in).
+
 ## What gets uploaded
 
 Each story becomes one image plus an entry in the bundle's manifest recording the platform, device,
@@ -72,8 +111,10 @@ bundle:
 npx @scrymore/scry-deployer upload .scry/capture --project <id> --api-key <key> --include-source
 ```
 
-Without it, no source file ever leaves your CI. The CLI prints how many components' source text it
-included when the flag is set, so it's visible in your build log either way.
+Without it, no source file ever leaves your CI: any source text already in the bundle is dropped
+before upload. When the flag is set, the CLI prints how many components' source text it included, so
+it's visible in your build log. Source text is used as extra context for visual diffs; see
+[Capture bundle format](/guide/capture-bundle-format#structure-trees-and-source-text-both-opt-in).
 
 ## Next steps
 

@@ -38,6 +38,10 @@ A web Storybook story can be embedded live wherever Scry shows a story today —
 preview, "Open in Storybook", and the CDN view. That only works because a web Storybook has a URL
 to embed.
 
+The rule is by source, not by story: web Storybook stories are embedded live, native stories never
+are. That holds even when a component exists on both platforms: its web story keeps the live embed
+and its iOS or Android story shows its captured image.
+
 A native capture has no such URL: it's a screenshot taken once, on a simulator or device, during
 your build. Everywhere Scry would otherwise show a live Storybook, a native story shows its
 captured image instead, along with the device it was captured on (for example, "iPhone 16 · 3×").
@@ -50,6 +54,10 @@ One project can hold several sources — a web build alongside an iOS build and 
 the same design system, for instance. Uploading a new build from one source never hides another
 source's latest build: each source keeps its own "latest build", and search, the MCP server and the
 Figma plugin's story picker draw from all of them together, each result labelled with its platform.
+
+If a source's ids change between builds (a renamed story, a different id scheme), that build's row in
+the Builds list carries an id-churn warning with the ids that went missing, so links and issues
+that pointed at them don't quietly go dead.
 
 **Project settings → Capture sources** lists every source the project has, with its last build,
 device (for native sources) and screen count.
