@@ -178,6 +178,31 @@ The `metadata.json` contains:
 - Screenshot mappings
 - Analysis timestamp
 
+## upload-images
+
+Index a folder of screenshots for search. By default the images are uploaded to Scry and processed there. With `--local`, the CLI processes them on your machine and writes the vectors to your own Milvus/Zilliz collection.
+
+```bash
+npx @scrymore/scry-deployer upload-images --dir ./screens --project my-project
+```
+
+### Local processing options (`--local`)
+
+| Option | Environment variable | Description |
+|--------|----------------------|-------------|
+| `--openai-api-key` | `OPENAI_API_KEY` | OpenAI key used to describe each screenshot |
+| `--gemini-api-key` | `GEMINI_API_KEY` | Google Gemini API key. Embeds with Gemini Embedding 2 (1024 dimensions) |
+| `--milvus-address` | `MILVUS_ADDRESS` | Milvus/Zilliz endpoint |
+| `--milvus-token` | `MILVUS_TOKEN` | Milvus/Zilliz auth token |
+| `--milvus-collection`, `--collection` | `MILVUS_COLLECTION_G2` | Target collection. With `--gemini-api-key` it must be a g2 collection (for example `scry_component_snapshots_g2`) |
+| `--jina-api-key` | `JINA_API_KEY` | **Deprecated.** Jina key (2048 dimensions). Use `--gemini-api-key` instead |
+
+Gemini runs write 1024-dimension vectors plus an `embed_model` field, so the collection must have been created with that schema. The CLI refuses to write Gemini vectors to a collection whose name does not contain `_g2`, and refuses to write Jina vectors to a g2 collection, so the two never mix. With `--jina-api-key` the collection is read from `--milvus-collection` / `MILVUS_COLLECTION` as before.
+
+### Deprecation of `--jina-api-key`
+
+`--jina-api-key` (and `JINA_API_KEY`) still works for one more release and prints a deprecation warning. If both a Gemini and a Jina key are set, Gemini is used.
+
 ## Global Options
 
 These options work with all commands:
