@@ -4,7 +4,7 @@
 
 ## Where you see it
 
-- **Run detail → Capture card.** Open a linked screen in **Design Sync**. The Capture card sits under the run summary: two columns (Figma, Storybook) with export or capture scale, pixel size, capture mode, alpha and tree source, then a row of warning chips, then `input_version` and `judge_version` as small tags you can copy.
+- **Run detail → Capture card.** Open a linked screen from **Screens**, in the diff editor (see [Reviewing a Design Sync run](/guide/design-sync-review) for the surrounding navigation). The Capture card sits under the run summary: two columns (Figma, Storybook) with export or capture scale, pixel size, capture mode, alpha and tree source, then a row of warning chips, then `input_version` and `judge_version` as small tags you can copy.
 - **Link list.** A link row shows a small **N capture warnings** badge when its latest run has warnings.
 - **The run object.** `GET /api/agent/runs/:runId` returns `judge_version`, `judge_label`, `judge_arm`, `input_version`, `capture_profile` and `capture_warnings`. The run list `GET /api/pairs/:pairId/runs` returns `input_version` and `capture_warnings` but not the profile. See the [Diff Service API reference](/services/diff-service/api-reference).
 - **The hybrid report.** Every run's `hybrid-report.json` (`GET /api/pairs/:pairId/runs/:runId/hybrid-report`) carries `input_version` at the top level, `inputs.{input_version, capture_profile, capture_warnings}`, and the judge stamps with the full judge config.
@@ -105,6 +105,7 @@ On an issue whose label is spacing/layout, size, inset/shift or colour/backgroun
 
 ## Related
 
+- [Reviewing a Design Sync run](/guide/design-sync-review): the Screens list, the diff editor, and Issues
 - [Storybook capture settings](/guide/storybook-capture-settings): `captureScale`, `captureMode` and `data-scry-root`
 - [Figma Plugin](/guide/figma-plugin): linking, sync and diff tiers
 - [Review model](/services/diff-service/review-model): candidates, promotion and severity

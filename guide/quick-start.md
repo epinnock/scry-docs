@@ -30,9 +30,14 @@ repository secret setup.
 ### 1. Select a Scry project
 
 Sign in to the [Scry Dashboard](https://dashboard.scrymore.com), create or select
-a project, and save its **Project ID** and **API Key**. Keep the key in your
-local environment as `SCRY_API_KEY`; do not put it in committed configuration.
-Use the API URL supplied by the dashboard or your existing project settings.
+a project. A new project's Overview page opens on its setup checklist, which
+has a **copy project ID** step and, once you generate a key, a ready-to-run
+deploy command with the key already filled in — the fastest path through this
+whole section. You can also find both any time under the project's
+**Settings ▸ General** (project ID) and **Settings ▸ API keys** (generate or
+revoke a key). Keep the key in your local environment as `SCRY_API_KEY`; do
+not put it in committed configuration. Use the API URL supplied by the
+dashboard or your existing project settings.
 
 ### 2. Run init
 
@@ -95,3 +100,4 @@ project's ID. A successful static upload alone does not confirm search is ready.
 - [GitHub Actions](/guide/github-actions) — customize deployment and previews
 - [MCP Server](/guide/mcp) — connect your assistant to indexed components
 - [Figma Plugin](/guide/figma-plugin) — link design layers to stories
+- [Members and Invites](/guide/members-and-invites) — add teammates to a workspace or a project

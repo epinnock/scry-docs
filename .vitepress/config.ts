@@ -72,10 +72,12 @@ export default defineConfig({
           text: 'Integrations',
           items: [
             { text: 'Figma Plugin', link: '/guide/figma-plugin' },
+            { text: 'Reviewing a Design Sync Run', link: '/guide/design-sync-review' },
             { text: 'Design Sync Run Details', link: '/guide/design-sync-run-details' },
             { text: 'Storybook Capture Settings', link: '/guide/storybook-capture-settings' },
             { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
             { text: 'Component Requests', link: '/guide/component-requests' },
+            { text: 'Members and Invites', link: '/guide/members-and-invites' },
             { text: 'MCP Server', link: '/guide/mcp' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]

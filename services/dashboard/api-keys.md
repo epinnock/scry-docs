@@ -16,7 +16,7 @@ API keys authenticate CLI requests to the Upload Service. Each key is:
 
 1. Log in to the Dashboard
 2. Select your project
-3. Go to **Settings → API Keys**
+3. Go to **Project Settings ▸ API keys** (`/projects/<id>/settings/keys`)
 4. Click **Generate New Key**
 5. Enter a name (e.g., "GitHub Actions")
 6. **Copy the key immediately** - it won't be shown again!
@@ -117,7 +117,7 @@ The key list shows:
 
 To revoke a key:
 
-1. Go to **Settings → API Keys**
+1. Go to **Project Settings ▸ API keys**
 2. Find the key to revoke
 3. Click the **Revoke** button
 4. Confirm revocation
