@@ -94,10 +94,26 @@ that screenshots and metadata were uploaded, and wait for indexing to finish.
 Then [connect MCP](/guide/mcp) and search for a known component with your
 project's ID. A successful static upload alone does not confirm search is ready.
 
+## The dashboard tour
+
+The first time you open the dashboard with a new account, two short tours point at the controls you need. Each step is a small card next to a real control, with **Next**, **Back** and **Skip tour**. Nothing dims the page and a card never traps your keyboard, so you can keep using the dashboard while it is showing. A card can cover part of the page: press Esc (when you are not typing in a field) or choose **Skip tour** to dismiss it.
+
+- **Welcome** appears on the Projects page while you have no projects. It points at **New project**, the workspace switcher and search (Ctrl+K, or Cmd+K on Mac).
+- **Your first project** appears on a project's Overview the first time you open your first project, before its first build is indexed. It points at the setup checklist, then **Builds**, **Screens** and **Issues** in the sidebar.
+
+![The Welcome tour pointing at New project on the Projects page](/images/coachmarks/welcome-projects-empty-step-1.png)
+
+![The Your first project tour pointing at the setup checklist](/images/coachmarks/first-project-overview-step-1.png)
+
+Each tour shows once. Whether you skip it or finish it, Scry remembers that on your account, so it does not come back on another browser or device. To see one again, open **Account ▸ Help** and choose **Replay** next to the tour.
+
+Tours appear on screens 900 pixels wide or more; on a narrow window or a phone you will not see them.
+
 ## Next steps
 
 - [First Deployment](/guide/first-deployment) — deploy without running init
 - [GitHub Actions](/guide/github-actions) — customize deployment and previews
 - [MCP Server](/guide/mcp) — connect your assistant to indexed components
 - [Figma Plugin](/guide/figma-plugin) — link design layers to stories
+- [Account settings](/guide/account-settings) — replay the dashboard tours
 - [Members and Invites](/guide/members-and-invites) — add teammates to a workspace or a project
