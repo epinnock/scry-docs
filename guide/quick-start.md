@@ -96,7 +96,7 @@ project's ID. A successful static upload alone does not confirm search is ready.
 
 ## The dashboard tour
 
-The first time you open the dashboard with a new account, two short tours point at the controls you need. Each step is a small card next to a real control, with **Next**, **Back** and **Skip tour**. Nothing dims the page, so you can keep clicking and typing while a card is showing. Esc skips the tour.
+The first time you open the dashboard with a new account, two short tours point at the controls you need. Each step is a small card next to a real control, with **Next**, **Back** and **Skip tour**. Nothing dims the page and a card never traps your keyboard, so you can keep using the dashboard while it is showing. A card can cover part of the page: press Esc (when you are not typing in a field) or choose **Skip tour** to dismiss it.
 
 - **Welcome** appears on the Projects page while you have no projects. It points at **New project**, the workspace switcher and search (Ctrl+K, or Cmd+K on Mac).
 - **Your first project** appears on a project's Overview the first time you open your first project, before its first build is indexed. It points at the setup checklist, then **Builds**, **Screens** and **Issues** in the sidebar.
