@@ -178,6 +178,27 @@ The `metadata.json` contains:
 - Screenshot mappings
 - Analysis timestamp
 
+## import
+
+Beta. Upload a folder exported from Adobe Bridge as a [visual collection](/guide/visual-collections). It converts PSD, TIFF, HEIC, PDF and AI files on your machine, keeps only title, description, keywords, rating and label, removes embedded metadata from the images, and asks before sending anything.
+
+```bash
+npx @scrymore/scry-deployer import <folder> --project <id> [options]
+```
+
+| Option | Required | Description |
+|--------|----------|-------------|
+| `<folder>` | Yes | The folder exported from Adobe Bridge. Only this folder is read |
+| `--project` | Yes, unless `--dry-run` | Project to upload into |
+| `--deploy-version`, `-v` | No | Version name. Default: `bundle-<timestamp>` |
+| `--api-key` | No | Project API key |
+| `--api-url` | No | Upload service URL |
+| `--yes`, `-y` | When not at a terminal | Confirm that the images may be sent for AI processing |
+| `--dry-run` | No | Build and check the upload; send nothing |
+| `--verbose` | No | Enable verbose logging |
+
+See [Import from Adobe Bridge](/guide/import-from-adobe-bridge) for the steps, what is kept and what is never sent.
+
 ## Global Options
 
 These options work with all commands:
