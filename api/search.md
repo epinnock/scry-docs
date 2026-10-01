@@ -6,7 +6,7 @@ The search API finds components in your indexed Storybook builds by text, by ima
 
 Every time a build is indexed, each of its screens is indexed again, and older copies are kept. Searching across projects, or in a project that has not been re-indexed recently, could therefore return the same screen several times, once per deploy, even when nothing about it changed.
 
-By default a search now returns **one row per screen: the newest indexed copy**. A screen is the same project, the same capture source (web, iOS or Android) and the same story. The row tells you how many copies it stands for, so you know the older ones exist.
+By default a search now returns **one row per screen: the newest indexed copy**. A screen is the same project, the same capture source (web, iOS or Android) and the same story. The row tells you how many copies it stands for, so you know the older ones exist. Copies indexed before screens had an id are matched by component and story name instead, and only when that name belongs to exactly one screen; otherwise they stay as separate rows.
 
 A dedup never removes a screen. A screen with a single copy is returned as it is, and a screen that exists only in an older build is returned once, marked `stale`, as it was before. Two projects that happen to use the same story name both appear, and so do a web and an iOS capture of the same story.
 
