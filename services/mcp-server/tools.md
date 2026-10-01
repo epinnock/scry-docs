@@ -13,6 +13,7 @@ Text search over the component index, combining semantic (dense vector) and keyw
 | `scope` | `project` \| `org` | `project` | `org` requires `project_id` |
 | `limit` | number | `10` | 1–50 |
 | `page` | number | `1` | Pagination |
+| `versions` | `latest` \| `all` | `latest` | `latest` shows each screen once, as its newest indexed copy. `all` lists every indexed copy of every screen |
 
 **Scope is the important parameter.** With `project_id` and the default `scope: "project"`, the search never widens: an empty result means that project has no match, not that it fell back elsewhere. With `scope: "org"` it also returns components from other projects in the same organisation — but only those whose owners opted in to discovery and that the account can read; each is flagged `crossProject: true`.
 
@@ -29,6 +30,23 @@ The same search, anchored on an image — a screenshot, a mockup, a Figma export
 | `project_id` | string | — | As above |
 | `limit` | number | `10` | 1–50 |
 | `page` | number | `1` | Pagination |
+| `versions` | `latest` \| `all` | `latest` | As for `search_components` |
+
+## One result per screen
+
+Every build that is indexed adds a new copy of each of its screens, and older copies stay in the index. Without `project_id` the search spans all of them, so one screen could come back once per deploy, with the assistant fetching the same screenshot several times.
+
+By default both searches return **one result per screen: the newest indexed copy**. A screen is the same project, the same capture source (web, iOS or Android) and the same story. A screen is never dropped: one that exists only in an older build is still returned once, marked `freshness: "stale"`.
+
+Each result says how many copies it stands for, and the summary says how many older copies were folded:
+
+```text
+Found 12 results (7 older versions of the same screens folded; pass versions: "all" to see them)
+…
+Versions: 4 indexed (showing newest, build a1b2c3d)
+```
+
+In the structured result the count is `versionCount`. Pass `versions: "all"` to get every copy back, for example to compare how a screen looked across deploys. Searching with a `project_id` is already limited to that project's current build, so it rarely has copies to fold.
 
 ## `get_component_screenshot`
 
@@ -61,7 +79,7 @@ No parameters. Returns the authenticated user's uid, email and display name — 
 
 ## Result shape
 
-Both searches return `results`, plus a `summary`, the `scope` used, and `widenedToOrg`.
+Both searches return `results`, plus a `summary`, the `scope` used, and `widenedToOrg`. Each result carries a `versionCount`.
 
 ```json
 {
@@ -80,6 +98,7 @@ Both searches return `results`, plus a `summary`, the `scope` used, and `widened
   "buildSha": "ea816a7ae69b5d31f5268aaea9b365fef71bf9e2",
   "storyId": "features-settings-storybookconnection--disconnected",
   "indexedAt": "2026-09-11T21:52:19.231Z",
+  "versionCount": 3,
   "latestBuildId": "mz2P7qU3uZpHoJHGSSbR",
   "freshness": "fresh",
   "freshnessReason": "matches_current_build",
@@ -94,6 +113,7 @@ Both searches return `results`, plus a `summary`, the `scope` used, and `widened
 | `freshness` | `fresh` when `buildId` equals `latestBuildId`. Otherwise the index is behind the code, and `freshnessReason` says why |
 | `buildSha` | The commit the build came from, when the deployer reported one |
 | `indexedAt` | When the row was written, not when the build was deployed |
+| `versionCount` | How many indexed copies of this screen the search found, including this one. `1` means the screen has a single copy. Older copies are not listed unless you pass `versions: "all"` |
 
 Rows indexed before build tracking shipped report `freshness: "unknown"` until their project is re-indexed.
 
@@ -105,7 +125,7 @@ Tools return a typed error rather than an empty result, so a client can branch o
 | --- | --- |
 | `RATE_LIMITED` | Over 60 requests per minute for this user. Wait and retry |
 | `SEARCH_API_5xx` | Upstream search error. Retry once |
-| `VALIDATION_ERROR` | Input failed schema validation. Fix parameters |
+| `VALIDATION_ERROR` | Input failed schema validation, including a `versions` value other than `latest` or `all`. Fix parameters |
 | `INVALID_SCOPE` | `scope` was not `project` or `org` |
 | `PROJECT_REQUIRED` | `scope: "org"` without a `project_id` |
 | `PROJECT_HAS_NO_ORG` | `scope: "org"` on a project with no organisation |

@@ -140,6 +140,16 @@ With a `project_id` you can also choose how far to look:
 
 `generate_image` takes an optional `aspect_ratio` (`1:1` by default; also `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`) and `quality` (`fast` or `quality`). Image generation and search use [credits](/guide/credits); at zero credits `generate_image` and image search are refused with a link to the Credits page, and text search falls back to keyword search.
 
+## One result per screen
+
+Each time a build is indexed, its screens are indexed again and the older copies stay. A search without a `project_id` could therefore show the same screen once per deploy, and the assistant would preview the same image several times.
+
+By default `search_components` and `search_by_image` return each screen once, as its newest indexed copy, and say how many copies they stand for:
+
+> Versions: 4 indexed (showing newest, build a1b2c3d)
+
+The summary line also says how many older copies were folded. A screen is never dropped: one that exists only in an older build is still returned once, marked stale. To see every copy, for example to compare a screen across deploys, ask the assistant to search with `versions: "all"`.
+
 ## Reading a result
 
 A result carries more than a name and a score:
@@ -156,15 +166,17 @@ A result carries more than a name and a score:
   "projectId": "…", "crossProject": false,
   "buildId": "…", "buildSha": "ea816a7…", "storyId": "features-settings-storybookconnection--disconnected",
   "indexedAt": "2026-09-11T21:52:19.231Z",
+  "versionCount": 3,
   "latestBuildId": "…", "freshness": "fresh", "freshnessReason": "matches_current_build",
   "screenshotUrl": "https://…"
 }
 ```
 
-Three fields matter more than they look:
+Four fields matter more than they look:
 
 - **`sourcePath` is what you import.** `storyPath` is the `.stories` file the screenshot was captured from — importing that is a common mistake.
 - **`freshness`** says whether the row came from the project's current build. `fresh` means it matches `latestBuildId`; anything else means the index is behind the code, and `freshnessReason` says why. A row indexed before build tracking shipped reports `unknown` until its project is re-indexed.
+- **`versionCount`** is how many indexed copies of this screen exist, including the one shown. Above `1`, older copies were folded into it; pass `versions: "all"` to list them.
 - **`screenshotUrl` is presigned and expires in an hour.** Use `get_component_screenshot` rather than storing the URL.
 
 ## Troubleshooting
