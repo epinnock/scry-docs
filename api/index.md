@@ -120,3 +120,4 @@ curl -X POST \
 - [CDN Endpoints](/api/cdn-endpoints) - File serving API
 - [Authentication](/api/authentication) - API key authentication
 - [Webhooks](/api/webhooks) - Event notifications
+- [Search](/api/search) - Find components, and choose one row per screen or every version
