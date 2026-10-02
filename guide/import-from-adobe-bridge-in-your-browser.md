@@ -82,13 +82,13 @@ Hidden files and system files (such as `.DS_Store` and `Thumbs.db`) are ignored,
 
 Choose **Import 48 images** (your number). A confirmation window says where the pictures will go and who processes them. It reads, in full:
 
-> These 48 images will be uploaded to *your project* and processed by Google Gemini and Jina. What is sent: the cleaned image files, each image's size, and the title, description, keywords, rating and label.
+> These 48 images will be uploaded to *your project* and processed by OpenAI, Google Gemini and Jina. OpenAI writes a short description of each picture and sees only the picture. Google Gemini and Jina turn each picture, and its title, description and keywords, into search data. Rating and label stay in Scry.
 
 Nothing is uploaded until you choose **Upload**. **Cancel** sends nothing.
 
 Two things to know about that wording:
 
-- It names Google Gemini and Jina, which turn each picture into the numbers that search uses. A third service, OpenAI, writes each picture's short description. The [Subprocessors](/subprocessors) page lists every service and what it receives, and is the place to check who is current.
+- It names the three services that process your pictures. OpenAI writes each picture's short description and sees only the picture, not your title, description or keywords. Google Gemini and Jina turn each picture, and its title, description and keywords, into the numbers that search uses. Your rating and label stay in Scry and go to none of them. The [Subprocessors](/subprocessors) page lists every service and what it receives, and is the place to check who is current.
 - Scry also records which account ran the import, as it does for any upload.
 
 > **[Screenshot placeholder, Stage 5 replaces it]** The confirm window. Design reference: `features/dashboard-import/figma/import-confirm.png`.
