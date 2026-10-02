@@ -60,17 +60,18 @@ A dry run leaves the prepared upload in your computer's temporary folder (a `scr
 scry import ./bridge-export --project my-project
 ```
 
-Before anything leaves your computer, the command prints the summary and asks. The last three lines are exactly this (version 0.11.0; the counts and project name are yours):
+Before anything leaves your computer, the command prints the summary and asks. The last four lines are exactly this (version 0.11.1; the counts and project name are yours):
 
 ```
-These 42 images will be uploaded to project my-project and sent to Google Gemini and Jina for AI captioning and embeddings.
+These 42 images will be uploaded to project my-project and sent to OpenAI, Google Gemini and Jina for AI captioning and embeddings.
+OpenAI writes a short description of each picture and sees only the picture. Google Gemini and Jina turn each picture, and its title, description and keywords, into search data. Rating and label stay in Scry.
 What is sent: the image files (metadata removed), each image's size, and the title, description, keywords, rating and label found for it.
 Send 42 images for AI processing? [y/N]
 ```
 
 If the folder you run the command from is a git repository, a line is added after "What is sent": `Also sent with the upload: the git commit <sha> on branch <name> of the repository in the current directory.`
 
-The wording on the first line is shorter than what happens: it names Google Gemini and Jina, and does not name OpenAI, which writes each picture's description. [Who processes your pictures](#who-processes-your-pictures) has the full list.
+Versions before 0.11.1 named only Google Gemini and Jina on that first line; OpenAI, which writes each picture's description, was not named. Update with `npm i -g @scrymore/scry-deployer@latest`. [Who processes your pictures](#who-processes-your-pictures) has the full list.
 
 Only `y` or `yes` continues. Anything else, including Ctrl-C or Ctrl-D, sends nothing and exits with code 1.
 
@@ -141,7 +142,7 @@ This is what runs in production for a visual collection today. It is the same pi
 - **Jina AI** (Embeddings API, Jina Embeddings v4) turns each picture and its search text into embeddings. These are the embeddings that search reads today. A picture you search with (`search_by_image`) and your query text go to the same provider.
 - **Google** (Gemini API, the Gemini embedding model) also receives each picture and its search text and writes a second set of embeddings alongside Jina's. Search does not read them yet.
 
-The confirmation prompt names Google Gemini and Jina, and not OpenAI. The three above are what actually receive the pictures; the prompt wording is a known mismatch and has been filed for a fix. The embeddings provider can change, so the [subprocessor list](/subprocessors) and [Privacy](/privacy) are the place to check who is current and where each one processes data.
+The confirmation prompt names all three (from version 0.11.1). The embeddings provider can change, so the [subprocessor list](/subprocessors) and [Privacy](/privacy) are the place to check who is current and where each one processes data.
 
 Your title, description and keywords are not given to the model that writes the picture's description. They are added to the text that is indexed for search, and that text is embedded. Text in the picture itself (a sign, a caption) is treated as something to describe, not as an instruction.
 
