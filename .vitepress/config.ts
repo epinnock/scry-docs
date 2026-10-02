@@ -84,6 +84,13 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Visual collections (beta)',
+          items: [
+            { text: 'Import from Adobe Bridge', link: '/guide/import-from-adobe-bridge' },
+            { text: 'Visual collections', link: '/guide/visual-collections' },
+          ]
+        },
+        {
           text: 'Help',
           items: [
             { text: 'How Credits Work', link: '/guide/credits' },
