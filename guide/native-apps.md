@@ -2,7 +2,7 @@
 
 # Capture your app's screens
 
-Put the screens of your iOS, Android or React Native app in your Scry project. Each screen is captured on a simulator or emulator as a PNG, uploaded as a build, and from then on browsable in the dashboard and searchable by your AI assistant through the [MCP server](/guide/mcp), the same way a Storybook build is.
+Put the screens of your iOS, Android or React Native app in your Scry project. Each screen is captured on a simulator or emulator as a PNG, uploaded as a build, and from then on listed in the dashboard's Builds tab and searchable by your AI assistant through the [MCP server](/guide/mcp), the same way a Storybook build is.
 
 **The fastest way to start with your own app is the Scry skill.** Install it, ask your AI coding assistant to "set up Scry capture for this app", and it wires your app for capture and checks the result. See [Set up with the Scry skill](#set-up-with-the-scry-skill) below.
 
@@ -16,7 +16,7 @@ Every native path has the same five steps:
 2. **Capture.** Run the capture on a simulator or emulator. It opens each screen on its own and writes a [Scry Capture Format](/guide/capture-bundle-format) bundle: one PNG per screen and a small `scf.json` manifest.
 3. **Upload.** Check the bundle with `scry upload <bundle> --dry-run`, then upload it with `scry upload <bundle>`. You need a project ID and a project API key.
 4. **See it.** The build appears in your project's **Builds** tab with its source, for example **SwiftUI · iOS**, **Compose · Android** or **React Native · iOS**.
-5. **Use it.** Ask your AI assistant for a screen through the MCP server, and browse the screens in the dashboard. Linking a native screen to a Figma frame from the Scry Link plugin is not available yet.
+5. **Use it.** Ask your AI assistant for a screen through the MCP server, and see each build, its device and its screen count in the dashboard. Linking a native screen to a Figma frame from the Scry Link plugin is not available yet.
 
 ```mermaid
 flowchart LR

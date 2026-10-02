@@ -121,18 +121,20 @@ The layout trees are the `structure/` folder next to `scf.json` and `images/` in
 
 ## 5. See it in Scry
 
-Open your project in the Scry dashboard. On the **Builds** tab the new build carries the source chip **React Native · Android** (or **React Native · iOS**) and a device card with the device it was captured on. Open a screen to see it in the editor. If the chip is missing, the build is still being indexed; refresh after a minute. Native stories show their captured image instead of a live Storybook, as described in [Capture sources](/guide/capture-sources#live-embed-vs-captured-image).
+Open your project in the Scry dashboard. On the **Builds** tab the new build carries the source chip **React Native · Android** and a device line, for example *Pixel 6 · 2.63× · 21 screens*. Open the build to see them on its **Capture** tab. If the chip is missing, refresh after a minute.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/rn-5-dashboard.mp4">
     <track kind="captions" src="/videos/rn-5-dashboard.vtt" srclang="en" default>
   </video>
-  <figcaption>Step 5 — the build in the dashboard, with its source chip and a screen.</figcaption>
+  <figcaption>Step 5 — the build in the dashboard, with its source chip, device line and Capture tab.</figcaption>
 </figure>
+
+Native stories show their captured image instead of a live Storybook where Scry embeds one, as described in [Capture sources](/guide/capture-sources#live-embed-vs-captured-image).
 
 ## Use it
 
-Search in the dashboard and the [MCP server](/guide/mcp) draw from every source's latest build together, and each React Native result is labelled with its platform, so a native capture is found alongside its web Storybook story. See [Capture sources](/guide/capture-sources).
+Search runs across every source in the project together, so a native capture is found alongside its web Storybook story, and the search API labels each result with its source type and platform. Ask for a screen through the [MCP server](/guide/mcp). See [Capture sources](/guide/capture-sources).
 
 ## Put it in CI
 

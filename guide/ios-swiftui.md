@@ -154,41 +154,38 @@ The CLI reads `SCRY_PROJECT_ID` and `SCRY_API_KEY` itself. You can pass `--proje
 
 ## 5. See it in Scry
 
-Open your project in the dashboard. The new build appears in the **Builds** tab with the source **SwiftUI · iOS** and a device line such as *iPhone 16 · 3× · 5 screens*. Open a screen to see the captured image.
+Open your project in the dashboard. The new build appears in the **Builds** tab with the source **SwiftUI · iOS** and a device line: your simulator's name, scale and screen count, for example *iPhone 16 · 3× · 5 screens*. Open the build to see them on its **Capture** tab.
 
 <figure class="step-shot">
   <img src="/images/native-apps/ios-builds-chip.png" alt="Builds tab with a SwiftUI · iOS build, its device line and 5 screens" width="1280" height="720">
   <figcaption>The <strong>Builds</strong> tab: the source chip is <strong>SwiftUI · iOS</strong>.</figcaption>
 </figure>
 
-<figure class="step-shot">
-  <img src="/images/native-apps/ios-screen-detail.png" alt="A captured iOS screen opened in the Scry dashboard" width="1280" height="720">
-  <figcaption>A captured screen in the dashboard.</figcaption>
-</figure>
-
-A native screen has no Storybook behind it, so Scry shows the captured image instead of an "Open in Storybook" link. The Builds tab, the source chips and the project's other capture sources are covered in [Capture sources](/guide/capture-sources).
+A native build has no Storybook behind it, so there is no "Open in Storybook" link. The Builds tab, the source chips and the project's other capture sources are covered in [Capture sources](/guide/capture-sources).
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/ios-5-dashboard.mp4">
     <track kind="captions" src="/videos/ios-5-dashboard.vtt" srclang="en" default>
   </video>
-  <figcaption>Step 5 — the new build and a captured screen in the dashboard.</figcaption>
+  <figcaption>Step 5 — the new build, its device line and its Capture tab in the dashboard.</figcaption>
 </figure>
 
 ## Use it
 
-Once the build is indexed, its screens are searchable through the MCP server and the search API. A result from this build shows `Source: <file>:<line>`, taken from the capture's `code.file` and `code.line`, instead of a Storybook link. The search API also returns the build's `source_type` and `platform`.
-
-- **Ask your assistant.** Connect the [MCP server](/guide/mcp) and ask for a screen in plain words, for example `quantity stepper`. Each result names the screen and, when the capture recorded `code.file` and `code.line`, its source location.
-- **Browse in the dashboard.** Open a screen from the Builds tab, or from the project's Screens page.
-- **Link screens to designs.** Linking a native screen to a Figma frame from the Scry Link plugin is not available yet.
+Once the build is indexed, its screens are searchable. This recording runs the same search the MCP server runs, for `quantity stepper`. The first result is the iOS QuantityStepper, with a Source line naming its file and line in your code; the response also carries its platform and source type.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/ios-6-search-and-mcp.mp4">
     <track kind="captions" src="/videos/ios-6-search-and-mcp.vtt" srclang="en" default>
   </video>
-  <figcaption>Step 6 — finding a screen through the MCP server.</figcaption>
+  <figcaption>Step 6 — the same search the MCP server runs, for a screen by name.</figcaption>
 </figure>
+
+A result from this build shows `Source: <file>:<line>`, the source file and line recorded in the capture, instead of a Storybook link. The search API response also carries the build's `source_type` and `platform`.
+
+- **Ask your assistant.** Connect the [MCP server](/guide/mcp) and ask for a screen in plain words, for example `quantity stepper`. Each result names the screen and, when the capture recorded a source file, where it lives.
+- **See the builds in the dashboard.** The **Builds** tab lists each build with its source, device and screen count; the **Capture** tab shows the device, scale and screens.
+- **Link screens to designs.** Linking a native screen to a Figma frame from the Scry Link plugin is not available yet.
 
 ## Put it in CI
 
