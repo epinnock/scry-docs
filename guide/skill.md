@@ -156,7 +156,7 @@ For SwiftUI and Compose, the skill inspects the project, asks only what it canno
 
 For React Native, the skill uses the built-in `scry capture rn` command, which needs no capture script.
 
-It then runs the capture and `scry upload <bundle> --dry-run`, and shows you the screenshots so you can check them. A valid bundle can still hold a bad image, so look at them.
+When a simulator or emulator is available, it runs the capture and `scry upload <bundle> --dry-run` and shows you the screenshots; otherwise it lists the commands for you to run on a Mac. A valid bundle can still hold a bad image, so look at them.
 
 ### What the skill will not do
 
