@@ -3,8 +3,8 @@
 > **TL;DR:** A capture source is where Scry's screenshots of your UI come from — a web Storybook,
 > a React Native app's on-device Storybook, or another tool that writes a
 > [Scry Capture Format](/guide/capture-bundle-format) bundle. A project can hold more than one
-> source at once (for example, web and iOS builds of the same design system), and search, the MCP
-> server and the Figma plugin always work from each source's latest build.
+> source at once (for example, web and iOS builds of the same design system), and search and the MCP
+> server always work from each source's latest build.
 
 ## What a source is
 
@@ -26,13 +26,13 @@ has.
 A **native** source runs the same idea on a device or simulator instead of a browser. The first
 one Scry ships an adapter for is **React Native**: it reuses your app's existing on-device
 Storybook and the same story ids as your web stories, so a component with stories on both
-platforms is easy to tell apart in search and easy to link to the same Figma frame if you want to.
+platforms is easy to tell apart in search.
 
 The labels you will see for native sources:
 
 | Label | What it is | How it gets captured |
 |---|---|---|
-| React Native · iOS, React Native · Android | an app's on-device Storybook | built-in adapter: `scry-deployer capture rn` ([React Native](/guide/react-native)) |
+| React Native · iOS, React Native · Android | an app's on-device Storybook | adapter in the Scry CLI: `scry-deployer capture rn` ([React Native](/guide/react-native)) |
 | SwiftUI · iOS | the screens of a SwiftUI app | reference script in the sample app and the Scry skill, not a built-in adapter |
 | Compose · Android | the screens of a Jetpack Compose app | reference script in the sample app and the Scry skill, not a built-in adapter |
 
@@ -55,15 +55,14 @@ and its iOS or Android story shows its captured image.
 A native capture has no such URL: it's a screenshot taken once, on a simulator or device, during
 your build. Everywhere Scry would otherwise show a live Storybook, a native story shows its
 captured image instead, along with the device it was captured on (for example, "iPhone 16 · 3×").
-Nothing ever offers to open a native story "in Storybook" — it links to its source file instead,
-when the capture recorded one.
+Nothing ever offers to open a native story "in Storybook".
 
 ## Several sources, one project
 
 One project can hold several sources — a web build alongside an iOS build and an Android build of
 the same design system, for instance. Uploading a new build from one source never hides another
-source's latest build: each source keeps its own "latest build", and search, the MCP server and the
-Figma plugin's story picker draw from all of them together, each result labelled with its platform.
+source's latest build: each source keeps its own "latest build", and search and the MCP server draw
+from all of them together. Each search result says which source it came from.
 
 If a source's ids change between builds (a renamed story, a different id scheme), that build's row in
 the Builds list carries an id-churn warning with the ids that went missing, so links and issues
@@ -75,5 +74,7 @@ device (for native sources) and screen count.
 ## Search shows each source's latest build
 
 Search and the MCP server search across every source's current build at once — not just the most
-recently uploaded one. A result from a native source shows its platform (for example, "React
-Native · iOS") and, where the capture recorded one, its source file instead of a Storybook link.
+recently uploaded one. Every search result carries its source: the search API returns `source_type`
+(for example `swiftui-preview`), `platform` (`ios`) and `sourceKey` (`swiftui-preview:ios`). The MCP
+server prints a `Platform:` line for React Native results (for example "React Native · iOS"), and a
+`Source: <file>:<line>` line, instead of a Storybook link, when the capture recorded a source file.

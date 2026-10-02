@@ -16,7 +16,7 @@ Every native path has the same five steps:
 2. **Capture.** Run the capture on a simulator or emulator. It opens each screen on its own and writes a [Scry Capture Format](/guide/capture-bundle-format) bundle: one PNG per screen and a small `scf.json` manifest.
 3. **Upload.** Check the bundle with `scry upload <bundle> --dry-run`, then upload it with `scry upload <bundle>`. You need a project ID and a project API key.
 4. **See it.** The build appears in your project's **Builds** tab with its source, for example **SwiftUI · iOS**, **Compose · Android** or **React Native · iOS**.
-5. **Use it.** Ask your AI assistant for a screen through the MCP server, and browse the screens in the dashboard. How native sources work with the Figma plugin is covered on [Capture sources](/guide/capture-sources).
+5. **Use it.** Ask your AI assistant for a screen through the MCP server, and browse the screens in the dashboard. Linking a native screen to a Figma frame from the Scry Link plugin is not available yet.
 
 ```mermaid
 flowchart LR
@@ -25,7 +25,6 @@ flowchart LR
   C --> D["Build in your Scry project"]
   D --> E["Dashboard"]
   D --> F["MCP and search"]
-  D --> G["Figma link, see Capture sources"]
 ```
 
 Here `scry upload` is run as `npx @scrymore/scry-deployer upload <bundle>`, with `SCRY_PROJECT_ID` and `SCRY_API_KEY` set in the environment.

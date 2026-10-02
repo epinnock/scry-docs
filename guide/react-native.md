@@ -1,6 +1,6 @@
 # React Native
 
-Capture your React Native app's screens and components and see them in Scry next to your web Storybook, in search, in the MCP server and in the [Figma plugin](/guide/figma-plugin). If your app has an on-device [Storybook](https://github.com/storybookjs/react-native), the Scry CLI drives it on a simulator or emulator, screenshots every story and uploads the result as a [capture source](/guide/capture-sources). React Native needs the least setup of the native paths: Scry has a built-in adapter, `capture rn`, so there is no capture script to write. This page walks through it with the sample app, [`scry-sample-rn`](https://github.com/scryorg/scry-sample-rn), a small coffee-order app called Kettle.
+Capture your React Native app's screens and components and see them in Scry next to your web Storybook, in search, and in the MCP server. If your app has an on-device [Storybook](https://github.com/storybookjs/react-native), the Scry CLI drives it on a simulator or emulator, screenshots every story and uploads the result as a [capture source](/guide/capture-sources). React Native needs the least setup of the native paths: Scry has a built-in adapter, `capture rn`, so there is no capture script to write. This page walks through it with the sample app, [`scry-sample-rn`](https://github.com/scryorg/scry-sample-rn), a small coffee-order app called Kettle.
 
 **No source code of yours is uploaded.** Scry receives PNG screenshots and a small manifest. The sample app also sends a layout tree per screen (component names, text and positions), never source files, unless you pass `--include-source`, which this guide never does.
 
@@ -16,14 +16,17 @@ Capture your React Native app's screens and components and see them in Scry next
 
 Clone the sample, install, and run it on an emulator or simulator:
 
-```bash
+```bash verify
 git clone https://github.com/scryorg/scry-sample-rn.git
 cd scry-sample-rn
 npm install
+```
+
+```bash
 npm run android        # or: npm run ios
 ```
 
-The app opens on the Kettle Menu screen. The same code also contains 21 Storybook stories (three screens plus the Button, MenuItem and QuantityStepper components, with variants), which is what Scry captures.
+The app opens on the Kettle Menu screen. The same code also contains 21 Storybook stories <!-- TODO count --> (three screens plus the Button, MenuItem and QuantityStepper components, with variants), which is what Scry captures.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/rn-1-clone-and-run.mp4">
@@ -36,7 +39,7 @@ The app opens on the Kettle Menu screen. The same code also contains 21 Storyboo
 
 With the emulator or simulator booted and the app installed, run the capture command:
 
-```bash
+```bash verify
 npx @scrymore/scry-deployer capture rn --platform android --device Pixel_6_API_34
 ```
 
@@ -57,11 +60,17 @@ Add `--stories components-button--primary,screens-menu--default` to capture a fe
 
 Validate the bundle before you upload it:
 
-```bash
+```bash verify
 npx @scrymore/scry-deployer upload .scry/capture --dry-run
 ```
 
-This checks the bundle against the [Scry Capture Format](/guide/capture-bundle-format) and zips it locally. Nothing is sent and no API key is needed. A good bundle ends with `Bundle valid: 21 captures, source storybook-rn:android.` followed by `Dry run: not uploading.` Open a few images in `.scry/capture/images/` to check them by eye. If a story was skipped, the capture step printed why; fix the story rather than filtering it out.
+```text expected
+Validating .scry/capture ...
+✅ Bundle valid: {{n}} captures, source storybook-rn:android.
+Dry run: not uploading. Bundle ZIP: {{*}}
+```
+
+This checks the bundle against the [Scry Capture Format](/guide/capture-bundle-format) and zips it locally. Nothing is sent and no API key is needed. A good bundle ends with `Bundle valid: 21 captures, source storybook-rn:android.` <!-- TODO count --> followed by `Dry run: not uploading.` Open a few images in `.scry/capture/images/` to check them by eye. If a story was skipped, the capture step printed why; fix the story rather than filtering it out.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/rn-3-validate.mp4">
@@ -77,7 +86,16 @@ Set your project id and API key, then upload:
 ```bash
 export SCRY_PROJECT_ID=proj_xxxxxxxx
 export SCRY_API_KEY=sk_live_xxxxxxxx
+```
+
+```bash verify
 npx @scrymore/scry-deployer upload .scry/capture
+```
+
+```text expected
+Validating .scry/capture ...
+✅ Bundle valid: {{n}} captures, source storybook-rn:android.
+✅ Bundle uploaded (build #{{n}}).
 ```
 
 The command prints the build number when the upload is accepted. Only `scf.json` and the images are sent.
@@ -102,7 +120,7 @@ Open your project in the Scry dashboard. On the **Builds** tab the new build car
 
 ## Use it
 
-Search in the dashboard and the [MCP server](/guide/mcp) draw from every source's latest build together, and each result is labelled with its platform, so a native capture is found alongside its web Storybook story. See [Capture sources](/guide/capture-sources).
+Search in the dashboard and the [MCP server](/guide/mcp) draw from every source's latest build together, and each React Native result is labelled with its platform, so a native capture is found alongside its web Storybook story. See [Capture sources](/guide/capture-sources).
 
 ## Put it in CI
 

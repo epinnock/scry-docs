@@ -148,7 +148,7 @@ Open your project in the dashboard. The new build appears in the **Builds** tab 
   <figcaption>A captured screen in the dashboard.</figcaption>
 </figure>
 
-A native screen has no Storybook behind it, so Scry shows the captured image and, where the capture recorded it, the source file instead of an "Open in Storybook" link. The Builds tab, the source chips and the project's other capture sources are covered in [Capture sources](/guide/capture-sources).
+A native screen has no Storybook behind it, so Scry shows the captured image instead of an "Open in Storybook" link. The Builds tab, the source chips and the project's other capture sources are covered in [Capture sources](/guide/capture-sources).
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/android-5-dashboard.mp4">
@@ -159,11 +159,11 @@ A native screen has no Storybook behind it, so Scry shows the captured image and
 
 ## Use it
 
-Once the build is indexed, its screens are searchable through the MCP server. A result from this build says `Platform: Compose · Android` and, when the capture recorded one, `Source: <file>:<line>` instead of a Storybook link.
+Once the build is indexed, its screens are searchable through the MCP server and the search API. A result from this build shows `Source: <file>:<line>`, taken from the capture's `code.file` and `code.line`, instead of a Storybook link. The search API also returns the build's `source_type` and `platform`.
 
-- **Ask your assistant.** Connect the [MCP server](/guide/mcp) and ask for a screen in plain words, for example `quantity stepper`. Each result names its platform and, when the capture recorded `code.file` and `code.line`, the source location.
+- **Ask your assistant.** Connect the [MCP server](/guide/mcp) and ask for a screen in plain words, for example `quantity stepper`. Each result names the screen and, when the capture recorded `code.file` and `code.line`, its source location.
 - **Browse in the dashboard.** Open a screen from the Builds tab, or from the project's Screens page.
-- **Link screens to designs.** How Scry Link and Figma treat native sources is described on [Capture sources](/guide/capture-sources) and in the [Figma plugin](/guide/figma-plugin) guide.
+- **Link screens to designs.** Linking a native screen to a Figma frame from the Scry Link plugin is not available yet.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/android-6-search-and-mcp.mp4">
@@ -273,7 +273,7 @@ For another tool, or for a script of your own, the bundle format is documented o
 
 **`❌ The bundle was rejected by the Scry Capture Format validator. Nothing was uploaded.`** The lines below it name the problem and its code. Two you may meet:
 
-```text expected
+```text
   error DUPLICATE_ID [menu]: Duplicate capture id (2×): menu
   error IMAGE_HEADER_UNREADABLE [menu]: Could not read image dimensions from the header: images/menu.png
 ```
