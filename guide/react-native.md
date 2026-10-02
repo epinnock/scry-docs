@@ -127,8 +127,9 @@ Search in the dashboard and the [MCP server](/guide/mcp) draw from every source'
 Next to your existing Storybook deploy step, on a runner that has the emulator or simulator:
 
 ```bash
+# SCRY_API_KEY comes from your CI secret store, not the command line
 npx @scrymore/scry-deployer capture rn --platform ios --device "iPhone 16"
-npx @scrymore/scry-deployer upload .scry/capture --project <id> --api-key <key>
+npx @scrymore/scry-deployer upload .scry/capture --project <id>
 ```
 
 Use `--platform android --device <AVD name or adb serial>` for an Android build. Run one or both, in the same job or separate jobs: each is its own capture source (`React Native · iOS` and `React Native · Android` are tracked and searched separately, per [Capture sources](/guide/capture-sources)).
@@ -194,7 +195,7 @@ Each story becomes one image plus an entry in the bundle's manifest recording th
 Pass `--include-source` on the `upload` step to also copy each captured component's file into the bundle:
 
 ```bash
-npx @scrymore/scry-deployer upload .scry/capture --project <id> --api-key <key> --include-source
+npx @scrymore/scry-deployer upload .scry/capture --project <id> --include-source
 ```
 
 Without it, no source file ever leaves your CI: any source text already in the bundle is dropped before upload. When the flag is set, the CLI prints how many components' source text it included, so it's visible in your build log. Source text is used as extra context for visual diffs; see [Capture bundle format](/guide/capture-bundle-format#structure-trees-and-source-text-both-opt-in).
