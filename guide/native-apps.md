@@ -45,7 +45,7 @@ For SwiftUI and Compose, capture is a **reference script** that you copy from th
 The `scry-native-capture-setup` skill does the wiring that an existing app needs: a way to open one screen on its own, a registry of the screens to capture, fixed data so each screen renders the same every run, the capture scripts, and optionally a CI workflow. Install it in your app's repository:
 
 ```bash
-npx skills add epinnock/scry-node --skill scry-native-capture-setup
+npx skills add scryorg/scry-node --skill scry-native-capture-setup
 ```
 
 Then ask your assistant:

@@ -9,7 +9,7 @@ Storybook and package manager, and checks the integrations you requested.
 From your application's repository, run:
 
 ```bash
-npx skills add epinnock/scry-node --skill scry-setup
+npx skills add scryorg/scry-node --skill scry-setup
 ```
 
 Choose your assistant when prompted. The installer supports Claude Code, Codex,
@@ -18,15 +18,15 @@ Cursor, and other compatible coding agents. You can select one explicitly:
 ::: code-group
 
 ```bash [Claude Code]
-npx skills add epinnock/scry-node --skill scry-setup --agent claude-code
+npx skills add scryorg/scry-node --skill scry-setup --agent claude-code
 ```
 
 ```bash [Codex]
-npx skills add epinnock/scry-node --skill scry-setup --agent codex
+npx skills add scryorg/scry-node --skill scry-setup --agent codex
 ```
 
 ```bash [Cursor]
-npx skills add epinnock/scry-node --skill scry-setup --agent cursor
+npx skills add scryorg/scry-node --skill scry-setup --agent cursor
 ```
 
 :::
@@ -99,7 +99,7 @@ Writing the configuration alone does not complete authentication or indexing.
 
 ## Manual installation
 
-Download or clone the [Scry CLI repository](https://github.com/epinnock/scry-node)
+Download or clone the [Scry CLI repository](https://github.com/scryorg/scry-node)
 and copy the entire `skills/scry-setup` directory into your assistant's skill
 directory. Include `references/` and `agents/` along with `SKILL.md`.
 
@@ -130,7 +130,7 @@ For MCP login or empty-search problems, see [MCP troubleshooting](/guide/mcp#tro
 Install the Scry native capture skill with npx skills add, then ask your assistant to set up Scry capture. It adds the launch hook, screen registry and capture scripts. With a simulator or emulator available, it runs the capture and a dry run. Otherwise it hands you the commands to run on a Mac. It never uploads without your go.
 
 ```bash
-npx skills add epinnock/scry-node --skill scry-native-capture-setup
+npx skills add scryorg/scry-node --skill scry-native-capture-setup
 ```
 
 The `scry-setup` skill above covers Storybook on the web. This second skill, `scry-native-capture-setup`, sets up an iOS (SwiftUI), Android (Jetpack Compose) or React Native app so that Scry can capture its screens. Install it from your app's repository. The `--agent` choices and the Node.js 22.20 installer requirement are the same as for `scry-setup`. Then ask your assistant:

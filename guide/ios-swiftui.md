@@ -227,7 +227,7 @@ Wiring an existing app for capture is the part of the native path that takes rea
 1. **Install the skill** in your app's repository:
 
 ```bash
-npx skills add epinnock/scry-node --skill scry-native-capture-setup
+npx skills add scryorg/scry-node --skill scry-native-capture-setup
 ```
 
    The installer works with Claude Code, Codex and Cursor, and needs Node.js 22.20 or newer; see [Set up with AI](/guide/skill) for the details.

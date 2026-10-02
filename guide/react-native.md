@@ -2,7 +2,7 @@
 
 Capture your React Native app's screens and components and see them in Scry next to your web Storybook, in search, and in the MCP server. If your app has an on-device [Storybook](https://github.com/storybookjs/react-native), the Scry CLI drives it on a simulator or emulator, screenshots every story and uploads the result as a [capture source](/guide/capture-sources). React Native needs the least setup of the native paths: Scry has a built-in adapter, `capture rn`, so there is no capture script to write. This page walks through it with the sample app, [`scry-sample-rn`](https://github.com/scryorg/scry-sample-rn), a small coffee-order app called Kettle.
 
-**No source code of yours is uploaded.** Scry receives PNG screenshots and a small manifest. The sample app also sends a layout tree per screen (component names, text and positions), never source files, unless you pass `--include-source`, which this guide never does.
+**No source code of yours is uploaded.** Scry receives PNG screenshots and a small manifest. The sample app also sends a layout tree per screen (component names, text and positions), never source files.
 
 ## Before you start
 
@@ -202,17 +202,7 @@ If your app includes Scry's small, dev-only probe (the [sample app](https://gith
 
 ## What gets uploaded
 
-Each story becomes one image plus an entry in the bundle's manifest recording the platform, device, capture scale and where the story is defined in your code, the same fields a web Storybook capture records. By default, **no source code is included.**
-
-## Including source text (`--include-source`)
-
-Pass `--include-source` on the `upload` step to also copy each captured component's file into the bundle:
-
-```bash
-npx @scrymore/scry-deployer upload .scry/capture --project <id> --include-source
-```
-
-Without it, no source file ever leaves your CI: any source text already in the bundle is dropped before upload. When the flag is set, the CLI prints how many components' source text it included, so it's visible in your build log. Source text is used as extra context for visual diffs; see [Capture bundle format](/guide/capture-bundle-format#structure-trees-and-source-text-both-opt-in).
+Each story becomes one image plus an entry in the bundle's manifest recording the platform, device, capture scale and where the story is defined in your code, the same fields a web Storybook capture records. **No source code is included.**
 
 ## Troubleshooting
 
@@ -232,7 +222,7 @@ Without it, no source file ever leaves your CI: any source text already in the b
 
 ## Privacy and data
 
-Capture runs on your machine or your CI runner. The upload sends the PNG screenshots, `scf.json` (platform, device, capture scale, story ids and titles, and where each story is defined in your code), and, if your app includes the dev-only probe, a layout tree per screen. Source text is sent only if you pass `--include-source`. The sample app adds no analytics.
+Capture runs on your machine or your CI runner. The upload sends the PNG screenshots, `scf.json` (platform, device, capture scale, story ids and titles, and where each story is defined in your code), and, if your app includes the dev-only probe, a layout tree per screen. No source text is sent. The sample app adds no analytics.
 
 ## Feedback and support
 
@@ -241,7 +231,7 @@ Something broke or felt wrong? Tell us on the [feedback form](/feedback) or emai
 ## Changelog
 
 - **Native how-to rewrite** — this page now follows the same five steps as the other native guides, with a video for each step, the sample app's ready CI workflow, and a bare variant for trying capture setup on a clean copy.
-- **Earlier** — `capture rn` for iOS and Android, structure trees, the top-of-screen overlay check, `--include-source`.
+- **Earlier** — `capture rn` for iOS and Android, structure trees, the top-of-screen overlay check.
 
 <style>
 .step-video {
