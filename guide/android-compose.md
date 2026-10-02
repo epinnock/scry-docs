@@ -35,10 +35,11 @@ cd scry-sample-android
 ```
 
 ```bash verify
-./gradlew installDebug
+echo "sdk.dir=$ANDROID_HOME" > local.properties
+./gradlew :app:installDebug
 ```
 
-`installDebug` builds the debug app with the Gradle wrapper pinned in the repository and installs it on the running emulator. Open **Kettle** from the launcher; it starts on its Menu screen.
+The first line points Gradle at your Android SDK (the file is gitignored; `ANDROID_HOME` must be set). `:app:installDebug` builds the debug app with the Gradle wrapper pinned in the repository and installs it on the running emulator. Open **Kettle** from the launcher; it starts on its Menu screen.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/android-1-clone-and-run.mp4">
@@ -52,7 +53,7 @@ cd scry-sample-android
 Run the capture script. It opens each registered screen with an intent extra (`scry_screen=<id>`), takes a screenshot of it with `adb`, and writes a Scry Capture Format bundle to `.scry/capture`.
 
 ```bash verify
-./scripts/capture.sh
+bash scripts/capture.sh
 ```
 
 ```text expected
@@ -62,7 +63,7 @@ scf: 5/5 captured, 0 skipped -> .scry/capture
 The five captures are Menu, Item Detail, Order, Button and QuantityStepper. If a screen never reports that it is ready, the script says so (`capture: <id> never reported ready`), lists it under `counts.skipped` in the manifest and exits 1, so a half-captured run never looks successful.
 
 ::: tip Add one of your own screens
-Open `ScryScreens.kt` (under `app/src/main/java/`) and add one line to the registry: an `id`, a display `name`, the screen's source `file` and `line`, and the composable with its fixed data. Run `./scripts/capture.sh` again and the bundle holds six captures.
+Open `ScryScreens.kt` (under `app/src/debug/java/`, so it never ships in a release build) and add one line to the registry: an `id`, a display `name`, the screen's source `file` and `line`, and the composable with its fixed data. Add the matching entry to `scripts/screens.json`, which is the list the capture script reads. Run `bash scripts/capture.sh` again and the bundle holds six captures.
 
 The `id` is the screen's identity across builds. Use a route or type name, never a title a person might edit.
 :::
@@ -277,13 +278,13 @@ For another tool, or for a script of your own, the bundle format is documented o
   error IMAGE_HEADER_UNREADABLE [menu]: Could not read image dimensions from the header: images/menu.png
 ```
 
-`DUPLICATE_ID` means two entries in your screens list share an `id`: each screen needs its own. `IMAGE_HEADER_UNREADABLE` means a screenshot file is empty or cut short, which usually follows a capture that was interrupted: run `./scripts/capture.sh` again.
+`DUPLICATE_ID` means two entries in your screens list share an `id`: each screen needs its own. `IMAGE_HEADER_UNREADABLE` means a screenshot file is empty or cut short, which usually follows a capture that was interrupted: run `bash scripts/capture.sh` again.
 
 **`scf: 4/5 captured, 1 skipped` and exit code 1.** A screen never reported ready, so its image is missing. The capture script names it: `capture: <id> never reported ready`. Open that screen by hand with the launch extra, fix what blocks it (usually data that waits on the network, a sign-in, or a permission prompt), and capture again. `upload --dry-run` still says the bundle is valid with four captures, because the skipped screen is listed in the manifest, so do not treat a short count as success.
 
 **The build is in the Builds tab but has no screens yet.** Indexing runs after the upload: the CLI prints `Indexing has been queued, not finished` and the screens become searchable once the build is processed. Refresh the Builds tab in a minute.
 
-**A simulator or emulator problem.** The capture script uses `adb`: run `adb devices` to check that an emulator or device is listed as `device`, start an emulator, and run the script again. If you cannot get a device running, the skill stops and prints the exact commands for you to run instead of claiming a capture.
+**A simulator or emulator problem.** If the script prints `capture: adb not found (install Android platform-tools)`, install the Android platform-tools. Otherwise run `adb devices` to check that an emulator or device is listed as `device`, start an emulator, and run the script again. If you cannot get a device running, the skill stops and prints the exact commands for you to run instead of claiming a capture.
 
 For problems with the Scry CLI itself, see [Troubleshooting](/guide/troubleshooting).
 

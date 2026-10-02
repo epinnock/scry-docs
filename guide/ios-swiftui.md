@@ -283,7 +283,7 @@ For another tool, or for a script of your own, the bundle format is documented o
 
 **The build is in the Builds tab but has no screens yet.** Indexing runs after the upload: the CLI prints `Indexing has been queued, not finished` and the screens become searchable once the build is processed. Refresh the Builds tab in a minute.
 
-**A simulator or emulator problem.** The capture script uses `xcrun simctl`: run `xcrun simctl list devices` to see which devices exist and boot one named **iPhone 16**, or set the `DEVICE` environment variable to a device you have. If you cannot get a device running, the skill stops and prints the exact commands for you to run instead of claiming a capture.
+**A simulator or emulator problem.** If the script prints `capture: no simulator named "iPhone 16" found.`, install an iOS runtime in Xcode (Settings, Components), then run `xcrun simctl list devices available | grep -i iphone`, pick a name and run `DEVICE="<name>" ./scripts/capture.sh`. If it prints `capture produced 0 screens`, no screen reported ready: look at the lines above it. If you cannot get a device running, the skill stops and prints the exact commands for you to run instead of claiming a capture.
 
 For problems with the Scry CLI itself, see [Troubleshooting](/guide/troubleshooting).
 
