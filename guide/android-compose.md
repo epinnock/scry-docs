@@ -168,7 +168,7 @@ A native build has no Storybook behind it, so there is no "Open in Storybook" li
 
 ## Use it
 
-Once the build is indexed, its screens are searchable. This recording runs the same search the MCP server runs, for `quantity stepper`. The second result is the Android Item Detail screen, with a Source line naming its Kotlin file and line in your code; the response also carries its platform and source type.
+Once the build is indexed, its screens are searchable. This recording runs the same search the MCP server runs, for `quantity stepper`. A result from this build carries a Source line naming the Kotlin file and line in your code, plus its platform and source type; ranking depends on what else is in your project.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/android-6-search-and-mcp.mp4">
