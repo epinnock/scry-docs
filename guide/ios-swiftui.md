@@ -257,7 +257,7 @@ The sample app is the worked example of each piece. Copy them from `scry-sample-
 
 Wire the launch hook into your app's entry point so that a normal launch shows your usual first screen and only the capture argument selects a single screen.
 
-For another tool, or for a script of your own, the bundle format is documented on [Capture bundle format](/guide/capture-bundle-format), and the `scry-capture-format` repository carries an `AGENTS.md` written for coding agents: <https://github.com/scryorg/scry-capture-format>.
+For another tool, or for a script of your own, the bundle format is documented on [Capture bundle format](/guide/capture-bundle-format).
 </details>
 
 ## Troubleshooting
