@@ -6,7 +6,7 @@ Put the screens of your iOS, Android or React Native app in your Scry project. E
 
 **The fastest way to start with your own app is the Scry skill.** Install it, ask your AI coding assistant to "set up Scry capture for this app", and it wires your app for capture and checks the result. See [Set up with the Scry skill](#set-up-with-the-scry-skill) below.
 
-**No code of yours is uploaded.** Scry receives PNG screenshots and a small manifest, nothing else.
+**No code of yours is uploaded.** Scry receives PNG screenshots and a small manifest. React Native captures also include a layout tree per screen (component names, text and positions), never source files.
 
 ## The journey
 
@@ -52,7 +52,7 @@ Then ask your assistant:
 
 > Set up Scry capture for this app.
 
-The skill works with SwiftUI, Jetpack Compose and React Native apps. It asks only what it cannot find in your project, runs the capture and `upload --dry-run`, shows you the screenshots, and stops. **It never uploads, and never touches your API key, without your go.** The full description is on [Set up with AI](/guide/skill#native-app-capture); it is also described at the end of each platform page.
+The skill works with SwiftUI, Jetpack Compose and React Native apps. It asks only what it cannot find in your project. If a simulator or emulator is available where the assistant runs, it runs the capture and `upload --dry-run` and shows you the screenshots; otherwise it lists the commands for you to run on a Mac. Either way it stops before uploading. **It never uploads, and never touches your API key, without your go.** The full description is on [Set up with AI](/guide/skill#native-app-capture); it is also described at the end of each platform page.
 
 If you would rather start from a working example, clone a sample app: `scry-sample-ios` (SwiftUI), `scry-sample-android` (Compose) or `scry-sample-rn` (React Native). Each platform page walks through its sample, step by step, with a short video for each step.
 
@@ -68,7 +68,7 @@ For the Scry CLI in general, see [Troubleshooting](/guide/troubleshooting).
 
 ## Privacy and data
 
-An upload sends the PNG screenshots and the `scf.json` manifest, plus the commit SHA and branch the upload is run from. The manifest lists each screen's id and name, the device it was captured on, and the source file path and line you registered for it. No source text is uploaded: `--include-source` is off by default and none of these pages use it. Details are on each platform page.
+An upload sends the PNG screenshots and the `scf.json` manifest (for React Native, also a layout tree per screen), plus the commit SHA and branch the upload is run from. The manifest lists each screen's id and name, the device it was captured on, and the source file path and line you registered for it. No source text is uploaded: `--include-source` is off by default and none of these pages use it. Details are on each platform page.
 
 ## Feedback and support
 

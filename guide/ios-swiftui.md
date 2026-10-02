@@ -27,7 +27,7 @@ In the [dashboard](https://dashboard.scrymore.com), open your project, then **Se
 
 ## 1. Get the sample app
 
-Clone the Kettle sample, a small coffee-order app with three screens (Menu, Item Detail, Order) and two components (Button, QuantityStepper). Open it in Xcode and run it once on the iPhone 16 simulator, so you see what Scry will capture.
+Clone the Kettle sample app, a small coffee-order app with three screens and two components. Build it with xcodebuild, then boot the iPhone 16 simulator, install the app and launch it with xcrun simctl. Kettle opens on its Menu screen, which is what Scry will capture.
 
 ```bash verify
 git clone https://github.com/scryorg/scry-sample-ios.git
@@ -35,31 +35,48 @@ cd scry-sample-ios
 ```
 
 ```bash
-open Kettle.xcodeproj
+xcodebuild -scheme Kettle -destination "platform=iOS Simulator,name=iPhone 16" -derivedDataPath .build build | tail -n 2
+xcrun simctl bootstatus "iPhone 16" -b | tail -n 2
+xcrun simctl install "iPhone 16" .build/Build/Products/Debug-iphonesimulator/Kettle.app
+xcrun simctl launch "iPhone 16" com.scryorg.kettle
 ```
 
-In Xcode, choose the **iPhone 16** simulator and press **Run** (⌘R). Kettle opens on its Menu screen.
+`xcodebuild` ends with `** BUILD SUCCEEDED **`, `bootstatus` boots the simulator if it is not running and ends with `Finished`, and `launch` prints the app's bundle id and a process id. The screens are Menu, Item Detail and Order; the components are Button and QuantityStepper.
+
+If you prefer Xcode, open `Kettle.xcodeproj`, choose the **iPhone 16** simulator and press **Run** (⌘R). The video does not show this route.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/ios-1-clone-and-run.mp4">
     <track kind="captions" src="/videos/ios-1-clone-and-run.vtt" srclang="en" default>
   </video>
-  <figcaption>Step 1 — cloning the sample and running it on the iPhone 16 simulator.</figcaption>
+  <figcaption>Step 1 — cloning the sample, building it and launching it on the iPhone 16 simulator from the terminal.</figcaption>
 </figure>
 
 ## 2. Capture your screens
 
-Run the capture script. It boots the simulator, opens each registered screen by launch argument (`-ScryScreen <id>`), takes a screenshot of it, and writes a Scry Capture Format bundle to `.scry/capture`.
+Run the capture script. It builds Kettle, boots the simulator, installs the app, then opens each registered screen by launch argument and takes a screenshot of it. When it finishes, `.scry/capture` holds one image per screen and a small manifest file.
 
 ```bash verify
 ./scripts/capture.sh
 ```
 
 ```text expected
+capture: simulator {{*}} ({{*}})
+capture: building Kettle (Debug)...
+capture: menu ok
+capture: item-detail ok
+capture: order ok
+capture: button ok
+capture: quantity-stepper ok
 scf: 5/5 captured, 0 skipped -> .scry/capture
+capture: bundle written to .scry/capture. Next: npx @scrymore/scry-deployer upload .scry/capture --dry-run
 ```
 
-The five captures are Menu, Item Detail, Order, Button and QuantityStepper. If a screen never reports that it is ready, the script says so (`capture: <id> never reported ready`), lists it under `counts.skipped` in the manifest and exits 1, so a half-captured run never looks successful.
+```bash verify
+ls .scry/capture .scry/capture/images
+```
+
+In the expected output, a placeholder in double braces stands for a number or for any text. The script picks the simulator named `iPhone 16`; set `DEVICE` to use another. The launch argument is `-ScryScreen <id>`, and the bundle is a Scry Capture Format bundle. The five captures are Menu, Item Detail, Order, Button and QuantityStepper. If a screen never reports that it is ready, the script says so (`capture: <id> never reported ready`), lists it under `counts.skipped` in the manifest and exits 1, so a half-captured run never looks successful.
 
 ::: tip Add one of your own screens
 Open `Kettle/ScryScreens.swift` and add one line to the registry: an `id`, a display `name`, the screen's source `file` and `line`, and the view with its fixed data. Run `./scripts/capture.sh` again and the bundle holds six captures.
@@ -76,7 +93,7 @@ The `id` is the screen's identity across builds. Use a route or type name, never
 
 ## 3. Check the bundle
 
-Check the bundle before you send anything. `--dry-run` validates the bundle with the same validator the upload uses and stops there: nothing leaves your machine and no key is needed.
+Check the bundle before you send anything. Run the upload command with the dry-run flag. It validates the bundle with the same validator the real upload uses, then stops. Nothing leaves your machine, and no key is needed.
 
 ```bash verify
 npx @scrymore/scry-deployer upload .scry/capture --dry-run
@@ -85,7 +102,7 @@ npx @scrymore/scry-deployer upload .scry/capture --dry-run
 ```text expected
 Validating .scry/capture ...
 ✅ Bundle valid: 5 captures, source swiftui-preview:ios.
-Dry run: not uploading. Bundle ZIP: <path>
+Dry run: not uploading. Bundle ZIP: {{*}}
 ```
 
 The source line comes from the manifest: `swiftui-preview:ios` is how Scry knows this is SwiftUI on iOS. A rejected bundle prints every problem with its code (see [Troubleshooting](#troubleshooting)).
@@ -103,7 +120,7 @@ The validator accepts a bundle that is missing screens, because the manifest lis
 
 ## 4. Upload
 
-Upload it. Set your project id and API key in the environment, then run the same command without `--dry-run`. The CLI prints the build number when the bundle is stored.
+Now upload. Set your project id and API key as environment variables, then run the same command without the dry-run flag. It validates the bundle again, stores it, and prints the build number once the upload is queued for indexing.
 
 ```bash
 export SCRY_PROJECT_ID=proj_xxxxxxxx
@@ -119,8 +136,10 @@ npx @scrymore/scry-deployer upload .scry/capture
 ```text expected
 Validating .scry/capture ...
 ✅ Bundle valid: 5 captures, source swiftui-preview:ios.
-Bundle stored (<size>, build #N).
-✅ Bundle uploaded (build #N).
+Bundle stored ({{*}}, build #{{n}}).
+Bundle complete: attempt 1/3, {{*}}, timeout {{n}} s...
+Bundle complete: sent {{*}} in {{*}} s (attempt 1/3).
+✅ Bundle uploaded (build #{{n}}).
 ⏳ Indexing has been queued, not finished. Components are searchable once the build shows processingStatus "completed".
 ```
 
@@ -228,7 +247,7 @@ npx skills add epinnock/scry-node --skill scry-native-capture-setup
    - `scripts/capture.sh` and `scripts/make-scf.mjs`;
    - optionally, the CI workflow.
 
-3. **It checks its own work.** The skill runs `capture.sh` and `upload --dry-run`, and shows you the screenshots. It never uploads, and never touches your API key, without your go.
+3. **It checks its own work when it can.** If a simulator is available where the assistant runs, it runs `capture.sh` and `upload --dry-run` and shows you the screenshots; otherwise it lists the commands for you to run on a Mac. It never uploads, and never touches your API key, without your go.
 
 4. **Tools needed on the machine or runner:** Xcode with an iOS Simulator runtime, Node.js, and the Scry CLI (`npx @scrymore/scry-deployer`).
 

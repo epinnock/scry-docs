@@ -14,7 +14,7 @@ Capture your React Native app's screens and components and see them in Scry next
 
 ## 1. Get the sample app
 
-Clone the sample, install, and run it on an emulator or simulator:
+Clone the Scry sample app, scry-sample-rn, a small coffee-order app called Kettle. Run npm install, then npm run android, or npm run ios on a Mac. The app opens on the Kettle Menu screen. The same code holds 21 Storybook stories, and those are what Scry captures.
 
 ```bash verify
 git clone https://github.com/scryorg/scry-sample-rn.git
@@ -26,24 +26,32 @@ npm install
 npm run android        # or: npm run ios
 ```
 
-The app opens on the Kettle Menu screen. The same code also contains 21 Storybook stories <!-- TODO count --> (three screens plus the Button, MenuItem and QuantityStepper components, with variants), which is what Scry captures.
+`npm install` prints a number of `npm warn ERESOLVE overriding peer dependency` lines (the React and React DOM versions in Storybook's dependencies) and a couple of deprecation warnings. They are harmless; the install ends with a line like `added 729 packages`, and the video shows only that last line. `npm run android` needs `JAVA_HOME` (JDK 17) and `ANDROID_HOME`; the first run generates the native project and runs Gradle, which takes a few minutes, then installs the app and opens it. The 21 stories are the three screens plus the Button, MenuItem and QuantityStepper components, with variants.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/rn-1-clone-and-run.mp4">
     <track kind="captions" src="/videos/rn-1-clone-and-run.vtt" srclang="en" default>
   </video>
-  <figcaption>Step 1 — cloning the sample app and running it on an emulator.</figcaption>
+  <figcaption>Step 1 — cloning the sample app, installing it and running it on an emulator.</figcaption>
 </figure>
 
 ## 2. Capture your screens
 
-With the emulator or simulator booted and the app installed, run the capture command:
+With the emulator booted and the app installed, run the capture rn command with the platform and device. It starts Metro in Storybook mode, opens each story, screenshots it, and writes a bundle to `.scry/capture`. It ends by reporting how many stories were captured and how many were skipped.
 
 ```bash verify
 npx @scrymore/scry-deployer capture rn --platform android --device Pixel_6_API_34
 ```
 
-On iOS, use `--platform ios --device "iPhone 16"`, and add `--app-id host.exp.Exponent --open-url exp://127.0.0.1:8081` to run the app inside Expo Go on the simulator. The command starts Metro in Storybook mode, opens each story in turn, screenshots it and writes the result to `.scry/capture/`. It finishes with a line like `21 of 21 stories captured, 0 skipped. Bundle: .scry/capture`.
+```text expected
+Capturing {{n}} stories on {{*}} ...
+{{n}} of {{n}} stories captured, {{n}} skipped. Bundle: {{*}}/.scry/capture
+✅ Valid SCF bundle. Upload it with: scry upload .scry/capture --project {{*}}
+```
+
+In the expected output, a placeholder in double braces stands for a number or for any text. The command first prints the device it found, then one `✓` line per story, then the summary line, which names the absolute path of the bundle directory. Capturing 21 stories took about two minutes on a software-rendered emulator, and the video shows it sped up.
+
+On iOS, use `--platform ios --device "iPhone 16"`, and add `--app-id host.exp.Exponent --open-url exp://127.0.0.1:8081` to run the app inside Expo Go on the simulator. The bundle is written to `.scry/capture/`.
 
 ::: tip Capture only some stories
 Add `--stories components-button--primary,screens-menu--default` to capture a few stories while you work, or `--out <dir>` to write the bundle somewhere else.
@@ -58,7 +66,7 @@ Add `--stories components-button--primary,screens-menu--default` to capture a fe
 
 ## 3. Check the bundle
 
-Validate the bundle before you upload it:
+Before uploading, check the bundle: run the upload command on `.scry/capture` with the dry-run flag. It validates the bundle and zips it locally. Nothing is sent, and no API key is needed. A good bundle prints Bundle valid with the number of captures.
 
 ```bash verify
 npx @scrymore/scry-deployer upload .scry/capture --dry-run
@@ -70,7 +78,7 @@ Validating .scry/capture ...
 Dry run: not uploading. Bundle ZIP: {{*}}
 ```
 
-This checks the bundle against the [Scry Capture Format](/guide/capture-bundle-format) and zips it locally. Nothing is sent and no API key is needed. A good bundle ends with `Bundle valid: 21 captures, source storybook-rn:android.` <!-- TODO count --> followed by `Dry run: not uploading.` Open a few images in `.scry/capture/images/` to check them by eye. If a story was skipped, the capture step printed why; fix the story rather than filtering it out.
+This checks the bundle against the [Scry Capture Format](/guide/capture-bundle-format). A good bundle prints `Bundle valid: 21 captures, source storybook-rn:android.` and then `Dry run: not uploading.`, followed by the path of the zip it made. Open a few images in `.scry/capture/images/` to check them by eye. If a story was skipped, the capture step printed why; fix the story rather than filtering it out.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/rn-3-validate.mp4">
@@ -81,7 +89,7 @@ This checks the bundle against the [Scry Capture Format](/guide/capture-bundle-f
 
 ## 4. Upload
 
-Set your project id and API key, then upload:
+Set your project id and your project API key as environment variables, then run the same upload command without the dry-run flag. Only the manifest, the screenshots and a layout tree for each screen are sent, never your source code. When the upload is accepted, the command prints the build number. The key shown here is a placeholder.
 
 ```bash
 export SCRY_PROJECT_ID=proj_xxxxxxxx
@@ -95,10 +103,14 @@ npx @scrymore/scry-deployer upload .scry/capture
 ```text expected
 Validating .scry/capture ...
 ✅ Bundle valid: {{n}} captures, source storybook-rn:android.
+Bundle stored ({{*}}, build #{{n}}).
+Bundle complete: attempt 1/3, {{*}}, timeout {{n}} s...
+Bundle complete: sent {{*}} in {{*}} s (attempt 1/3).
 ✅ Bundle uploaded (build #{{n}}).
+⏳ Indexing has been queued, not finished. Components are searchable once the build shows processingStatus "completed".
 ```
 
-The command prints the build number when the upload is accepted. Only `scf.json` and the images are sent.
+The layout trees are the `structure/` folder next to `scf.json` and `images/` in the bundle: component names, text and positions. Replace both placeholders with the values from your project.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/rn-4-upload.mp4">
@@ -140,7 +152,7 @@ The sample app ships a ready workflow, `.github/workflows/scry-capture.yml`, whi
 
 **Start from the sample.** Change the app id in `app.json`, replace or add stories under `src/`, and set your project id and API key.
 
-**Set up your own app.** If you already have a React Native app, the easiest path is the Scry skill: install it (see [Set up Scry with your AI assistant](/guide/skill)), then ask your assistant "set up Scry capture for this app". It checks for on-device Storybook, adds the capture mode and test ids the sample has, runs `capture rn` and `upload --dry-run`, shows you the screenshots, and stops before uploading. To do it by hand, copy `src/capture.ts` and `.rnstorybook/preview.tsx` from the sample and give each story root `testID="scry-root"`. The sample's `scripts/make-bare.sh <dest>` writes the same app without any Scry setup if you want to try this on a clean copy.
+**Set up your own app.** If you already have a React Native app, the easiest path is the Scry skill: install it (see [Set up Scry with your AI assistant](/guide/skill)), then ask your assistant "set up Scry capture for this app". It checks for on-device Storybook and adds the capture mode and test ids the sample has. If a simulator or emulator is available where the assistant runs, it runs `capture rn` and `upload --dry-run` and shows you the screenshots; otherwise it lists the commands for you to run. It stops before uploading. To do it by hand, copy `src/capture.ts` and `.rnstorybook/preview.tsx` from the sample and give each story root `testID="scry-root"`. The sample's `scripts/make-bare.sh <dest>` writes the same app without any Scry setup if you want to try this on a clean copy.
 
 ## What the command does
 

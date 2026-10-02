@@ -27,7 +27,7 @@ In the [dashboard](https://dashboard.scrymore.com), open your project, then **Se
 
 ## 1. Get the sample app
 
-Clone the Kettle sample, a small coffee-order app with three screens (Menu, Item Detail, Order) and two components (Button, QuantityStepper). Build it, install it on a running emulator, and open it once to see what Scry will capture.
+Clone the Kettle sample app, a small coffee-order app with three screens and two components. Build it with the Gradle wrapper and install it on a running emulator, then start it with adb. Kettle opens on its Menu screen, which is what Scry will capture.
 
 ```bash verify
 git clone https://github.com/scryorg/scry-sample-android.git
@@ -37,30 +37,42 @@ cd scry-sample-android
 ```bash verify
 echo "sdk.dir=$ANDROID_HOME" > local.properties
 ./gradlew :app:installDebug
+adb shell am start -n com.scrymore.kettle/.MainActivity
 ```
 
-The first line points Gradle at your Android SDK (the file is gitignored; `ANDROID_HOME` must be set). `:app:installDebug` builds the debug app with the Gradle wrapper pinned in the repository and installs it on the running emulator. Open **Kettle** from the launcher; it starts on its Menu screen.
+The first line points Gradle at your Android SDK (the file is gitignored; `ANDROID_HOME` must be set). `:app:installDebug` builds the debug app with the Gradle wrapper pinned in the repository and installs it on the running emulator and ends with `BUILD SUCCESSFUL`. The last line starts the app and prints `Starting: Intent { cmp=com.scrymore.kettle/.MainActivity }`. The screens are Menu, Item Detail and Order; the components are Button and QuantityStepper.
+
+You can also open **Kettle** from the launcher icon instead of running the last command.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/android-1-clone-and-run.mp4">
     <track kind="captions" src="/videos/android-1-clone-and-run.vtt" srclang="en" default>
   </video>
-  <figcaption>Step 1 — cloning the sample and running it on an emulator.</figcaption>
+  <figcaption>Step 1 — cloning the sample, building it and starting it on an emulator.</figcaption>
 </figure>
 
 ## 2. Capture your screens
 
-Run the capture script. It opens each registered screen with an intent extra (`scry_screen=<id>`), takes a screenshot of it with `adb`, and writes a Scry Capture Format bundle to `.scry/capture`.
+Run the capture script. It starts the app once for each registered screen, passing the screen id as an intent extra, and takes a screenshot with adb. When it finishes, `.scry/capture` holds one image per screen and a small manifest file.
 
 ```bash verify
 bash scripts/capture.sh
 ```
 
 ```text expected
+capture: screens-menu ok ({{n}} bytes)
+capture: screens-item-detail ok ({{n}} bytes)
+capture: screens-order ok ({{n}} bytes)
+capture: components-button ok ({{n}} bytes)
+capture: components-quantity-stepper ok ({{n}} bytes)
 scf: 5/5 captured, 0 skipped -> .scry/capture
 ```
 
-The five captures are Menu, Item Detail, Order, Button and QuantityStepper. If a screen never reports that it is ready, the script says so (`capture: <id> never reported ready`), lists it under `counts.skipped` in the manifest and exits 1, so a half-captured run never looks successful.
+```bash verify
+ls .scry/capture .scry/capture/images
+```
+
+In the expected output, a placeholder in double braces stands for a number. The intent extra is `scry_screen`, and the bundle is a Scry Capture Format bundle. The five captures are Menu, Item Detail, Order, Button and QuantityStepper. If a screen never reports that it is ready, the script says so (`capture: <id> never reported ready`), lists it under `counts.skipped` in the manifest and exits 1, so a half-captured run never looks successful.
 
 ::: tip Add one of your own screens
 Open `ScryScreens.kt` (under `app/src/debug/java/`, so it never ships in a release build) and add one line to the registry: an `id`, a display `name`, the screen's source `file` and `line`, and the composable with its fixed data. Add the matching entry to `scripts/screens.json`, which is the list the capture script reads. Run `bash scripts/capture.sh` again and the bundle holds six captures.
@@ -77,7 +89,7 @@ The `id` is the screen's identity across builds. Use a route or type name, never
 
 ## 3. Check the bundle
 
-Check the bundle before you send anything. `--dry-run` validates the bundle with the same validator the upload uses and stops there: nothing leaves your machine and no key is needed.
+Check the bundle before you send anything. Run the upload command with the dry-run flag. It validates the bundle with the same validator the real upload uses, then stops. Nothing leaves your machine, and no key is needed.
 
 ```bash verify
 npx @scrymore/scry-deployer upload .scry/capture --dry-run
@@ -86,7 +98,7 @@ npx @scrymore/scry-deployer upload .scry/capture --dry-run
 ```text expected
 Validating .scry/capture ...
 ✅ Bundle valid: 5 captures, source compose-preview:android.
-Dry run: not uploading. Bundle ZIP: <path>
+Dry run: not uploading. Bundle ZIP: {{*}}
 ```
 
 The source line comes from the manifest: `compose-preview:android` is how Scry knows this is Compose on Android. A rejected bundle prints every problem with its code (see [Troubleshooting](#troubleshooting)).
@@ -104,7 +116,7 @@ The validator accepts a bundle that is missing screens, because the manifest lis
 
 ## 4. Upload
 
-Upload it. Set your project id and API key in the environment, then run the same command without `--dry-run`. The CLI prints the build number when the bundle is stored.
+Now upload. Set your project id and API key as environment variables, then run the same command without the dry-run flag. It validates the bundle again, stores it, and prints the build number once the upload is queued for indexing.
 
 ```bash
 export SCRY_PROJECT_ID=proj_xxxxxxxx
@@ -120,8 +132,10 @@ npx @scrymore/scry-deployer upload .scry/capture
 ```text expected
 Validating .scry/capture ...
 ✅ Bundle valid: 5 captures, source compose-preview:android.
-Bundle stored (<size>, build #N).
-✅ Bundle uploaded (build #N).
+Bundle stored ({{*}}, build #{{n}}).
+Bundle complete: attempt 1/3, {{*}}, timeout {{n}} s...
+Bundle complete: sent {{*}} in {{*}} s (attempt 1/3).
+✅ Bundle uploaded (build #{{n}}).
 ⏳ Indexing has been queued, not finished. Components are searchable once the build shows processingStatus "completed".
 ```
 
@@ -229,7 +243,7 @@ npx skills add epinnock/scry-node --skill scry-native-capture-setup
    - `scripts/capture.sh` and `scripts/make-scf.mjs`;
    - optionally, the CI workflow.
 
-3. **It checks its own work.** The skill runs `capture.sh` and `upload --dry-run`, and shows you the screenshots. It never uploads, and never touches your API key, without your go.
+3. **It checks its own work when it can.** If an emulator is available where the assistant runs, it runs `capture.sh` and `upload --dry-run` and shows you the screenshots; otherwise it lists the commands for you to run. It never uploads, and never touches your API key, without your go.
 
 4. **Tools needed on the machine or runner:** JDK 17, the Android SDK with an emulator, Node.js, and the Scry CLI (`npx @scrymore/scry-deployer`).
 

@@ -127,13 +127,13 @@ For MCP login or empty-search problems, see [MCP troubleshooting](/guide/mcp#tro
 
 ## Native app capture
 
-The `scry-setup` skill above covers Storybook on the web. A second skill, `scry-native-capture-setup`, sets up an iOS (SwiftUI), Android (Jetpack Compose) or React Native app so that Scry can capture its screens. Install it from your app's repository:
+Install the Scry native capture skill with npx skills add, then ask your assistant to set up Scry capture. It adds the launch hook, screen registry and capture scripts. With a simulator or emulator available, it runs the capture and a dry run. Otherwise it hands you the commands to run on a Mac. It never uploads without your go.
 
 ```bash
 npx skills add epinnock/scry-node --skill scry-native-capture-setup
 ```
 
-The `--agent` choices and the Node.js 22.20 installer requirement are the same as for `scry-setup`. Then ask your assistant:
+The `scry-setup` skill above covers Storybook on the web. This second skill, `scry-native-capture-setup`, sets up an iOS (SwiftUI), Android (Jetpack Compose) or React Native app so that Scry can capture its screens. Install it from your app's repository. The `--agent` choices and the Node.js 22.20 installer requirement are the same as for `scry-setup`. Then ask your assistant:
 
 > Set up Scry capture for this app.
 
@@ -141,7 +141,7 @@ The `--agent` choices and the Node.js 22.20 installer requirement are the same a
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/skill-setup.mp4">
     <track kind="captions" src="/videos/skill-setup.vtt" srclang="en" default>
   </video>
-  <figcaption>The skill setting up a bare app for capture.</figcaption>
+  <figcaption>The skill setting up a bare app for capture. The assistant in the video ran where no simulator was available, so it handed over the commands, which are then run on a Mac.</figcaption>
 </figure>
 
 ### What the skill adds to your app
