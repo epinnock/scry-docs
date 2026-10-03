@@ -84,6 +84,19 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Scry Sync (desktop app)',
+          items: [
+            { text: 'Overview', link: '/guide/scry-sync/' },
+            { text: 'Install and First Run', link: '/guide/scry-sync/install' },
+            { text: 'Connect a Folder', link: '/guide/scry-sync/connect-a-folder' },
+            { text: 'What Gets Converted', link: '/guide/scry-sync/what-gets-converted' },
+            { text: 'Export an InDesign File to PDF', link: '/guide/scry-sync/export-indd-pdf' },
+            { text: 'Disconnect a Device', link: '/guide/scry-sync/disconnect' },
+            { text: 'What Scry Sync Collects', link: '/guide/scry-sync/privacy' },
+            { text: 'Scry Sync Troubleshooting', link: '/guide/scry-sync/troubleshooting' },
+          ]
+        },
+        {
           text: 'Help',
           items: [
             { text: 'How Credits Work', link: '/guide/credits' },

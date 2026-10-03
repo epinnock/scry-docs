@@ -1,12 +1,13 @@
 ---
 title: Feedback
-description: Tell us what broke in the Scry Figma plugin or the Scry CLI.
+description: Tell us what broke in Scry Sync, the Scry Figma plugin or the Scry CLI.
 editLink: false
 lastUpdated: false
 ---
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { parseFeedbackParams, isValidRef } from './.vitepress/lib/feedback-params.js'
 
 const ENDPOINT = 'https://scry-feedback.epinnock.workers.dev/submit'
 const SUPPORT_EMAIL = 'feedback@scrymore.com'
@@ -18,6 +19,7 @@ const form = ref({
   q4_tools: '',
   q5_would_miss: '',
   email: '',
+  ref: '', // optional: the short code Scry Sync shows next to a problem
   website: '', // honeypot, hidden from people
 })
 
@@ -27,12 +29,16 @@ const source = ref('docs')
 const pluginVersion = ref('')
 
 onMounted(() => {
-  // The plugin links here as /feedback?src=plugin-footer&v=1.4.0, so a reply
-  // can be traced back to the surface and build it came from.
-  const params = new URLSearchParams(window.location.search)
-  source.value = (params.get('src') || 'docs').slice(0, 40)
-  pluginVersion.value = (params.get('v') || '').slice(0, 40)
+  // Surfaces link here as /feedback?src=plugin-footer&v=1.4.0 (Scry Sync adds &ref=<code>), so a
+  // reply can be traced back to the surface and build it came from. Anything that does not fit the
+  // expected shape is ignored; the Worker checks it again.
+  const params = parseFeedbackParams(window.location.search)
+  source.value = params.source
+  pluginVersion.value = params.version
+  form.value.ref = params.ref
 })
+
+const refInvalid = () => Boolean(form.value.ref.trim()) && !isValidRef(form.value.ref)
 
 const answered = () =>
   Boolean(
@@ -50,6 +56,11 @@ async function submit() {
     state.value = 'error'
     return
   }
+  if (refInvalid()) {
+    error.value = 'The reference code can only have letters, numbers, - and _ (up to 32 characters).'
+    state.value = 'error'
+    return
+  }
   state.value = 'sending'
   error.value = ''
   try {
@@ -58,6 +69,7 @@ async function submit() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         ...form.value,
+        ref: form.value.ref.trim(),
         source: source.value,
         plugin_version: pluginVersion.value,
       }),
@@ -120,6 +132,11 @@ question 3 is the one I care about most.
   <label class="scry-field">
     <span class="scry-q">Your email — optional, only if you're open to a 15-minute call</span>
     <input v-model="form.email" type="email" placeholder="you@company.com" />
+  </label>
+
+  <label class="scry-field">
+    <span class="scry-q">Reference code — optional, from Scry Sync's "Copy details"</span>
+    <input v-model="form.ref" type="text" maxlength="32" autocomplete="off" spellcheck="false" placeholder="e.g. a1b2c3d4" />
   </label>
 
   <!-- Honeypot: hidden from people, catnip for bots. -->
