@@ -29,7 +29,9 @@ The row gives the reason and the fix, and every reason is listed in [What gets c
 
 ## A HEIC photo isn't syncing
 
-HEIC photos aren't supported yet, on Mac or Windows. The row says so and nothing else is affected. Export it as a JPEG or PNG and put that in the folder. The next sync picks it up.
+HEIC photos aren't supported yet. This is the same on Mac and Windows. The row says so and nothing else is affected. Export it as a JPEG or PNG and put that in the folder. The next sync picks it up.
+
+The row stays until the HEIC file is moved out of the folder or deleted. Adding a JPEG next to it is not enough. Once the HEIC file is gone, the row clears.
 
 ## "This folder is too big"
 
