@@ -2,6 +2,8 @@
 
 The server registers five tools. All of them run as the authenticated user, and every search is filtered to the projects that user can read.
 
+It also registers six issue-resolution tools (`list_design_issues`, `get_design_issue`, `claim_design_issue`, `mark_design_issue_fixed`, `request_verify`, `comment_design_issue`). They call the dashboard's `/api/agent/issues/*` routes, which check membership and role. See [Agents: resolving issues over MCP](/guide/mcp-issues).
+
 ## `search_components`
 
 Text search over the component index, combining semantic (dense vector) and keyword (BM25 sparse) matching.
