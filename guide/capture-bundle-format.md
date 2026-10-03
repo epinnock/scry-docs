@@ -118,6 +118,8 @@ value outside its set — a `source.platform`, `capture.method`, `capture.crop`,
 misfiled later. An image whose header is cut off is `IMAGE_HEADER_UNREADABLE` both locally and on
 upload.
 
+Two more codes you may meet when a bundle folder holds more than the manifest names: `STRUCTURE_PATH_INVALID` (a capture's `structure.file` is not a `.json` path under `structure/`; fix the path or drop the `structure` entry) and `FORBIDDEN_MEMBER` (a file in the bundle that no capture refers to, such as a stray `structure/evil.html`; delete it). They usually appear together: `error FORBIDDEN_MEMBER [structure/evil.html]: Bundle member is not referenced by any capture: structure/evil.html`.
+
 ## Writing your own adapter
 
 An **adapter** is any program that writes an SCF bundle. If you use a tool Scry has no built-in

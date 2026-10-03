@@ -282,14 +282,16 @@ For another tool, or for a script of your own, the bundle format is documented o
 
 **`❌ --project is required to upload.`** `SCRY_PROJECT_ID` is not set and no `--project` was passed. `--dry-run` works without it; a real upload does not.
 
-**`❌ The bundle was rejected by the Scry Capture Format validator. Nothing was uploaded.`** The lines below it name the problem and its code. Two you may meet:
+**`❌ The bundle was rejected by the Scry Capture Format validator. Nothing was uploaded.`** The lines below it name the problem and its code. Four you may meet:
 
 ```text
   error DUPLICATE_ID [menu]: Duplicate capture id (2×): menu
   error IMAGE_HEADER_UNREADABLE [menu]: Could not read image dimensions from the header: images/menu.png
+  error STRUCTURE_PATH_INVALID [Screens/Home--Default]: structure.file must be a .json path under structure/: structure/evil.html
+  error FORBIDDEN_MEMBER [structure/evil.html]: Bundle member is not referenced by any capture: structure/evil.html
 ```
 
-`DUPLICATE_ID` means two entries in your screens list share an `id`: each screen needs its own. `IMAGE_HEADER_UNREADABLE` means a screenshot file is empty or cut short, which usually follows a capture that was interrupted: run `bash scripts/capture.sh` again.
+`DUPLICATE_ID` means two entries in your screens list share an `id`: each screen needs its own. `IMAGE_HEADER_UNREADABLE` means a screenshot file is empty or cut short, which usually follows a capture that was interrupted: run `bash scripts/capture.sh` again. `STRUCTURE_PATH_INVALID` means a capture's `structure.file` points at something that is not a `.json` file under `structure/` (an `.html` file, for example): point it at the structure tree your adapter wrote, or drop the `structure` entry. `FORBIDDEN_MEMBER` means the bundle holds a file that no capture refers to (here the stray `structure/evil.html`): delete the extra file from the bundle folder and run the capture again, so the folder holds only `scf.json`, the images and the files the manifest names.
 
 **`scf: 4/5 captured, 1 skipped` and exit code 1.** A screen never reported ready, so its image is missing. The capture script names it: `capture: <id> never reported ready`. Open that screen by hand with the launch extra, fix what blocks it (usually data that waits on the network, a sign-in, or a permission prompt), and capture again. `upload --dry-run` still says the bundle is valid with four captures, because the skipped screen is listed in the manifest, so do not treat a short count as success.
 
