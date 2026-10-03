@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.202
+Now upload.
+
+2
+00:00:01.252 --> 00:00:05.485
+Set your project id and API key as environment variables,
+
+3
+00:00:05.535 --> 00:00:09.372
+then run the same command without the dry-run flag.
+
+4
+00:00:09.422 --> 00:00:12.600
+It validates the bundle again, stores it,
+
+5
+00:00:12.650 --> 00:00:17.592
+and prints the build number once the upload is queued for indexing.
+

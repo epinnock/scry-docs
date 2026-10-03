@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.687
+Clone the Kettle sample app,
+
+2
+00:00:02.737 --> 00:00:08.085
+a small coffee-order app with three screens and two components.
+
+3
+00:00:08.135 --> 00:00:13.255
+Build it with xcodebuild, then boot the iPhone 16 simulator,
+
+4
+00:00:13.305 --> 00:00:17.512
+install the app and launch it with xcrun simctl.
+
+5
+00:00:17.562 --> 00:00:23.112
+Kettle opens on its Menu screen, which is what Scry will capture.
+

@@ -1,0 +1,18 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.361
+Once the build is indexed, its screens are searchable.
+
+2
+00:00:04.411 --> 00:00:10.480
+This recording runs the same search the MCP server runs, for quantity stepper.
+
+3
+00:00:10.530 --> 00:00:17.595
+A result from this build carries a Source line naming the Kotlin file and line in your code,
+
+4
+00:00:17.645 --> 00:00:24.120
+plus its platform and source type; ranking depends on what else is in your project.
+

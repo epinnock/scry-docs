@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.415
+Run the capture script.
+
+2
+00:00:02.465 --> 00:00:07.028
+It starts the app once for each registered screen,
+
+3
+00:00:07.078 --> 00:00:13.549
+passing the screen id as an intent extra, and takes a screenshot with adb.
+
+4
+00:00:13.599 --> 00:00:15.537
+When it finishes,
+
+5
+00:00:15.587 --> 00:00:21.552
+.scry/capture holds one image per screen and a small manifest file.
+

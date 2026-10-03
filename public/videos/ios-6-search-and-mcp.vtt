@@ -1,0 +1,18 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.445
+Once the build is indexed, its screens are searchable.
+
+2
+00:00:04.495 --> 00:00:10.680
+This recording runs the same search the MCP server runs, for quantity stepper.
+
+3
+00:00:10.730 --> 00:00:17.857
+A result from this build carries a Source line naming the Swift file and line in your code,
+
+4
+00:00:17.907 --> 00:00:24.504
+plus its platform and source type; ranking depends on what else is in your project.
+

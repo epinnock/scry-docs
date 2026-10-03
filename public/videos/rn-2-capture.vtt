@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.040
+With the emulator booted and the app installed,
+
+2
+00:00:04.090 --> 00:00:08.798
+run the capture rn command with the platform and device.
+
+3
+00:00:08.848 --> 00:00:14.449
+It starts Metro in Storybook mode, opens each story, screenshots it,
+
+4
+00:00:14.499 --> 00:00:17.795
+and writes a bundle to .scry/capture.
+
+5
+00:00:17.845 --> 00:00:24.240
+It ends by reporting how many stories were captured and how many were skipped.
+

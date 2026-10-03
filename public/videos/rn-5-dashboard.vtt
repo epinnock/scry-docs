@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.562
+Open your project in the Scry dashboard.
+
+2
+00:00:03.612 --> 00:00:11.462
+On the Builds tab the new build carries the source chip React Native · Android and a device line,
+
+3
+00:00:11.512 --> 00:00:15.149
+for example Pixel 6 · 2.63× · 21 screens.
+
+4
+00:00:15.199 --> 00:00:19.212
+Open the build to see them on its Capture tab.
+
+5
+00:00:19.262 --> 00:00:23.400
+If the chip is missing, refresh after a minute.
+

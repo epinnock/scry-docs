@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.527
+Open your project in the dashboard.
+
+2
+00:00:03.577 --> 00:00:11.847
+The new build appears in the Builds tab with the source Compose · Android and a device line:
+
+3
+00:00:11.897 --> 00:00:16.256
+your emulator's name, scale and screen count,
+
+4
+00:00:16.306 --> 00:00:20.249
+for example Pixel 6 · 2.63× · 5 screens.
+
+5
+00:00:20.299 --> 00:00:24.792
+Open the build to see them on its Capture tab.
+

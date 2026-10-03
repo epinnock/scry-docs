@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.741
+Open your project in the dashboard.
+
+2
+00:00:03.791 --> 00:00:12.205
+The new build appears in the Builds tab with the source SwiftUI · iOS and a device line:
+
+3
+00:00:12.255 --> 00:00:16.966
+your simulator's name, scale and screen count,
+
+4
+00:00:17.016 --> 00:00:21.109
+for example iPhone 16 · 3× · 5 screens.
+
+5
+00:00:21.159 --> 00:00:25.920
+Open the build to see them on its Capture tab.
+
