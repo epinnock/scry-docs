@@ -39,12 +39,12 @@ Not in this version: Figma and Sketch files, an Adobe Bridge or Photoshop panel,
 ## Before you start
 
 - A Scry account and a project you can add to. Owners, admins and developers can connect a folder; viewers cannot.
-- A Mac with macOS 13 (Ventura) or later, or a PC with Windows 11.
+- A PC with Windows 10 or Windows 11 (64-bit). The Mac installer is not published yet; it will need macOS 13 (Ventura) or later.
 - A folder of design exports. Subfolders are included.
 
 ## In this guide
 
-- [Install and first run](/guide/scry-sync/install): download, the one-time Mac and Windows warnings, signing in.
+- [Install and first run](/guide/scry-sync/install): the Windows download, the one-time warning, signing in.
 - [Connect a folder](/guide/scry-sync/connect-a-folder): choose a project and folder, the scan, and what you confirm before anything is sent.
 - [What gets converted](/guide/scry-sync/what-gets-converted): the three verdicts, what *approximate* means, and every reason a file is not sent.
 - [How to export an InDesign file to PDF](/guide/scry-sync/export-indd-pdf)

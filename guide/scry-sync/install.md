@@ -1,15 +1,17 @@
 ---
 title: Install Scry Sync and first run
-description: "Install Scry Sync on Mac or Windows, get past the one-time unsigned-beta warning, and sign in with your browser."
+description: "Download and install Scry Sync on Windows, get past the one-time unsigned-beta warning, and sign in with your browser. The Mac installer is not published yet."
 ---
 
 # Install and first run
 
-The beta installers are **not code-signed**. Your operating system warns you once because it does not recognise the publisher. That does not mean anything is wrong with the file. Check that you downloaded it from the link in your beta invite, then follow the steps for your system. You only do this once per install.
+The beta installers are **not code-signed**. Your operating system warns you once because it does not recognise the publisher. That does not mean anything is wrong with the file. Check that you downloaded it from the link on this page, then follow the steps for your system. You only do this once per install.
+
+The Windows installer is on this page. The Mac installer is not published yet; this page will carry its link when it is.
 
 ## Mac
 
-Needs macOS 13 (Ventura) or later (Apple silicon and Intel).
+The Mac installer is not published yet, so there is nothing to download for Mac today. These are the steps you will follow once it is. It needs macOS 13 (Ventura) or later (Apple silicon and Intel).
 
 1. Open the downloaded `.dmg` and drag **Scry Sync** into **Applications**.
 2. In **Applications**, hold Control and click (or right-click) **Scry Sync**, choose **Open**, then click **Open** in the dialog.
@@ -27,13 +29,26 @@ The app shows a notice when a new version is available. Download the new `.dmg` 
 
 ## Windows
 
-Needs Windows 11.
+Needs Windows 10 or Windows 11 (64-bit).
 
-1. Run `Scry Sync-Setup-<version>.exe`.
-2. Windows SmartScreen shows **Windows protected your PC**. Click **More info**, then **Run anyway**.
-3. If Windows blocks the file after download: right-click it, choose **Properties**, tick **Unblock** at the bottom, click **OK**, and run it again.
+1. Download [`Scry Sync-Setup-0.1.0.exe`](https://updates.scrymore.com/Scry%20Sync-Setup-0.1.0.exe) (version 0.1.0, about 120 MB). The file name carries the version, and newer versions will be linked here.
+2. Run it. The installer is one click, installs for your user only (there is no administrator prompt), and Scry Sync opens when it finishes.
+3. Windows SmartScreen shows **Windows protected your PC** and says the publisher is unknown. Click **More info**, then **Run anyway**. The **Run anyway** button only appears after you click **More info**.
+4. If Windows blocks the file after download: right-click it, choose **Properties**, tick **Unblock** at the bottom, click **OK**, and run it again.
 
-The app tells you when a new version is ready.
+The tray icon may sit behind the hidden-icons arrow (^) at the right of the taskbar. Drag it out onto the taskbar if you want it always in view.
+
+::: warning Scry Sync does not start by itself yet
+Scry Sync does not start when you sign in to Windows. After a restart, open it from the **Start** menu.
+:::
+
+::: warning Updates are manual during the beta
+The app checks for a new version when it starts and every six hours, and shows a notification, **A new version is available**, when there is one. Download the new installer from this page and run it over the old one. Your settings are kept.
+
+Settings has an **Install updates automatically** switch. It is off by default, so nothing is downloaded or installed unless you turn it on.
+:::
+
+To remove Scry Sync, open **Settings → Apps**, choose **Scry Sync** and click **Uninstall**. Uninstalling leaves your settings and logs in `%APPDATA%\Scry Sync`. Delete that folder yourself if you want them gone.
 
 ## First run
 
