@@ -77,6 +77,7 @@ export default defineConfig({
             { text: 'Storybook Capture Settings', link: '/guide/storybook-capture-settings' },
             { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
             { text: 'Component Requests', link: '/guide/component-requests' },
+            { text: 'Import from Adobe Bridge', link: '/guide/import-from-adobe-bridge-in-your-browser' },
             { text: 'Members and Invites', link: '/guide/members-and-invites' },
             { text: 'Account Settings', link: '/guide/account-settings' },
             { text: 'MCP Server', link: '/guide/mcp' },
