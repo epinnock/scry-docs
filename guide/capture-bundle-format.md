@@ -125,6 +125,6 @@ Two more codes you may meet when a bundle folder holds more than the manifest na
 An **adapter** is any program that writes an SCF bundle. If you use a tool Scry has no built-in
 support for — a different native UI framework, an E2E test runner, a design tool export — point
 your coding agent at the spec repository's
-[`AGENTS.md`](https://github.com/scryorg/scry-capture-format/blob/main/AGENTS.md) and ask it to
+[`AGENTS.md`](https://github.com/scryorg/scry-capture-format/blob/stage/AGENTS.md) and ask it to
 write an adapter. It's written to be a complete, self-contained brief for a coding agent: what a
 bundle needs, how to pick stable ids, and three short reference adapters to copy from.
