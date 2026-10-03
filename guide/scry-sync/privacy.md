@@ -7,7 +7,7 @@ description: "Exactly what leaves your computer when Scry Sync runs, what it kee
 
 This page lists everything Scry Sync sends and keeps. The [privacy policy](/privacy) covers the rest of Scry.
 
-**In short:** only converted pictures and a few labels leave your computer. Your original files, folder paths and your computer's user name never do. The app also sends anonymous usage events and scrubbed error reports, which you can turn off.
+**In short:** only converted pictures and a few labels leave your computer. Your original files and folder paths never do, and your user name is never sent with uploads or in file paths. At sign-in the app sends your computer's name so you can recognise it in your dashboard. The app also sends anonymous usage events and scrubbed error reports, which you can turn off.
 
 ## What is sent to Scry
 
@@ -17,6 +17,7 @@ This page lists everything Scry Sync sends and keeps. The [privacy policy](/priv
 | **A name for each picture** | The folder's name plus the file's name **without its extension**, for example the folder `Checkout redesign` and the file `Homepage-v4.psd` give a picture named from those two. This is the one place a file name reaches Scry, so search and links can show it. |
 | **A stable id** | A one-way hash of the folder and the file's position inside it, so editing a file keeps its picture. The path itself is not sent and cannot be recovered from the id. |
 | **A few labels** | How the picture was made (for example converted from a PSD), its verdict (faithful or approximate), and the app version. Keywords, rating and label the file already carries are kept; anything that looks like a path or file name is removed. |
+| **Computer name** | Sent once, when you sign in, so you can recognise this computer in the **Devices** list in your Scry dashboard. It may contain your name if your computer is named after you. To change it, rename the computer and sign in again. |
 | **Who and where** | The project's access key for this computer, to prove the upload is allowed. The key is held in the Mac Keychain or Windows credential store, never in a file, a log or an error report. |
 
 Scry then processes the pictures like any other upload: it indexes them for search and may describe them with AI. The providers involved are on the [subprocessor list](/subprocessors).
@@ -24,7 +25,7 @@ Scry then processes the pictures like any other upload: it indexes them for sear
 ## What is never sent
 
 - Your original design files (PSD, PSB, AI, INDD, PDF, images).
-- Folder paths, drive names or your computer's user name.
+- Folder paths or drive names, or your user name in uploads or file paths. (Your computer's name is sent at sign-in; see the table above.)
 - File names in usage events or error reports.
 - Anything from outside the folder you chose.
 

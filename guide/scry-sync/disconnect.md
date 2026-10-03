@@ -21,12 +21,13 @@ If you no longer have the computer, or someone else's device should lose access,
 - **Project owners and admins** see every device connected to a project in the project's settings, under **Devices**, and can revoke any of them.
 - **Developers** see and revoke their own devices.
 - Your own devices are also listed under **Signed-in devices** in your account.
+- Devices are listed by computer name, the name your computer has in its system settings, so rename a computer in the OS if two look alike.
 
 A revoked device stops at its next upload. The app shows **Please sign in again** instead of retrying, and nothing in the folder changes.
 
 ## Access that lapses on its own
 
-A device that has not synced for a year loses its access automatically. If your access to the project changes, the app tells you (**You can't add to this project anymore**) and offers to pick another project.
+A device that has not synced for a year loses its access automatically. If your access to the project changes, the app tells you (**You can't add to "&lt;project&gt;" anymore**, with your project's name in place of `<project>`) and offers to pick another project.
 
 ## What stays in Scry
 
