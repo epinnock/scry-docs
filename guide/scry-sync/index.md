@@ -37,7 +37,7 @@ Not in this version: Figma and Sketch files, an Adobe Bridge or Photoshop panel,
 ## Before you start
 
 - A Scry account and a project you can add to. Owners, admins and developers can connect a folder; viewers cannot.
-- A Mac with macOS 12 or later, or a PC with Windows 11.
+- A Mac with macOS 13 (Ventura) or later, or a PC with Windows 11.
 - A folder of design exports. Subfolders are included.
 
 ## In this guide

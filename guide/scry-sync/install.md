@@ -9,7 +9,7 @@ The beta installers are **not code-signed**. Your operating system warns you onc
 
 ## Mac
 
-Needs macOS 12 or later (Apple silicon and Intel).
+Needs macOS 13 (Ventura) or later (Apple silicon and Intel).
 
 1. Open the downloaded `.dmg` and drag **Scry Sync** into **Applications**.
 2. In **Applications**, hold Control and click (or right-click) **Scry Sync**, choose **Open**, then click **Open** in the dialog.
