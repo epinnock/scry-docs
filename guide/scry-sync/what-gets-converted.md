@@ -11,7 +11,7 @@ Scry Sync converts files to pictures **on your computer**. Your original files a
 |---|---|---|
 | **Faithful** | The picture is a true copy of the file. | Sent, no badge. |
 | **Approximate** | Sent, but the picture may not look exactly like the file. | Sent with an **approximate** badge in Scry, and a row in the app's list that says why. |
-| **Not sent** | Scry Sync knows it cannot make a correct picture. | Not sent. The row says why and how to fix it. |
+| **Not sent** | Scry Sync cannot make a correct picture, or does not support the file. | Not sent. The row says why and how to fix it. |
 
 Scry never shows an approximate picture as if it were exact: the badge stays on it until you fix the file and it is sent again.
 
@@ -34,7 +34,7 @@ Exporting a **PNG or JPEG** of the design into the folder always gives an exact 
 
 ## What is not sent, and why
 
-A file is refused only when it cannot be made faithfully or isn't supported. Each reason has a fix, and the app shows it on the row.
+A file is not sent when it cannot be made into a correct picture, when Scry Sync does not support it, or when it cannot be read safely: a shortcut, a file outside the synced folder, a folder nested too deeply, an unusual file name, or a folder the app cannot open. Each reason has a fix, and the app shows it on the row.
 
 | Reason | Why | Fix |
 |---|---|---|

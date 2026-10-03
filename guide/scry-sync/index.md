@@ -27,6 +27,7 @@ Your folder is never modified. Scry Sync only reads from it, and it only goes on
 | You have | What Scry Sync does |
 |---|---|
 | **PNG, JPG, WebP** | Sends the picture. |
+| **TIFF** | Converts it to a picture. |
 | **HEIC (iPhone photos)** | Not sent. HEIC photos aren't supported yet. Export it as a JPEG or PNG and put that in the folder. |
 | **PDF** | Converts each page to a picture. |
 | **Illustrator (AI)** | Reads it as a PDF, so the file must have been saved with **Create PDF Compatible File** turned on. |

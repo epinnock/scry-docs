@@ -39,7 +39,7 @@ A folder is limited to 1 GiB of converted pictures and 10,000 pictures. Link a s
 
 ## "Scry no longer accepts this computer"
 
-The device was revoked, expired, or your access to the project changed (in that case the tray shows **You can't add to "&lt;project&gt;" anymore**). Sign in again. If you cannot, ask a project admin whether you can still add to the project. See [Disconnect a device](/guide/scry-sync/disconnect).
+The device was revoked, or your access to the project changed (in that case the tray shows **You can't add to "&lt;project&gt;" anymore**). Sign in again. If you cannot, ask a project admin whether you can still add to the project. See [Disconnect a device](/guide/scry-sync/disconnect).
 
 ## "This folder cannot be opened" or "Can't watch this folder"
 
