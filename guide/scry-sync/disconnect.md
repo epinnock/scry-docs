@@ -25,9 +25,9 @@ If you no longer have the computer, or someone else's device should lose access,
 
 A revoked device stops at its next upload. The app shows **Please sign in again** instead of retrying, and nothing in the folder changes.
 
-## Access that lapses on its own
+## When a device loses access
 
-A device that has not synced for a year loses its access automatically. If your access to the project changes, the app tells you (**You can't add to "&lt;project&gt;" anymore**, with your project's name in place of `<project>`) and offers to pick another project.
+In this beta a device does not lose access just because it has been idle; ending its access is done by revoking it, as above. Automatic expiry of devices that have not synced for a long time is planned before the public release. If your access to the project changes, the app tells you (**You can't add to "&lt;project&gt;" anymore**, with your project's name in place of `<project>`) and offers to pick another project.
 
 ## What stays in Scry
 
