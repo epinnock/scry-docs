@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.220
+Before uploading, check the bundle:
+
+2
+00:00:03.270 --> 00:00:08.543
+run the upload command on .scry/capture with the dry-run flag.
+
+3
+00:00:08.593 --> 00:00:12.497
+It validates the bundle and zips it locally.
+
+4
+00:00:12.547 --> 00:00:16.299
+Nothing is sent, and no API key is needed.
+
+5
+00:00:16.349 --> 00:00:21.672
+A good bundle prints Bundle valid with the number of captures.
+

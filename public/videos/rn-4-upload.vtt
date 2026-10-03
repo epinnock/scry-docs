@@ -1,0 +1,26 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.041
+Set your project id and your project API key as environment variables,
+
+2
+00:00:05.091 --> 00:00:09.349
+then run the same upload command without the dry-run flag.
+
+3
+00:00:09.399 --> 00:00:14.962
+Only the manifest, the screenshots and a layout tree for each screen are sent,
+
+4
+00:00:15.012 --> 00:00:16.985
+never your source code.
+
+5
+00:00:17.035 --> 00:00:21.750
+When the upload is accepted, the command prints the build number.
+
+6
+00:00:21.800 --> 00:00:24.672
+The key shown here is a placeholder.
+

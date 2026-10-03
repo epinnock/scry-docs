@@ -84,6 +84,17 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Native apps',
+          items: [
+            { text: 'Overview', link: '/guide/native-apps' },
+            { text: 'iOS (SwiftUI)', link: '/guide/ios-swiftui' },
+            { text: 'Android (Compose)', link: '/guide/android-compose' },
+            { text: 'React Native', link: '/guide/react-native' },
+            { text: 'Capture sources', link: '/guide/capture-sources' },
+            { text: 'Capture bundle format', link: '/guide/capture-bundle-format' },
+          ]
+        },
+        {
           text: 'Scry Sync (desktop app)',
           items: [
             { text: 'Overview', link: '/guide/scry-sync/' },

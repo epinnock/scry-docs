@@ -1,0 +1,18 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.643
+Clone the Scry sample app, scry-sample-rn, a small coffee-order app called Kettle.
+
+2
+00:00:07.693 --> 00:00:13.712
+Run npm install, then npm run android, or npm run ios on a Mac.
+
+3
+00:00:13.762 --> 00:00:17.815
+The app opens on the Kettle Menu screen.
+
+4
+00:00:17.865 --> 00:00:24.960
+The same code holds 21 Storybook stories, and those are what Scry captures.
+

@@ -1,0 +1,26 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.953
+Install the Scry native capture skill with npx skills add,
+
+2
+00:00:05.003 --> 00:00:09.121
+then ask your assistant to set up Scry capture.
+
+3
+00:00:09.171 --> 00:00:14.351
+It adds the launch hook, screen registry and capture scripts.
+
+4
+00:00:14.401 --> 00:00:20.567
+With a simulator or emulator available, it runs the capture and a dry run.
+
+5
+00:00:20.617 --> 00:00:25.114
+Otherwise it hands you the commands to run on a Mac.
+
+6
+00:00:25.164 --> 00:00:28.272
+It never uploads without your go.
+

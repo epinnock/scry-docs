@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.433
+Run the capture script.
+
+2
+00:00:02.483 --> 00:00:07.558
+It builds Kettle, boots the simulator, installs the app,
+
+3
+00:00:07.608 --> 00:00:14.766
+then opens each registered screen by launch argument and takes a screenshot of it.
+
+4
+00:00:14.816 --> 00:00:16.768
+When it finishes,
+
+5
+00:00:16.818 --> 00:00:22.824
+.scry/capture holds one image per screen and a small manifest file.
+

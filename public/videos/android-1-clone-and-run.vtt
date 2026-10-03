@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.315
+Clone the Kettle sample app,
+
+2
+00:00:02.365 --> 00:00:06.979
+a small coffee-order app with three screens and two components.
+
+3
+00:00:07.029 --> 00:00:12.102
+Build it with the Gradle wrapper and install it on a running emulator,
+
+4
+00:00:12.152 --> 00:00:14.139
+then start it with adb.
+
+5
+00:00:14.189 --> 00:00:18.984
+Kettle opens on its Menu screen, which is what Scry will capture.
+

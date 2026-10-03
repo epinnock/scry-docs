@@ -1,0 +1,18 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.310
+Check the bundle before you send anything.
+
+2
+00:00:03.360 --> 00:00:06.872
+Run the upload command with the dry-run flag.
+
+3
+00:00:06.922 --> 00:00:12.852
+It validates the bundle with the same validator the real upload uses, then stops.
+
+4
+00:00:12.902 --> 00:00:16.800
+Nothing leaves your machine, and no key is needed.
+

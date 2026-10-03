@@ -9,7 +9,7 @@ Storybook and package manager, and checks the integrations you requested.
 From your application's repository, run:
 
 ```bash
-npx skills add epinnock/scry-node --skill scry-setup
+npx skills add scryorg/scry-node --skill scry-setup
 ```
 
 Choose your assistant when prompted. The installer supports Claude Code, Codex,
@@ -18,15 +18,15 @@ Cursor, and other compatible coding agents. You can select one explicitly:
 ::: code-group
 
 ```bash [Claude Code]
-npx skills add epinnock/scry-node --skill scry-setup --agent claude-code
+npx skills add scryorg/scry-node --skill scry-setup --agent claude-code
 ```
 
 ```bash [Codex]
-npx skills add epinnock/scry-node --skill scry-setup --agent codex
+npx skills add scryorg/scry-node --skill scry-setup --agent codex
 ```
 
 ```bash [Cursor]
-npx skills add epinnock/scry-node --skill scry-setup --agent cursor
+npx skills add scryorg/scry-node --skill scry-setup --agent cursor
 ```
 
 :::
@@ -99,7 +99,7 @@ Writing the configuration alone does not complete authentication or indexing.
 
 ## Manual installation
 
-Download or clone the [Scry CLI repository](https://github.com/epinnock/scry-node)
+Download or clone the [Scry CLI repository](https://github.com/scryorg/scry-node)
 and copy the entire `skills/scry-setup` directory into your assistant's skill
 directory. Include `references/` and `agents/` along with `SKILL.md`.
 
@@ -122,3 +122,74 @@ For MCP login or empty-search problems, see [MCP troubleshooting](/guide/mcp#tro
 - [GitHub Actions](/guide/github-actions)
 - [MCP connection](/guide/mcp)
 - [Figma plugin](/guide/figma-plugin)
+
+<!-- DRAFT: the native skill and sample repos are private until founder go -->
+
+## Native app capture
+
+Install the Scry native capture skill with npx skills add, then ask your assistant to set up Scry capture. It adds the launch hook, screen registry and capture scripts. With a simulator or emulator available, it runs the capture and a dry run. Otherwise it hands you the commands to run on a Mac. It never uploads without your go.
+
+```bash
+npx skills add scryorg/scry-node --skill scry-native-capture-setup
+```
+
+The `scry-setup` skill above covers Storybook on the web. This second skill, `scry-native-capture-setup`, sets up an iOS (SwiftUI), Android (Jetpack Compose) or React Native app so that Scry can capture its screens. Install it from your app's repository. The `--agent` choices and the Node.js 22.20 installer requirement are the same as for `scry-setup`. Then ask your assistant:
+
+> Set up Scry capture for this app.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/skill-setup.mp4">
+    <track kind="captions" src="/videos/skill-setup.vtt" srclang="en" default>
+  </video>
+  <figcaption>The skill setting up a bare app for capture. The assistant in the video ran where no simulator was available, so it handed over the commands, which are then run on a Mac.</figcaption>
+</figure>
+
+### What the skill adds to your app
+
+For SwiftUI and Compose, the skill inspects the project, asks only what it cannot find (which screens matter, your project id, whether you want CI), and adds:
+
+- a **launch handler** (`ScryLaunch.swift` or `ScryLaunch.kt`, about 30 lines) that shows only the requested screen when the app is launched with a screen id. A normal launch is unchanged;
+- a **screen registry** (`ScryScreens.swift` or `ScryScreens.kt`) that maps each stable screen id to its view and source location;
+- **fixtures**, so each screen renders without sign-in or network;
+- **`scripts/capture.sh` and `scripts/make-scf.mjs`**, the reference capture script and the bundle writer;
+- optionally, the **CI workflow** `.github/workflows/scry-capture.yml`.
+
+For React Native, the skill uses the built-in `scry capture rn` command, which needs no capture script.
+
+When a simulator or emulator is available, it runs the capture and `scry upload <bundle> --dry-run` and shows you the screenshots; otherwise it lists the commands for you to run on a Mac. A valid bundle can still hold a bad image, so look at them.
+
+### What the skill will not do
+
+- It **never uploads** until you say so, and it never prints, stores or commits your API key. Set `SCRY_PROJECT_ID` and `SCRY_API_KEY` yourself, in your shell or your CI secrets.
+- It adds **no dependency** to your app, and its capture paths do not change a release build.
+- It does not use `--include-source` unless you ask, so no source text is uploaded.
+- It never dismisses a permission prompt on your simulator or emulator.
+- If no simulator or emulator is available where it runs, it stops, tells you so, and lists the exact commands for you to run. It does not claim a capture it did not make.
+- It does not cover UIKit or Flutter apps. The [Capture bundle format](/guide/capture-bundle-format) page documents the bundle for writing your own script.
+
+Capture for SwiftUI and Compose is a reference script that the skill copies into your project. It is not a built-in Scry command.
+
+### Next
+
+- [Native apps overview](/guide/native-apps)
+- [iOS (SwiftUI)](/guide/ios-swiftui)
+- [Android (Compose)](/guide/android-compose)
+- [React Native](/guide/react-native)
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>
