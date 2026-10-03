@@ -46,7 +46,7 @@ A file is refused only when a correct picture cannot be made. Each reason has a 
 | **Too large** | The picture is over 16,384 px on a side or over 200 megapixels. | Export a smaller copy. |
 | **Colour mode not supported** (Lab, Multichannel) | It cannot be converted faithfully. | In Photoshop, change **Image → Mode** to **RGB Color** and save again. |
 | **Preview compression not supported** | The preview saved inside the file uses a compression Scry Sync cannot read. | Save the file again from Photoshop. |
-| **HEIC without a decoder** | This computer cannot read HEIC. | On Windows, install **HEIF Image Extensions** and **HEVC Video Extensions** from the Microsoft Store, or export a JPEG. |
+| **HEIC photo** | HEIC photos aren't supported yet, on Mac or Windows. | Export it as a JPEG or PNG and put that in the folder. |
 | **Password-protected PDF** | It cannot be opened. | Save a copy without a password into the folder. |
 | **No pages** | The document has none. | Export it again with at least one page. |
 | **Cannot be made small enough** | The converted picture would still be over 4 MB or 2048 px. | Export a simpler or smaller copy. |

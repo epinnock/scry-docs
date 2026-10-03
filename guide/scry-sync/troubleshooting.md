@@ -27,9 +27,9 @@ It was sent, but the picture may differ from the file. The row says why. See [Wh
 
 The row gives the reason and the fix, and every reason is listed in [What gets converted](/guide/scry-sync/what-gets-converted#what-is-not-sent-and-why). For InDesign files, see [How to export an InDesign file to PDF](/guide/scry-sync/export-indd-pdf).
 
-## HEIC pictures are not sent on Windows
+## A HEIC photo isn't syncing
 
-Install **HEIF Image Extensions** and **HEVC Video Extensions** from the Microsoft Store, then save any change to the folder so it is scanned again.
+HEIC photos aren't supported yet, on Mac or Windows. The row says so and nothing else is affected. Export it as a JPEG or PNG and put that in the folder. The next sync picks it up.
 
 ## "This folder is too big"
 
