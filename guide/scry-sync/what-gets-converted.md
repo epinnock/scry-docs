@@ -24,7 +24,6 @@ The picture was made, but something in the file could not be reproduced exactly.
 | **No full preview** (PSD, PSB) | Photoshop saved the file without a full flattened preview, so the picture may be blank or wrong. | In Photoshop, turn on **Preferences → File Handling → Maximize PSD and PSB File Compatibility**, then save the file again. |
 | **Fonts not embedded** (PDF, AI) | Some fonts are not inside the file, so text was drawn with a stand-in font. | Export the PDF again with fonts embedded. |
 | **CMYK without a colour profile** | Colours are close but not exact. | Export a PNG or JPEG into the folder for an exact picture. |
-| **Colours not converted to sRGB** | Colours were not converted to standard sRGB on this computer, so they can be slightly off. | Export a PNG or JPEG into the folder for an exact picture. |
 | **32-bit picture** | Brightness was mapped to a normal range, so it can look different from Photoshop. | Export a PNG or JPEG into the folder for an exact picture. |
 | **Very large page** | A page is over 200 inches wide or tall, so it was drawn small. | Export a PNG or JPEG into the folder for an exact picture. |
 | **Only the first pages** | The file has more pages than the page limit; only the first pages were converted. | Export a PNG or JPEG into the folder for an exact picture. |
@@ -35,7 +34,7 @@ Exporting a **PNG or JPEG** of the design into the folder always gives an exact 
 
 ## What is not sent, and why
 
-A file is refused only when a correct picture cannot be made. Each reason has a fix, and the app shows it on the row.
+A file is refused only when it cannot be made faithfully or isn't supported. Each reason has a fix, and the app shows it on the row.
 
 | Reason | Why | Fix |
 |---|---|---|
@@ -46,7 +45,7 @@ A file is refused only when a correct picture cannot be made. Each reason has a 
 | **Too large** | The picture is over 16,384 px on a side or over 200 megapixels. | Export a smaller copy. |
 | **Colour mode not supported** (Lab, Multichannel) | It cannot be converted faithfully. | In Photoshop, change **Image → Mode** to **RGB Color** and save again. |
 | **Preview compression not supported** | The preview saved inside the file uses a compression Scry Sync cannot read. | Save the file again from Photoshop. |
-| **HEIC without a decoder** | This computer cannot read HEIC. | On Windows, install **HEIF Image Extensions** and **HEVC Video Extensions** from the Microsoft Store, or export a JPEG. |
+| **HEIC photo** | HEIC photos aren't supported yet. This is the same on Mac and Windows. | Export it as a JPEG or PNG and put that in the folder. |
 | **Password-protected PDF** | It cannot be opened. | Save a copy without a password into the folder. |
 | **No pages** | The document has none. | Export it again with at least one page. |
 | **Cannot be made small enough** | The converted picture would still be over 4 MB or 2048 px. | Export a simpler or smaller copy. |

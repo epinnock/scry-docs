@@ -35,8 +35,6 @@ Needs Windows 11.
 
 The app tells you when a new version is ready.
 
-**HEIC pictures on Windows** need the **HEIF Image Extensions** and **HEVC Video Extensions** from the Microsoft Store. Without them, HEIC files are listed as not sent, with this fix, and everything else still syncs.
-
 ## First run
 
 1. **Sign in with your browser.** The app opens Scry in your browser and shows a short code. Check the code matches, choose the project the pictures should go to (only projects you can add to are listed), and approve. You never paste a key.
