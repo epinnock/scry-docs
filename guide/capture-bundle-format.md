@@ -50,6 +50,18 @@ cropped — makes Scry's map of your UI richer, but nothing breaks without it.
 story id, a fully-qualified class name, a route. Scry derives its own storage keys by hashing, so
 there's nothing for an adapter to escape or slugify.
 
+## Source kinds for native apps
+
+`source.kind` says what produced the bundle and `source.platform` where it ran. These are the values the Scry samples and skill write for native apps; the label is what you see in the dashboard.
+
+| `source.kind` | `source.platform` | `capture.method` | Label | Written by |
+| --- | --- | --- | --- | --- |
+| `storybook-rn` | `ios`, `android` | `simulator`, `emulator` | React Native · iOS, React Native · Android | `scry capture rn` ([React Native](/guide/react-native)) |
+| `swiftui-preview` | `ios` | `simulator` | SwiftUI · iOS | the reference script ([iOS (SwiftUI)](/guide/ios-swiftui)) |
+| `compose-preview` | `android` | `emulator` | Compose · Android | the reference script ([Android (Compose)](/guide/android-compose)) |
+| `flutter-golden` | `android`, `ios` | `emulator`, `simulator` | Flutter · Android, Flutter · iOS | the reference script, on a device ([Flutter](/guide/flutter)) |
+| `flutter-golden` | `other` | `headless-render` | Flutter · Other | the reference script, with no device ([Flutter](/guide/flutter)) |
+
 ## `links.live` must be `https:`
 
 If a capture sets `links.live` — a URL that renders it live, such as a Storybook iframe URL — it

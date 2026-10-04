@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.353
+Open your project in the dashboard.
+
+2
+00:00:03.403 --> 00:00:11.108
+The new build appears in the Builds tab with the source Flutter · Other and a device line.
+
+3
+00:00:11.158 --> 00:00:15.936
+Open the build to see its screens on the Capture tab.
+
+4
+00:00:15.986 --> 00:00:20.288
+Once it is indexed, its screens are searchable.
+
+5
+00:00:20.338 --> 00:00:27.144
+This recording runs the same search the MCP server runs, for quantity stepper.
+

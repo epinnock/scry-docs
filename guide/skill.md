@@ -123,8 +123,6 @@ For MCP login or empty-search problems, see [MCP troubleshooting](/guide/mcp#tro
 - [MCP connection](/guide/mcp)
 - [Figma plugin](/guide/figma-plugin)
 
-<!-- DRAFT: the native skill and sample repos are private until founder go -->
-
 ## Native app capture
 
 Install the Scry native capture skill with npx skills add, then ask your assistant to set up Scry capture. It adds the launch hook, screen registry and capture scripts. With a simulator or emulator available, it runs the capture and a dry run. Otherwise it hands you the commands to run on a Mac. It never uploads without your go.
@@ -133,7 +131,7 @@ Install the Scry native capture skill with npx skills add, then ask your assista
 npx skills add scryorg/scry-node --skill scry-native-capture-setup
 ```
 
-The `scry-setup` skill above covers Storybook on the web. This second skill, `scry-native-capture-setup`, sets up an iOS (SwiftUI), Android (Jetpack Compose) or React Native app so that Scry can capture its screens. Install it from your app's repository. The `--agent` choices and the Node.js 22.20 installer requirement are the same as for `scry-setup`. Then ask your assistant:
+The `scry-setup` skill above covers Storybook on the web. This second skill, `scry-native-capture-setup`, sets up an iOS (SwiftUI), Android (Jetpack Compose), React Native or Flutter app so that Scry can capture its screens. Install it from your app's repository. The `--agent` choices and the Node.js 22.20 installer requirement are the same as for `scry-setup`. Then ask your assistant:
 
 > Set up Scry capture for this app.
 
@@ -146,7 +144,7 @@ The `scry-setup` skill above covers Storybook on the web. This second skill, `sc
 
 ### What the skill adds to your app
 
-For SwiftUI and Compose, the skill inspects the project, asks only what it cannot find (which screens matter, your project id, whether you want CI), and adds:
+For Flutter, the skill adds a screen registry and capture tests under `integration_test/`, `test/` and `test_driver/` (never `lib/`), the capture scripts, and `integration_test` and `flutter_test` under `dev_dependencies`; see [Flutter](/guide/flutter). For SwiftUI and Compose, the skill inspects the project, asks only what it cannot find (which screens matter, your project id, whether you want CI), and adds:
 
 - a **launch handler** (`ScryLaunch.swift` or `ScryLaunch.kt`, about 30 lines) that shows only the requested screen when the app is launched with a screen id. A normal launch is unchanged;
 - a **screen registry** (`ScryScreens.swift` or `ScryScreens.kt`) that maps each stable screen id to its view and source location;
@@ -165,9 +163,9 @@ When a simulator or emulator is available, it runs the capture and `scry upload 
 - It does not use `--include-source` unless you ask, so no source text is uploaded.
 - It never dismisses a permission prompt on your simulator or emulator.
 - If no simulator or emulator is available where it runs, it stops, tells you so, and lists the exact commands for you to run. It does not claim a capture it did not make.
-- It does not cover UIKit or Flutter apps. The [Capture bundle format](/guide/capture-bundle-format) page documents the bundle for writing your own script.
+- It does not cover UIKit-only apps. The [Capture bundle format](/guide/capture-bundle-format) page documents the bundle for writing your own script.
 
-Capture for SwiftUI and Compose is a reference script that the skill copies into your project. It is not a built-in Scry command.
+Capture for SwiftUI, Compose and Flutter is a reference script that the skill copies into your project. It is not a built-in Scry command.
 
 ### Next
 
@@ -175,6 +173,7 @@ Capture for SwiftUI and Compose is a reference script that the skill copies into
 - [iOS (SwiftUI)](/guide/ios-swiftui)
 - [Android (Compose)](/guide/android-compose)
 - [React Native](/guide/react-native)
+- [Flutter](/guide/flutter)
 
 <style>
 .step-video {

@@ -1,0 +1,26 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.813
+Install the Scry skill with npx skills add,
+
+2
+00:00:03.863 --> 00:00:07.980
+then ask your assistant to set up Scry capture.
+
+3
+00:00:08.030 --> 00:00:14.571
+It adds a screen registry, capture tests and scripts, and two dev dependencies.
+
+4
+00:00:14.621 --> 00:00:17.146
+Nothing under lib changes.
+
+5
+00:00:17.196 --> 00:00:22.070
+With no device on this machine it used the headless path,
+
+6
+00:00:22.120 --> 00:00:27.120
+ran the capture and a dry run, and left the upload to you.
+
