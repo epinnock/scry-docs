@@ -280,7 +280,7 @@ The sample app is the worked example of each piece. Copy them from `scry-sample-
 
 **`scf: 5/6 captured, 1 skipped`.** A screen did not produce an image, so it is listed as skipped in the manifest. `upload --dry-run` still says the bundle is valid with five captures, so do not treat a short count as success. Run the capture again and read the lines above the summary for the screen's name.
 
-**The screenshots show black blocks instead of text.** The headless script checks that fonts loaded before it writes a bundle and stops with `scry capture: fonts did not load, so screenshots would show black Ahem blocks instead of text` instead of producing one. If you see blocks anyway, a font your app uses is not declared in `pubspec.yaml`: declare it under `flutter: fonts:` so it is loaded, then capture again.
+**The screenshots show black blocks instead of text.** The headless script checks that fonts loaded before it writes a bundle and stops with `scry capture: fonts did not load, so screenshots would show black Ahem blocks instead of text` instead of producing one. If you see blocks anyway, a font your app uses is not declared in `pubspec.yaml`: declare it under `flutter: fonts:` so it is loaded, then capture again. If the check refuses a font that did load, it is most likely a monospace font (every letter is equally wide, which the check reads as a placeholder): the run stops rather than ship doubtful images, so use a proportional font for the capture.
 
 **`flutter: command not found`.** The Flutter SDK is not on your `PATH`. Install it, add its `bin` folder to `PATH`, and check `flutter --version`.
 
