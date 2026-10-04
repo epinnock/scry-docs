@@ -36,7 +36,7 @@ The labels you will see for native sources:
 | SwiftUI · iOS | the screens of a SwiftUI app | reference script in the sample app and the Scry skill, not a built-in adapter |
 | Compose · Android | the screens of a Jetpack Compose app | reference script in the sample app and the Scry skill, not a built-in adapter |
 | Flutter · Android, Flutter · iOS | the screens of a Flutter app, captured on an emulator or simulator (source kind `flutter-golden`) | reference script in the sample app and the Scry skill, not a built-in adapter ([Flutter](/guide/flutter)) |
-| Flutter · Other | the screens of a Flutter app, rendered with `flutter test` and no device (a Flutter Material look, not the iOS look) | the same reference script, headless path |
+| Flutter · Other | the screens of a Flutter app, rendered with `flutter test` and no device (the screens look the way Flutter draws them, a Material look, at a fixed 390 by 844 points) | the same reference script, headless path |
 
 SwiftUI, Compose and Flutter are fed by a reference capture script (it runs the app on a simulator or emulator, or for Flutter optionally with no device, screenshots each screen and writes a bundle), which lives in the sample app and in the Scry skill. Scry's CLI has no `capture swiftui`, `capture compose` or `capture flutter` command; the script writes a [Scry Capture Format](/guide/capture-bundle-format) bundle and `upload` sends it like any other.
 

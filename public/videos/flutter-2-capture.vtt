@@ -1,0 +1,18 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.406
+Run the capture script with no device.
+
+2
+00:00:03.456 --> 00:00:10.169
+It renders each registered screen with flutter test, then writes a small manifest.
+
+3
+00:00:10.219 --> 00:00:15.203
+When it finishes, .scry/capture holds one image per screen.
+
+4
+00:00:15.253 --> 00:00:21.264
+On an emulator or simulator the script is the same, with android or ios.
+

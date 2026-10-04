@@ -11,8 +11,8 @@ Flutter capture is a **reference script** that lives in the sample app and in th
 ## Which Flutter apps this covers
 
 - **Flutter apps for Android and iOS.** Each screen is rendered by your own Flutter code and saved as a PNG.
-- **Two ways to capture, one bundle format.** On an **emulator or simulator** you get the real system fonts and pixel density of that device, and a build labelled **Flutter · Android** or **Flutter · iOS**. With **no device** (the headless path) the screens are rendered by `flutter test` in seconds on any Linux or Mac machine with the Flutter SDK, and the build is labelled **Flutter · Other**.
-- **The headless path is a Flutter Material rendering, not the iOS look.** Use it for CI and for machines without a simulator. If you want your screens as they look on an iPhone, capture on a simulator.
+- **Two ways to capture, one bundle format.** On an **emulator or simulator** the screens are drawn by the app running on that device, at that device's screen size and pixel density, and the build is labelled **Flutter · Android** or **Flutter · iOS**. With **no device** (the headless path) the screens are rendered by `flutter test` in seconds on any Linux or Mac machine with the Flutter SDK, at a fixed 390 by 844 points and 3× density, and the build is labelled **Flutter · Other**.
+- **Every path shows your Flutter app as Flutter draws it (a Flutter Material look, with the fonts your app declares).** The device paths change the size and density of the screenshots and the label on the build; they do not turn the screens into native Android or iOS controls, and a simulator capture is not "the iOS look". Use the headless path for CI and for machines without a device: it gives the same widgets at a fixed size.
 - **Not covered:** Flutter web and Linux, Windows or macOS desktop apps, and linking a captured screen to a Figma frame (not available for any native app yet).
 
 ## Before you start
@@ -56,6 +56,8 @@ The skill recognises a Flutter app by its `pubspec.yaml`. It inspects your proje
 
 Nothing in `lib/` changes. If a device is available where the assistant runs, it runs the capture and `upload --dry-run` and shows you the screenshots; otherwise it lists the commands for you to run. It never uploads, and never touches your API key, without your go.
 
+Install the Scry skill with npx skills add, then ask your assistant to set up Scry capture. It adds a screen registry, capture tests and scripts, and two dev dependencies. Nothing under lib changes. With no device on this machine it used the headless path, ran the capture and a dry run, and left the upload to you.
+
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/flutter-1-skill.mp4">
     <track kind="captions" src="/videos/flutter-1-skill.vtt" srclang="en" default>
@@ -72,8 +74,10 @@ flutter pub get
 ```
 
 ```text expected
-Got dependencies!
+re:^Got dependencies
 ```
+
+(`flutter pub get` also lists any dependency with a newer version; that part differs from day to day.)
 
 ## 2. Capture your screens
 
@@ -86,6 +90,7 @@ bash scripts/capture.sh headless
 ```
 
 ```text expected
+All tests passed!
 scf: 6/6 captured, 0 skipped -> .scry/capture
 ```
 
@@ -93,11 +98,11 @@ scf: 6/6 captured, 0 skipped -> .scry/capture
 ls .scry/capture .scry/capture/images
 ```
 
-The images are a Flutter Material rendering at 390 by 844 points and 3× density, with the fonts your app declares (and Flutter's own Roboto and Material Icons) loaded. The script refuses to write a bundle if no fonts could be loaded, because the screenshots would show black blocks instead of text.
+The six images are 1170 by 2532 pixels (390 by 844 points at 3× density), drawn with the fonts your app declares (the sample bundles Inter) plus Flutter's own Roboto and Material Icons. The script refuses to write a bundle if no fonts could be loaded, because the screenshots would show black blocks instead of text.
 
 ### On an emulator or simulator
 
-Start an Android emulator, or boot an iOS Simulator, then run the script for that platform. The screens are driven by `flutter drive` with the `integration_test` package, and each screenshot is the app surface of the device (the status bar is not part of it).
+Start an Android emulator, or boot an iOS Simulator, then run the script for that platform. The screens are driven by `flutter drive` with the `integration_test` package, and each screenshot is the app surface of the device (the status bar is not part of it, and the capture test hides the system bars so none leaks in).
 
 ```bash
 # Android emulator (or a device) reachable by adb
@@ -107,13 +112,15 @@ bash scripts/capture.sh android
 bash scripts/capture.sh ios
 ```
 
-In both cases `.scry/capture` holds one image per screen and a small manifest. The device path labels the build **Flutter · Android** or **Flutter · iOS** and records the device name and OS version in the manifest; the headless path records `flutter_test 390x844@3x`.
+In both cases `.scry/capture` holds one image per screen and a small manifest. The device path labels the build **Flutter · Android** or **Flutter · iOS** and records the device name and OS version in the manifest; the headless path records `flutter_test 390x844@3x`. Both device paths were run end to end on the sample: on an Android 14 emulator (Pixel 6 profile) the six images are 1080 by 2272 pixels at 2.625× and the dry run says `Bundle valid: 6 captures, source flutter-golden:android`; on an iOS 18.6 simulator they are 1179 by 2556 pixels at 3× and it says `source flutter-golden:ios`. If more than one simulator is booted, name the one to use with `IOS_UDID=<udid> bash scripts/capture.sh ios`.
 
 ::: tip Add one of your own screens
 Open `integration_test/scry/screens.dart` (it lives under `integration_test/`, so it never ships in a release build) and add one entry to the registry: an `id`, a display `name`, and the widget with its fixed data. Add the matching entry to `scripts/screens.json`, which is the list the capture script reads. Run the script again and the bundle holds one more capture.
 
 The `id` is the screen's identity across builds. Use a route or class name, never a title a person might edit.
 :::
+
+Run the capture script with no device. It renders each registered screen with flutter test, then writes a small manifest. When it finishes, .scry/capture holds one image per screen. On an emulator or simulator the script is the same, with android or ios.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/flutter-2-capture.mp4">
@@ -185,9 +192,9 @@ The CLI reads `SCRY_PROJECT_ID` and `SCRY_API_KEY` itself. You can pass `--proje
 
 ## 5. See it in Scry, and search it
 
-Open your project in the dashboard. The new build appears in the **Builds** tab with the source **Flutter · Android**, **Flutter · iOS** or, for the headless path, **Flutter · Other**, and a device line: the device's name, scale and screen count. Open the build to see the screens on its **Capture** tab. A native build has no Storybook behind it, so there is no "Open in Storybook" link. The Builds tab, the source chips and the project's other capture sources are covered in [Capture sources](/guide/capture-sources).
+Open your project in the dashboard. The new build appears in the Builds tab with the source Flutter · Other and a device line. Open the build to see its screens on the Capture tab. Once it is indexed, its screens are searchable. This recording runs the same search the MCP server runs, for quantity stepper.
 
-Once the build is indexed, its screens are searchable. The recording runs the same search the MCP server runs, for `quantity stepper`. A result from this build carries its source type `flutter-golden` and its platform, and the MCP server prints a `Platform:` line such as `Flutter · Android`; when the capture recorded a source file, it also prints `Source: <file>:<line>` instead of a Storybook link. Ranking depends on what else is in your project.
+The Builds tab, the source chips and the project's other capture sources are covered in [Capture sources](/guide/capture-sources). A native build has no Storybook behind it, so there is no "Open in Storybook" link. A result from this build carries its source type `flutter-golden` and its platform, and the MCP server prints a `Platform:` line such as `Flutter · Android`; when the capture recorded a source file, it also prints `Source: <file>:<line>`. Ranking depends on what else is in your project.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/flutter-5-see-and-search.mp4">
@@ -207,7 +214,7 @@ The sample ships two GitHub Actions workflows in `.github/workflows/`:
 - **`ci.yml`** builds and tests the app on every pull request, on a GitHub-hosted runner, with no secrets.
 - **`scry-capture.yml`** captures headless on an Ubuntu runner and uploads, only on a push to the default branch. Pull requests from forks never reach it, so your key is never exposed to code you did not review.
 
-CI uses the headless path only. An emulator on a GitHub-hosted runner is slow and flaky, so capture on a device from your own machine when you want the Android or iOS look.
+CI uses the headless path only. An emulator on a GitHub-hosted runner is slow and flaky, so capture on a device from your own machine when you want your screens at a phone's real size and density, labelled Flutter · Android or Flutter · iOS.
 
 Add the project id as a repository **variable** and the key as a repository **secret**:
 
@@ -273,7 +280,7 @@ The sample app is the worked example of each piece. Copy them from `scry-sample-
 
 **`scf: 5/6 captured, 1 skipped`.** A screen did not produce an image, so it is listed as skipped in the manifest. `upload --dry-run` still says the bundle is valid with five captures, so do not treat a short count as success. Run the capture again and read the lines above the summary for the screen's name.
 
-**The screenshots show black blocks instead of text.** The headless script checks that fonts loaded before it writes a bundle and stops with a message about fonts instead of producing one. If you see blocks anyway, a font your app uses is not declared in `pubspec.yaml`: declare it under `flutter: fonts:` so it is loaded, then capture again.
+**The screenshots show black blocks instead of text.** The headless script checks that fonts loaded before it writes a bundle and stops with `scry capture: fonts did not load, so screenshots would show black Ahem blocks instead of text` instead of producing one. If you see blocks anyway, a font your app uses is not declared in `pubspec.yaml`: declare it under `flutter: fonts:` so it is loaded, then capture again.
 
 **`flutter: command not found`.** The Flutter SDK is not on your `PATH`. Install it, add its `bin` folder to `PATH`, and check `flutter --version`.
 
