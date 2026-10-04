@@ -35,8 +35,10 @@ The labels you will see for native sources:
 | React Native · iOS, React Native · Android | an app's on-device Storybook | adapter in the Scry CLI: `scry-deployer capture rn` ([React Native](/guide/react-native)) |
 | SwiftUI · iOS | the screens of a SwiftUI app | reference script in the sample app and the Scry skill, not a built-in adapter |
 | Compose · Android | the screens of a Jetpack Compose app | reference script in the sample app and the Scry skill, not a built-in adapter |
+| Flutter · Android, Flutter · iOS | the screens of a Flutter app, captured on an emulator or simulator (source kind `flutter-golden`) | reference script in the sample app and the Scry skill, not a built-in adapter ([Flutter](/guide/flutter)) |
+| Flutter · Other | the screens of a Flutter app, rendered with `flutter test` and no device (a Flutter Material look, not the iOS look) | the same reference script, headless path |
 
-SwiftUI and Compose are fed by a reference capture script (it runs the app on a simulator or emulator, screenshots each screen and writes a bundle), which lives in the sample app and in the Scry skill. Scry's CLI has no `capture swiftui` or `capture compose` command; the script writes a [Scry Capture Format](/guide/capture-bundle-format) bundle and `upload` sends it like any other.
+SwiftUI, Compose and Flutter are fed by a reference capture script (it runs the app on a simulator or emulator, or for Flutter optionally with no device, screenshots each screen and writes a bundle), which lives in the sample app and in the Scry skill. Scry's CLI has no `capture swiftui`, `capture compose` or `capture flutter` command; the script writes a [Scry Capture Format](/guide/capture-bundle-format) bundle and `upload` sends it like any other.
 
 Other tools can feed Scry the same way. Anything that writes a
 [Scry Capture Format](/guide/capture-bundle-format) bundle is a capture source — see that page if
@@ -76,5 +78,5 @@ device (for native sources) and screen count.
 Search and the MCP server search across every source's current build at once — not just the most
 recently uploaded one. Every search result carries its source: the search API returns `source_type`
 (for example `swiftui-preview`), `platform` (`ios`) and `sourceKey` (`swiftui-preview:ios`). The MCP
-server prints a `Platform:` line for React Native results (for example "React Native · iOS"), and a
+server prints a `Platform:` line for native results (for example "React Native · iOS" or "Flutter · Android"), and a
 `Source: <file>:<line>` line, instead of a Storybook link, when the capture recorded a source file.

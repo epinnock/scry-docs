@@ -1,5 +1,3 @@
-<!-- DRAFT: sample repos private until founder go -->
-
 # Android (Jetpack Compose)
 
 Capture the screens of a Jetpack Compose app and put them in your Scry project, where they are browsable build by build, and searchable by your AI assistant through the [MCP server](/guide/mcp). This page walks through `scry-sample-android`, a small Compose app called Kettle, from clone to a build in your project, then shows how to do the same for your own app.
@@ -251,7 +249,7 @@ npx skills add scryorg/scry-node --skill scry-native-capture-setup
   <figcaption>The skill setting up a bare app for capture. The same video appears on the iOS, Android and [Set up with AI](/guide/skill) pages.</figcaption>
 </figure>
 
-The skill adds no dependency to your app and does not change a release build: the capture paths run only when the app is launched with the capture argument. It does not cover UIKit or Flutter apps.
+The skill adds no dependency to your app and does not change a release build: the capture paths run only when the app is launched with the capture argument. It does not cover UIKit-only apps. For a Flutter app, see [Flutter](/guide/flutter).
 
 <details>
 <summary>What the skill adds, if you would rather do it by hand</summary>
@@ -313,7 +311,7 @@ Something broke or felt wrong? Tell us on the [feedback form](/feedback) or emai
 
 ## Changelog
 
-- **Draft** — first version of this page. Not yet published.
+- **First version** of this page.
 
 <style>
 .step-video {

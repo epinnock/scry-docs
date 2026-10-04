@@ -90,6 +90,7 @@ export default defineConfig({
             { text: 'iOS (SwiftUI)', link: '/guide/ios-swiftui' },
             { text: 'Android (Compose)', link: '/guide/android-compose' },
             { text: 'React Native', link: '/guide/react-native' },
+            { text: 'Flutter', link: '/guide/flutter' },
             { text: 'Capture sources', link: '/guide/capture-sources' },
             { text: 'Capture bundle format', link: '/guide/capture-bundle-format' },
           ]
