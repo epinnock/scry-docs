@@ -31,15 +31,15 @@ The app shows a notice when a new version is available. Download the new `.dmg` 
 
 Needs Windows 10 or Windows 11 (64-bit).
 
-1. Download [`Scry Sync-Setup-0.1.0.exe`](https://updates.scrymore.com/Scry%20Sync-Setup-0.1.0.exe) (version 0.1.0, about 120 MB). The file name carries the version, and newer versions will be linked here.
+1. [Download the Windows installer](https://updates.scrymore.com/latest/Scry-Sync-Setup.exe) (about 120 MB). This link always gives you the newest version, and the file you save has the version in its name, for example `Scry Sync-Setup-0.1.1.exe`.
 2. Run it. The installer is one click, installs for your user only (there is no administrator prompt), and Scry Sync opens when it finishes.
 3. Windows SmartScreen shows **Windows protected your PC** and says the publisher is unknown. Click **More info**, then **Run anyway**. The **Run anyway** button only appears after you click **More info**.
 4. If Windows blocks the file after download: right-click it, choose **Properties**, tick **Unblock** at the bottom, click **OK**, and run it again.
 
 The tray icon may sit behind the hidden-icons arrow (^) at the right of the taskbar. Drag it out onto the taskbar if you want it always in view.
 
-::: warning Scry Sync does not start by itself yet
-Scry Sync does not start when you sign in to Windows. After a restart, open it from the **Start** menu.
+::: tip Scry Sync starts when you sign in to Windows
+It starts hidden in the tray, so you do not see a window. Settings has a switch if you would rather open it yourself from the **Start** menu.
 :::
 
 ::: warning Updates are manual during the beta
