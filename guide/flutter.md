@@ -286,6 +286,8 @@ The sample app is the worked example of each piece. Copy them from `scry-sample-
 
 **The build is in the Builds tab but has no screens yet.** Indexing runs after the upload: the CLI prints `Indexing has been queued, not finished` and the screens become searchable once the build is processed. Refresh the Builds tab in a minute.
 
+**`flutter drive` hangs after the six tests pass on a new Android emulator.** Android is showing its "Viewing full screen" confirmation on top of the app. `scripts/capture.sh android` marks it as seen before it starts and puts the old value back when it exits, so use that script; if you drive by hand, run `adb shell settings put secure immersive_mode_confirmations confirmed` once.
+
 **An emulator or simulator problem.** Run `flutter devices` to check that your emulator or simulator is listed, start one, and run the script again. If you cannot get a device running, use the headless path, or let the skill stop and print the exact commands for you to run instead of claiming a capture.
 
 For problems with the Scry CLI itself, see [Troubleshooting](/guide/troubleshooting).
