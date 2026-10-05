@@ -80,6 +80,7 @@ export default defineConfig({
             { text: 'Members and Invites', link: '/guide/members-and-invites' },
             { text: 'Account Settings', link: '/guide/account-settings' },
             { text: 'MCP Server', link: '/guide/mcp' },
+            { text: 'Search in the Dashboard', link: '/guide/dashboard-search' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]
         },
