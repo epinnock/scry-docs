@@ -32,8 +32,8 @@ You never type a path; Scry looks in those two places itself.
 
 | | |
 |---|---|
-| **Read** | The name of every library, and the time Adobe's app last updated it. For a library you **tick**: its list of items and the pictures in it. |
-| **Never read** | The pictures of a library you did not tick (only its name and last-updated time are read). Anything in Adobe's `identity` folder, which holds Adobe's sign-in material. |
+| **Read** | The name of every library, and the time it last changed in Creative Cloud. For a library you **tick**: its list of items and the pictures in it. |
+| **Never read** | The pictures of a library you did not tick (only its name and last-changed time are read). Anything in Adobe's `identity` folder, which holds Adobe's sign-in material. |
 | **Never changed** | Scry **never writes to Adobe's copy**: it does not add, rename, delete, lock or re-time anything there. It opens files read-only and works on a copy of each picture in its own folder, and checks the copy matches what Adobe recorded before using it. |
 | **Never sent** | Adobe's index files, links with sign-in tokens in them, and anything from the `identity` folder. Library and picture names are sent so you can find pictures in Scry; they are not put in usage events or logs. |
 
@@ -43,7 +43,7 @@ Scry's own usage events for this feature carry counts and fixed codes only. See 
 
 1. Open Scry Sync and sign in. When it asks where your pictures are, choose **Creative Cloud Libraries** (the other choice is **A folder on this computer**).
 2. Scry looks for your libraries. If it cannot find any, see [Troubleshooting](#troubleshooting).
-3. On **Choose your libraries**, tick the libraries you want. Each row shows the library name, a tag (**Yours** or **Shared with you**) and when Adobe last updated it on this computer. After you tick a library the row also shows about how many pictures it holds.
+3. On **Choose your libraries**, tick the libraries you want. Each row shows the library name, a tag (**Yours** or **Shared with you**) and when it last changed in Creative Cloud. After you tick a library the row also shows about how many pictures it holds.
 4. Decide about **Include Adobe Stock items** (next section). It is off unless you switch it on.
 5. Press **Continue**. Scry tells you how many libraries it will send to which project and how many credits each new or changed picture uses (2), then waits for **Start syncing**. Nothing is sent before you press it.
 
@@ -59,11 +59,13 @@ Libraries often hold **Adobe Stock** items. In Adobe's local copy those are smal
 - **Switching it off later asks:** "Remove the Adobe Stock pictures already in Scry?" **Remove them** deletes Stock pictures from your Scry project; **Keep what is there, stop adding** leaves them and sends no more. Your own pictures are not touched either way.
 - It is **one switch for the whole source**, not one per library, and it is on the status screen as well as in setup.
 
-## When Adobe updated a library, and "Sync now"
+## When a library last changed, and how fresh it is
 
-Each library on the status screen shows **"Adobe last updated this library on this computer at &lt;time&gt;"**. That is when Adobe's app last rewrote its copy here. It is not when you last changed something in Creative Cloud, and it can be behind Adobe's servers. When it is more than a day ago, Scry adds how many days.
+Each library on the status screen shows **"Last changed in Creative Cloud &lt;time&gt;"**. That is when the library's content last changed in Creative Cloud, for example when you added or renamed a picture. When it is more than a day ago, Scry adds how many days. An old time only means nothing has changed since; it does not mean Scry is behind.
 
-**Scry cannot make Adobe update a library.** The **Sync now** button therefore does not sync anything; it shows a hint: *To refresh now, open Creative Cloud > Your libraries.* Adobe decides when it updates its copy. After Adobe has updated it, Scry notices the change within a minute or two (it checks every 30 seconds, then waits until the library has been quiet for about a minute, as it does for folders) and sends what changed.
+**Adobe updates its local copy itself, usually in about a second or two, and Scry reads that copy.** In our own test, a change made in Creative Cloud reached the copy on both Windows 11 and Mac within one to three seconds, whether the Creative Cloud window was open or closed. So there is no **Sync now** button: there is nothing for Scry to ask Adobe to do. Scry checks Adobe's copy every 30 seconds, waits until the library has been quiet for about a minute, as it does for folders, and then sends what changed.
+
+The one time you may need to open Creative Cloud yourself is when Scry cannot find or read Adobe's copy, or the computer is offline. Scry then shows a hint: *Open the Creative Cloud app and sign in, then check Your libraries.* Timing has not been tested after a computer wakes from sleep, or on Windows 10.
 
 The status screen also shows, per library, **"Last sent to Scry &lt;time&gt; · &lt;n&gt; pictures"**, how many Stock previews were skipped or included, and how many items are **not pictures**.
 
@@ -127,11 +129,11 @@ If the status screen shows that pictures disappeared at once or that Scry lost s
 - It may be an **Adobe Stock** item and the switch is off.
 - It may not be a picture (a colour, a style, a brush).
 - Adobe may not have downloaded it to this computer yet; open it in **Your libraries** so Adobe fetches it.
-- Adobe may not have updated its copy yet. Use **Sync now** for the hint, then wait a minute or two.
+- If you changed something in Creative Cloud and it is missing here, make sure Creative Cloud is running and online. Adobe normally updates its copy within seconds and Scry picks the change up by itself within a minute or two.
 
-### The "Adobe last updated" time is old
+### The "Last changed in Creative Cloud" time is old
 
-Scry only shows what Adobe's copy on this computer says. Open **Creative Cloud → Your libraries** and let Adobe update it; Scry picks the change up a minute or two later. Scry cannot trigger it.
+That is the time the library's content last changed, so an old time usually just means nothing has changed since. If you know you changed something more recently, make sure the Creative Cloud app is running, signed in and online; Adobe then updates its copy within seconds and Scry picks the change up by itself. Scry cannot trigger Adobe.
 
 ### Report a problem
 
