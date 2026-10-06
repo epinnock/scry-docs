@@ -30,10 +30,11 @@ it, including ones you're not a member of, so you can ask an admin to add you â€
 
 ## Inviting someone
 
-Both flows use the same dialog: enter an email, choose a role, and **Invite** creates a link. The link is emailed
-where the workspace has that configured, and is also shown in the dialog to copy and send yourself. It expires after
-**7 days**; if it's already expired or you want to resend it, opening the dialog for that email renews it with a
-fresh expiry.
+Both flows use the same dialog: enter an email, choose a role, and **Invite** creates a link and emails it to that
+address. The link is also shown in the dialog to copy and send yourself, so the invite works even if the email does
+not arrive. It expires after **7 days**; if it's already expired or you want to resend it, **Renew and email again**
+(or inviting the same address again) renews it with a fresh expiry and sends a reminder. What the email looks like,
+and what to do when it doesn't arrive, is on [Invite emails](/guide/invite-emails).
 
 If the email you invite already has an account and is already a member, the dialog tells you instead of creating a
 duplicate invite.
