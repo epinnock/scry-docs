@@ -96,18 +96,46 @@ project's ID. A successful static upload alone does not confirm search is ready.
 
 ## The dashboard tour
 
-The first time you open the dashboard with a new account, two short tours point at the controls you need. Each step is a small card next to a real control, with **Next**, **Back** and **Skip tour**. Nothing dims the page and a card never traps your keyboard, so you can keep using the dashboard while it is showing. A card can cover part of the page: press Esc (when you are not typing in a field) or choose **Skip tour** to dismiss it.
-
-- **Welcome** appears on the Projects page while you have no projects. It points at **New project**, the workspace switcher and search (Ctrl+K, or Cmd+K on Mac).
-- **Your first project** appears on a project's Overview the first time you open your first project, before its first build is indexed. It points at the setup checklist, then **Builds**, **Screens** and **Issues** in the sidebar.
+The dashboard has short guided tours. Each step is a small card next to a real control, with **Next**, **Back** and **Skip tour**. Nothing dims the page and a card never traps your keyboard, so you can keep using the dashboard while it is showing. A card can cover part of the page: press Esc (when you are not typing in a field) or choose **Skip tour** to dismiss it.
 
 ![The Welcome tour pointing at New project on the Projects page](/images/coachmarks/welcome-projects-empty-step-1.png)
 
 ![The Your first project tour pointing at the setup checklist](/images/coachmarks/first-project-overview-step-1.png)
 
-Each tour shows once. Whether you skip it or finish it, Scry remembers that on your account, so it does not come back on another browser or device. To see one again, open **Account ▸ Help** and choose **Replay** next to the tour.
+### Every tour
 
-Tours appear on screens 900 pixels wide or more; on a narrow window or a phone you will not see them.
+"Starts by itself" is one of three things. **New accounts only** tours appear while your account is just starting. **First time you reach the screen** tours appear the first time you open that page, when the page has something for the tour to point at. **After three days of use** applies to Power tips only. Every tour shows once; skipping or finishing is remembered on your account.
+
+| Tour | Where it appears | Starts by itself | Steps |
+|---|---|---|---|
+| Welcome | Projects page | New accounts only: while you have no projects | 3: New project, workspace switcher, search |
+| Your first project | A project's Overview | New accounts only: your first project, before its first build is indexed | 4: setup checklist, Builds, Screens, Issues |
+| Review your screens | A project's Screens page | First time you reach it, when the project has linked screens and none has been diffed or opened yet | Up to 4: status, source filter, Run diff, opening a screen |
+| The diff editor | A screen in the diff editor | First time you open a screen that has findings waiting | 3 (2 if you cannot promote findings): Findings, Evidence, promoting a finding |
+| Triage issues | A project's Issues page | First time you reach it, once the project has at least one item (findings included) | 3: status tabs, filters, issue list |
+| Fix an issue | An issue page | First time you open an issue that is open or awaiting verification | 3 (fewer if a step has nothing to point at): Fix in, the tracks for each side, Mark fixed |
+| Usage & credits | Usage & credits page | First time you reach it, where credits are counted or enforced | Up to 4: balance, what tasks cost, usage by project (or an owner-only note for members), how to ask for more |
+| Low credits | A project's Screens page | First time your balance cannot pay for Plus but can still pay for Basic | 1: why Plus is blocked first |
+| Capture sources | Settings > Figma | First time you reach it, when the project has a capture source besides the web Storybook | 2: a source card, how to add another source |
+| Build sources | A project's Builds page | First time you reach it, when a build shows its source | Up to 3: source chip, device line, changed story ids |
+| Capture warnings | A project's Screens page | First time you reach it, when a screen has a capture warning | 1: the capture warnings label |
+| Coverage report | A project's Coverage page, or a build's Coverage tab | First time you reach it, with a report on screen for an indexed build | 4 (3 for a viewer, or when no story fails): quality gate, component filter, a component row, creating a GitHub issue |
+| Power tips | A project page (a section such as Builds, Screens, Issues; not Overview or the diff editor) | After three separate days of using the dashboard in this browser | 2: search and jump keys, section keys |
+
+Step counts are the most a tour shows. A step whose control is not on your screen (for example a button your role cannot use) is left out, and the card counts only the steps you see.
+
+**Replay.** Open **Account ▸ Help** and choose **Replay** next to a tour. See [Account settings](/guide/account-settings#help) for where each Replay opens. Replay works even when the page has nothing for the tour to point at, so a tour tied to a condition (a capture warning, a native build) can show fewer steps or none.
+
+**Where and when.** Tours appear on screens 900 pixels wide or more; on a narrow window or a phone you will not see them. Only one card shows at a time on a page.
+
+**What is not covered.** Only the pages in the table have a tour. There is no tour for Members, Notifications, MCP or the rest of Settings, and none on a phone or a narrow window. Credits tours appear only where credits are on for your workspace.
+
+### Keys the Power tips tour mentions
+
+- **Ctrl+K** (Cmd+K on Mac): open search and jump. Works everywhere in the dashboard.
+- **/**: focus the filter on the current page, on pages that have a filter (Projects, Builds, Screens, Coverage, Issues, search). It does nothing on Overview and Settings.
+- **g, then a letter**: jump to a section of the current project: **o** Overview, **b** Builds, **s** Screens, **i** Issues, **c** Coverage, **t** Settings. It works on a project page, not while a dialog or menu is open or while you are typing in a field.
+- **?** in the diff editor: lists every editor key. Do not use the **g** jumps inside the editor: several of those letters are editor keys.
 
 ## Next steps
 

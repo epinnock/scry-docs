@@ -101,6 +101,8 @@ A build that is waiting shows **Waiting for credits** and how many credits it ne
 
 Signed out, search is keyword-only. Image search needs you to sign in.
 
+The first time you open Usage & credits, a short tour points at your balance, what each task costs, usage by project (members see an owner-only note instead) and how to ask for more credits. When your balance is too low for Plus but still covers Basic, a one-card hint appears on the Run diff button of a project's Screens page, once. Replay either from **Account ▸ Help**. See [the dashboard tour](/guide/quick-start#the-dashboard-tour).
+
 ## Need more credits
 
 Press **Request more credits** on the Credits page. It opens the [feedback form](/feedback).
