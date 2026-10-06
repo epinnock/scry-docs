@@ -102,6 +102,7 @@ export default defineConfig({
             { text: 'Overview', link: '/guide/scry-sync/' },
             { text: 'Install and First Run', link: '/guide/scry-sync/install' },
             { text: 'Connect a Folder', link: '/guide/scry-sync/connect-a-folder' },
+            { text: 'Sync Creative Cloud Libraries', link: '/guide/scry-sync/creative-cloud-libraries' },
             { text: 'What Gets Converted', link: '/guide/scry-sync/what-gets-converted' },
             { text: 'Export an InDesign File to PDF', link: '/guide/scry-sync/export-indd-pdf' },
             { text: 'Disconnect a Device', link: '/guide/scry-sync/disconnect' },
