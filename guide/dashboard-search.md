@@ -14,7 +14,7 @@ Open **Search** in the sidebar, type what you are looking for, and press Enter o
 
 To search by image, click the image area and choose a file, drag a file onto the search box, or paste an image from the clipboard. A thumbnail appears with a remove button. The image must be **PNG, JPG or WebP and no larger than 8 MB**. Anything else is rejected before it is sent, with a message saying why. Large images are shrunk in your browser before they are sent, and WebP images are converted to JPEG, so the search always receives a PNG or JPEG.
 
-Each result shows the screenshot, the screen's name, the project it belongs to, a **Public** or **Private** label, whether it is the **Latest** version or an **Older version** (a project with no recorded latest build shows neither label), and its match score. Where a screen has a Storybook page, the result links to it. Long result lists load a page at a time.
+Each result shows the screenshot, the screen's name, the project it belongs to, a **Public** or **Private** label, whether it is the **Latest** version or an **Older version** (a project with no recorded latest build shows neither label), and its match score. Where a screen has a Storybook page, the result links to it, and **Open story** opens its [story page](/guide/story-page). Long result lists load a page at a time.
 
 ## Choose projects
 
@@ -31,6 +31,17 @@ If you select nothing, the filter reads **All projects** and Scry searches every
 
 - A search covers at most **100 projects**. If more than 100 are available to you, the list is cut off and a notice says so. Pick the projects you care about to search them directly.
 - If you have chosen a project that you can no longer read, for example because your access was removed, Scry leaves it out of the search and the results page tells you which projects were skipped. It never widens the search to make up for it.
+
+## Filter by tag
+
+If your screens carry [tags](/guide/tags-and-custom-fields), the filters have a **Tags** box. Type a tag and press Enter, or type a comma, to add it as a chip. Click a chip, or press Backspace in the empty box, to remove it.
+
+- A screen must have **every** tag you add, and each tag must match exactly, including capital letters.
+- You can add up to 10 tags, each 1 to 64 characters. The box says **Tag limit reached** at 10, and explains if a tag is empty, too long or has control characters.
+- Tags narrow a search, so you still need text or an image. A search with only tags does not run.
+- Screens without tags, or captured before tags were supported, never match a tag filter. That is not an error.
+
+Tags are part of the page address, `?q=login&tag=checkout&tag=needs-review`, so a filtered search can be shared or bookmarked.
 
 ## Latest or older versions
 
@@ -64,5 +75,6 @@ Searching also uses AI credits, charged to the workspace described in [How credi
 ## Related
 
 - [Search API](/api/search) for the request and response fields behind this page
+- [Tags and custom fields](/guide/tags-and-custom-fields) and the [Story page](/guide/story-page), where a result opens
 - [MCP Server](/guide/mcp) to search from an AI assistant
 - [How credits work](/guide/credits)

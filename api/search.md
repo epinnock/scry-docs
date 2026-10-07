@@ -21,6 +21,7 @@ A dedup never removes a screen. A screen with a single copy is returned as it is
 | `project_id` | string | — | Restrict the search to one project |
 | `limit` | number | `10` | Rows per page |
 | `page` | number | `1` | Page number |
+| `tags` | string[] | — | Only screens that have every tag. See [Filter by tag](#filter-by-tag) |
 | `versions` | `"latest"` \| `"all"` | `"latest"` | `latest` returns one row per screen. `all` returns every indexed copy, exactly the list the API returned before this option existed |
 
 Any other value for `versions` is rejected with a `400`:
@@ -30,6 +31,18 @@ Any other value for `versions` is rejected with a `400`:
 ```
 
 A request that does not send `versions` is not an error: it gets the default, `latest`.
+
+## Filter by tag
+
+Send `tags` to keep only screens that carry **all** of the tags listed (an AND, with exact matching):
+
+```json
+{ "text": "payment form", "tags": ["checkout", "needs-review"] }
+```
+
+Send 1 to 10 tags, each 1 to 64 characters. Invisible characters are stripped and surrounding spaces trimmed, and duplicates are removed. An empty list sends no filter. More than 10 tags, a value that is not a string, a tag that is empty or too long once cleaned, or a tag with a control character is rejected with a `400` and the code `invalid_tags`. `tags` narrows a search, so you still send `text`, `image` or both. Screens that have no tags never match and are not an error. How tags get onto screens is explained in [Tags and custom fields](/guide/tags-and-custom-fields).
+
+A row that has tags returns them as a `tags` list; the field is left out when there are none.
 
 ## Response
 
