@@ -125,7 +125,7 @@ Scry does not reject a bundle because of its tags or fields. It keeps what fits 
 | A text value | Up to 500 characters; a blank one is dropped |
 | A list value | Up to 20 strings; an empty one is dropped |
 
-Control characters, zero-width characters and text-direction marks are removed from tags, and control characters from text values. Everything else is stored as you wrote it. Tags and fields on a public project are visible to anyone who can see the project.
+Control characters, zero-width characters and text-direction marks are removed from tags, and control and text-hiding characters from text values. Everything else is stored as you wrote it. Tags and fields on a public project are visible to anyone who can see the project.
 
 ::: info Other `x-<vendor>` data is still just preserved
 Scry reads `x-scry-fields` and nothing else under `x-scry`. Any other vendor key is still kept as it is and never interpreted.

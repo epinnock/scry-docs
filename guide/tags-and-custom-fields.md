@@ -81,7 +81,7 @@ Scry keeps your tags and fields small and tidy. When something is over a limit i
 Other things Scry tidies up:
 
 - Hidden characters are removed from tags: control characters, zero-width characters and the characters that reverse text direction. Two tags that match after this are kept once.
-- Control characters are removed from text fields. Line breaks and tabs stay.
+- Control characters, and characters that hide or reverse text, are removed from text fields. Line breaks and tabs stay.
 - A tag is matched exactly. `Checkout` and `checkout` are different tags.
 
 ### Drop counts
