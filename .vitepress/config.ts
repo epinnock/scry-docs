@@ -69,19 +69,25 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Integrations',
+          text: 'Dashboard',
           items: [
-            { text: 'Figma Plugin', link: '/guide/figma-plugin' },
             { text: 'Reviewing a Design Sync Run', link: '/guide/design-sync-review' },
             { text: 'Design Sync Run Details', link: '/guide/design-sync-run-details' },
-            { text: 'Storybook Capture Settings', link: '/guide/storybook-capture-settings' },
-            { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
-            { text: 'Component Requests', link: '/guide/component-requests' },
+            { text: 'Search in the Dashboard', link: '/guide/dashboard-search' },
             { text: 'Members and Invites', link: '/guide/members-and-invites' },
             { text: 'Invite Emails', link: '/guide/invite-emails' },
             { text: 'Account Settings', link: '/guide/account-settings' },
+            { text: 'How Credits Work', link: '/guide/credits' },
+          ]
+        },
+        {
+          text: 'Integrations',
+          items: [
+            { text: 'Figma Plugin', link: '/guide/figma-plugin' },
+            { text: 'Storybook Capture Settings', link: '/guide/storybook-capture-settings' },
+            { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
+            { text: 'Component Requests', link: '/guide/component-requests' },
             { text: 'MCP Server', link: '/guide/mcp' },
-            { text: 'Search in the Dashboard', link: '/guide/dashboard-search' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]
         },
@@ -113,7 +119,6 @@ export default defineConfig({
         {
           text: 'Help',
           items: [
-            { text: 'How Credits Work', link: '/guide/credits' },
             { text: 'Troubleshooting', link: '/guide/troubleshooting' },
             { text: 'Feedback', link: '/feedback' },
           ]
