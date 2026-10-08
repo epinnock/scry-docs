@@ -109,7 +109,7 @@ Open **Suggest links** and pick a scope: **Selection**, **This page** or **Whole
 
 - **Signed out**, matching is by name: both sides are normalised, so `screen-04`, `Screen 04` and `screen04` are the same thing, and variant properties are compared with story names.
 - **Signed in with a project selected**, the thumbnails are also matched against the project's latest build screenshots. A story's score is the better of its name and visual score, and each row shows which matcher had an opinion. If that endpoint is unreachable, the review says *Visual matching unavailable — showing name matches only*.
-- Name matching is free. Visual matching uses [credits](/guide/credits). At zero credits, Suggest matches by name only.
+- Name matching uses no credits. Visual matching uses [credits](/guide/credits). At zero credits, Suggest matches by name only.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-2-review.mp4"></video>
