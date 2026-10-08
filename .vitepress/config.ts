@@ -90,6 +90,8 @@ export default defineConfig({
             { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
             { text: 'Component Requests', link: '/guide/component-requests' },
             { text: 'MCP Server', link: '/guide/mcp' },
+            { text: 'Fix in Figma or Code', link: '/guide/fix-in-figma-or-code' },
+            { text: 'Agents: Resolving Issues', link: '/guide/mcp-issues' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]
         },
@@ -144,6 +146,7 @@ export default defineConfig({
             { text: 'Design Sync Run Details', link: '/guide/design-sync-run-details' },
             { text: 'Storybook Capture Settings', link: '/guide/storybook-capture-settings' },
             { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
+            { text: 'Fix in Figma or Code', link: '/guide/fix-in-figma-or-code' },
           ]
         },
         {
@@ -201,6 +204,7 @@ export default defineConfig({
           items: [
             { text: 'Introduction', link: '/services/mcp-server/' },
             { text: 'Tools', link: '/services/mcp-server/tools' },
+            { text: 'Issue tools (guide)', link: '/guide/mcp-issues' },
             { text: 'Authentication', link: '/services/mcp-server/authentication' },
             { text: 'Deployment', link: '/services/mcp-server/deployment' },
           ]
