@@ -20,6 +20,8 @@ Use it when your designs live in files (Photoshop, Illustrator, InDesign exports
 3. **Sends** the pictures for the folder, only when something changed.
 4. **Tells you** what needs attention, in a plain list in the app, with one action per row.
 
+Scry Sync also includes **[Scry Snip](/guide/scry-sync/snip)**: press a hotkey, select part of your screen, review the picture, and send it to a project for you or your coding agent to use. Snip works on its own, without connecting a folder.
+
 Your folder is never modified. Scry Sync only reads from it, and it only goes one way: folder to Scry.
 
 ## Which files it handles
@@ -46,6 +48,7 @@ Not in this version: Figma and Sketch files, an Adobe Bridge or Photoshop panel,
 
 - [Install and first run](/guide/scry-sync/install): the Windows download, the one-time warning, signing in.
 - [Connect a folder](/guide/scry-sync/connect-a-folder): choose a project and folder, the scan, and what you confirm before anything is sent.
+- [Scry Snip](/guide/scry-sync/snip): screenshots by hotkey, permissions, what is stored and how to delete it.
 - [What gets converted](/guide/scry-sync/what-gets-converted): the three verdicts, what *approximate* means, and every reason a file is not sent.
 - [How to export an InDesign file to PDF](/guide/scry-sync/export-indd-pdf)
 - [Disconnect a device](/guide/scry-sync/disconnect)
