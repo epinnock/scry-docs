@@ -62,15 +62,17 @@ Sharing, copying a link and deleting happen on the **Snips** page in the dashboa
 
 ### Mac: Screen Recording {#mac-screen-recording}
 
-macOS only lets an app read the screen after you allow it. The first time you snip, Scry shows **Scry needs Screen Recording**:
+macOS only lets an app read the screen after you allow it. The first time you snip, Scry shows a card, **Let Scry Sync see your screen**, with an **Open System Settings** button:
 
-1. Open **System Settings > Privacy & Security > Screen Recording**.
-2. Turn on **Scry Sync**.
-3. **Quit and reopen Scry Sync.** macOS only applies the change to an app that starts afterwards.
+1. Open **System Settings > Privacy & Security > Screen & System Audio Recording** (called **Screen Recording** on macOS 14 and earlier).
+2. Turn on **Scry Sync**. If **Scry Sync** is not in the list yet, click the **+** button under the list, enter your Mac password, choose **Scry Sync** in **Applications**, and click **Open**.
+3. **Quit and reopen Scry Sync** (macOS offers **Quit & Reopen**). macOS only applies the change to an app that starts afterwards.
+
+The first time you finish a region snip, macOS may also ask whether Scry Sync can bypass the system private window picker. Choose **Allow**.
 
 Scry checks that it can really read the screen before it takes a snip. Without the permission macOS quietly hands back a plain wallpaper, and Scry would rather tell you than send you a useless picture. If the check cannot run, for example over a full-screen app, the card says **Scry could not confirm Screen Recording** and nothing is captured. Switch to a normal window and try again.
 
-**After every update, while the beta is unsigned.** Mac updates are manual for now, and the app is not yet code-signed. macOS may forget the Screen Recording permission when you install a new version. If a snip says **Scry needs Screen Recording** after an update, open the same System Settings page, switch **Scry Sync** off and on (or remove it and add it again), then quit and reopen Scry Sync. After a manual update you may also be asked to sign in again. The [install page](/guide/scry-sync/install) explains how to open an unsigned app.
+**After every update, while the beta is unsigned.** Mac updates are manual for now, and the app is not yet code-signed. macOS may forget the Screen Recording permission when you install a new version. If a snip shows the **Let Scry Sync see your screen** card after an update, open the same System Settings page, switch **Scry Sync** off and on (or remove it and add it again), then quit and reopen Scry Sync. After a manual update you may also be asked to sign in again. The [install page](/guide/scry-sync/install) explains how to open an unsigned app.
 
 ### Windows
 
