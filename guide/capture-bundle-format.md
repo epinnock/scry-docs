@@ -99,6 +99,40 @@ captured with the iOS Dynamic Island painted over it (see
 information only: they never stop a bundle from being accepted, and an adapter of your own can
 add its own under its own `x-<name>` key.
 
+## Tags and fields in a bundle
+
+A capture can carry tags and custom fields. Scry reads them, shows them on the [story page](/guide/story-page), and lets you filter [search](/guide/dashboard-search#filter-by-tag) by tag. For how Storybook builds produce them, see [Tags and custom fields](/guide/tags-and-custom-fields).
+
+```json
+{
+  "id": "Checkout/PaymentForm--WithError",
+  "image": "images/payment-form-with-error.png",
+  "tags": ["checkout", "needs-review"],
+  "x-scry-fields": { "owner": "Payments", "priority": 2, "reviewed": false, "platforms": ["web", "ios"] }
+}
+```
+
+- **`tags`** is a list of strings, part of the spec. Keep them stable from build to build.
+- **`x-scry-fields`** is a vendor key (see the section above) that Scry reads. It is an object of named values. A value can be a string, a number, a true or false value, or a list of strings.
+
+Scry does not reject a bundle because of its tags or fields. It keeps what fits the limits and **drops, never cuts, what does not**, then counts the drops for the build:
+
+| What | Limit |
+| --- | --- |
+| Tags per capture | 100, each 1 to 64 characters |
+| Fields per capture | 50, in all about 8 KB |
+| Field name | Starts with a letter, then letters, digits, spaces, `_` or `-`, up to 64 characters |
+| A text value | Up to 500 characters; a blank one is dropped |
+| A list value | Up to 20 strings; an empty one is dropped |
+
+Control characters, zero-width characters and text-direction marks are removed from tags, and control and text-hiding characters from text values. Everything else is stored as you wrote it. Tags and fields on a public project are visible to anyone who can see the project.
+
+::: info Other `x-<vendor>` data is still just preserved
+Scry reads `x-scry-fields` and nothing else under `x-scry`. Any other vendor key is still kept as it is and never interpreted.
+:::
+
+A bundle's tags and fields are read when the bundle is first indexed. To change them, upload the bundle again as a new build; an SCF build cannot be re-indexed in place.
+
 ## Ids must stay stable — and Scry tells you when they don't
 
 Everything Scry links to a capture — a Figma link, an issue, its history — is keyed on the

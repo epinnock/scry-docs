@@ -74,6 +74,8 @@ export default defineConfig({
             { text: 'Reviewing a Design Sync Run', link: '/guide/design-sync-review' },
             { text: 'Design Sync Run Details', link: '/guide/design-sync-run-details' },
             { text: 'Search in the Dashboard', link: '/guide/dashboard-search' },
+            { text: 'Story Page', link: '/guide/story-page' },
+            { text: 'Tags and Custom Fields', link: '/guide/tags-and-custom-fields' },
             { text: 'Members and Invites', link: '/guide/members-and-invites' },
             { text: 'Invite Emails', link: '/guide/invite-emails' },
             { text: 'Account Settings', link: '/guide/account-settings' },
