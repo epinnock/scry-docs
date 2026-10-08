@@ -2,7 +2,9 @@
 
 [Scry - Storybook Linker](https://www.figma.com/community/plugin/1602918953997015259) links layers in a Figma file to stories in any Storybook your computer can reach: hosted, on your company network, or running locally. Every linked layer gets a **View Story** relaunch button that opens the live story, and links live in the Figma file, so everyone editing it sees them. **Suggest links** scans a selection, a page or the whole file and proposes a story per layer, which you accept one at a time or in bulk.
 
-**No account is needed for linking, and linking uploads nothing.** Connecting, browsing, linking and Suggest links all work signed out: the plugin reads your Storybook's `index.json` directly and stores links in the Figma file. A free Scrymore account adds visual matching, screenshot sync and diffs, which work from screenshots of a Storybook build you deploy to a Scrymore project.
+**No account is needed for linking, and linking uploads nothing.** Connecting, browsing, linking and Suggest links all work signed out: the plugin reads your Storybook's `index.json` directly and stores links in the Figma file. A Scrymore account adds visual matching, screenshot sync and diffs, which work from screenshots of a Storybook build you deploy to a Scrymore project.
+
+If you do not have an account yet, you can create one from the plugin: the sign-in page that opens in your browser offers **Create your account** with Google, GitHub or email.
 
 ## Install and connect
 
