@@ -31,6 +31,8 @@ Scry then processes the pictures like any other upload: it indexes them for sear
 
 Scry Sync only reads your folder. It never writes to it.
 
+The planned Creative Cloud Libraries source reads Adobe's local copy of your libraries instead of a folder, never writes to it, and skips Adobe Stock unless you switch it on. What it reads and sends is on [Sync Creative Cloud Libraries](/guide/scry-sync/creative-cloud-libraries); this page will list its usage events when it is released.
+
 ## What stays on your computer
 
 - A small record per folder of what was sent, so only changes are sent again.

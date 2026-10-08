@@ -53,7 +53,7 @@ To remove Scry Sync, open **Settings → Apps**, choose **Scry Sync** and click 
 ## First run
 
 1. **Sign in with your browser.** The app opens Scry in your browser and shows a short code. Check the code matches, choose the project the pictures should go to (only projects you can add to are listed), and approve. You never paste a key.
-2. **Choose a folder.** See [Connect a folder](/guide/scry-sync/connect-a-folder).
+2. **Choose a folder.** See [Connect a folder](/guide/scry-sync/connect-a-folder). (A later version is planned to offer Creative Cloud Libraries here too: [Sync Creative Cloud Libraries](/guide/scry-sync/creative-cloud-libraries), in development.)
 3. A one-time notice explains the anonymous usage data and error reports the app shares, and where to turn them off. See [What Scry Sync sends and collects](/guide/scry-sync/privacy).
 
 After that the app lives in the menu bar (Mac) or system tray (Windows). Click the icon to see the project and folder, the latest activity, anything that needs attention, and **Pause**, **Open in Scry** and **Settings**.

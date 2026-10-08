@@ -34,6 +34,8 @@ Your folder is never modified. Scry Sync only reads from it, and it only goes on
 | **InDesign (INDD)** | Cannot be read directly. Export a **PDF** (or PNG) of it into the folder and the export syncs. See [How to export an InDesign file to PDF](/guide/scry-sync/export-indd-pdf). |
 | **Photoshop (PSD, PSB)** | Reads the flattened picture Photoshop saved inside the file. This needs **Maximize PSD and PSB File Compatibility** turned on when you save. |
 
+Planned: starting from your **Adobe Creative Cloud Libraries** instead of a folder. Scry Sync would read the copy Adobe already keeps on your computer and never change it. See [Sync Creative Cloud Libraries](/guide/scry-sync/creative-cloud-libraries). It is in development and not in the current download.
+
 Not in this version: Figma and Sketch files, an Adobe Bridge or Photoshop panel, Linux, and more than one folder per project. Figma designs are covered by the [Scry Link plugin](/guide/figma-plugin).
 
 ## Before you start
@@ -46,6 +48,7 @@ Not in this version: Figma and Sketch files, an Adobe Bridge or Photoshop panel,
 
 - [Install and first run](/guide/scry-sync/install): the Windows download, the one-time warning, signing in.
 - [Connect a folder](/guide/scry-sync/connect-a-folder): choose a project and folder, the scan, and what you confirm before anything is sent.
+- [Sync Creative Cloud Libraries](/guide/scry-sync/creative-cloud-libraries): start from the libraries Adobe keeps on your computer instead of a folder (in development).
 - [What gets converted](/guide/scry-sync/what-gets-converted): the three verdicts, what *approximate* means, and every reason a file is not sent.
 - [How to export an InDesign file to PDF](/guide/scry-sync/export-indd-pdf)
 - [Disconnect a device](/guide/scry-sync/disconnect)
