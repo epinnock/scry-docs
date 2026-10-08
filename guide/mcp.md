@@ -207,6 +207,18 @@ Codex prints `Successfully logged in.`
 
 The server searches only what your account can already read, and enforces the same project visibility and membership rules as the dashboard. Your Firebase session stays on the server — the MCP client receives a separate token scoped to MCP, and screenshots are handed out as short-lived presigned URLs rather than public links.
 
+## What the Scry MCP server records
+
+For each tool call we record the tool name, whether it succeeded or failed (with the error code), how long it took, the MCP client name and version, the protocol version, the model name if the client reports one, which argument names were present, and the size of the response.
+
+We never record argument values or response bodies. Your account id is hashed, and no emails or keys are recorded.
+
+Tools may accept two optional arguments: `context`, which says why the agent is calling the tool, and `conversation_id`. Before `context` is stored, emails, URLs, keys, phone numbers and IP addresses are removed and the text is cut to 300 characters. We use it only to understand what agents try to do. Agents do not have to send either argument.
+
+The `get_more_tools` tool lets an agent describe a capability Scry is missing.
+
+We use this data to improve the tools. It is stored in our own logs and in our product analytics provider.
+
 ## Feedback
 
 Something not working, or a tool you wish existed? Tell us on the [feedback form](/feedback) or email <feedback@scrymore.com>.
