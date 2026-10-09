@@ -98,7 +98,7 @@ The numbers are counts only; Scry does not echo the values. If the dropped numbe
 
 Open **Search** in the dashboard and use the **Tags** box in the filters. Type a tag and press Enter to add it as a chip. You can add up to 10 tags. A screen must have **every** tag you add, and each tag has to match exactly. Remove a chip by clicking it or by pressing Backspace in the empty box.
 
-Tags narrow a search, so type some text or add an image as well. A search with only tags does not run. The tags are part of the page address (`tag=checkout&tag=needs-review`), so you can bookmark or share a filtered search. See [Search in the dashboard](/guide/dashboard-search#filter-by-tag).
+Tags narrow a search, so type some text or add an image as well. A search with only tags does not run. The tags are part of the page address (`tag=checkout&tag=needs-review`), so you can bookmark or share a filtered search. See [Image search in the dashboard](/guide/dashboard-search#filter-by-tag).
 
 The [search API](/api/search#filter-by-tag) takes the same filter as a `tags` list.
 
@@ -122,6 +122,6 @@ Editing tags and fields in the dashboard, choosing who can see fields, and impor
 ## Related
 
 - [Story page](/guide/story-page) to see a story's tags, fields and links
-- [Search in the dashboard](/guide/dashboard-search) for the Tags filter
+- [Image search in the dashboard](/guide/dashboard-search) for the Tags filter
 - [Capture bundle format](/guide/capture-bundle-format) for tags and fields in an SCF bundle
 - [Search API](/api/search) for the `tags` request option
