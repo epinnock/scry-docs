@@ -132,7 +132,7 @@ Step counts are the most a tour shows. A step whose control is not on your scree
 
 ### Keys the Power tips tour mentions
 
-- **Ctrl+K** (Cmd+K on Mac): open search and jump. Works everywhere in the dashboard.
+- **Ctrl+K** (Cmd+K on Mac): open search and jump. Works everywhere in the dashboard. Type words and choose **Search images for …** to send them to [Image search](/guide/dashboard-search).
 - **/**: focus the filter on the current page, on pages that have a filter (Projects, Builds, Screens, Coverage, Issues, search). It does nothing on Overview and Settings.
 - **g, then a letter**: jump to a section of the current project: **o** Overview, **b** Builds, **s** Screens, **i** Issues, **c** Coverage, **t** Settings. It works on a project page, not while a dialog or menu is open or while you are typing in a field.
 - **?** in the diff editor: lists every editor key. Do not use the **g** jumps inside the editor: several of those letters are editor keys.

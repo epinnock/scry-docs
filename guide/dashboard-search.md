@@ -1,10 +1,10 @@
-# Search in the dashboard
+# Image search in the dashboard
 
-The dashboard has a **Search** page (`/search`, in the sidebar) that finds screens across your indexed Storybook builds. You can search by text, by image, or by both, narrow the search to chosen projects, and decide whether to see only the newest version of each screen or older versions too. It runs the same search as the [search API](/api/search), the [MCP server](/guide/mcp) and Scry Link, and it returns only what your account can already read.
+The dashboard has an **Image search** page (`/search`, in the sidebar) that finds screens across your indexed Storybook builds. You can search by text, by image, or by both, narrow the search to chosen projects, and decide whether to see only the newest version of each screen or older versions too. It runs the same search as the [search API](/api/search), the [MCP server](/guide/mcp) and Scry Link, and it returns only what your account can already read.
 
 ## Run a search
 
-Open **Search** in the sidebar, type what you are looking for, and press Enter or **Search**. You need text, an image, or both. The button stays disabled until there is something to search for, and **Esc** clears the field.
+Open **Image search** in the sidebar, type what you are looking for, and press Enter or **Search**. You need text, an image, or both. The button stays disabled until there is something to search for, and **Esc** clears the field.
 
 | You give | Scry searches for |
 |---|---|
@@ -15,6 +15,11 @@ Open **Search** in the sidebar, type what you are looking for, and press Enter o
 To search by image, click the image area and choose a file, drag a file onto the search box, or paste an image from the clipboard. A thumbnail appears with a remove button. The image must be **PNG, JPG or WebP and no larger than 8 MB**. Anything else is rejected before it is sent, with a message saying why. Large images are shrunk in your browser before they are sent, and WebP images are converted to JPEG, so the search always receives a PNG or JPEG.
 
 Each result shows the screenshot, the screen's name, the project it belongs to, a **Public** or **Private** label, whether it is the **Latest** version or an **Older version** (a project with no recorded latest build shows neither label), and its match score. Where a screen has a Storybook page, the result links to it, and **Open story** opens its [story page](/guide/story-page). Long result lists load a page at a time.
+
+
+### From the search box at the top (Ctrl+K)
+
+The search box at the top right of the dashboard (**Ctrl+K**, or Cmd+K on Mac) finds projects, pages and actions; it does not search screenshots. When you type words there, its last row is **Search images for “your words”**. Choose it to open Image search with those words already searched. When your words match nothing else in the dashboard, it is the only row, so Enter takes you straight there. A project name still comes first, so typing a project's name and pressing Enter still opens the project.
 
 ## Choose projects
 
