@@ -57,7 +57,7 @@ To remove Scry Sync, open **Settings → Apps**, choose **Scry Sync** and click 
 
 ## First run
 
-1. **Sign in with your browser.** The app opens Scry in your browser and shows a short code. Check the code matches, choose the project the pictures should go to (only projects you can add to are listed), and approve. You never paste a key.
+1. **Sign in with your browser.** The app opens a sign-in page in your browser, which also offers **Create your account** with Google, GitHub or email if you are new to Scry, and shows a short code. Check the code matches, choose the project the pictures should go to (only projects you can add to are listed), and approve. You never paste a key.
 2. **Choose a folder.** See [Connect a folder](/guide/scry-sync/connect-a-folder).
 3. A one-time notice explains the anonymous usage data and error reports the app shares, and where to turn them off. See [What Scry Sync sends and collects](/guide/scry-sync/privacy).
 

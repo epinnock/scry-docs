@@ -88,6 +88,7 @@ If you email us or use the [feedback form](/feedback), we keep what you send. Th
 
 - The dashboard and the viewer use a sign-in session cookie. It is needed for the service to work.
 - Analytics in the dashboard is stored in your browser's local storage, not in cookies.
+- The dashboard also keeps a few display preferences in local storage, and a single flag noting that this browser has signed in to Scry before, so a returning visitor sees the sign-in page instead of the sign-up page. The flag holds no account, email or time, stays on your device and is never sent to us.
 - The Figma plugin keeps its settings, your sign-in token and your analytics choice in Figma's plugin storage on your device.
 
 We don't use advertising cookies or trackers.

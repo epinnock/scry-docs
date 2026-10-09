@@ -2,7 +2,9 @@
 
 [Scry - Storybook Linker](https://www.figma.com/community/plugin/1602918953997015259) links layers in a Figma file to stories in any Storybook your computer can reach: hosted, on your company network, or running locally. Every linked layer gets a **View Story** relaunch button that opens the live story, and links live in the Figma file, so everyone editing it sees them. **Suggest links** scans a selection, a page or the whole file and proposes a story per layer, which you accept one at a time or in bulk.
 
-**No account is needed for linking, and linking uploads nothing.** Connecting, browsing, linking and Suggest links all work signed out: the plugin reads your Storybook's `index.json` directly and stores links in the Figma file. A free Scrymore account adds visual matching, screenshot sync and diffs, which work from screenshots of a Storybook build you deploy to a Scrymore project.
+**No account is needed for linking, and linking uploads nothing.** Connecting, browsing, linking and Suggest links all work signed out: the plugin reads your Storybook's `index.json` directly and stores links in the Figma file. A Scrymore account adds visual matching, screenshot sync and diffs, which work from screenshots of a Storybook build you deploy to a Scrymore project.
+
+If you do not have an account yet, you can create one from the plugin: the sign-in page that opens in your browser offers **Create your account** with Google, GitHub or email.
 
 ## Install and connect
 
@@ -107,7 +109,7 @@ Open **Suggest links** and pick a scope: **Selection**, **This page** or **Whole
 
 - **Signed out**, matching is by name: both sides are normalised, so `screen-04`, `Screen 04` and `screen04` are the same thing, and variant properties are compared with story names.
 - **Signed in with a project selected**, the thumbnails are also matched against the project's latest build screenshots. A story's score is the better of its name and visual score, and each row shows which matcher had an opinion. If that endpoint is unreachable, the review says *Visual matching unavailable — showing name matches only*.
-- Name matching is free. Visual matching uses [credits](/guide/credits). At zero credits, Suggest matches by name only.
+- Name matching uses no credits. Visual matching uses [credits](/guide/credits). At zero credits, Suggest matches by name only.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/suggest-2-review.mp4"></video>
