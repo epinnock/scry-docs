@@ -14,7 +14,7 @@ Open **Image search** in the sidebar, type what you are looking for, and press E
 
 To search by image, click the image area and choose a file, drag a file onto the search box, or paste an image from the clipboard. A thumbnail appears with a remove button. The image must be **PNG, JPG or WebP and no larger than 8 MB**. Anything else is rejected before it is sent, with a message saying why. Large images are shrunk in your browser before they are sent, and WebP images are converted to JPEG, so the search always receives a PNG or JPEG.
 
-Each result shows the screenshot, the screen's name, the project it belongs to, a **Public** or **Private** label, whether it is the **Latest** version or an **Older version** (a project with no recorded latest build shows neither label), and its match score. Where a screen has a Storybook page, the result links to it, and **Open story** opens its [story page](/guide/story-page). Long result lists load a page at a time.
+Each result shows the screenshot, the screen's name, the project it belongs to, a **Public** or **Private** label, whether it is the **Latest** version or an **Older version** (a project with no recorded latest build shows neither label), and its match score. Click a result to open its [story page](/guide/story-page). Where a screen has a Storybook page, **Open in Storybook** opens it in a new tab, and **View build** opens the build the screen came from. Long result lists load a page at a time.
 
 
 ### From the search box at the top (Ctrl+K)
