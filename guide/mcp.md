@@ -134,6 +134,7 @@ With a `project_id` you can also choose how far to look:
 | `search_by_image` | Find components that look like an image — a screenshot, a mockup, a Figma export |
 | `get_component_screenshot` | Fetch a result's screenshot as an image the assistant can actually look at |
 | `generate_image` | Generate a reference image from a prompt, optionally guided by reference images |
+| `search_stock` | Search public stock libraries (Pixabay, Unsplash, Openverse) for pictures, when stock search is switched on. See [Stock pictures in search](/guide/stock-pictures#the-search-stock-mcp-tool) |
 | `whoami` | Which account is connected |
 | `latest_capture` | The screenshot you just took with [Scry Snip](/guide/scry-sync/snip) |
 | `get_capture` | One Snip capture by id, yours or one shared with you |
