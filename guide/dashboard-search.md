@@ -82,4 +82,5 @@ Searching also uses AI credits, charged to the workspace described in [How credi
 - [Search API](/api/search) for the request and response fields behind this page
 - [Tags and custom fields](/guide/tags-and-custom-fields) and the [Story page](/guide/story-page), where a result opens
 - [MCP Server](/guide/mcp) to search from an AI assistant
+- [Stock pictures in search](/guide/stock-pictures), the section under your results with pictures from stock libraries
 - [How credits work](/guide/credits)
