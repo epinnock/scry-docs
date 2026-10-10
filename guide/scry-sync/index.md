@@ -17,7 +17,7 @@ Use it when your designs live in files (Photoshop, Illustrator, InDesign exports
 
 1. **Watches the folder** and its subfolders. It waits until the folder has been quiet for about a minute, so it does not send half-saved files.
 2. **Converts** each changed file to a picture, on your computer. Every file gets one of three verdicts: *faithful*, *approximate* or *not sent*. See [What gets converted](/guide/scry-sync/what-gets-converted).
-3. **Sends** the pictures for the folder, only when something changed.
+3. **Sends** the pictures for the folder, only when something changed. Scry Sync uploads only pictures that changed since your last sync; unchanged pictures are not sent again.
 4. **Tells you** what needs attention, in a plain list in the app, with one action per row.
 
 Scry Sync also includes **[Scry Snip](/guide/scry-sync/snip)**: press a hotkey, select part of your screen, review the picture, and send it to a project for you or your coding agent to use. Snip works on its own, without connecting a folder.
