@@ -48,6 +48,7 @@ By default every snip stops at a review card. It shows the picture, its size and
 | Button | What it does |
 |---|---|
 | **Send to *project*** | Uploads the snip to the project named on the button. |
+| **Send and search in Scry** | Does the same as **Send**, then opens Image search in your browser with the snip already searched (see [Search from a snip](#search-from-a-snip)). Hidden when you are signed out of Scry Sync. |
 | **Copy image** | Copies the picture again. |
 | **Save** | Keeps it in **Recent snips** on your computer without sending it. |
 | **Discard** | Throws it away. **Esc** does the same. |
@@ -57,6 +58,33 @@ If you do nothing for 30 seconds, the card moves the snip to **Recent snips**. I
 **Send immediately** is an option in **Settings > Snip**. It is off until you turn it on, and Scry explains what it does before it switches on. When it is on, a snip uploads as soon as you take it, and the card shows **Undo** for a moment. It applies to this computer only, and signing out turns it off.
 
 Sharing, copying a link and deleting happen on the **Snips** page in the dashboard, not on the card.
+
+## Search from a snip {#search-from-a-snip}
+
+Use a snip to find matching screens in your Scry projects, for example to see whether a screen you just spotted already exists in a Storybook build.
+
+<!-- SCREENSHOT PLACEHOLDER: snip-search-card-ready.png (review card with Send and search in Scry, Windows and Mac) -->
+
+1. Take a snip. On the review card, press **Send and search in Scry**. The button's full name for screen readers is "Send this snip to *project* and search Scry with it", and the card footer still says nothing leaves your computer until you press a button that sends.
+2. The card behaves exactly as it does for **Send**: **Sending…**, then **Sent**. While it sends, the card says **Opens Scry when sent**.
+3. When the snip has been sent, your default browser opens [Image search](/guide/dashboard-search#from-a-snip) with the snip already in the image box and the search run. If you are signed out of the dashboard in the browser, you sign in first and then land on the same search.
+
+<!-- SCREENSHOT PLACEHOLDER: snip-search-result-page.png (Image search with the snip banner and results) -->
+
+**What is sent.** Searching needs the snip to exist in your project, so **Send and search in Scry** stores it exactly like **Send**: it appears on your **Snips** page, you can share or delete it there, and it stops being available 30 days after you send it (see [What is stored](#what-is-stored-and-for-how-long)). The link that opens in your browser contains only the project and snip ids, never the picture. If you do not want the snip stored, use **Copy image** or **Save** instead.
+
+**What it costs.** The search costs 1 credit, like any other image search, and uses the same rate limit.
+
+**When it does not open the browser.**
+
+- **Offline or waiting.** The card says **Waiting for a connection** and the browser opens only after the snip has actually been sent. If it takes longer than 10 minutes to send, the browser stays closed; press **Search in Scry** on the **Sent** card instead.
+- **Not sent.** If the upload fails the card says **Not sent** and nothing opens. **Retry** sends it; it does not search unless you press **Send and search in Scry** again.
+- **Send immediately is on.** The browser never opens by itself. Once the card says **Sent**, it shows a **Search in Scry** button; the card stays a few seconds longer so you can press it.
+- **Signed out of Scry Sync.** The **Send and search in Scry** button is hidden, because **Send** also waits for you to sign in.
+
+**Search a snip you already sent.** The **Sent** card and the snip's detail panel on the **Snips** page both have **Search in Scry**. It opens the same search. Anyone who can open the snip, including someone you shared it with, can use it from the detail panel. If the snip has been deleted, has expired, or is not shared with you, the search page says **That snip is not available** and shows a normal empty search.
+
+<!-- SCREENSHOT PLACEHOLDER: snip-search-card-sent.png (Sent card with Search in Scry) and snip-search-detail-button.png (Snips page detail with Search in Scry) -->
 
 ## Permissions
 
@@ -166,6 +194,10 @@ To remove everything, delete the project in the dashboard, which deletes its sni
 **Nothing happens when I press the hotkey.** Check that Snip is not paused (the tray menu says **Resume Snip** if it is), and that another app is not using the same keys. Try **Snip now** from the tray menu, or record a different hotkey in **Settings > Snip**.
 
 **Mac says Scry needs Screen Recording, but it is already on.** Quit and reopen Scry Sync. If it still says so after an update, switch Scry Sync off and on in **System Settings > Privacy & Security > Screen Recording**.
+
+**Send and search in Scry is missing from the card.** You are signed out of Scry Sync. Sign in and take the snip again.
+
+**The browser did not open after I pressed Send and search in Scry.** It opens only once the snip is sent. If you were offline or it took more than 10 minutes, press **Search in Scry** on the **Sent** card, or on the snip in your **Snips** page.
 
 **The snip is on my computer but not in the dashboard.** The card says **Not sent** when the upload fails; press **Retry**. Snips you **Save** or let time out stay in **Recent snips** until you send them.
 
