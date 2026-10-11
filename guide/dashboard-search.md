@@ -65,6 +65,8 @@ The setting is part of the page address, together with your text and chosen proj
 
 Searching also uses AI credits, charged to the workspace described in [How credits work](/guide/credits#who-pays). If the balance has run out, the page shows a message saying so instead of results.
 
+While you type, Scry may send your search text to its embedding provider to make results faster. Nothing is charged until you search.
+
 ## Troubleshooting
 
 **A message that search is not available.** The search service is not reachable or not configured. Try again in a minute; if it persists, tell us on the [feedback form](/feedback) and include the request id from the message, if there is one.
