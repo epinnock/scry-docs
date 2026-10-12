@@ -86,7 +86,7 @@ Scry tells you why instead of failing silently. Nothing is captured or saved whe
 |---|---|
 | **Snip is paused** | You paused Snip. Choose **Resume Snip**. Pausing lasts through a restart or an update. Folder sync keeps running. |
 | ***App* is in front, not capturing** | The app is on your **Never snip while** list (see below). |
-| **Scry needs Screen Recording** | Mac only. See [above](#mac-screen-recording). |
+| **Let Scry Sync see your screen** | Mac only. Screen Recording is not turned on yet. See [above](#mac-screen-recording). |
 | **That snip came out blank** | The picture was all black, so nothing was saved or sent. Try again. |
 | **Snips folder is inside your synced folder** | Snips are kept outside a synced folder so they are not uploaded twice. Choose another Snips folder in Settings. |
 
@@ -165,7 +165,7 @@ To remove everything, delete the project in the dashboard, which deletes its sni
 
 **Nothing happens when I press the hotkey.** Check that Snip is not paused (the tray menu says **Resume Snip** if it is), and that another app is not using the same keys. Try **Snip now** from the tray menu, or record a different hotkey in **Settings > Snip**.
 
-**Mac says Scry needs Screen Recording, but it is already on.** Quit and reopen Scry Sync. If it still says so after an update, switch Scry Sync off and on in **System Settings > Privacy & Security > Screen Recording**.
+**Mac shows Let Scry Sync see your screen, but it is already on.** Quit and reopen Scry Sync. If it still says so after an update, switch Scry Sync off and on in **System Settings > Privacy & Security > Screen & System Audio Recording** (called **Screen Recording** on macOS 14 and earlier).
 
 **The snip is on my computer but not in the dashboard.** The card says **Not sent** when the upload fails; press **Retry**. Snips you **Save** or let time out stay in **Recent snips** until you send them.
 

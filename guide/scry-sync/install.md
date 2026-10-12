@@ -20,7 +20,7 @@ Needs macOS 13 (Ventura) or later, on Apple silicon or Intel. Not sure which you
 3. In **Applications**, hold Control and click (or right-click) **Scry Sync**, choose **Open**, then click **Open** in the dialog. On macOS 15 and later this dialog has no **Open** button, so go to step 4.
 4. If macOS only offers **Done** or **Move to Trash** (macOS 15 and later), open **System Settings → Privacy & Security**, scroll to the message about Scry Sync, click **Open Anyway**, and confirm with your password.
 
-Scry Sync lives in the menu bar at the top of the screen, not in the Dock. If you want to use [Scry Snip](/guide/scry-sync/snip), macOS asks you to allow **Screen Recording** the first time you take a snip, and you may need to add **Scry Sync** to the list yourself. See [Mac: Screen Recording](/guide/scry-sync/snip#mac-screen-recording).
+Scry Sync lives in the menu bar at the top of the screen, not in the Dock. If you want to use [Scry Snip](/guide/scry-sync/snip), macOS asks you to allow **Scry Sync** under **Screen & System Audio Recording** (called **Screen Recording** on macOS 14 and earlier) the first time you take a snip, and you may need to add **Scry Sync** to the list yourself. See [Mac: Screen Recording](/guide/scry-sync/snip#mac-screen-recording).
 
 If you prefer Terminal, this clears the warning for the app:
 
