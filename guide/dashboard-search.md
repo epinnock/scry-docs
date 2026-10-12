@@ -21,6 +21,17 @@ Each result shows the screenshot, the screen's name, the project it belongs to, 
 
 The search box at the top right of the dashboard (**Ctrl+K**, or Cmd+K on Mac) finds projects, pages and actions; it does not search screenshots. When you type words there, its last row is **Search images for “your words”**. Choose it to open Image search with those words already searched. When your words match nothing else in the dashboard, it is the only row, so Enter takes you straight there. A project name still comes first, so typing a project's name and pressing Enter still opens the project.
 
+## Snips in search
+
+Snips taken with [Scry Snip](/guide/scry-sync/snip) can turn up in search next to your screens. This is only on for accounts where it has been switched on.
+
+- A **Source** filter above the results has two chips, **All** and **Snips**. **All** (the default) shows screens and snips together. **Snips** shows snips only; choose it again to go back to **All**.
+- A snip result carries a **Snip** badge instead of a build or **Latest** label, and shows who took it. A snip someone shared with you reads **Shared by** and their name. **Open snip** opens it on the [Snips page](/guide/scry-sync/snip#share-a-snip).
+- When a search matches snips, the page counts them, for example **3 snips match**. When none match it says: "No snips match. Snips you take, or that are shared with you, show up here a few seconds after you send them."
+- Snips are not tied to a build, so **Latest versions only** does not hide them, and the project filter limits them like any other result.
+
+You only ever see snips you took or that were shared with you. Other people's private snips never appear, and nothing tells you that they exist. A snip you deleted, a snip that has expired, and a snip you removed from your view are gone from results. To keep your own snips out of search, see [Find your snips in search](/guide/scry-sync/snip#find-your-snips-in-search).
+
 ## Choose projects
 
 The project filter lists the projects you can search, in two groups:
@@ -60,6 +71,7 @@ The setting is part of the page address, together with your text and chosen proj
 ## What you can and cannot see
 
 - You see screens from projects you are a member of, and from projects that are public.
+- Snips are the exception to project access: being in a project does not let you see a teammate's snip. You see a snip only if you took it or it was shared with you.
 - You never see a private project you are not a member of, even if someone sends you its id. The check runs on the server for every project in every search.
 - Search needs you to be signed in. Signed-out visitors are sent to sign in.
 
@@ -73,6 +85,8 @@ Searching also uses AI credits, charged to the workspace described in [How credi
 
 **A project is missing from the filter.** The filter lists projects you are a member of and public projects. Ask a project admin to add you (see [Members and invites](/guide/members-and-invites)).
 
+**A snip is missing.** Check that the **Snips** chip is not hiding it, and that its label on the **Snips** page says **Searchable**. A snip that was shared with you is found only while the person who took it still shares it and has snip search switched on.
+
 **An image is rejected.** Use PNG, JPG or WebP under 8 MB. Screenshots exported at very high resolution may need to be resized.
 
 **A search fails with a temporary error.** Search again. The message includes a request id; see [Request ids](/api/request-ids) if you contact us.
@@ -82,4 +96,5 @@ Searching also uses AI credits, charged to the workspace described in [How credi
 - [Search API](/api/search) for the request and response fields behind this page
 - [Tags and custom fields](/guide/tags-and-custom-fields) and the [Story page](/guide/story-page), where a result opens
 - [MCP Server](/guide/mcp) to search from an AI assistant
+- [Scry Snip](/guide/scry-sync/snip) for taking, sharing and searching snips
 - [How credits work](/guide/credits)

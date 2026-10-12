@@ -9,7 +9,7 @@ description: "Scry Snip takes a screenshot with a hotkey, lets you review it, an
 Snip is part of [Scry Sync](/guide/scry-sync/) and is in beta. **Mac support is in beta**: the Mac installer is not code-signed yet, so you grant Screen Recording yourself and may need to grant it again after an update (see [Mac permission](#mac-screen-recording)). Windows needs no permission.
 :::
 
-Press a hotkey, select part of your screen, check the picture, and send it to a Scry project. The snip then shows up on your **Snips** page in the dashboard, and your coding agent can fetch it by asking for "the snip I just took". You do not need to connect a folder to use Snip.
+Press a hotkey, select part of your screen, check the picture, and send it to a Scry project. The snip then shows up on your **Snips** page in the dashboard, and your coding agent can fetch it by asking for "the snip I just took". You do not need to connect a folder to use Snip. Scry also makes each snip [searchable](#find-your-snips-in-search), so you can find it later by describing it.
 
 ## What it does
 
@@ -101,6 +101,7 @@ Open **Settings > Snip**.
 | **Snips folder** | Where your local copies go. The default is `Pictures/Scry Snips` in your home folder. It must be outside any synced folder. |
 | **Keep local copies** | How long Scry keeps the copies in your Snips folder: 7, 14, 30 (default), 90 or 365 days, or **Keep them**. This only affects your computer. |
 | **Never snip while** | A list of apps (up to 50) where Snip refuses to capture, for example a password manager. Suggestions are 1Password, Bitwarden and Chase. |
+| **Index my snips** | A switch, **Make my snips searchable**, on by default. Turn it off to keep your snips out of search. It is the same switch as on the **Snips** page in the dashboard (see [Find your snips in search](#find-your-snips-in-search)), so changing it in either place changes both. |
 | **Pause** | Stop the hotkey until you resume. |
 
 ## What is stored, and for how long
@@ -109,12 +110,13 @@ When you press **Send**, Scry stores, in the project you sent it to:
 
 - **The picture**, as the original (a PNG, at most 4096 pixels on the long side), a smaller preview, and a small copy sized for AI assistants.
 - **A record**: who took it, when, which project, the picture size, and a note if you add one.
+- **A search entry**, unless you turned off **Make my snips searchable**: a short description of the picture written by AI, and numbers that let search match it. See [Find your snips in search](#find-your-snips-in-search).
 
 The app does not send which app or window the snip came from, and it does not send your folder paths or user name.
 
 **A snip stops being available 30 days after you send it.** After that, you, the people it was shared with, and agents can no longer open it. The local copy in your Snips folder is separate and follows your **Keep local copies** setting. You can delete a snip earlier at any time (see [Delete a snip](#delete-a-snip)). Deleting a project deletes all of its snips.
 
-Snips are private to you until you share them. Project admins cannot see other people's snips.
+Snips are private to you until you share them. Project admins cannot see other people's snips, and that includes search.
 
 ## Share a snip
 
@@ -134,7 +136,46 @@ Things to know about links:
 - Turn the link off at any time in the same dialog. An expired or turned-off link shows **This link has expired or was turned off**.
 - People you share with cannot share it onward, but they can choose **Remove from my view**.
 
-Snips shared with you are on the **Shared with me** tab.
+Snips shared with you are on the **Shared with me** tab. They also turn up when you search, see below.
+
+## Find your snips in search
+
+Once you send a snip, Scry describes it and adds it to search, usually within a few seconds. After that you can find it on the dashboard's [Image search](/guide/dashboard-search#snips-in-search) page by describing it (for example "the blue pricing card" or "error toast") or by searching with a similar picture. Your coding agent can find it too: the [Scry MCP server](/guide/mcp) search tools include snips, marked as snips, and the agent can open one with `get_capture`.
+
+Each snip on the **Mine** tab of the **Snips** page shows where it stands:
+
+| Label | Meaning |
+|---|---|
+| **Searchable** | It is in search. |
+| **Indexing…** | Scry is still describing it. The label updates by itself. |
+| **Not searchable (turned off)** | You have **Make my snips searchable** switched off. |
+| **Could not make searchable** | Something went wrong while describing it. Turn the switch off and on again, or [tell us](/feedback). |
+| **Not searchable** | The snip was sent before snips could be searched, and has not been added. |
+
+### Who can find a snip
+
+Only the people who can already open a snip can find it in search:
+
+- **You**, for every snip you took.
+- **The people you shared it with**, in the way you shared it: the people you picked, your organization, or everyone who can open the project.
+- **Nobody else.** Other members of the project, project admins and people outside the project never see your private snip in their results. There is no placeholder and no count that hints it exists.
+
+Search only shows snips to people who are signed in. A link on its own does not put a snip in anyone's results.
+
+A snip leaves search when it is no longer available to the person looking: when it is deleted, when you stop sharing it with them, when they choose **Remove from my view**, when its owner leaves the project, and when it passes its 30 days. A snip someone removed from their own view leaves their results but stays with its owner.
+
+### Turn it off
+
+Snips can show private screens, such as chat or email, so each person decides for their own snips. Use the **Make my snips searchable** switch:
+
+- **On the dashboard**: open the **Snips** page, on the **Mine** tab.
+- **In Scry Sync**: open **Settings** and find **Index my snips**. Older versions of Scry Sync do not have the switch; use the dashboard instead.
+
+The text under the switch says: "Scry describes each snip with AI so you can find it by searching. Only people you share a snip with can find it."
+
+While the switch is off, your new snips are not sent to AI for searching, and the ones already in search are taken out of it. Turning it back on adds your snips again. Pictures Scry has already described are not described a second time.
+
+To describe a snip, Scry sends its picture to the same AI services that Scry uses to make your synced pictures searchable. They are listed on the [subprocessor list](/subprocessors). Turning the switch off stops this for new snips. It cannot take back a description that was already made.
 
 ## Use a snip with your coding agent
 
@@ -154,7 +195,7 @@ An agent can also delete a snip you took, but only if you ask it to.
 
 ## Delete a snip
 
-- **On the Snips page**: open the snip and choose **Delete**. This removes the original, the pictures and any link.
+- **On the Snips page**: open the snip and choose **Delete**. This removes the original, the pictures, any link and the snip's entry in search.
 - **From an agent**: ask it to delete the snip, for example "Delete Scry capture cap_7k3f". Only your own snips can be deleted this way.
 - **Snips shared with you**: use **Remove from my view**. The owner's copy is not affected.
 - **On your computer**: the copy in your Snips folder is yours to delete. Scry also removes old copies after the number of days you chose in **Keep local copies**.
@@ -168,6 +209,8 @@ To remove everything, delete the project in the dashboard, which deletes its sni
 **Mac says Scry needs Screen Recording, but it is already on.** Quit and reopen Scry Sync. If it still says so after an update, switch Scry Sync off and on in **System Settings > Privacy & Security > Screen Recording**.
 
 **The snip is on my computer but not in the dashboard.** The card says **Not sent** when the upload fails; press **Retry**. Snips you **Save** or let time out stay in **Recent snips** until you send them.
+
+**A snip does not show up in search.** Look at its label on the **Mine** tab of the **Snips** page. **Indexing…** means wait a few seconds. **Not searchable (turned off)** means **Make my snips searchable** is off; turn it on. A snip you sent before snips could be searched shows **Not searchable**. For a snip someone shared with you, ask them to check that they still share it and that their switch is on.
 
 More help: [Scry Sync troubleshooting](/guide/scry-sync/troubleshooting), the in-app **Report a problem**, or [support@scrymore.com](mailto:support@scrymore.com).
 
