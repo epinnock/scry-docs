@@ -178,6 +178,40 @@ The `metadata.json` contains:
 - Screenshot mappings
 - Analysis timestamp
 
+## upload-images
+
+Index a folder of screenshots for search. By default the images are uploaded to Scry and processed there. With `--local`, the CLI processes them on your machine and writes the vectors to your own Milvus/Zilliz collection.
+
+```bash
+npx @scrymore/scry-deployer upload-images --dir ./screens --project my-project
+```
+
+### Local processing options (`--local`)
+
+| Option | Environment variable | Description |
+|--------|----------------------|-------------|
+| `--openai-api-key` | `OPENAI_API_KEY` | OpenAI key used to describe each screenshot |
+| `--gemini-api-key` | `GEMINI_API_KEY` | Google Gemini API key. Embeds with Gemini Embedding 2 (1024 dimensions) |
+| `--milvus-address` | `MILVUS_ADDRESS` | Milvus/Zilliz endpoint |
+| `--milvus-token` | `MILVUS_TOKEN` | Milvus/Zilliz auth token |
+| `--milvus-collection`, `--collection` | `MILVUS_COLLECTION_G2` | Target collection. With `--gemini-api-key` it must be a g2 collection (for example `scry_component_snapshots_g2`) |
+| `--jina-api-key` | `JINA_API_KEY` | **Deprecated.** Jina key (2048 dimensions). Use `--gemini-api-key` instead |
+
+**Provider selection.** Any Gemini key selects Gemini: `--gemini-api-key` or `GEMINI_API_KEY` in the environment, even if `--jina-api-key` or `JINA_API_KEY` is also set. Jina is used only when no Gemini key is present. For each setting, a flag wins over its environment variable.
+
+**Collection rule.** The CLI checks the collection name before any embedding call:
+
+- Gemini runs require a name that ends with `_g2` or contains `_g2_` (for example `scry_component_snapshots_g2` or `scry_component_snapshots_g2_staging`). Anything else, such as `my_g2x`, is refused.
+- Jina runs are refused if the name ends with `_g2` or contains `_g2_`.
+
+**Collection environment variable.** With Gemini, the collection comes from `--milvus-collection` or `MILVUS_COLLECTION_G2`; `MILVUS_COLLECTION` is ignored. With Jina, it comes from `--milvus-collection` or `MILVUS_COLLECTION`; `MILVUS_COLLECTION_G2` is ignored.
+
+**Getting a g2 collection.** If you self-host Milvus/Zilliz, create the collection yourself with a name that follows the rule above, 1024-dimension `text_embedding` and `image_embedding` vector fields using the IP metric, and an `embed_model` field (Gemini rows store it; Jina rows do not).
+
+### Deprecation of `--jina-api-key`
+
+`--jina-api-key` (and `JINA_API_KEY`) still works for one more release and prints a deprecation warning. If both a Gemini and a Jina key are set, Gemini is used.
+
 ## Global Options
 
 These options work with all commands:
