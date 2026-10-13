@@ -57,7 +57,7 @@ A picture that failed to make is not listed. A run you can still pick from is no
 An unselected card has three links:
 
 - **Download** saves the picture.
-- **Use as reference** puts the picture into the prompt panel as a reference for your next Generate.
+- **Use as reference** adds the picture to your references, so your next Generate can start from it.
 - **Delete** removes the picture for good. The other pictures from the same run stay.
 
 ![The Delete this picture confirmation](/images/generate-history/history-delete-confirm.png)
