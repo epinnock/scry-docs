@@ -142,7 +142,7 @@ With a `project_id` you can also choose how far to look:
 
 `search_by_image` takes base64 (up to 10MB, data-URI prefix optional) and accepts an optional text query alongside it for a hybrid match. Both searches return at most 50 results per page.
 
-The four capture tools read the screenshots you take with [Scry Snip](/guide/scry-sync/snip): ask "fix the screenshot I just took" and the assistant fetches your newest snip. They only return snips you took or that someone shared with you. `delete_capture` is the one Scry tool that deletes something, so an assistant should use it only when you ask. See [the tools reference](/services/mcp-server/tools#capture-tools).
+The four capture tools read the screenshots you take with [Scry Snip](/guide/scry-sync/snip): ask "fix the screenshot I just took" and the assistant fetches your newest snip. They only return snips you took or that someone shared with you. `delete_capture` is the one Scry tool that deletes something, so an assistant should use it only when you ask. If the snip was marked up with numbered notes, the assistant gets the notes as text with their positions and works through them in order ([details](/services/mcp-server/tools#marked-up-snips)). See [the tools reference](/services/mcp-server/tools#capture-tools).
 
 `generate_image` takes an optional `aspect_ratio` (`1:1` by default; also `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`) and `quality` (`fast` or `quality`). Image generation and search use [credits](/guide/credits); at zero credits `generate_image` and image search are refused with a link to the Credits page, and text search falls back to keyword search.
 
