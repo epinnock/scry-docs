@@ -108,7 +108,7 @@ When you drop a note, a numbered badge appears on the picture with a line to the
 - Drag a badge to move it. Drag the target to aim it somewhere else.
 - Point at a row in the Key to highlight its mark on the picture, and the other way round.
 - Press **×** on a row to delete a note. The notes after it renumber.
-- **Anything about the whole snip (optional)** is one more note for the snip as a whole. It is the snip's own note, so it is shown with the snip everywhere.
+- **Anything about the whole snip (optional)** is one more note for the snip as a whole. It is the snip's own note, so it goes wherever the snip goes, except a public link, which never shows it.
 
 ### Done, Send or Discard marks
 
