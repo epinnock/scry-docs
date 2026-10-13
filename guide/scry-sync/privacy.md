@@ -30,6 +30,9 @@ Scry then processes the pictures like any other upload: it indexes them for sear
 |---|---|
 | **The picture** | The original (a PNG, at most 4096 pixels on the long side), a smaller preview and a small copy for AI assistants. |
 | **A record** | Who took it, when, which project, the picture size, and a note if you add one. |
+| **Your marks** | If you [mark the snip up](/guide/scry-sync/snip#mark-up-a-snip): the numbered notes, each with its position and text. The preview and the small copy for AI assistants show the marks drawn on the picture. The original stays clean. |
+
+Notes you write on a snip follow the snip's audience. Only the people who can already see the snip can read its notes, and an agent can read them only through the same rules as the picture. A public link shows the marked picture without the note text. Scry does not write your notes to its logs, error reports or usage data. Usage data only says whether a snip had marks and roughly how many notes (none, 1 to 3, 4 to 9, or 10 or more), never what they say.
 
 The app does not send the name of the app or the window title, and it does not send folder paths or your user name. A snip is private to you until you share it, and stops being available 30 days after you send it. You can delete it sooner. Your own copy in the Snips folder stays on your computer for the number of days you choose in **Settings > Snip**.
 
