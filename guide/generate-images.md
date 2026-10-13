@@ -71,3 +71,9 @@ Runs you made before History kept every picture have no saved prompt. Their unse
 ### How long pictures are kept
 
 Pictures are removed automatically after 6 months, selected and unselected alike. The line at the bottom of History says so.
+
+## What Compare costs
+
+<!-- Charging paragraph. True only once charging every picture is on in production; held until Gate B and founder approval. Independent of the History section above. -->
+
+When you use Compare, you pay for every picture that arrives, and you keep them all. A Compare run costs 540 credits for its four pictures, which is 135 credits a picture. That is the same whether you pick one, choose **None are good**, or let the run expire. A picture that fails to make is never charged, and if every picture fails, nothing is charged. The pictures you did not pick are kept in History under **Unselected**.
