@@ -44,7 +44,6 @@ export default defineConfig({
           { text: 'Terms of Service', link: '/terms' },
           { text: 'Subprocessors', link: '/subprocessors' },
           { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
-          { text: 'Alert Texts and Calls', link: '/alert-texts' },
         ]
       },
     ],
@@ -133,7 +132,6 @@ export default defineConfig({
             { text: 'Privacy Policy', link: '/privacy' },
             { text: 'Terms of Service', link: '/terms' },
             { text: 'Subprocessors', link: '/subprocessors' },
-            { text: 'Alert Texts and Calls', link: '/alert-texts' },
           ]
         }
       ],
@@ -154,7 +152,6 @@ export default defineConfig({
             { text: 'Privacy Policy', link: '/privacy' },
             { text: 'Terms of Service', link: '/terms' },
             { text: 'Subprocessors', link: '/subprocessors' },
-            { text: 'Alert Texts and Calls', link: '/alert-texts' },
           ]
         }
       ],
