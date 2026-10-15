@@ -9,7 +9,7 @@ description: "Scry Snip takes a screenshot with a hotkey, lets you review it, an
 Snip is part of [Scry Sync](/guide/scry-sync/) and is in beta. **Mac support is in beta**: the Mac installer is not code-signed yet, so you grant Screen Recording yourself and may need to grant it again after an update (see [Mac permission](#mac-screen-recording)). Windows needs no permission.
 :::
 
-Press a hotkey, select part of your screen, check the picture, and send it to a Scry project. The snip then shows up on your **Snips** page in the dashboard, and your coding agent can fetch it by asking for "the snip I just took". You do not need to connect a folder to use Snip. Scry also makes each snip [searchable](#find-your-snips-in-search), so you can find it later by describing it.
+Press a hotkey, select part of your screen, check the picture, and send it to a Scry project. The snip then shows up on your **Snips** page in the dashboard, and your coding agent can fetch it by asking for "the snip I just took". You do not need to connect a folder to use Snip. Scry also makes each snip [searchable](#find-your-snips-in-search), so you can find it later by describing it. To show something that moves, [record a clip](#record-a-clip) of up to 10 seconds instead.
 
 ## What it does
 
@@ -40,6 +40,102 @@ Mac already uses Cmd+Shift+4 for its own screenshot, so Scry does not take it by
 3. Back in Scry, press **Record new**, then press **Cmd+Shift+4**.
 
 Scry Sync never changes your Mac's settings. To undo it, tick the shortcut again in System Settings.
+
+## Record a clip {#record-a-clip}
+
+Some things only make sense when they move: a hover state, a loading flash, a menu that jumps. Record the part of your screen you pick, for up to 10 seconds, and Scry keeps it as a short clip next to a normal snip. Record a clip needs Scry Sync 0.1.14 or later, on Mac and Windows.
+
+If you do not see **Record a clip** in the menu, clips are not on for your account yet, or Scry Sync is older than 0.1.14.
+
+::: info Screenshots
+The pictures below come from the approved design prototype. They will be replaced with captures of the real app.
+:::
+
+### Record one
+
+| | Record a clip | Snip (a still picture) |
+|---|---|---|
+| **Mac** | **Control + Option + 5** | **Control + Option + 4** |
+| **Windows** | **Ctrl + Shift + 5** | **Ctrl + Shift + 4** |
+
+You can also choose **Record a clip** in the menu bar (Mac) or tray (Windows) menu. It sits between **Snip now** and **Snip full screen**.
+
+1. Press the hotkey. Scry checks your **Never snip while** list first, the same as for a snip.
+2. Drag to select a region, or click a window to record that window. **Space** moves the selection and **Esc** cancels. The overlay shows the size and **Clip · up to 10 s**. Recording starts when you let go of the mouse.
+
+   ![The region overlay for a clip: a dimmed screen, the selected region with its size 1280 x 720, the label Clip · up to 10 s and the hint Esc cancel, Space move the selection, Click a window to record it, Recording starts when you let go](/images/scry-sync/animated-snips-select.png)
+
+3. A red outline marks the region. A small bar shows **Recording**, the time (**0:04 / 0:10**) and **Stop**. It sits below the region, or above it when there is no room below. If the region is the whole screen, the bar moves to another display, or you only see the timer in the menu bar or tray. The outline and the bar are not in the clip.
+
+   ![A clip being recorded: a red outline around the selected region and, below it, a dark bar with Recording, 0:04 / 0:10, Stop and Esc cancels](/images/scry-sync/animated-snips-recording.png)
+
+4. Press **Stop**, or the record hotkey again, to keep the clip. Press **Esc** to throw it away. At 10 seconds it stops by itself. For the last two seconds the bar says **Stops in 2 s**, and then **Stopped at 10 s**.
+
+A still snip on a Mac uses Apple's crosshair. A clip uses Scry's own selection overlay, the same one Windows uses, so it can show the size and **Clip · up to 10 s**.
+
+To change the hotkey, open **Settings > Snip** and use **Record hotkey**, next to the snip hotkey. Mac keeps Cmd+Shift+5 for its own screen recorder, so Scry does not use it.
+
+### Limits
+
+| Limit | Value |
+|---|---|
+| **Length** | Up to 10 seconds. A clip shorter than half a second is thrown away. |
+| **Speed** | Up to 12 frames a second. |
+| **Size** | At most 1280 pixels on the long side. A larger area is scaled down. |
+| **File** | At most 15 MB. |
+| **Sound** | None. A clip is silent. |
+
+If a clip comes out bigger than 15 MB, Scry Sync tries once more at lower quality. If it is still too big, the card says **Clip too large to send** and shows the real size. A smaller area or fewer seconds helps.
+
+### What you get
+
+After you stop, the card says **Preparing clip…** while Scry makes the file. Then it says **Clip ready**, with a **▶ 0:07** badge on the picture and **Key frame copied**.
+
+![The Clip ready card in the corner of the screen: a small picture with a ▶ 0:07 badge, Clip ready, Key frame copied, 0:07 to scry-dashboard, and the Send, Search and more buttons](/images/scry-sync/animated-snips-ready.png)
+
+- **The picture is the middle frame of the clip.** Scry calls it the key frame. It goes on your clipboard, because a video cannot be pasted as a picture into most apps, so pasting into a chat still works.
+- **The clip is saved on your computer** in your Snips folder as `scry-snip-xxxxxxxx.mp4`, next to the picture `scry-snip-xxxxxxxx.png`.
+- **A clip always stops at the review card**, even when **Send immediately** is on. **Send**, **Search** and **⋯** work as they do for a snip.
+- After **Send**, the card shows how much has been uploaded (for example **Clip 4.8 MB · 62 %**), then **Sent to *project***. **Copy link** copies the link to the snip in the dashboard.
+
+### What is sent
+
+| Where | What |
+|---|---|
+| **Your project** | The clip as an MP4 and the key frame as the snip's picture, with the smaller preview. Also a small copy for AI assistants: six frames of the clip in a grid. |
+| **People who open the snip in Scry** | On the **Snips** page the tile shows **▶ 0:07**. Hover over it, or tab to it, and the clip plays, muted and on a loop. Open it to see a player. If your computer is set to reduce motion, it does not play by itself. |
+| **Anyone with a public link** | If you share with **Anyone with the link**, the page plays the clip with no sign-in. It never shows the original. See [Share a snip](#share-a-snip). |
+| **Your coding agent** | The six-frame picture and a link to the clip that works for one hour. See [Use a snip with your coding agent](#use-a-snip-with-your-coding-agent). |
+| **Search** | The key frame, like any snip. Search does not look at the motion. |
+
+A clip is as private as its snip. The same people can see it, and it goes away with the snip after 30 days. Deleting a snip also deletes its clip. Scry does not send the name of the app or window you recorded. See [What Scry Sync sends and collects](/guide/scry-sync/privacy#scry-snip).
+
+### Permission
+
+Clips use the same Screen Recording permission as snips on a Mac, so macOS asks for nothing new (see [Mac: Screen Recording](#mac-screen-recording)). Scry Sync only looks at the part you select, and only while the red dot shows. It never records in the background. Windows does not ask for permission.
+
+### When a clip is stopped or not sent
+
+![The card "1Password came to the front, clip stopped" over a desktop: Nothing was captured or saved, with Edit avoid list and Dismiss](/images/scry-sync/animated-snips-avoided.png)
+
+| Card | What it means |
+|---|---|
+| ***App* came to the front, clip stopped** | The app is on your **Never snip while** list. Scry checks for the whole recording, not just at the start. It stops at once and keeps nothing: **Nothing was captured or saved**. |
+| **Clip stopped: could not check the front app** | Scry could not tell which app was in front. To be safe, it stopped and kept nothing. |
+| **Clip too short to keep** | The clip was shorter than half a second. Hold for at least half a second. |
+| **Clip could not be made** | Encoding stopped on this computer. Nothing was sent. **Send key frame** sends the picture as a normal snip. |
+| **Clip too large to send** | The clip is over 15 MB, even after one try at lower quality. **Send key frame** sends the picture. |
+| **Sent as a still** | Clips are not on for this project yet. Scry sent the key frame as a normal snip, and the clip is saved on this computer. |
+| **Queued** | You are offline. The clip sends when you are back online, like any snip. |
+| **Windows did not give Scry the screen** | Windows only. The clip came back empty, so nothing was saved. Close any full-screen video or protected window and try again. |
+
+### Not in this version
+
+- You cannot mark up a clip.
+- There is no GIF export. A clip is an MP4.
+- A clip has no sound.
+- You cannot trim a clip. Stop sooner, or record it again.
+- Search finds a clip by its key frame, not by what moves.
 
 ## Review, then send
 
@@ -97,6 +193,7 @@ Open **Settings > Snip**.
 | Setting | What it does |
 |---|---|
 | **Hotkey** | Change the hotkey. Defaults are listed above. |
+| **Record hotkey** | Change the hotkey for [recording a clip](#record-a-clip). It is only there when Record a clip is on for you. |
 | **Send mode** | Review first (default) or **Send immediately**. |
 | **Snips folder** | Where your local copies go. The default is `Pictures/Scry Snips` in your home folder. It must be outside any synced folder. |
 | **Keep local copies** | How long Scry keeps the copies in your Snips folder: 7, 14, 30 (default), 90 or 365 days, or **Keep them**. This only affects your computer. |
