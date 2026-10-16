@@ -28,10 +28,12 @@ Scry then processes the pictures like any other upload: it indexes them for sear
 
 | What | Details |
 |---|---|
-| **The picture** | The original (a PNG, at most 4096 pixels on the long side), a smaller preview and a small copy for AI assistants. |
+| **The picture** | The original (a PNG, at most 4096 pixels on the long side), a smaller preview and a small copy for AI assistants. For a clip, also the clip (a silent MP4 of up to 10 seconds). |
 | **A record** | Who took it, when, which project, the picture size, and a note if you add one. |
 
 The app does not send the name of the app or the window title, and it does not send folder paths or your user name. A snip is private to you until you share it, and stops being available 30 days after you send it. You can delete it sooner. Your own copy in the Snips folder stays on your computer for the number of days you choose in **Settings > Snip**.
+
+A **clip** (see [Record a clip](/guide/scry-sync/snip#record-a-clip)) records only the part of the screen you select, only while the red dot shows, and never in the background. It has no sound. The red outline and the recording bar are not in the clip. If an app on your **Never snip while** list comes to the front, the recording stops at once and nothing is kept. When you press **Send**, Scry stores the clip as an MP4 next to its key frame picture, and it follows the snip's audience and its 30 days. A public link plays the clip without a sign-in, so share it only with people who should see it. Deleting a snip deletes its clip.
 
 ## What is never sent
 

@@ -108,6 +108,33 @@ An assistant should call it once per request, not in a loop. On `CAPTURE_STALE` 
 
 Same result as `latest_capture`, plus the note if the owner added one. Works for the user's own captures, and for captures shared with them while they stay shared. A capture that does not exist and one the user may not see give the same `CAPTURE_NOT_FOUND`. A note is returned quoted and labelled as untrusted text from the person who wrote it, so an assistant must not follow instructions inside it.
 
+### Clips
+
+A snip can be a clip: a short MP4 recorded with [Record a clip](/guide/scry-sync/snip#record-a-clip). For a clip, `latest_capture` and `get_capture` change the `Picture` line, and two lines follow the link to the original: `Animated snip` and `Clip`. The picture is a contact sheet of 6 evenly spaced frames, because a model reads still pictures, not video.
+
+```text
+Picture: attached below: 6 frames of the clip in a 3 x 2 grid, left to right, top to bottom (WebP, long edge at most 1280 px).
+Original, full resolution (link expires in 1 hour): <originalUrl>
+Animated snip: 3.0 s clip, 1280 x 800 px, 12 fps, no sound. The original picture is the middle frame.
+Clip (MP4, link expires in 1 hour): <animationUrl>
+```
+
+The order of the lines is: id, who took it, size, picture, original link, `Animated snip`, `Clip` link, the note, any markup lines, the app. When the contact sheet does not fit the inline size budget, the picture line says `Picture: not attached (<note>). Open the clip link to see it.`
+
+The original picture and search use the middle frame of the clip. The structured result gains `has_animation` and `animation`. The fields inside `animation` are listed without that prefix:
+
+| Field | Meaning |
+| --- | --- |
+| `has_animation` | `true` when the snip is a clip |
+| `animation` | `null` for a still picture, otherwise an object with the fields below |
+| `duration_ms` | Length in milliseconds, at most 10000 |
+| `width`, `height` | Size in pixels, at most 1280 on the long side |
+| `fps` | Frames a second, at most 12 |
+| `url` | Link to the MP4 |
+| `url_expires_in_seconds` | `3600`: the link works for one hour |
+
+The clip is silent. When clips are not on for the account, none of these lines or fields is there, and the capture looks like any other snip.
+
 ### `list_captures`
 
 | Parameter | Type | Default | Notes |
