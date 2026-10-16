@@ -47,10 +47,6 @@ Some things only make sense when they move: a hover state, a loading flash, a me
 
 If you do not see **Record a clip** in the menu, clips are not on for your account yet, or Scry Sync needs an update.
 
-::: info Screenshots
-The pictures below come from the approved design prototype. They will be replaced with captures of the real app.
-:::
-
 ### Record one
 
 | | Record a clip | Snip (a still picture) |
@@ -63,11 +59,11 @@ You can also choose **Record a clip** in the menu bar (Mac) or tray (Windows) me
 1. Press the hotkey. Scry checks your **Never snip while** list first, the same as for a snip.
 2. Drag to select a region. **Space** moves the selection and **Esc** cancels. The overlay shows the size and **Clip · up to 10 s**. Recording starts when you let go of the mouse.
 
-   ![The region overlay for a clip: a dimmed screen, the selected region with its size 1280 x 720, the label Clip · up to 10 s and the hint Esc cancel, Space move the selection, Click a window to record it, Recording starts when you let go](/images/scry-sync/animated-snips-select.png)
+   ![On a Mac, the region overlay for a clip: the selected region with a green handle at each corner, the label Clip · up to 10 s at the top of the screen and a bar with the hint Esc cancel, Space move the selection, Click a window to record it, Recording starts when you let go](/images/scry-sync/animated-snips-select.png)
 
 3. A red outline marks the region. A small bar shows **Recording**, the time (**0:04 / 0:10**) and **Stop**. It sits below the region, or above it when there is no room below. If the region is the whole screen, the bar moves to another display, or you only see the timer in the menu bar or tray. The outline and the bar are not in the clip.
 
-   ![A clip being recorded: a red outline around the selected region and, below it, a dark bar with Recording, 0:04 / 0:10, Stop and Esc cancels](/images/scry-sync/animated-snips-recording.png)
+   ![On a Mac, a clip being recorded: a red outline around the selected region and, below it, a dark bar with Recording, 0:02 / 0:10, Stop with its hotkey, and Esc cancels](/images/scry-sync/animated-snips-recording.png)
 
 4. Press **Stop**, or the record hotkey again, to keep the clip. Press **Esc** to throw it away. At 10 seconds it stops by itself. For the last two seconds the bar says **Stops in 2 s**, and then **Stopped at 10 s**.
 
@@ -91,7 +87,7 @@ If a clip comes out bigger than 15 MB, Scry Sync tries once more at lower qualit
 
 After you stop, the card says **Preparing clip…** while Scry makes the file. Then it says **Clip ready**, with a **▶ 0:07** badge on the picture and **Key frame copied**.
 
-![The Clip ready card in the corner of the screen: a small picture with a ▶ 0:07 badge, Clip ready, Key frame copied, 0:07 to scry-dashboard, and the Send, Search and more buttons](/images/scry-sync/animated-snips-ready.png)
+![On a Mac, the Clip ready card in the corner of the screen: a small picture with a ▶ 0:04 badge, Clip ready, Key frame copied, the length and the project, and the Send, Search and more buttons](/images/scry-sync/animated-snips-ready.png)
 
 - **The picture is the middle frame of the clip.** Scry calls it the key frame. It goes on your clipboard, because a video cannot be pasted as a picture into most apps, so pasting into a chat still works.
 - **The clip is saved on your computer** in your Snips folder as `scry-snip-xxxxxxxx.mp4`, next to the picture `scry-snip-xxxxxxxx.png`.
@@ -116,7 +112,7 @@ Clips use the same Screen Recording permission as snips on a Mac, so macOS asks 
 
 ### When a clip is stopped or not sent
 
-![The card "1Password came to the front, clip stopped" over a desktop: Nothing was captured or saved, with Edit avoid list and Dismiss](/images/scry-sync/animated-snips-avoided.png)
+![On a Mac, the card "Calculator came to the front, clip stopped" in the corner of the screen: a lock picture, why Scry stopped, Nothing was captured or saved, and the buttons Edit avoid list and Dismiss](/images/scry-sync/animated-snips-avoided.png)
 
 | Card | What it means |
 |---|---|
