@@ -43,9 +43,9 @@ Scry Sync never changes your Mac's settings. To undo it, tick the shortcut again
 
 ## Record a clip {#record-a-clip}
 
-Some things only make sense when they move: a hover state, a loading flash, a menu that jumps. Record the part of your screen you pick, for up to 10 seconds, and Scry keeps it as a short clip next to a normal snip. Record a clip needs Scry Sync 0.1.14 or later, on Mac and Windows.
+Some things only make sense when they move: a hover state, a loading flash, a menu that jumps. Record the part of your screen you pick, for up to 10 seconds, and Scry keeps it as a short clip next to a normal snip. Record a clip needs a recent Scry Sync, on Mac and Windows. Update to the latest version if you do not see it.
 
-If you do not see **Record a clip** in the menu, clips are not on for your account yet, or Scry Sync is older than 0.1.14.
+If you do not see **Record a clip** in the menu, clips are not on for your account yet, or Scry Sync needs an update.
 
 ::: info Screenshots
 The pictures below come from the approved design prototype. They will be replaced with captures of the real app.
@@ -61,7 +61,7 @@ The pictures below come from the approved design prototype. They will be replace
 You can also choose **Record a clip** in the menu bar (Mac) or tray (Windows) menu. It sits between **Snip now** and **Snip full screen**.
 
 1. Press the hotkey. Scry checks your **Never snip while** list first, the same as for a snip.
-2. Drag to select a region, or click a window to record that window. **Space** moves the selection and **Esc** cancels. The overlay shows the size and **Clip · up to 10 s**. Recording starts when you let go of the mouse.
+2. Drag to select a region. **Space** moves the selection and **Esc** cancels. The overlay shows the size and **Clip · up to 10 s**. Recording starts when you let go of the mouse.
 
    ![The region overlay for a clip: a dimmed screen, the selected region with its size 1280 x 720, the label Clip · up to 10 s and the hint Esc cancel, Space move the selection, Click a window to record it, Recording starts when you let go](/images/scry-sync/animated-snips-select.png)
 
@@ -95,7 +95,7 @@ After you stop, the card says **Preparing clip…** while Scry makes the file. T
 
 - **The picture is the middle frame of the clip.** Scry calls it the key frame. It goes on your clipboard, because a video cannot be pasted as a picture into most apps, so pasting into a chat still works.
 - **The clip is saved on your computer** in your Snips folder as `scry-snip-xxxxxxxx.mp4`, next to the picture `scry-snip-xxxxxxxx.png`.
-- **A clip always stops at the review card**, even when **Send immediately** is on. **Send**, **Search** and **⋯** work as they do for a snip.
+- **A clip always stops at the review card**, even when **Send immediately** is on. The card's buttons work as they do for a snip.
 - After **Send**, the card shows how much has been uploaded (for example **Clip 4.8 MB · 62 %**), then **Sent to *project***. **Copy link** copies the link to the snip in the dashboard.
 
 ### What is sent
@@ -205,7 +205,7 @@ Open **Settings > Snip**.
 
 When you press **Send**, Scry stores, in the project you sent it to:
 
-- **The picture**, as the original (a PNG, at most 4096 pixels on the long side), a smaller preview, and a small copy sized for AI assistants.
+- **The picture**, as the original (a PNG, at most 4096 pixels on the long side), a smaller preview, and a small copy sized for AI assistants. If it is a clip, also **the clip** (a silent MP4 of up to 10 seconds).
 - **A record**: who took it, when, which project, the picture size, and a note if you add one.
 - **A search entry**, unless you turned off **Make my snips searchable**: a short description of the picture written by AI, and numbers that let search match it. See [Find your snips in search](#find-your-snips-in-search).
 
@@ -286,13 +286,13 @@ An agent connected to the [Scry MCP server](/guide/mcp) can fetch your snips. Co
 
 > Show me what my teammate shared with me and tell me which one is about the settings page.
 
-Behind the scenes the agent uses `latest_capture`, `get_capture` and `list_captures`. By default `latest_capture` only returns a snip from the last 15 minutes, so an agent never silently looks at an old picture; if yours is older, it tells you and asks. The agent sees a smaller copy of the picture, and can open the full-resolution original through a link that works for one hour. See the [tools reference](/services/mcp-server/tools#capture-tools) for the details.
+Behind the scenes the agent uses `latest_capture`, `get_capture` and `list_captures`. By default `latest_capture` only returns a snip from the last 15 minutes, so an agent never silently looks at an old picture; if yours is older, it tells you and asks. The agent sees a smaller copy of the picture, and can open the full-resolution original through a link that works for one hour. For a clip, the agent sees six frames of it and gets a link to the clip that works for one hour as well. See the [tools reference](/services/mcp-server/tools#capture-tools) for the details.
 
 An agent can also delete a snip you took, but only if you ask it to.
 
 ## Delete a snip
 
-- **On the Snips page**: open the snip and choose **Delete**. This removes the original, the pictures, any link and the snip's entry in search.
+- **On the Snips page**: open the snip and choose **Delete**. This removes the original, the pictures, the clip if it has one, any link and the snip's entry in search.
 - **From an agent**: ask it to delete the snip, for example "Delete Scry capture cap_7k3f". Only your own snips can be deleted this way.
 - **Snips shared with you**: use **Remove from my view**. The owner's copy is not affected.
 - **On your computer**: the copy in your Snips folder is yours to delete. Scry also removes old copies after the number of days you chose in **Keep local copies**.

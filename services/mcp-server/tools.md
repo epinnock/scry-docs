@@ -110,7 +110,7 @@ Same result as `latest_capture`, plus the note if the owner added one. Works for
 
 ### Clips
 
-A snip can be a clip: a short MP4 recorded with [Record a clip](/guide/scry-sync/snip#record-a-clip). For a clip, `latest_capture` and `get_capture` add two lines after the link to the original, and a link to the MP4. The picture is a contact sheet of 6 evenly spaced frames, because a model reads still pictures, not video.
+A snip can be a clip: a short MP4 recorded with [Record a clip](/guide/scry-sync/snip#record-a-clip). For a clip, `latest_capture` and `get_capture` change the `Picture` line, and two lines follow the link to the original: `Animated snip` and `Clip`. The picture is a contact sheet of 6 evenly spaced frames, because a model reads still pictures, not video.
 
 ```text
 Picture: attached below: 6 frames of the clip in a 3 x 2 grid, left to right, top to bottom (WebP, long edge at most 1280 px).

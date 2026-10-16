@@ -28,7 +28,7 @@ Scry then processes the pictures like any other upload: it indexes them for sear
 
 | What | Details |
 |---|---|
-| **The picture** | The original (a PNG, at most 4096 pixels on the long side), a smaller preview and a small copy for AI assistants. |
+| **The picture** | The original (a PNG, at most 4096 pixels on the long side), a smaller preview and a small copy for AI assistants. For a clip, also the clip (a silent MP4 of up to 10 seconds). |
 | **A record** | Who took it, when, which project, the picture size, and a note if you add one. |
 
 The app does not send the name of the app or the window title, and it does not send folder paths or your user name. A snip is private to you until you share it, and stops being available 30 days after you send it. You can delete it sooner. Your own copy in the Snips folder stays on your computer for the number of days you choose in **Settings > Snip**.
