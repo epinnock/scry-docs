@@ -17,7 +17,21 @@ Needs macOS 13 (Ventura) or later, on Apple silicon or Intel. Not sure which you
    - [Download for Apple silicon (M1 and later)](https://updates.scrymore.com/latest/Scry-Sync-arm64.dmg)
    - [Download for Intel](https://updates.scrymore.com/latest/Scry-Sync-x64.dmg)
 2. Open the downloaded `.dmg` and drag **Scry Sync** into **Applications**.
-3. Open **Scry Sync** from **Applications**. macOS says it is an app downloaded from the Internet and that Apple checked it for malicious software. Click **Open**.
+3. Open **Scry Sync** from **Applications**. The first time, macOS asks **“Scry Sync” is an app downloaded from the Internet. Are you sure you want to open it?** and says Apple checked it for malicious software and none was detected. Click **Open**. Scry Sync adds its icon to the menu bar and opens its sign-in window.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/install-1-download-mac.mp4">
+    <track kind="captions" src="/videos/install-1-download-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>Mac step 1: on this page, Download for Apple silicon. Chrome saves the disk image, about 145 MB, with the version in its name.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/install-2-open-mac.mp4">
+    <track kind="captions" src="/videos/install-2-open-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>Mac steps 2 and 3: opening the disk image, dragging Scry Sync onto Applications, opening it, choosing Open at the one-time macOS prompt, and Scry Sync starting in the menu bar on its sign-in window.</figcaption>
+</figure>
 
 Scry Sync lives in the menu bar at the top of the screen, not in the Dock. If you want to use [Scry Snip](/guide/scry-sync/snip), macOS asks you to allow **Screen Recording** the first time you take a snip, and you may need to add **Scry Sync** to the list yourself. See [Mac: Screen Recording](/guide/scry-sync/snip#mac-screen-recording).
 
@@ -66,6 +80,13 @@ To remove Scry Sync, open **Settings → Apps**, choose **Scry Sync** and click 
     <track kind="captions" src="/videos/signin-1-browser-win.vtt" srclang="en" default>
   </video>
   <figcaption>First run, step 1: Sign in with your browser. The app shows a code, you type it into the sign-in page, choose the project and choose Continue.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-1-browser-mac.mp4">
+    <track kind="captions" src="/videos/signin-1-browser-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>First run, step 1 (Mac): Sign in with your browser. The app shows a code, you type it into the sign-in page, choose the project and choose Continue.</figcaption>
 </figure>
 
 After that the app lives in the menu bar (Mac) or system tray (Windows). Click the icon to see the project and folder, the latest activity, anything that needs attention, and **Pause**, **Open in Scry** and the **Settings** gear.

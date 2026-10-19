@@ -61,7 +61,7 @@ Make room on the disk, or check that your account can write to Scry Sync's app d
 1. Open **Settings** in the app and choose **Send feedback**. It opens the [feedback form](/feedback) with the app version and a short **Ref** code (8 characters, such as `a1b2c3d4`) filled in.
 2. Say what you expected to happen. Add your email only if you want a reply.
 
-Rows in the tray popover can show a **Ref** line with a long code (a request ID, 36 characters). Quote it as it is. **Copy details** puts the version, your operating system and a short Ref code on your clipboard. You can also email [support@scrymore.com](mailto:support@scrymore.com).
+Rows in the tray popover can show a **Ref** line with a long code (a request ID, 36 characters; rows from the same sync share one). Quote it as it is. **Copy details** puts the version, your operating system and a short Ref code on your clipboard. You can also email [support@scrymore.com](mailto:support@scrymore.com).
 
 Neither the form nor the Ref code includes file names or paths.
 
