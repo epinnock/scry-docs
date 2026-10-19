@@ -5,13 +5,20 @@ description: "Fixes for the common Scry Sync problems: warnings on first open, n
 
 # Troubleshooting
 
-When something needs attention the tray icon changes and the popover lists it in plain words, with one action per row. Most rows fix themselves once the file or connection is fixed. Start with the row: it names the file and the fix.
+When something needs attention, click the Scry Sync icon (in the menu bar on Mac, in the tray on Windows). The popover's status line says how many files need attention, and each one gets a row in plain words with one action. **Show in folder** opens the folder in Finder (Mac) or File Explorer (Windows) with the file selected. Most rows fix themselves once the file or connection is fixed. Start with the row: it names the file and the fix.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/trouble-1-attention-win.mp4">
     <track kind="captions" src="/videos/trouble-1-attention-win.vtt" srclang="en" default>
   </video>
   <figcaption>The tray popover listing what needs attention in words, with Show in folder to jump to the file.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/trouble-1-attention-mac.mp4">
+    <track kind="captions" src="/videos/trouble-1-attention-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>The menu bar popover (Mac): the status line says how many files need attention, each row names the file and the fix, and Show in folder opens Finder with the file selected.</figcaption>
 </figure>
 
 ## The Mac or Windows warning on first open
@@ -61,7 +68,7 @@ Make room on the disk, or check that your account can write to Scry Sync's app d
 1. Open **Settings** in the app and choose **Send feedback**. It opens the [feedback form](/feedback) with the app version and a short **Ref** code (8 characters, such as `a1b2c3d4`) filled in.
 2. Say what you expected to happen. Add your email only if you want a reply.
 
-Rows in the tray popover can show a **Ref** line with a long code (a request ID, 36 characters; rows from the same sync share one). Quote it as it is. **Copy details** puts the version, your operating system and a short Ref code on your clipboard. You can also email [support@scrymore.com](mailto:support@scrymore.com).
+Rows in the popover can show a **Ref** line with a long code (a request ID, 36 characters; rows from the same sync share one). Quote it as it is. **Copy details** puts the version, your operating system and a short Ref code on your clipboard. You can also email [support@scrymore.com](mailto:support@scrymore.com).
 
 Neither the form nor the Ref code includes file names or paths.
 

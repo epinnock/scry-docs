@@ -50,13 +50,20 @@ Scry Sync only reads your folder. It never writes to it.
 
 ## Usage data and error reports
 
-Scry Sync shares anonymous usage events and error reports so we can fix problems and see which features are used. This is **on by default, and you can turn it off**: the first run shows a short notice, and **Settings → Share anonymous usage data and error reports** switches it off at any time. It is also off if the environment variable `DO_NOT_TRACK` is set to `1`, `true` or `yes`, or `SCRY_TELEMETRY` is set to `0` or `false`.
+Scry Sync shares anonymous usage events and error reports so we can fix problems and see which features are used. This is **on by default, and you can turn it off**: the first run shows a short notice, and in **Settings** (click the Scry Sync icon, then the gear), the **Share anonymous usage data and error reports** switch under **Usage data** turns it off at any time. Changes are saved as you make them. It is also off if the environment variable `DO_NOT_TRACK` is set to `1`, `true` or `yes`, or `SCRY_TELEMETRY` is set to `0` or `false`.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/privacy-1-settings-win.mp4">
     <track kind="captions" src="/videos/privacy-1-settings-win.vtt" srclang="en" default>
   </video>
   <figcaption>Settings: the switch for sharing anonymous usage data and error reports (turned off and back on), Send feedback, and Copy details.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/privacy-1-settings-mac.mp4">
+    <track kind="captions" src="/videos/privacy-1-settings-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>Settings on Mac (menu bar icon, then the gear): the switch for sharing anonymous usage data and error reports (turned off and back on), Send feedback, and Copy details.</figcaption>
 </figure>
 
 ### Usage events (PostHog)
@@ -85,7 +92,7 @@ When the app hits an error it sends the error, its stack trace and the app versi
 
 ## Reporting a problem
 
-**Send feedback** in the app's Settings opens the [feedback form](/feedback) with the app version and a short reference code (for example `?src=scry-sync&v=0.1.0&ref=a1b2c3d4`). The code lets us find the matching technical log entries. **Copy details** puts the version, your operating system and a reference code on your clipboard so you can paste them into an email to [support@scrymore.com](mailto:support@scrymore.com). Nothing is sent until you press **Send** on the form, and an email address on the form is optional.
+**Send feedback** in the app's Settings opens the [feedback form](/feedback) with the app version and a short reference code (for example `?src=scry-sync&v=0.1.0&ref=a1b2c3d4`). The code lets us find the matching technical log entries. **Copy details** puts the version, your operating system and a reference code on your clipboard so you can paste them into an email to [support@scrymore.com](mailto:support@scrymore.com). The button changes to **Details copied**. Nothing is sent until you press **Send** on the form, and an email address on the form is optional.
 
 ## Getting your data deleted
 
