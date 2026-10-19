@@ -10,7 +10,7 @@ Scry Sync converts files to pictures **on your computer**. Your original files a
 | Verdict | What happened | What you see |
 |---|---|---|
 | **Faithful** | The picture is a true copy of the file. | Sent, no badge. |
-| **Approximate** | Sent, but the picture may not look exactly like the file. | Sent with an **approximate** badge in Scry, and a row in the app's list that says why. |
+| **Approximate** | Sent, but the picture may not look exactly like the file. | Sent with an **approximate** badge in Scry, and a card in the app that says why. |
 | **Not sent** | Scry Sync cannot make a correct picture, or does not support the file. | Not sent. The row says why and how to fix it. |
 
 Scry never shows an approximate picture as if it were exact: the badge stays on it until you fix the file and it is sent again.
@@ -24,7 +24,7 @@ Scry never shows an approximate picture as if it were exact: the badge stays on 
 
 ## What "approximate" means
 
-The picture was made, but something in the file could not be reproduced exactly. The row in the app names the reason:
+The picture was made, but something in the file could not be reproduced exactly. The card in the app names the reason:
 
 | Reason | What it means | Fix |
 |---|---|---|

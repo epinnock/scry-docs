@@ -57,7 +57,7 @@ To remove Scry Sync, open **Settings → Apps**, choose **Scry Sync** and click 
 
 ## First run
 
-1. **Sign in with your browser.** Choose **Sign in with your browser**. The app shows a short code and opens a sign-in page, which also offers **Create your account** with Google, GitHub or email if you are new to Scry. Type the code from the app into the page, choose the project the pictures should go to (only projects you can add to are listed), and approve. You never paste a key.
+1. **Sign in with your browser.** Choose **Sign in with your browser**. The app shows a short code and opens a sign-in page, which also offers **Create your account** with Google, GitHub or email if you are new to Scry. Type the code from the app into the page, choose the project the pictures should go to (only projects you can add to are listed), and choose **Continue**. You never paste a key.
 2. **Choose how to use Scry.** The Welcome screen asks **How do you want to use Scry?** **Snip only** takes screenshots by hotkey and watches no folder. **Sync a folder too** keeps a folder, or Creative Cloud Libraries, in sync as well. See [Connect a folder](/guide/scry-sync/connect-a-folder).
 3. A one-time notice explains the anonymous usage data and error reports the app shares, and where to turn them off. See [What Scry Sync sends and collects](/guide/scry-sync/privacy).
 
@@ -65,7 +65,7 @@ To remove Scry Sync, open **Settings → Apps**, choose **Scry Sync** and click 
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/signin-1-browser-win.mp4">
     <track kind="captions" src="/videos/signin-1-browser-win.vtt" srclang="en" default>
   </video>
-  <figcaption>First run, step 1: Sign in with your browser. The app shows a code, you type it into the sign-in page, choose the project and approve.</figcaption>
+  <figcaption>First run, step 1: Sign in with your browser. The app shows a code, you type it into the sign-in page, choose the project and choose Continue.</figcaption>
 </figure>
 
 After that the app lives in the menu bar (Mac) or system tray (Windows). Click the icon to see the project and folder, the latest activity, anything that needs attention, and **Pause**, **Open in Scry** and the **Settings** gear.

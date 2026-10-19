@@ -19,7 +19,7 @@ On the Welcome screen, go to **Sync a folder too** and choose **Choose a source*
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/connect-1-folder-win.mp4">
     <track kind="captions" src="/videos/connect-1-folder-win.vtt" srclang="en" default>
   </video>
-  <figcaption>Choosing a source, then the folder: Sync a folder too, Choose a source, A folder on this computer, Continue, Browse.</figcaption>
+  <figcaption>Choosing a source, then the folder: Sync a folder too, Choose a source, A folder on this computer, Continue, Browse. The video shortens the wait while the scan runs.</figcaption>
 </figure>
 
 Limits, so you are not surprised:
@@ -40,7 +40,7 @@ The *6 can't be used* link lists each file with the reason and the fix. The summ
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/connect-2-start-win.mp4">
     <track kind="captions" src="/videos/connect-2-start-win.vtt" srclang="en" default>
   </video>
-  <figcaption>The scan summary, then Start syncing. Nothing is sent until you press it. The video shortens the wait while the scan runs.</figcaption>
+  <figcaption>Reading the scan summary, then Start syncing. Nothing is sent until you press it. The settings window opens, and the tray popover shows progress until it says Up to date.</figcaption>
 </figure>
 
 ## What happens after Start

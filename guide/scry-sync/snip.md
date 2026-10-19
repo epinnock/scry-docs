@@ -14,7 +14,7 @@ Press a hotkey, select part of your screen, check the picture, and send it to a 
 ## What it does
 
 1. **Takes the screenshot** with a hotkey, from the Mac menu bar or the Windows system tray app.
-2. **Shows a review card** with the picture, so you can send it, copy it, keep it or throw it away. Nothing leaves your computer until you press **Send** (see [Review, then send](#review-then-send)).
+2. **Shows a review card** with the picture, so you can send it, mark it up, keep it on your computer or throw it away. Nothing leaves your computer until you press **Send** (see [Review, then send](#review-then-send)).
 3. **Puts the picture on your clipboard** and saves a copy in a Snips folder on your computer, so you can paste it into any chat or document straight away.
 4. **Sends it to your project**, where you can share it or give it to an agent.
 
@@ -50,16 +50,18 @@ Scry Sync never changes your Mac's settings. To undo it, tick the shortcut again
 
 ## Review, then send
 
-By default every snip stops at a review card. It shows the picture, its size and how it was captured, and says **On your clipboard**. The buttons are:
+By default every snip stops at a review card. It shows the picture with **Snip ready**, says **Copied to clipboard**, and names the project it will go to. The buttons are:
 
 | Button | What it does |
 |---|---|
-| **Send to *project*** | Uploads the snip to the project named on the button. |
-| **Copy image** | Copies the picture again. |
-| **Save** | Keeps it in **Recent snips** on your computer without sending it. |
-| **Discard** | Throws it away. **Esc** does the same. |
+| **Send** | Uploads the snip to the project named on the card. Hover it to see the project name. |
+| **Search** (magnifier) | Sends the snip and searches Scry with it. |
+| **Mark up** (pencil) | Opens the picture so you can draw and add notes before you send it. **M** does the same. |
+| **More actions** (the three dots) | **Copy again** puts the picture on your clipboard again. **Keep local** closes the card without sending and keeps the copy in your Snips folder. **Discard** throws it away. |
 
-If you do nothing for 30 seconds, the card moves the snip to **Recent snips**. It is not sent. After you press **Send**, the card says **Sending…** and then **Sent**, with the project name. If the upload fails the card says **Not sent** and offers **Retry**.
+If the picture could not be copied, the card says **Not copied** and adds a **Copy image** button. **Esc** discards the snip.
+
+If you do nothing for 30 seconds, the card moves the snip to **Recent snips** on your computer. It is not sent. After you press **Send**, the card says **Sending…** and then **Sent**, with the project name. If the upload fails the card says **Not sent** and offers **Retry**.
 
 **Send immediately** is an option in **Settings > Snip**. It is off until you turn it on, and Scry explains what it does before it switches on. When it is on, a snip uploads as soon as you take it, and the card shows **Undo** for a moment. It applies to this computer only, and signing out turns it off.
 

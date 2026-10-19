@@ -85,7 +85,7 @@ When the app hits an error it sends the error, its stack trace and the app versi
 
 ## Reporting a problem
 
-**Send feedback** in the app's Settings opens the [feedback form](/feedback) with the app version and a short reference code (for example `?src=scry-sync&v=0.1.0&ref=a1b2c3d4`). The code lets us find the matching technical log entries. **Copy details** puts the version, your operating system and recent reference codes on your clipboard so you can paste them into an email to [support@scrymore.com](mailto:support@scrymore.com). Nothing is sent until you press **Send** on the form, and an email address on the form is optional.
+**Send feedback** in the app's Settings opens the [feedback form](/feedback) with the app version and a short reference code (for example `?src=scry-sync&v=0.1.0&ref=a1b2c3d4`). The code lets us find the matching technical log entries. **Copy details** puts the version, your operating system and a reference code on your clipboard so you can paste them into an email to [support@scrymore.com](mailto:support@scrymore.com). Nothing is sent until you press **Send** on the form, and an email address on the form is optional.
 
 ## Getting your data deleted
 

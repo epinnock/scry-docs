@@ -9,8 +9,8 @@ When you sign in, Scry gives that computer its own access to **one project, for 
 
 ## From the app
 
-1. Open the Scry Sync popover and choose the gear, **Settings**.
-2. Choose **Sign out** and confirm.
+1. Open the Scry Sync popover and choose the gear. The Settings window opens.
+2. Choose **Sign out** and confirm. Scry Sync signs this computer out and returns to its sign-in screen. Your folder and files stay as they are.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/disconnect-1-app-win.mp4">
