@@ -6,7 +6,7 @@ description: "Scry Sync is a small desktop app for Mac and Windows that keeps a 
 # Scry Sync
 
 ::: info Beta
-Scry Sync is in beta. The installers are not yet code-signed, so your computer shows a one-time warning the first time you open the app. [Install and first run](/guide/scry-sync/install) walks through it.
+Scry Sync is in beta. The installers are signed, and your computer may still ask you to confirm the first time you open the app. [Install and first run](/guide/scry-sync/install) walks through it.
 :::
 
 Scry Sync links **one folder on your computer to one Scry project**. After that it lives in the Mac menu bar or the Windows system tray, notices new and changed files, converts them into pictures on your own computer, and sends only those pictures to Scry, where they become searchable.
@@ -23,6 +23,17 @@ Use it when your designs live in files (Photoshop, Illustrator, InDesign exports
 Scry Sync also includes **[Scry Snip](/guide/scry-sync/snip)**: press a hotkey, select part of your screen, review the picture, and send it to a project for you or your coding agent to use. Snip works on its own, without connecting a folder.
 
 Your folder is never modified. Scry Sync only reads from it, and it only goes one way: folder to Scry.
+
+::: info Videos and captions
+The short videos in this guide have narration and closed captions. Use the **CC** button in the player to turn the captions on or off. They were recorded on Windows.
+:::
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/overview-tour-win.mp4">
+    <track kind="captions" src="/videos/overview-tour-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>A tour of Scry Sync on Windows: the tray popover with the project, the folder, a plain status line, what needs attention, Pause, and the gear for Settings.</figcaption>
+</figure>
 
 ## Which files it handles
 
@@ -46,7 +57,7 @@ Not in this version: Figma and Sketch files, an Adobe Bridge or Photoshop panel,
 
 ## In this guide
 
-- [Install and first run](/guide/scry-sync/install): the Mac and Windows downloads, the one-time warning, signing in.
+- [Install and first run](/guide/scry-sync/install): the Mac and Windows downloads, the first-open prompt, signing in.
 - [Connect a folder](/guide/scry-sync/connect-a-folder): choose a project and folder, the scan, and what you confirm before anything is sent.
 - [Scry Snip](/guide/scry-sync/snip): screenshots by hotkey, permissions, what is stored and how to delete it.
 - [What gets converted](/guide/scry-sync/what-gets-converted): the three verdicts, what *approximate* means, and every reason a file is not sent.
@@ -55,4 +66,22 @@ Not in this version: Figma and Sketch files, an Adobe Bridge or Photoshop panel,
 - [What Scry Sync sends and collects](/guide/scry-sync/privacy)
 - [Troubleshooting](/guide/scry-sync/troubleshooting)
 
-Something not working? Use **Report a problem** in the app, or the [feedback form](/feedback). Email [support@scrymore.com](mailto:support@scrymore.com) if you would rather write.
+Something not working? Use **Send feedback** in the app's Settings, or the [feedback form](/feedback). Email [support@scrymore.com](mailto:support@scrymore.com) if you would rather write.
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>

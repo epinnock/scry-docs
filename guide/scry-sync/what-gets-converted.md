@@ -10,14 +10,21 @@ Scry Sync converts files to pictures **on your computer**. Your original files a
 | Verdict | What happened | What you see |
 |---|---|---|
 | **Faithful** | The picture is a true copy of the file. | Sent, no badge. |
-| **Approximate** | Sent, but the picture may not look exactly like the file. | Sent with an **approximate** badge in Scry, and a row in the app's list that says why. |
+| **Approximate** | Sent, but the picture may not look exactly like the file. | Sent with an **approximate** badge in Scry, and a card in the app that says why. |
 | **Not sent** | Scry Sync cannot make a correct picture, or does not support the file. | Not sent. The row says why and how to fix it. |
 
 Scry never shows an approximate picture as if it were exact: the badge stays on it until you fix the file and it is sent again.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/converted-1-verdicts-win.mp4">
+    <track kind="captions" src="/videos/converted-1-verdicts-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>The three verdicts in the Scry Sync list: Sent with no badge, a Photoshop file marked approximate, and an InDesign file that needs a PDF.</figcaption>
+</figure>
+
 ## What "approximate" means
 
-The picture was made, but something in the file could not be reproduced exactly. The row in the app names the reason:
+The picture was made, but something in the file could not be reproduced exactly. The card in the app names the reason:
 
 | Reason | What it means | Fix |
 |---|---|---|
@@ -67,3 +74,21 @@ A Photoshop file only carries a full flattened picture if Photoshop was told to 
 - **Windows:** **Edit → Preferences → File Handling → Maximize PSD and PSB File Compatibility → Always**
 
 Then open each affected file and save it again. Files saved before you changed the setting stay approximate until you do.
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>

@@ -6,7 +6,7 @@ description: "Scry Snip takes a screenshot with a hotkey, lets you review it, an
 # Scry Snip
 
 ::: info Beta
-Snip is part of [Scry Sync](/guide/scry-sync/) and is in beta. **Mac support is in beta**: the Mac installer is not code-signed yet, so you grant Screen Recording yourself and may need to grant it again after an update (see [Mac permission](#mac-screen-recording)). Windows needs no permission.
+Snip is part of [Scry Sync](/guide/scry-sync/) and is in beta. **Mac support is in beta**: you allow Screen Recording yourself, and may need to allow it again after an update (see [Mac permission](#mac-screen-recording)). Windows needs no permission.
 :::
 
 Press a hotkey, select part of your screen, check the picture, and send it to a Scry project. The snip then shows up on your **Snips** page in the dashboard, and your coding agent can fetch it by asking for "the snip I just took". You do not need to connect a folder to use Snip. Scry also makes each snip [searchable](#find-your-snips-in-search), so you can find it later by describing it.
@@ -14,7 +14,7 @@ Press a hotkey, select part of your screen, check the picture, and send it to a 
 ## What it does
 
 1. **Takes the screenshot** with a hotkey, from the Mac menu bar or the Windows system tray app.
-2. **Shows a review card** with the picture, so you can send it, copy it, keep it or throw it away. Nothing leaves your computer until you press **Send** (see [Review, then send](#review-then-send)).
+2. **Shows a review card** with the picture, so you can send it, mark it up, keep it on your computer or throw it away. Nothing leaves your computer until you press **Send** (see [Review, then send](#review-then-send)).
 3. **Puts the picture on your clipboard** and saves a copy in a Snips folder on your computer, so you can paste it into any chat or document straight away.
 4. **Sends it to your project**, where you can share it or give it to an agent.
 
@@ -41,18 +41,27 @@ Mac already uses Cmd+Shift+4 for its own screenshot, so Scry does not take it by
 
 Scry Sync never changes your Mac's settings. To undo it, tick the shortcut again in System Settings.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/snip-1-take-win.mp4">
+    <track kind="captions" src="/videos/snip-1-take-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>Taking a snip on Windows with Ctrl+Shift+4: select the area, review the card, press Send, and the card confirms the snip was sent.</figcaption>
+</figure>
+
 ## Review, then send
 
-By default every snip stops at a review card. It shows the picture, its size and how it was captured, and says **On your clipboard**. The buttons are:
+By default every snip stops at a review card. It shows the picture with **Snip ready**, says **Copied to clipboard**, and names the project it will go to. The buttons are:
 
 | Button | What it does |
 |---|---|
-| **Send to *project*** | Uploads the snip to the project named on the button. |
-| **Copy image** | Copies the picture again. |
-| **Save** | Keeps it in **Recent snips** on your computer without sending it. |
-| **Discard** | Throws it away. **Esc** does the same. |
+| **Send** | Uploads the snip to the project named on the card. Hover it to see the project name. |
+| **Search** (magnifier) | Sends the snip and searches Scry with it. |
+| **Mark up** (pencil) | Opens the picture so you can draw and add notes before you send it. **M** does the same. |
+| **More actions** (the three dots) | **Copy again** puts the picture on your clipboard again. **Keep local** closes the card without sending and keeps the copy in your Snips folder. **Discard** throws it away. |
 
-If you do nothing for 30 seconds, the card moves the snip to **Recent snips**. It is not sent. After you press **Send**, the card says **Sending…** and then **Sent**, with the project name. If the upload fails the card says **Not sent** and offers **Retry**.
+If the picture could not be copied, the card says **Not copied** and adds a **Copy image** button. **Esc** discards the snip.
+
+If you do nothing for 30 seconds, the card moves the snip to **Recent snips** on your computer. It is not sent. After you press **Send**, the card says **Sending…** and then **Sent**, with the project name. If the upload fails the card says **Not sent** and offers **Retry**.
 
 **Send immediately** is an option in **Settings > Snip**. It is off until you turn it on, and Scry explains what it does before it switches on. When it is on, a snip uploads as soon as you take it, and the card shows **Undo** for a moment. It applies to this computer only, and signing out turns it off.
 
@@ -72,7 +81,7 @@ The first time you finish a region snip, macOS may also ask whether Scry Sync ca
 
 Scry checks that it can really read the screen before it takes a snip. Without the permission macOS quietly hands back a plain wallpaper, and Scry would rather tell you than send you a useless picture. If the check cannot run, for example over a full-screen app, the card says **Scry could not confirm Screen Recording** and nothing is captured. Switch to a normal window and try again.
 
-**After every update, while the beta is unsigned.** Mac updates are manual for now, and the app is not yet code-signed. macOS may forget the Screen Recording permission when you install a new version. If a snip shows the **Let Scry Sync see your screen** card after an update, open the same System Settings page, switch **Scry Sync** off and on (or remove it and add it again), then quit and reopen Scry Sync. After a manual update you may also be asked to sign in again. The [install page](/guide/scry-sync/install) explains how to open an unsigned app.
+**After an update.** Mac updates are manual for now, and macOS may forget the Screen Recording permission when you install a new version. If a snip shows the **Let Scry Sync see your screen** card after an update, open the same System Settings page, switch **Scry Sync** off and on (or remove it and add it again), then quit and reopen Scry Sync. After a manual update you may also be asked to sign in again. The [install page](/guide/scry-sync/install) explains the first-open prompt.
 
 ### Windows
 
@@ -212,6 +221,24 @@ To remove everything, delete the project in the dashboard, which deletes its sni
 
 **A snip does not show up in search.** Look at its label on the **Mine** tab of the **Snips** page. **Indexing…** means wait a few seconds. **Not searchable (turned off)** means **Make my snips searchable** is off; turn it on. A snip you sent before snips could be searched shows **Not searchable**. For a snip someone shared with you, ask them to check that they still share it and that their switch is on.
 
-More help: [Scry Sync troubleshooting](/guide/scry-sync/troubleshooting), the in-app **Report a problem**, or [support@scrymore.com](mailto:support@scrymore.com).
+More help: [Scry Sync troubleshooting](/guide/scry-sync/troubleshooting), **Send feedback** in the app's Settings, or [support@scrymore.com](mailto:support@scrymore.com).
 
 See also: [What Scry Sync sends and collects](/guide/scry-sync/privacy).
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>

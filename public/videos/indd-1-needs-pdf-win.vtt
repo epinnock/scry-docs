@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.520 --> 00:00:07.112
+Scry Sync cannot read InDesign files, so
+the row says Needs a PDF.
+
+2
+00:00:07.682 --> 00:00:12.496
+In InDesign, export a PDF into the synced
+folder.
+
+3
+00:00:13.066 --> 00:00:17.859
+Scry Sync waits until the folder has been
+quiet for about a minute,
+
+4
+00:00:17.859 --> 00:00:20.291
+then converts and sends each page.
+
+5
+00:00:20.861 --> 00:00:25.701
+The InDesign row keeps saying Needs a PDF,
+and that is expected.
