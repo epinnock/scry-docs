@@ -9,14 +9,21 @@ When you sign in, Scry gives that computer its own access to **one project, for 
 
 ## From the app
 
-1. Open the Scry Sync popover and choose the gear. The Settings window opens.
-2. Choose **Sign out** and confirm. Scry Sync signs this computer out and returns to its sign-in screen. Your folder and files stay as they are.
+1. Open the Scry Sync popover (click the Scry Sync icon in the menu bar on Mac, or in the notification area on Windows) and choose the gear in its top-right corner. The **Scry Sync Settings** window opens.
+2. Next to **Signed in**, choose **Sign out**. Scry Sync asks **Sign out of Scry Sync?**; choose **Sign out** again (or **Cancel**). Scry Sync signs this computer out and returns to its sign-in screen. Your folder and files stay as they are.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/disconnect-1-app-win.mp4">
     <track kind="captions" src="/videos/disconnect-1-app-win.vtt" srclang="en" default>
   </video>
   <figcaption>Signing out from the app: the gear, Settings, Sign out, and the confirmation before it signs out.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/disconnect-1-app-mac.mp4">
+    <track kind="captions" src="/videos/disconnect-1-app-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>Signing out from the app (Mac): the menu bar icon, the gear, Settings, Sign out, the confirmation, and the sign-in screen it returns to.</figcaption>
 </figure>
 
 Scry Sync tells the server to cancel this computer's access, then stops. **Your folder and files stay exactly as they are, and pictures already in Scry stay there.** If you are offline, the app tells you the disconnect did not go through and keeps syncing until you try again.

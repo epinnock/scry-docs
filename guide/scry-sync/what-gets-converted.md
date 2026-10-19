@@ -10,8 +10,8 @@ Scry Sync converts files to pictures **on your computer**. Your original files a
 | Verdict | What happened | What you see |
 |---|---|---|
 | **Faithful** | The picture is a true copy of the file. | Sent, no badge. |
-| **Approximate** | Sent, but the picture may not look exactly like the file. | Sent with an **approximate** badge in Scry, and a card in the app that says why. |
-| **Not sent** | Scry Sync cannot make a correct picture, or does not support the file. | Not sent. The row says why and how to fix it. |
+| **Approximate** | Sent, but the picture may not look exactly like the file. | Shown as **Converted and sent** with an **approximate** badge in the app's list and in Scry, and a card in the app that says why. |
+| **Not sent** | Scry Sync cannot make a correct picture, or does not support the file. | Not sent. The row says why (for example **Needs a PDF**) and how to fix it, and the app shows a card at the top until it is fixed. |
 
 Scry never shows an approximate picture as if it were exact: the badge stays on it until you fix the file and it is sent again.
 
@@ -20,6 +20,13 @@ Scry never shows an approximate picture as if it were exact: the badge stays on 
     <track kind="captions" src="/videos/converted-1-verdicts-win.vtt" srclang="en" default>
   </video>
   <figcaption>The three verdicts in the Scry Sync list: Sent with no badge, a Photoshop file marked approximate, and an InDesign file that needs a PDF.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/converted-1-verdicts-mac.mp4">
+    <track kind="captions" src="/videos/converted-1-verdicts-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>The same three verdicts in the Mac menu bar popover: Sent with no badge, a Photoshop file converted and sent with an approximate badge, and an InDesign file that needs a PDF.</figcaption>
 </figure>
 
 ## What "approximate" means

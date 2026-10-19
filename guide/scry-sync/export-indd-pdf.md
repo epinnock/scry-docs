@@ -9,6 +9,8 @@ Scry Sync shows **Needs a PDF** next to an InDesign (`.indd`) file. InDesign fil
 
 Your `.indd` file stays where it is and is never sent.
 
+To find the folder, open the Scry Sync menu (the Scry Sync icon in the menu bar on Mac) and choose **Show in folder** on the card that says your `.indd` file **needs a PDF**. On Mac it opens the folder in Finder with the `.indd` file selected.
+
 ## Export a PDF
 
 1. In InDesign, open the document.
@@ -18,13 +20,20 @@ Your `.indd` file stays where it is and is never sent.
 5. In the **Export Adobe PDF** dialog, choose a preset such as **High Quality Print** or **Smallest File Size**. In the **General** tab, make sure **All** pages is selected, or give the range you want to see in Scry.
 6. Click **Export**.
 
-A minute or so after the export finishes, the PDF appears in the app's activity list and the pictures are sent. Each page becomes one picture, up to the page limit.
+While you export, the Scry Sync menu says **Changes are waiting.** About a minute after the folder goes quiet, the PDF shows up under **Recent** as **Converted and sent**. Each page becomes one picture, up to the page limit.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/indd-1-needs-pdf-win.mp4">
     <track kind="captions" src="/videos/indd-1-needs-pdf-win.vtt" srclang="en" default>
   </video>
   <figcaption>The Needs a PDF row, then a PDF arriving in the synced folder. The recording computer has no InDesign, so the PDF is copied into the folder instead of exported, and the minute-long waits are shortened.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/indd-1-needs-pdf-mac.mp4">
+    <track kind="captions" src="/videos/indd-1-needs-pdf-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>On Mac: the Needs a PDF card in the Scry Sync menu, Show in folder opening the synced folder in Finder, then a PDF arriving there and being converted and sent. The recording Mac has no InDesign, so the PDF is copied into the folder instead of exported, and the minute-long wait is cut.</figcaption>
 </figure>
 
 ::: tip The row stays

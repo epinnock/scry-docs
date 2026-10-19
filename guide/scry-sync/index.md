@@ -25,7 +25,7 @@ Scry Sync also includes **[Scry Snip](/guide/scry-sync/snip)**: press a hotkey, 
 Your folder is never modified. Scry Sync only reads from it, and it only goes one way: folder to Scry.
 
 ::: info Videos and captions
-The short videos in this guide have narration and closed captions. Use the **CC** button in the player to turn the captions on or off. They were recorded on Windows.
+The short videos in this guide have narration and closed captions. Use the **CC** button in the player to turn the captions on or off. Most were recorded on Windows; the pages with a Mac version show it next to the Windows one, marked (Mac) or on Mac.
 :::
 
 <figure class="step-video">
@@ -33,6 +33,13 @@ The short videos in this guide have narration and closed captions. Use the **CC*
     <track kind="captions" src="/videos/overview-tour-win.vtt" srclang="en" default>
   </video>
   <figcaption>A tour of Scry Sync on Windows: the tray popover with the project, the folder, a plain status line, what needs attention, Pause, and the gear for Settings.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/overview-tour-mac.mp4">
+    <track kind="captions" src="/videos/overview-tour-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>A tour of Scry Sync on Mac: the menu bar popover with the project, the folder, a plain status line, what needs attention, Pause, and the gear for Settings.</figcaption>
 </figure>
 
 ## Which files it handles

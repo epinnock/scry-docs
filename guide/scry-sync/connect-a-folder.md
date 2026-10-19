@@ -13,13 +13,20 @@ A project receives pictures from **one synced folder**. If another computer alre
 
 ## Choose the folder
 
-On the Welcome screen, go to **Sync a folder too** and choose **Choose a source**. The app asks **Where are your pictures?** Tick **A folder on this computer** (the other choice is Creative Cloud Libraries), choose **Continue**, then choose **Browse** and select the folder that holds your exports. Subfolders are included. Scry Sync ignores hidden files and folders, macOS `__MACOSX` folders, and files that are not pictures or design files. It does not follow shortcuts, aliases or symbolic links, and says so if it meets one.
+On the Welcome screen, go to **Sync a folder too** and choose **Choose a source**. The app asks **Where are your pictures?** Tick **A folder on this computer** (the other choice is Creative Cloud Libraries), choose **Continue**, and the app shows **Choose a folder to keep in sync**. Drag the folder onto **Drop a folder here**, or choose **Browse**, select the folder that holds your exports and choose **Open** (Mac) or **Select Folder** (Windows). Subfolders are included. Scry Sync ignores hidden files and folders, macOS `__MACOSX` folders, and files that are not pictures or design files. It does not follow shortcuts, aliases or symbolic links, and says so if it meets one.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/connect-1-folder-win.mp4">
     <track kind="captions" src="/videos/connect-1-folder-win.vtt" srclang="en" default>
   </video>
   <figcaption>Choosing a source, then the folder: Sync a folder too, Choose a source, A folder on this computer, Continue, Browse. The video shortens the wait while the scan runs.</figcaption>
+</figure>
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/connect-1-folder-mac.mp4">
+    <track kind="captions" src="/videos/connect-1-folder-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>Choosing a source, then the folder (Mac): Sync a folder too, Choose a source, A folder on this computer, Continue, Browse, Open. The video skips the folder panel's navigation and shows the scan and its summary.</figcaption>
 </figure>
 
 Limits, so you are not surprised:
@@ -32,9 +39,9 @@ Limits, so you are not surprised:
 
 Scry Sync scans the folder and shows a summary like this:
 
-> **212 pictures found.** 180 are ready, 26 will be converted first, 6 can't be used (see why). **Nothing is sent until you press Start.**
+> **206 pictures found.** 180 are ready, 26 will be converted first, 6 can't be used (see why). **Nothing is sent until you press Start.**
 
-The *6 can't be used* link lists each file with the reason and the fix. The summary names what will be sent, and **Start syncing** is your confirmation for this folder. Until you press it, nothing leaves your computer, and it asks again for any other folder you connect.
+**See why**, next to *6 can't be used*, lists each file with the reason and the fix. The summary names what will be sent, and **Start syncing** is your confirmation for this folder. Until you press it, nothing leaves your computer, and it asks again for any other folder you connect.
 
 <figure class="step-video">
   <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/connect-2-start-win.mp4">
@@ -43,8 +50,16 @@ The *6 can't be used* link lists each file with the reason and the fix. The summ
   <figcaption>Reading the scan summary, then Start syncing. Nothing is sent until you press it. The settings window opens, and the tray popover shows progress until it says Up to date.</figcaption>
 </figure>
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/connect-2-start-mac.mp4">
+    <track kind="captions" src="/videos/connect-2-start-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>Reading the scan summary, then Start syncing (Mac). Nothing is sent until you press it. The Settings window opens, and the menu bar popover shows that everything else is up to date and lists the files that need attention, each with what to do. The video skips the wait while the files send.</figcaption>
+</figure>
+
 ## What happens after Start
 
+- **You can follow it from the menu bar.** The Settings window opens. Click the Scry Sync icon in the menu bar (Mac) or system tray (Windows): the popover says **Up to date** when everything has been sent, or how many files need attention, with *Everything else is up to date.* Each of those files has its own row with what to do and **Show in folder**.
 - **Changes are picked up on their own.** Scry Sync waits until the folder has been quiet for about a minute, converts what changed, and sends the whole folder's pictures only if something is different.
 - **Edits keep their place.** A picture is identified by its file's position in the folder, not by its contents. Editing a file replaces its picture, and links and history in Scry stay attached.
 - **Deleting a file removes its picture** from Scry at the next sync. The file in your folder is never touched.

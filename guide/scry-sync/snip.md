@@ -6,7 +6,7 @@ description: "Scry Snip takes a screenshot with a hotkey, lets you review it, an
 # Scry Snip
 
 ::: info Beta
-Snip is part of [Scry Sync](/guide/scry-sync/) and is in beta. **Mac support is in beta**: you allow Screen Recording yourself, and may need to allow it again after an update (see [Mac permission](#mac-screen-recording)). Windows needs no permission.
+Snip is part of [Scry Sync](/guide/scry-sync/) and is in beta. **Mac support is in beta**: you allow Screen Recording yourself, and may need to allow it again after an update, or when macOS asks again (about once a month) (see [Mac permission](#mac-screen-recording)). Windows needs no permission.
 :::
 
 Press a hotkey, select part of your screen, check the picture, and send it to a Scry project. The snip then shows up on your **Snips** page in the dashboard, and your coding agent can fetch it by asking for "the snip I just took". You do not need to connect a folder to use Snip. Scry also makes each snip [searchable](#find-your-snips-in-search), so you can find it later by describing it.
@@ -71,11 +71,20 @@ Sharing, copying a link and deleting happen on the **Snips** page in the dashboa
 
 ### Mac: Screen Recording {#mac-screen-recording}
 
-macOS only lets an app read the screen after you allow it. The first time you snip, Scry shows a card, **Let Scry Sync see your screen**, with an **Open System Settings** button:
+macOS only lets an app read the screen after you allow it. The first time you snip, Scry shows a card, **Let Scry Sync see your screen**. It explains that Scry Sync only looks at the part you select, when you press a Snip hotkey, and never records in the background. Under **Do this once** it lists the steps, with an **Open System Settings** button:
 
 1. Open **System Settings > Privacy & Security > Screen & System Audio Recording** (called **Screen Recording** on macOS 14 and earlier).
 2. Turn on **Scry Sync**. If **Scry Sync** is not in the list yet, click the **+** button under the list, enter your Mac password, choose **Scry Sync** in **Applications**, and click **Open**.
 3. **Quit and reopen Scry Sync** (macOS offers **Quit & Reopen**). macOS only applies the change to an app that starts afterwards.
+
+The card notes: *Scry Sync will ask once; macOS may ask again every month.* If macOS asks again later, allow it the same way.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/snip-2-permission-mac.mp4">
+    <track kind="captions" src="/videos/snip-2-permission-mac.vtt" srclang="en" default>
+  </video>
+  <figcaption>The first snip on a Mac (Control+Option+4): Scry Sync shows Let Scry Sync see your screen with the three steps to do once. The video stops at the card; System Settings is not shown.</figcaption>
+</figure>
 
 The first time you finish a region snip, macOS may also ask whether Scry Sync can bypass the system private window picker. Choose **Allow**.
 
@@ -95,7 +104,7 @@ Scry tells you why instead of failing silently. Nothing is captured or saved whe
 |---|---|
 | **Snip is paused** | You paused Snip. Choose **Resume Snip**. Pausing lasts through a restart or an update. Folder sync keeps running. |
 | ***App* is in front, not capturing** | The app is on your **Never snip while** list (see below). |
-| **Scry needs Screen Recording** | Mac only. See [above](#mac-screen-recording). |
+| **Let Scry Sync see your screen** or **Scry needs Screen Recording** | Mac only. Scry Sync is not allowed to read the screen yet. See [above](#mac-screen-recording). |
 | **That snip came out blank** | The picture was all black, so nothing was saved or sent. Try again. |
 | **Snips folder is inside your synced folder** | Snips are kept outside a synced folder so they are not uploaded twice. Choose another Snips folder in Settings. |
 
