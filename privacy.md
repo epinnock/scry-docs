@@ -6,7 +6,7 @@ editLink: false
 
 # Privacy policy
 
-**Effective date:** September 24, 2026
+**Effective date:** September 30, 2026
 
 This policy covers Scry: the developer dashboard (dashboard.scrymore.com), the Scry CLI (`@scrymore/scry-deployer`), the Storybook viewer (view.scrymore.com), the search API, the MCP server, the design-diff service, the **Scry Link** Figma plugin, this documentation site and scrymore.com.
 
@@ -50,7 +50,7 @@ When you sign in with GitHub or Google, we receive your name, email address, ava
 
 ### Search and MCP
 
-We count searches and record which project was searched, how many results came back and whether the scope was widened. **We never store the query text**: it is sent to our embedding provider to be turned into numbers and then discarded. If you use the MCP server's `generate_image` tool, your prompt and any reference images go to Google's Gemini API to make the image.
+We count searches and record which project was searched, how many results came back and whether the scope was widened. **We never store the query text**: it is sent to our embedding provider (Google's Gemini API) to be turned into numbers and then discarded. If you use the MCP server's `generate_image` tool, your prompt and any reference images go to Google's Gemini API to make the image.
 
 ### Usage analytics
 
@@ -169,7 +169,7 @@ We store your data in the United States: our database (Google Cloud Firestore, U
 
 Some processing can happen outside the United States:
 
-- **Embeddings.** Jina AI GmbH (Germany, part of Elastic) turns screenshots, descriptions and search text into embeddings. Jina does not publish where its API servers run.
+- **Embeddings.** From the production search cutover, Google (Gemini API, Google LLC) turns screenshots, descriptions and search text into embeddings, in the United States. Until then, and for up to 14 days afterwards as a rollback, Jina AI GmbH (Germany, part of Elastic) does this; Jina does not publish where its API servers run.
 - **Image generation.** If you use the MCP server's `generate_image` tool, Google may process your prompt in any country where it has facilities.
 - **Networks.** Cloudflare and Vercel deliver requests through global networks, so a request may pass through a location near you.
 
