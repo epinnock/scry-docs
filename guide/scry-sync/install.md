@@ -19,7 +19,7 @@ Needs macOS 13 (Ventura) or later, on Apple silicon or Intel. Not sure which you
 2. Open the downloaded `.dmg` and drag **Scry Sync** into **Applications**.
 3. Open **Scry Sync** from **Applications**. macOS says it is an app downloaded from the Internet and that Apple checked it for malicious software. Click **Open**.
 
-Scry Sync lives in the menu bar at the top of the screen, not in the Dock. If you want to use [Scry Snip](/guide/scry-sync/snip), macOS asks you to allow **Screen Recording** the first time you take a snip, and you may need to add **Scry Sync** to the list yourself. See [Mac: Screen Recording](/guide/scry-sync/snip#mac-screen-recording).
+Scry Sync lives in the menu bar at the top of the screen, not in the Dock. If you want to use [Scry Snip](/guide/scry-sync/snip), macOS asks you to allow **Scry Sync** under **Screen & System Audio Recording** (called **Screen Recording** on macOS 14 and earlier) the first time you take a snip, and you may need to add **Scry Sync** to the list yourself. See [Mac: Screen Recording](/guide/scry-sync/snip#mac-screen-recording).
 
 ::: warning Updates on Mac are manual during the beta
 The app checks for a new version when it starts and every six hours, and shows a notice, **A new version is available**, with a link to this page. It never installs anything by itself on Mac. Download the new `.dmg` from this page and replace the app in **Applications**.
