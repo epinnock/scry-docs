@@ -20,6 +20,13 @@ Your `.indd` file stays where it is and is never sent.
 
 A minute or so after the export finishes, the PDF appears in the app's activity list and the pictures are sent. Each page becomes one picture, up to the page limit.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/indd-1-needs-pdf-win.mp4">
+    <track kind="captions" src="/videos/indd-1-needs-pdf-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>The Needs a PDF row, then a PDF arriving in the synced folder. The recording computer has no InDesign, so the PDF is copied into the folder instead of exported, and the minute-long waits are shortened.</figcaption>
+</figure>
+
 ::: tip The row stays
 The `.indd` file itself keeps showing **Needs a PDF**, because Scry Sync still cannot read it. That is expected. The exported PDF is what appears in Scry. When you export again over the same PDF, its pictures replace the old ones.
 :::
@@ -36,4 +43,22 @@ For a single page, **File → Export**, then choose **PNG** (or **JPEG**) as the
 
 ## Still stuck?
 
-See [What gets converted](/guide/scry-sync/what-gets-converted), [Troubleshooting](/guide/scry-sync/troubleshooting), or use **Report a problem** in the app.
+See [What gets converted](/guide/scry-sync/what-gets-converted), [Troubleshooting](/guide/scry-sync/troubleshooting), or use **Send feedback** in the app's Settings.
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>

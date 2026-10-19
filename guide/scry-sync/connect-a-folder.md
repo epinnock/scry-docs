@@ -13,7 +13,14 @@ A project receives pictures from **one synced folder**. If another computer alre
 
 ## Choose the folder
 
-Pick the folder that holds your exports. Subfolders are included. Scry Sync ignores hidden files and folders, macOS `__MACOSX` folders, and files that are not pictures or design files. It does not follow shortcuts, aliases or symbolic links, and says so if it meets one.
+On the Welcome screen, go to **Sync a folder too** and choose **Choose a source**. The app asks **Where are your pictures?** Tick **A folder on this computer** (the other choice is Creative Cloud Libraries), choose **Continue**, then choose **Browse** and select the folder that holds your exports. Subfolders are included. Scry Sync ignores hidden files and folders, macOS `__MACOSX` folders, and files that are not pictures or design files. It does not follow shortcuts, aliases or symbolic links, and says so if it meets one.
+
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/connect-1-folder-win.mp4">
+    <track kind="captions" src="/videos/connect-1-folder-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>Choosing a source, then the folder: Sync a folder too, Choose a source, A folder on this computer, Continue, Browse.</figcaption>
+</figure>
 
 Limits, so you are not surprised:
 
@@ -29,6 +36,13 @@ Scry Sync scans the folder and shows a summary like this:
 
 The *6 can't be used* link lists each file with the reason and the fix. The summary names what will be sent, and **Start syncing** is your confirmation for this folder. Until you press it, nothing leaves your computer, and it asks again for any other folder you connect.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/connect-2-start-win.mp4">
+    <track kind="captions" src="/videos/connect-2-start-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>The scan summary, then Start syncing. Nothing is sent until you press it. The video shortens the wait while the scan runs.</figcaption>
+</figure>
+
 ## What happens after Start
 
 - **Changes are picked up on their own.** Scry Sync waits until the folder has been quiet for about a minute, converts what changed, and sends the whole folder's pictures only if something is different.
@@ -41,3 +55,21 @@ The *6 can't be used* link lists each file with the reason and the fix. The summ
 ## Change or leave the folder
 
 Use **Settings** in the app to pick another folder, or see [Disconnect a device](/guide/scry-sync/disconnect) to stop syncing altogether.
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>

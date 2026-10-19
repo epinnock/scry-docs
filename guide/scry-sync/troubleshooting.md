@@ -7,9 +7,16 @@ description: "Fixes for the common Scry Sync problems: warnings on first open, n
 
 When something needs attention the tray icon changes and the popover lists it in plain words, with one action per row. Most rows fix themselves once the file or connection is fixed. Start with the row: it names the file and the fix.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/trouble-1-attention-win.mp4">
+    <track kind="captions" src="/videos/trouble-1-attention-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>The tray popover listing what needs attention in words, with Show in folder to jump to the file.</figcaption>
+</figure>
+
 ## The Mac or Windows warning on first open
 
-The beta is not code-signed, so both systems warn once. Follow [Install and first run](/guide/scry-sync/install). On Mac, if **Open** is missing, use **System Settings → Privacy & Security → Open Anyway**. On Windows, use **More info → Run anyway**.
+Both systems can ask you to confirm once. Follow [Install and first run](/guide/scry-sync/install). On Mac, click **Open** when macOS asks. On Windows, SmartScreen may show **Windows protected your PC** for an app few people have downloaded yet: use **More info → Run anyway**.
 
 ## Nothing is being sent
 
@@ -51,9 +58,27 @@ Make room on the disk, or check that your account can write to Scry Sync's app d
 
 ## Report a problem
 
-1. Choose **Report a problem** in the app, or **Settings → Send feedback**. It opens the [feedback form](/feedback) with the app version and a **Ref** code filled in.
+1. Open **Settings** in the app and choose **Send feedback**. It opens the [feedback form](/feedback) with the app version and a **Ref** code filled in.
 2. Say what you expected to happen. Add your email only if you want a reply.
 
 Rows that show a **Ref** code (a short code such as `a1b2c3d4`) are the ones to quote. **Copy details** puts the version, your operating system and the latest Ref codes on your clipboard. You can also email [support@scrymore.com](mailto:support@scrymore.com).
 
 Neither the form nor the Ref code includes file names or paths.
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>

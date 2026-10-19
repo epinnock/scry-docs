@@ -6,7 +6,7 @@ description: "Scry Snip takes a screenshot with a hotkey, lets you review it, an
 # Scry Snip
 
 ::: info Beta
-Snip is part of [Scry Sync](/guide/scry-sync/) and is in beta. **Mac support is in beta**: the Mac installer is not code-signed yet, so you grant Screen Recording yourself and may need to grant it again after an update (see [Mac permission](#mac-screen-recording)). Windows needs no permission.
+Snip is part of [Scry Sync](/guide/scry-sync/) and is in beta. **Mac support is in beta**: you allow Screen Recording yourself, and may need to allow it again after an update (see [Mac permission](#mac-screen-recording)). Windows needs no permission.
 :::
 
 Press a hotkey, select part of your screen, check the picture, and send it to a Scry project. The snip then shows up on your **Snips** page in the dashboard, and your coding agent can fetch it by asking for "the snip I just took". You do not need to connect a folder to use Snip. Scry also makes each snip [searchable](#find-your-snips-in-search), so you can find it later by describing it.
@@ -41,6 +41,13 @@ Mac already uses Cmd+Shift+4 for its own screenshot, so Scry does not take it by
 
 Scry Sync never changes your Mac's settings. To undo it, tick the shortcut again in System Settings.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/snip-1-take-win.mp4">
+    <track kind="captions" src="/videos/snip-1-take-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>Taking a snip on Windows with Ctrl+Shift+4: select the area, review the card, press Send, and the card confirms the snip was sent.</figcaption>
+</figure>
+
 ## Review, then send
 
 By default every snip stops at a review card. It shows the picture, its size and how it was captured, and says **On your clipboard**. The buttons are:
@@ -72,7 +79,7 @@ The first time you finish a region snip, macOS may also ask whether Scry Sync ca
 
 Scry checks that it can really read the screen before it takes a snip. Without the permission macOS quietly hands back a plain wallpaper, and Scry would rather tell you than send you a useless picture. If the check cannot run, for example over a full-screen app, the card says **Scry could not confirm Screen Recording** and nothing is captured. Switch to a normal window and try again.
 
-**After every update, while the beta is unsigned.** Mac updates are manual for now, and the app is not yet code-signed. macOS may forget the Screen Recording permission when you install a new version. If a snip shows the **Let Scry Sync see your screen** card after an update, open the same System Settings page, switch **Scry Sync** off and on (or remove it and add it again), then quit and reopen Scry Sync. After a manual update you may also be asked to sign in again. The [install page](/guide/scry-sync/install) explains how to open an unsigned app.
+**After an update.** Mac updates are manual for now, and macOS may forget the Screen Recording permission when you install a new version. If a snip shows the **Let Scry Sync see your screen** card after an update, open the same System Settings page, switch **Scry Sync** off and on (or remove it and add it again), then quit and reopen Scry Sync. After a manual update you may also be asked to sign in again. The [install page](/guide/scry-sync/install) explains the first-open prompt.
 
 ### Windows
 
@@ -212,6 +219,24 @@ To remove everything, delete the project in the dashboard, which deletes its sni
 
 **A snip does not show up in search.** Look at its label on the **Mine** tab of the **Snips** page. **Indexing…** means wait a few seconds. **Not searchable (turned off)** means **Make my snips searchable** is off; turn it on. A snip you sent before snips could be searched shows **Not searchable**. For a snip someone shared with you, ask them to check that they still share it and that their switch is on.
 
-More help: [Scry Sync troubleshooting](/guide/scry-sync/troubleshooting), the in-app **Report a problem**, or [support@scrymore.com](mailto:support@scrymore.com).
+More help: [Scry Sync troubleshooting](/guide/scry-sync/troubleshooting), **Send feedback** in the app's Settings, or [support@scrymore.com](mailto:support@scrymore.com).
 
 See also: [What Scry Sync sends and collects](/guide/scry-sync/privacy).
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>

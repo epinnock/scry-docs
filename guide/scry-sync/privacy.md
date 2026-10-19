@@ -52,6 +52,13 @@ Scry Sync only reads your folder. It never writes to it.
 
 Scry Sync shares anonymous usage events and error reports so we can fix problems and see which features are used. This is **on by default, and you can turn it off**: the first run shows a short notice, and **Settings → Share anonymous usage data and error reports** switches it off at any time. It is also off if the environment variable `DO_NOT_TRACK` is set to `1`, `true` or `yes`, or `SCRY_TELEMETRY` is set to `0` or `false`.
 
+<figure class="step-video">
+  <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/privacy-1-settings-win.mp4">
+    <track kind="captions" src="/videos/privacy-1-settings-win.vtt" srclang="en" default>
+  </video>
+  <figcaption>Settings: the switch for sharing anonymous usage data and error reports (turned off and back on), Send feedback, and Copy details.</figcaption>
+</figure>
+
 ### Usage events (PostHog)
 
 Events have a name and a few properties that are counts, yes/no values or fixed words. Every event also carries `surface: desktop`, the app version, the operating system (Mac, Windows or other) and whether it is a production or test build.
@@ -78,8 +85,26 @@ When the app hits an error it sends the error, its stack trace and the app versi
 
 ## Reporting a problem
 
-**Report a problem** in the app opens the [feedback form](/feedback) with the app version and a short reference code (for example `?src=scry-sync&v=0.1.0&ref=a1b2c3d4`). The code lets us find the matching technical log entries. **Copy details** puts the version, your operating system and recent reference codes on your clipboard so you can paste them into an email to [support@scrymore.com](mailto:support@scrymore.com). Nothing is sent until you press **Send** on the form, and an email address on the form is optional.
+**Send feedback** in the app's Settings opens the [feedback form](/feedback) with the app version and a short reference code (for example `?src=scry-sync&v=0.1.0&ref=a1b2c3d4`). The code lets us find the matching technical log entries. **Copy details** puts the version, your operating system and recent reference codes on your clipboard so you can paste them into an email to [support@scrymore.com](mailto:support@scrymore.com). Nothing is sent until you press **Send** on the form, and an email address on the form is optional.
 
 ## Getting your data deleted
 
 Email [privacy@scrymore.com](mailto:privacy@scrymore.com) and we delete your pictures, account data and usage events. To remove pictures yourself, delete the files from the synced folder and let it sync, or delete them in Scry.
+
+<style>
+.step-video {
+  margin: 24px 0;
+}
+.step-video video {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  display: block;
+}
+.step-video figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+</style>
