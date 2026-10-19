@@ -1,6 +1,6 @@
 # Generate images in the dashboard
 
-The dashboard's **Generate** page makes pictures from a text prompt. Each round gives you four to choose from, and you can refine one or make it larger. This page covers the shape of the pictures. Credits are explained in [How credits work](/guide/credits).
+The dashboard's **Generate** page makes pictures from a text prompt. Each round gives you four to choose from, and you can refine one or make it larger. This page covers the shape of the pictures and the History of everything you generate. Credits are explained in [How credits work](/guide/credits).
 
 ## Choose a shape
 
@@ -22,3 +22,58 @@ The prompt panel has an **Aspect ratio** dropdown. Pick the shape before you pre
 - **Compare uses the shape you chose for every tile.** All the tiles in a round are the same size, so the shape never gives away which model made which picture.
 
 Rounds you made before shapes were available stay square.
+
+## History
+
+**History** keeps every picture you generate, not only the ones you carried on with. Open **Generate**, then **History**. Pictures are listed newest first, and each card says **Selected** or **Unselected** at the end of its details line.
+
+![Generate History with All chosen, showing selected and unselected pictures together](/images/generate-history/history-all.png)
+
+### Filter the list
+
+The filter row sits above the cards. You can choose one filter at a time:
+
+| Filter | What it shows |
+|---|---|
+| **All** | Every picture, selected and unselected. This is where History opens. |
+| **Selected** | The picture you picked in each run, whether or not you carried on from it. |
+| **Unselected** | The other pictures from each run. |
+| **This month** | Pictures from this calendar month, selected and unselected. |
+| **Larger only** | Pictures you made larger. |
+
+The filter you are on shows how many cards it lists, for example **Unselected · 10**.
+
+### What Selected and Unselected mean
+
+- **Selected** is the picture you picked in a run. It stays Selected even if you only downloaded it and never carried on.
+- **Unselected** is every other picture from a run. When a run had no good picture and you chose **None are good**, or you did not pick before the run expired, all four of its pictures are Unselected.
+
+A picture that failed to make is not listed. A run you can still pick from is not listed until you pick, or until it expires after 8 minutes.
+
+![Generate History filtered to Unselected](/images/generate-history/history-unselected.png)
+
+### What you can do with an unselected picture
+
+An unselected card has three links:
+
+- **Download** saves the picture.
+- **Use as reference** adds the picture to your references, so your next Generate can start from it.
+- **Delete** removes the picture for good. The other pictures from the same run stay.
+
+![The Delete this picture confirmation](/images/generate-history/history-delete-confirm.png)
+
+You cannot carry on a session from an unselected picture yet, so it has no **Continue**. Use it as a reference instead.
+
+### Older runs
+
+Runs you made before History kept every picture have no saved prompt. Their unselected cards are titled **Prompt not saved**.
+
+### How long pictures are kept
+
+Pictures are removed automatically after 6 months, selected and unselected alike. The line at the bottom of History says so.
+
+## What Compare costs
+
+<!-- Charging paragraph. True only once charging every picture is on in production; held until Gate B and founder approval. Independent of the History section above. -->
+
+When you use Compare, you pay for every picture that arrives, and you keep them all. A Compare run costs 540 credits for its four pictures, which is 135 credits a picture. That is the same whether you pick one, choose **None are good**, or let the run expire. A picture that fails to make is never charged, and if every picture fails, nothing is charged. The pictures you did not pick are kept in History under **Unselected**.
