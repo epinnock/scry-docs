@@ -30,6 +30,14 @@ The app checks for a new version when it starts and every six hours, and shows a
 Needs Windows 10 or Windows 11 (64-bit).
 
 1. [Download the Windows installer](https://updates.scrymore.com/latest/Scry-Sync-Setup.exe) (about 120 MB). This link always gives you the newest version, and the file you save has the version in its name.
+
+   <figure class="step-video">
+     <video controls preload="metadata" playsinline width="1920" height="1080" src="/videos/install-1-download-win.mp4">
+       <track kind="captions" src="/videos/install-1-download-win.vtt" srclang="en" default>
+     </video>
+     <figcaption>Windows step 1: the Windows section of this page, Download the Windows installer, and the browser's download panel showing the saved file with Open file.</figcaption>
+   </figure>
+
 2. Run it. The installer is one click, installs for your user only (there is no administrator prompt), and Scry Sync opens when it finishes.
 3. Windows SmartScreen may show **Windows protected your PC** and say it prevented an unrecognized app from starting. The installer is signed, and SmartScreen warns about any app that few people have downloaded yet. Click **More info**, check that the **Publisher** line shows a name, then click **Run anyway**. The **Run anyway** button only appears after you click **More info**.
 4. If Windows blocks the file after download: right-click it, choose **Properties**, tick **Unblock** at the bottom, click **OK**, and run it again.
