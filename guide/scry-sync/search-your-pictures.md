@@ -25,7 +25,7 @@ One search covers both. The results arrive in one list.
 - **By what is in it.** For pictures kept on this computer, a short description is written on your computer (the words in the picture, the parts of the screen, the style). Words you type are matched against it, too.
 - **Newest first while it works.** A picture you took a moment ago is searchable within seconds, even while older ones wait for their descriptions.
 
-Videos are searched only in folders kept **On this computer**. Scry Sync's folder sync does not send videos, so a video in a folder set to **Sync to Scry** is not searched.
+Videos are searched only in folders kept **On this computer**. Scry cloud search finds pictures only, so a video in a folder set to **Sync to Scry** is not searched.
 
 ## Open the search
 
@@ -142,7 +142,7 @@ For folders set to **Sync to Scry**, the panel asks Scry for the pictures you ha
 - **Only your project.** It searches the one project your Sync folder uploads to. It does not search other projects, builds or screens. For those, use [Image search in the dashboard](/guide/dashboard-search).
 - **Pictures.** Results come from the same search the dashboard's Image search uses, limited to that project. Cloud rows show the picture's name and have no description in the panel.
 - **Needs the internet and a signed-in app.** If you are offline, results from this computer still show, and the panel says Scry cloud could not be reached. If you are signed out, sign in again from the tray or menu bar.
-- PLACEHOLDER(cloud-search-credits): the orchestrator confirms whether a search in the panel uses credits, and this bullet says so.
+- **Credits.** Searching a folder On this computer does not use credits. A search in Scry cloud is charged the way the same person's search in the dashboard is (see [How credits work](/guide/credits)). When your credits run out it falls back to keyword search, as it does in the dashboard ([When you run out](/guide/credits#when-you-run-out)). Pictures uploaded from a folder set to **Sync to Scry** use credits as described in the same page.
 - **A moment longer.** Results from this computer show first. The ones from Scry join the list when they arrive. A slow answer shows a timer and a **Try again** button.
 
 ## What leaves your computer
@@ -162,7 +162,7 @@ For a folder kept on this computer, the descriptions are written on your compute
 
 | | Needed |
 |---|---|
-| **Mac** | macOS 13 (Ventura) or later, Apple silicon or Intel. On an Intel Mac, macOS 13.3 or later. |
+| **Mac** | macOS 13.3 or later, Apple silicon or Intel, to search a folder On this computer. Scry Sync itself runs on macOS 13 and later; see [Install and first run](/guide/scry-sync/install). |
 | **Windows** | Windows 10 version 2004 or later, or Windows 11, 64-bit. |
 | **Disk space** | About 2.7 GB for the two models, plus the search program (see the table above). |
 | **Memory** | About 1.2 GB for searching, and about 2.3 GB more while it describes. The second part is given back after 5 minutes with nothing to describe. |
