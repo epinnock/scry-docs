@@ -113,6 +113,7 @@ export default defineConfig({
             { text: 'Install and First Run', link: '/guide/scry-sync/install' },
             { text: 'Connect a Folder', link: '/guide/scry-sync/connect-a-folder' },
             { text: 'Scry Snip', link: '/guide/scry-sync/snip' },
+            { text: 'Search Your Pictures', link: '/guide/scry-sync/search-your-pictures' },
             { text: 'What Gets Converted', link: '/guide/scry-sync/what-gets-converted' },
             { text: 'Export an InDesign File to PDF', link: '/guide/scry-sync/export-indd-pdf' },
             { text: 'Disconnect a Device', link: '/guide/scry-sync/disconnect' },

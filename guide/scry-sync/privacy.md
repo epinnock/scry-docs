@@ -7,7 +7,7 @@ description: "Exactly what leaves your computer when Scry Sync runs, what it kee
 
 This page lists everything Scry Sync sends and keeps. The [privacy policy](/privacy) covers the rest of Scry.
 
-**In short:** only converted pictures and a few labels leave your computer. Your original files and folder paths never do, and your user name is never sent with uploads or in file paths. At sign-in the app sends your computer's name so you can recognise it in your dashboard. The app also sends anonymous usage events and scrubbed error reports, which you can turn off.
+**In short:** only converted pictures and a few labels leave your computer, plus the words you type if you search Scry cloud. Your original files and folder paths never do, and your user name is never sent with uploads or in file paths. At sign-in the app sends your computer's name so you can recognise it in your dashboard. The app also sends anonymous usage events and scrubbed error reports, which you can turn off.
 
 ## What is sent to Scry
 
@@ -33,6 +33,18 @@ Scry then processes the pictures like any other upload: it indexes them for sear
 
 The app does not send the name of the app or the window title, and it does not send folder paths or your user name. A snip is private to you until you share it, and stops being available 30 days after you send it. You can delete it sooner. Your own copy in the Snips folder stays on your computer for the number of days you choose in **Settings > Snip**.
 
+## Searching your pictures
+
+[Search your pictures](/guide/scry-sync/search-your-pictures) lets you choose, for each of the two folders Scry Sync knows about, whether it is synced to Scry or kept **On this computer**.
+
+| What | Details |
+|---|---|
+| **A folder kept On this computer** | Nothing from it is sent: not the pictures, the videos, the descriptions or what you type. It is never uploaded, even if search is later turned off for your account. |
+| **Search in Scry cloud** | The words you type are sent to Scry with this computer's access key, to search the project your Sync folder uploads to. Scry logs a request id, not your words. |
+| **Setup downloads** | The search program from Scry, and two model files from Hugging Face. These are ordinary downloads; they carry no pictures, file names or searches. |
+
+Pictures already in Scry when you move a folder to this computer stay there until you delete them.
+
 ## What is never sent
 
 - Your original design files (PSD, PSB, AI, INDD, PDF, images).
@@ -47,6 +59,7 @@ Scry Sync only reads your folder. It never writes to it.
 - A small record per folder of what was sent, so only changes are sent again.
 - A log file for troubleshooting: one line per event, with event names, counts, fixed codes and request ids. It never contains file names, folder paths, user names or keys, and the app does not upload it.
 - Your settings, and the sign-in key in the Keychain or credential store.
+- If you keep a folder on this computer for search: a search index of its pictures and videos, their descriptions and thumbnails, and the downloaded search program and models. You can read how to choose per folder in [Search your pictures](/guide/scry-sync/search-your-pictures).
 
 ## Usage data and error reports
 
