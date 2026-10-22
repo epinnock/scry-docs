@@ -39,12 +39,14 @@ The panel opens over whatever you are doing. Click away or press **Esc** to clos
 To use another shortcut, choose **Change** next to it (on the first-open card, and in Scry Sync's Settings). If another app already uses the one you pick, the panel says it is taken and keeps the old one. Word and Excel already use Ctrl + Shift + Space on Windows, and Photoshop uses combinations with Space, so change it if the panel does not open.
 
 <div class="shot-pair">
-  <figure class="shot shot-placeholder">
-    <div class="shot-box">PLACEHOLDER(shot-panel-mac): the search panel with results on a Mac, one image for light and one for dark</div>
+  <figure class="shot">
+    <img class="shot-light" src="/images/scry-sync-search/panel-results-mac-light.png" alt="The Scry Sync search panel on a Mac, light theme, after typing login screen. The list on the left has a top hit and a longer list of pictures, each marked as kept on this computer or synced to Scry. The preview on the right shows the top hit with its path, a short description and the buttons Open, Show in Finder, Copy and More like this." width="808" height="571" loading="lazy" decoding="async">
+    <img class="shot-dark" src="/images/scry-sync-search/panel-results-mac-dark.png" alt="The Scry Sync search panel on a Mac, dark theme, after typing login screen. The list on the left has a top hit and a longer list of pictures, each marked as kept on this computer or synced to Scry. The preview on the right shows the top hit with its path, a short description and the buttons Open, Show in Finder, Copy and More like this." width="808" height="571" loading="lazy" decoding="async">
     <figcaption>The search panel on a Mac: the search field, results from this computer and from Scry, and the preview.</figcaption>
   </figure>
-  <figure class="shot shot-placeholder">
-    <div class="shot-box">PLACEHOLDER(shot-panel-win): the search panel with results on Windows, one image for light and one for dark</div>
+  <figure class="shot">
+    <img class="shot-light" src="/images/scry-sync-search/panel-results-win-light.png" alt="The Scry Sync search panel on Windows, light theme, after typing login screen. The list on the left has a top hit and a longer list of pictures, each marked as kept on this computer or synced to Scry. The preview on the right shows the top hit with its path, a short description and the buttons Open, Show in File Explorer, Copy and More like this." width="808" height="571" loading="lazy" decoding="async">
+    <img class="shot-dark" src="/images/scry-sync-search/panel-results-win-dark.png" alt="The Scry Sync search panel on Windows, dark theme, after typing login screen. The list on the left has a top hit and a longer list of pictures, each marked as kept on this computer or synced to Scry. The preview on the right shows the top hit with its path, a short description and the buttons Open, Show in File Explorer, Copy and More like this." width="808" height="571" loading="lazy" decoding="async">
     <figcaption>The same panel on Windows.</figcaption>
   </figure>
 </div>
@@ -83,12 +85,14 @@ Both folders start as **Sync to Scry**, which is how Scry Sync works today. Noth
 Each of the two folders has its own setting. You can keep your Snips syncing and keep a client's references on this computer.
 
 <div class="shot-pair">
-  <figure class="shot shot-placeholder">
-    <div class="shot-box">PLACEHOLDER(shot-folders-mac): the Folders choice on a Mac, light and dark</div>
-    <figcaption>Folders on a Mac: each folder is Sync to Scry or On this computer.</figcaption>
+  <figure class="shot">
+    <img class="shot-light" src="/images/scry-sync-search/folders-mac-light.png" alt="The Folders choice in the Scry Sync search panel on a Mac, light theme. Two folders are listed, Scry and Snips, each with the buttons Sync to Scry and This computer. Scry is set to Sync to Scry and says it is synced to Designs and searched in Scry cloud. Snips is set to This computer and says it is kept on this computer and never uploads on its own." width="808" height="571" loading="lazy" decoding="async">
+    <img class="shot-dark" src="/images/scry-sync-search/folders-mac-dark.png" alt="The Folders choice in the Scry Sync search panel on a Mac, dark theme. Two folders are listed, Scry and Snips, each with the buttons Sync to Scry and This computer. Scry is set to Sync to Scry and says it is synced to Designs and searched in Scry cloud. Snips is set to This computer and says it is kept on this computer and never uploads on its own." width="808" height="571" loading="lazy" decoding="async">
+    <figcaption>Folders on a Mac: each folder is set to Sync to Scry or kept on this computer.</figcaption>
   </figure>
-  <figure class="shot shot-placeholder">
-    <div class="shot-box">PLACEHOLDER(shot-folders-win): the Folders choice on Windows, light and dark</div>
+  <figure class="shot">
+    <img class="shot-light" src="/images/scry-sync-search/folders-win-light.png" alt="The Folders choice in the Scry Sync search panel on Windows, light theme. Two folders are listed, Scry and Snips, each with the buttons Sync to Scry and This computer. Scry is set to Sync to Scry and says it is synced to Designs and searched in Scry cloud. Snips is set to This computer and says it is kept on this computer and never uploads on its own." width="808" height="571" loading="lazy" decoding="async">
+    <img class="shot-dark" src="/images/scry-sync-search/folders-win-dark.png" alt="The Folders choice in the Scry Sync search panel on Windows, dark theme. Two folders are listed, Scry and Snips, each with the buttons Sync to Scry and This computer. Scry is set to Sync to Scry and says it is synced to Designs and searched in Scry cloud. Snips is set to This computer and says it is kept on this computer and never uploads on its own." width="808" height="571" loading="lazy" decoding="async">
     <figcaption>Folders on Windows.</figcaption>
   </figure>
 </div>
@@ -132,6 +136,19 @@ Scry Sync prepares each picture in two steps, newest first.
 **Describing runs only while the computer is idle and plugged in.** It starts after the computer has had no keyboard or mouse input for 2 minutes and is not running on battery. It stops within a few seconds when you touch the keyboard or mouse, unplug the computer, or let it sleep. The picture it was working on waits and starts again later. Nothing is lost.
 
 Until a picture is described, it is found by how it looks, and its details say **Not described yet**. The panel's status line shows how many pictures are searchable and how many are described.
+
+<div class="shot-pair">
+  <figure class="shot">
+    <img class="shot-light" src="/images/scry-sync-search/panel-describing-mac-light.png" alt="The Scry Sync search panel on a Mac, light theme, while pictures are still being described. The search is settings with toggles and the top hit is a settings screen. The status line at the bottom reads 198 searchable by look and describing 78 of 198." width="808" height="571" loading="lazy" decoding="async">
+    <img class="shot-dark" src="/images/scry-sync-search/panel-describing-mac-dark.png" alt="The Scry Sync search panel on a Mac, dark theme, while pictures are still being described. The search is settings with toggles and the top hit is a settings screen. The status line at the bottom reads 198 searchable by look and describing 78 of 198." width="808" height="571" loading="lazy" decoding="async">
+    <figcaption>The status line on a Mac while descriptions are being written: 198 pictures are searchable by look, 78 are described.</figcaption>
+  </figure>
+  <figure class="shot">
+    <img class="shot-light" src="/images/scry-sync-search/panel-describing-win-light.png" alt="The Scry Sync search panel on Windows, light theme, while pictures are still being described. The search is settings with toggles and the top hit is a settings screen. The status line at the bottom reads 198 searchable by look and describing 78 of 198." width="808" height="571" loading="lazy" decoding="async">
+    <img class="shot-dark" src="/images/scry-sync-search/panel-describing-win-dark.png" alt="The Scry Sync search panel on Windows, dark theme, while pictures are still being described. The search is settings with toggles and the top hit is a settings screen. The status line at the bottom reads 198 searchable by look and describing 78 of 198." width="808" height="571" loading="lazy" decoding="async">
+    <figcaption>The same status line on Windows.</figcaption>
+  </figure>
+</div>
 
 A big folder can take a few hours the first time on a computer without a graphics card. Search works on whatever is ready.
 
@@ -188,8 +205,8 @@ For anything else, see [Scry Sync troubleshooting](/guide/scry-sync/troubleshoot
 <style>
 .shot-pair {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
   margin: 24px 0;
 }
 .shot {
@@ -206,20 +223,9 @@ For anything else, see [Scry Sync troubleshooting](/guide/scry-sync/troubleshoot
 .shot .shot-dark { display: none; }
 .dark .shot .shot-light { display: none; }
 .dark .shot .shot-dark { display: block; }
-.shot-box {
-  border: 2px dashed var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 32px 16px;
-  color: var(--vp-c-text-2);
-  font-size: 14px;
-  overflow-wrap: anywhere;
-}
 .shot figcaption {
   margin-top: 8px;
   font-size: 14px;
   color: var(--vp-c-text-2);
-}
-@media (max-width: 640px) {
-  .shot-pair { grid-template-columns: minmax(0, 1fr); }
 }
 </style>
