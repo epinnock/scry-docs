@@ -114,17 +114,21 @@ Choose **Sync to Scry** again. The app asks you to confirm first. The confirmati
 
 ## Set up search on this computer
 
-The first time you keep a folder on this computer, Scry Sync downloads what it needs. It never downloads anything by itself. You start it, and **Cancel** stops it and keeps what has arrived, so the next try carries on from there.
+The first time you keep a folder on this computer, Scry Sync needs to download what it searches with. Nothing starts until you choose **Download**. **Cancel** stops it and keeps what has arrived, so the next try carries on from there.
 
 | What | Size | When |
 |---|---|---|
-| The search program, from Scry | PLACEHOLDER engine pack size | First |
-| The search model, which reads what a picture looks like | about 0.9 GB | After the program |
-| The description model, which writes what is in a picture | about 1.8 GB | Also downloaded, so descriptions can start |
+| The search program, from Scry | 93 MB on a Mac with Apple silicon, 100 MB on an Intel Mac, 183 MB on Windows | First |
+| The search model, which reads what a picture looks like | 865 MB | After the program |
+| The description model, which writes what is in a picture | 1.8 GB | The first time Scry Sync has a picture to describe |
 
-Search works as soon as the search model has arrived. Descriptions are added when the description model is ready too. The panel shows how far each download has got. The downloads are checked against fixed checksums before they are used.
+**In all, the one-time download is about 2.7 GB on a Mac and about 2.8 GB on Windows.** The card in the panel that asks you to download names only the program's size (for example 93 MB); the two models follow it, so plan for the whole amount.
+
+Search works as soon as the search model has arrived. Descriptions are added once the description model has arrived too. The panel shows how far the program and the search model have got. The downloads are checked against fixed checksums before they are used.
 
 The program comes from Scry's own server. The two models come from Hugging Face, a public model host. See [What leaves your computer](#what-leaves-your-computer).
+
+**Where it goes.** Everything is kept in Scry Sync's own data folder, in a `search` folder inside it: `~/Library/Application Support/Scry Sync/search` on a Mac and `%APPDATA%\Scry Sync\search` on Windows. The program is unpacked into `engine`, the two models are in `models`, and the index of your pictures is kept beside them.
 
 ## While it works
 
@@ -179,9 +183,9 @@ For a folder kept on this computer, the descriptions are written on your compute
 
 | | Needed |
 |---|---|
-| **Mac** | macOS 13.3 or later, Apple silicon or Intel, to search a folder kept on this computer. Scry Sync itself runs on macOS 13 and later; see [Install and first run](/guide/scry-sync/install). |
-| **Windows** | Windows 10 version 2004 or later, or Windows 11, 64-bit. |
-| **Disk space** | About 2.7 GB for the two models, plus the search program (see the table above). |
+| **Mac** | To search a folder kept on this computer: macOS 14 (Sonoma) or later on Apple silicon, macOS 15 (Sequoia) or later on an Intel Mac. Scry Sync itself runs on macOS 13 and later; see [Install and first run](/guide/scry-sync/install). |
+| **Windows** | Windows 10 version 2004 (build 19041) or later, or Windows 11, 64-bit. |
+| **Disk space** | About 3 GB on a Mac and about 3.2 GB on Windows once everything is set up: the two models (2.6 GB) and the unpacked program (about 0.3 GB on a Mac, 0.5 GB on Windows), plus room for the index, which grows with your pictures. The program needs about three times its download size free while it unpacks; if there is not enough, the panel says how much. |
 | **Memory** | About 1.2 GB for searching, and about 2.3 GB more while it describes. The second part is given back after 5 minutes with nothing to describe. |
 | **Graphics** | Not required. A supported graphics chip makes it much faster, and the app uses it when there is one. |
 | **Account** | Scry Sync signed in. Searching a folder kept on this computer needs no internet after setup. |
