@@ -35,11 +35,11 @@ The app does not send the name of the app or the window title, and it does not s
 
 ## Searching your pictures
 
-[Search your pictures](/guide/scry-sync/search-your-pictures) lets you choose, for each of the two folders Scry Sync knows about, whether it is synced to Scry or kept **On this computer**.
+[Search your pictures](/guide/scry-sync/search-your-pictures) lets you choose, for each of the two folders Scry Sync knows about, whether it is synced to Scry or kept on this computer.
 
 | What | Details |
 |---|---|
-| **A folder kept On this computer** | Searching it sends nothing: not the pictures, the videos, the descriptions or what you type. Nothing in it uploads on its own, even if search is later turned off for your account. Pressing **Send** on one snip's card still sends that one snip. |
+| **A folder kept on this computer** | Searching it sends nothing: not the pictures, the videos, the descriptions or what you type. Nothing in it uploads on its own, even if search is later turned off for your account. Pressing **Send** on one snip's card still sends that one snip. |
 | **Search in Scry cloud** | The words you type are sent to Scry with this computer's access key, to search the project your Sync folder uploads to. Scry logs a request id, not your words. |
 | **Setup downloads** | The search program from Scry, and two model files from Hugging Face. These are ordinary downloads; they carry no pictures, file names or searches. |
 
