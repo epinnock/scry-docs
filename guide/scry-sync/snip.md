@@ -15,7 +15,7 @@ Press a hotkey, select part of your screen, check the picture, and send it to a 
 
 1. **Takes the screenshot** with a hotkey, from the Mac menu bar or the Windows system tray app.
 2. **Shows a review card** with the picture, so you can send it, mark it up, keep it on your computer or throw it away. Nothing leaves your computer until you press **Send** (see [Review, then send](#review-then-send)).
-3. **Puts the picture on your clipboard** and saves a copy in a Snips folder on your computer, so you can paste it into any chat or document straight away.
+3. **Puts the picture on your clipboard** and saves a copy in a Snips folder on your computer, so you can paste it into any chat or document straight away. On Scry Sync 0.1.21 and later it can also reach the clipboard of your other computers (see [Clipboard across computers](/guide/scry-sync/clipboard)).
 4. **Sends it to your project**, where you can share it or give it to an agent.
 
 After you sign in for the first time, the app asks **How do you want to use Scry?** Choose **Snip only** if you do not want to sync a folder, or **Sync a folder too**.
