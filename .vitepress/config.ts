@@ -65,6 +65,7 @@ export default defineConfig({
           items: [
             { text: 'First Deployment', link: '/guide/first-deployment' },
             { text: 'GitHub Actions', link: '/guide/github-actions' },
+            { text: 'Build-free web capture', link: '/guide/web-capture' },
             { text: 'PR Previews', link: '/guide/pr-previews' },
           ]
         },
