@@ -118,8 +118,8 @@ For MCP login or empty-search problems, see [MCP troubleshooting](/guide/mcp#tro
 ## Move to build-free web capture
 
 For a React Storybook 10 project on Vite, you can ask the assistant to "switch this project to
-build-free web capture". The skill checks the requirements, adds the capture workflow and runs one
-local capture. Your existing deploy workflows stay. See [Build-free web capture](/guide/web-capture).
+build-free web capture". The skill checks the requirements and runs one local capture before it changes
+any workflow. If 0.14.0 is not published yet, it leaves the project alone and says so. See [Build-free web capture](/guide/web-capture).
 
 ## Direct setup guides
 

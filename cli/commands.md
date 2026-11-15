@@ -15,7 +15,8 @@ npx @scrymore/scry-deployer init [options]
 | `--projectId` | string | Yes | Your Scry project ID |
 | `--apiKey` | string | Yes | Your Scry API key |
 | `--skip-gh-setup` | boolean | No | Skip GitHub CLI setup |
-| `--capture web` | string | No | Also write the build-free web capture workflow (needs 0.14.0 or newer). See [`capture web`](#capture-web) |
+| `--capture web` | string | No | Also write the build-free web capture workflow (needs 0.14.0 or newer). Stops with a message and writes nothing if the project does not qualify |
+| `--config-dir` | string | No | With `--capture web`: Storybook config directory (default `.storybook`) |
 
 ### What It Does
 
@@ -54,8 +55,13 @@ Rewrite the Scry GitHub Actions workflows in an existing project to the current 
 npx @scrymore/scry-deployer update-workflows [--capture web]
 ```
 
-With `--capture web` it also writes `.github/workflows/scry-capture-web.yml`, the workflow for
-[build-free web capture](/guide/web-capture#set-up-in-ci). The deploy workflows are left in place.
+With `--capture web` (and optionally `--config-dir <dir>`) it also writes
+`.github/workflows/scry-capture-web.yml`, the workflow for
+[build-free web capture](/guide/web-capture#set-it-up-in-ci), and changes `deploy-storybook.yml`
+from `--with-analysis` to `--no-analysis`. `deploy-pr-preview.yml` is unchanged. The command
+checks the project first and writes nothing if it does not qualify. Without `--capture web` it
+returns the workflows to the Storybook-build path. Delete `scry-capture-web.yml` by hand when you
+go back.
 
 ## capture web
 

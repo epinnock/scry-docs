@@ -156,7 +156,8 @@ check this complete path.
 
 If your Storybook is React on Vite, `scry-deployer capture web` captures every story without
 `storybook build`, and a separate workflow, `.github/workflows/scry-capture-web.yml`, uploads the
-result. Use `runs-on: ubuntu-24.04` for it. See [Build-free web capture](/guide/web-capture).
+result. With `--capture web`, `init` and `update-workflows` also switch `deploy-storybook.yml` to
+`--no-analysis`, so it still hosts Storybook and reports coverage but does not capture stories a second time. See [Build-free web capture](/guide/web-capture).
 
 ## Repository Variables
 
