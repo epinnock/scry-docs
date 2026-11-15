@@ -34,12 +34,15 @@ Storybook, [PR previews](/guide/pr-previews) or story coverage reports (see
 - Storybook 10 on a Vite framework with the React renderer: `@storybook/react-vite` or
   `@storybook/nextjs-vite`. Other Storybook versions and other renderers stop with a clear
   message.
-- `storybook`, `vite` and `playwright` installed in your project. The deployer uses the copies in
-  your project and does not bring its own.
-- Chromium for Playwright: `npx playwright install chromium`.
-- For the CI workflow written by `init` and `update-workflows`: Playwright installed in your
-  project (for example `npm install --save-dev playwright`) and the Storybook project at the
-  repository root.
+- `storybook` and `vite` installed in your project. The deployer uses your copies and does not
+  bring its own.
+- Playwright with Chromium installed: `npx playwright install chromium`. Your project's own
+  Playwright is used when it has one (`playwright`, `@playwright/test` or `playwright-core`).
+  Otherwise a run by hand falls back to the copy that comes with the deployer.
+- For the CI workflow written by `init` and `update-workflows`: `playwright` or
+  `@playwright/test` installed in your project (for example `npm install --save-dev playwright`),
+  because the workflow does not use that fallback, and the Storybook project at the repository
+  root.
 - Node 20.19 or newer (what Storybook itself needs).
 
 ## Run it locally
@@ -150,24 +153,36 @@ export const Mobile = {
 `@scrymore/scry-deployer` 0.14.0 or newer.
 
 ```bash
-npx @scrymore/scry-deployer init --projectId YOUR_PROJECT_ID --apiKey YOUR_API_KEY --capture web   # new project
-npx -y @scrymore/scry-deployer@^0.14.0 update-workflows --capture web                              # existing project
+npx -y @scrymore/scry-deployer@^0.14.0 init --project-id YOUR_PROJECT_ID --api-key YOUR_API_KEY --capture web   # new project
+npx -y @scrymore/scry-deployer@^0.14.0 update-workflows --capture web                                             # existing project
 ```
 
-Add `--config-dir <dir>` when your Storybook config is not in `.storybook`. The Storybook
-project must be at the repository root. For a project in a subfolder, copy the workflow below and
-add a `working-directory`.
+Keep the `@^0.14.0`. An older deployer, for example one that `npx` has cached, does not know
+`--capture`. It ignores the option without an error and writes only the two default workflows.
+
+Add `--config-dir <dir>` when your Storybook config is not in `.storybook`.
+
+In this version the Storybook project must be at the repository root, and you must run the
+command there. From a subfolder of the repository (a monorepo package) it stops, says so and
+writes nothing. For such a project, copy the workflow below by hand and add a
+`working-directory`.
 
 The command first checks the project: Storybook 10, a Vite framework, the React renderer, Vite,
 and Playwright installed in the project. If a check fails, it prints which one, writes no files
-and exits 1.
+and exits 1. In `init` the check runs before your credentials are looked at.
+
+The check loads your project's Storybook and Vite config, as Storybook itself does, so run it only
+in a repository you trust. It runs in a child process with Scry, GitHub and npm credentials
+removed from its environment (`GITHUB_TOKEN`, `GH_TOKEN`, `NPM_TOKEN`, `NODE_AUTH_TOKEN`, npm
+auth settings, and any `SCRY_*` or `STORYBOOK_DEPLOYER_*` variable whose name contains KEY,
+TOKEN, SECRET or PASSWORD).
 
 ### What it writes
 
 | File | What changes |
 | --- | --- |
-| `.github/workflows/scry-capture-web.yml` | New. On a push to the default branch it captures every story and uploads the bundle. |
-| `.github/workflows/deploy-storybook.yml` | `--with-analysis` becomes `--no-analysis`. It still builds and hosts Storybook and reports coverage. It no longer captures the stories. |
+| `.github/workflows/scry-capture-web.yml` | New. On a push to `main` or `master` it captures every story and uploads the bundle. |
+| `.github/workflows/deploy-storybook.yml` | `--with-analysis` becomes `--no-analysis`. It still builds and hosts Storybook and reports coverage. It no longer takes the screenshots. |
 | `.github/workflows/deploy-pr-preview.yml` | Nothing changes. Pull requests keep the preview, the comment and their screenshots, because `capture web` runs only on the default branch. |
 
 An uploaded bundle carries screenshots and structure for search. It has no browsable Storybook
@@ -187,7 +202,10 @@ because the deploy workflow runs with `--no-analysis` and is not indexed.
 #
 # Needs Storybook 10 on a Vite framework with the React renderer, and Playwright in the project.
 # deploy-storybook.yml still builds and hosts Storybook and reports coverage; it runs with
-# --no-analysis so the stories are captured once, here.
+# --no-analysis so the screenshots are taken once, here.
+#
+# It runs on a push to main or master. If the default branch has another name, change
+# "branches" below. The Storybook project must be at the repository root.
 
 name: Scry Capture (web)
 
@@ -291,7 +309,14 @@ What it does:
 
 - Runs on `ubuntu-24.04`, not `ubuntu-latest`. The floating label moves to a new Ubuntu before
   older Playwright versions have a Chromium build for it, and the browser install then fails.
+- Runs on a push to `main` or `master`. If your default branch has another name, change
+  `branches` in the file. Until then no push starts it.
 - Uses Node 20 (the newest 20.x, which is 20.19 or newer).
+- Installs your project with its own package manager and lockfile: `npm install`, `pnpm install`,
+  `yarn install` or `bun install`. The file above is the npm variant. For pnpm, the version comes
+  from `packageManager` in `package.json`, else pnpm 10 for a version 9 lockfile, else pnpm 8. For
+  Yarn 2 or newer, Corepack uses the version in `packageManager`. For bun, it uses
+  `oven-sh/setup-bun`.
 - Installs the deployer from npm into `$RUNNER_TEMP/scry`, outside your checkout, with a floor of
   `^0.14.0`.
 - Installs Chromium with your project's own Playwright.
@@ -299,8 +324,9 @@ What it does:
 - Gives the API key only to the upload step. It reads the secret `SCRY_API_KEY` and the variables
   `SCRY_API_URL` and `SCRY_PROJECT_ID`, the same ones the deploy workflows use.
 - Stops after 30 minutes.
-- Can be started by hand. A manual run on a branch other than the default one checks the bundle
-  with `upload --dry-run` and sends nothing.
+- Can be started by hand. A manual run on the default branch uploads, like a push. A manual run
+  on any other branch is a dry run: it checks the bundle with `upload --dry-run` and sends
+  nothing.
 
 One optional repository variable, `SCRY_MAX_DROPPED`, sets how many stories may fail to capture
 before the run ends red. The default is `0`. A failed story is retried once first. With `0`, one
@@ -351,7 +377,7 @@ promise for your project.
    npx -y @scrymore/scry-deployer@^0.14.0 update-workflows --capture web
    ```
 
-   `update-workflows` overwrites `deploy-storybook.yml` and `deploy-pr-preview.yml`, so review the
+   Run it at the repository root. `update-workflows` overwrites `deploy-storybook.yml` and `deploy-pr-preview.yml`, so review the
    diff and re-apply any edits you made by hand. Your repository variables and secret stay as
    they are.
 5. After the push, the "Scry Capture (web)" run should end green with the same story count, and
@@ -414,8 +440,8 @@ Each entry has the story ID and a reason. A story file that cannot be imported s
 stories with that reason. Raise `--story-timeout` for slow play functions. Use `--max-dropped <n>`
 to allow a known number of failures.
 
-**`crypto.hash is not a function`.** Your Node is older than 20.19. Storybook 10 and `capture web`
-need Node 20.19 or newer. Check `node --version` and upgrade.
+**`crypto.hash is not a function`.** Your Node is older than 20.12. The requirement is Node 20.19
+or newer, which Storybook 10 needs. Check `node --version` and upgrade.
 
 **`init` or `update-workflows` writes nothing and exits 1.** The project did not pass the check
 (Storybook 10, Vite framework, React renderer, Vite, and Playwright installed in the project). The

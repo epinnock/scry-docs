@@ -6,16 +6,18 @@ Initialize a project with Scry configuration and GitHub Actions workflows.
 
 ```bash
 npx @scrymore/scry-deployer init [options]
+# with build-free capture:
+npx -y @scrymore/scry-deployer@^0.14.0 init --project-id YOUR_PROJECT_ID --api-key YOUR_API_KEY --capture web
 ```
 
 ### Options
 
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
-| `--projectId` | string | Yes | Your Scry project ID |
-| `--apiKey` | string | Yes | Your Scry API key |
+| `--project-id` | string | Yes | Your Scry project ID |
+| `--api-key` | string | Yes | Your Scry API key |
 | `--skip-gh-setup` | boolean | No | Skip GitHub CLI setup |
-| `--capture web` | string | No | Also write the build-free web capture workflow (needs 0.14.0 or newer). Stops with a message and writes nothing if the project does not qualify |
+| `--capture web` | string | No | Also write the build-free web capture workflow (needs 0.14.0 or newer). Stops with a message and writes nothing if the project does not qualify. Run at the repository root. Use `@^0.14.0`: an older or cached deployer ignores it |
 | `--config-dir` | string | No | With `--capture web`: Storybook config directory (default `.storybook`) |
 
 ### What It Does
@@ -37,13 +39,13 @@ or [manual deployment](/guide/first-deployment).
 ```bash
 # Full setup
 npx @scrymore/scry-deployer init \
-  --projectId my-design-system \
-  --apiKey scry_proj_my-design-system_xxx
+  --project-id my-design-system \
+  --api-key scry_proj_my-design-system_xxx
 
 # Skip GitHub CLI setup (manual secrets)
 npx @scrymore/scry-deployer init \
-  --projectId my-project \
-  --apiKey scry_proj_xxx \
+  --project-id my-project \
+  --api-key scry_proj_xxx \
   --skip-gh-setup
 ```
 
@@ -59,7 +61,9 @@ With `--capture web` (and optionally `--config-dir <dir>`) it also writes
 `.github/workflows/scry-capture-web.yml`, the workflow for
 [build-free web capture](/guide/web-capture#set-it-up-in-ci), and changes `deploy-storybook.yml`
 from `--with-analysis` to `--no-analysis`. `deploy-pr-preview.yml` is unchanged. The command
-checks the project first and writes nothing if it does not qualify. Without `--capture web` it
+checks the project first (loading its Storybook and Vite config with credentials removed, so run
+it only in a repository you trust) and writes nothing if it does not qualify. Run it at the
+repository root. Without `--capture web` it
 returns the workflows to the Storybook-build path. Delete `scry-capture-web.yml` by hand when you
 go back.
 
