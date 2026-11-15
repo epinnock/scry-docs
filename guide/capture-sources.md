@@ -21,7 +21,9 @@ existing Storybook deploy step keeps working exactly as before, and a native cap
 
 A **Storybook** source runs stories in a browser and screenshots them with
 [scry-sbcov](/guide/storybook-capture-settings) — this is what every existing Scry project already
-has.
+has. A web Storybook can now be captured two ways: from a built Storybook (the existing path), or
+without a build by [`scry-deployer capture web`](/guide/web-capture) for React Storybook 10 on
+Vite.
 
 A **native** source runs the same idea on a device or simulator instead of a browser. The first
 one Scry ships an adapter for is **React Native**: it reuses your app's existing on-device

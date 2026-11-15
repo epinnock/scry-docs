@@ -152,6 +152,13 @@ Processing is asynchronous, so components may become searchable after the
 Storybook is already live. The [setup skill](/guide/skill) can configure and
 check this complete path.
 
+## Capture without building Storybook
+
+If your Storybook is React on Vite, `scry-deployer capture web` captures every story without
+`storybook build`, and a separate workflow, `.github/workflows/scry-capture-web.yml`, uploads the
+result. With `--capture web`, `init` and `update-workflows` also switch `deploy-storybook.yml` to
+`--no-analysis`, so it still hosts Storybook and reports coverage but does not capture stories a second time. See [Build-free web capture](/guide/web-capture).
+
 ## Repository Variables
 
 Set these in **Settings → Secrets and variables → Actions → Variables**:

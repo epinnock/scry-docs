@@ -115,11 +115,18 @@ If the installer reports **No skills found**, check that the source checkout
 contains `skills/scry-setup/SKILL.md`, or update your downloaded checkout.
 For MCP login or empty-search problems, see [MCP troubleshooting](/guide/mcp#troubleshooting).
 
+## Move to build-free web capture
+
+For a React Storybook 10 project on Vite, you can ask the assistant to "switch this project to
+build-free web capture". The skill checks the requirements and runs one local capture before it changes
+any workflow. If 0.14.0 is not published yet, it leaves the project alone and says so. See [Build-free web capture](/guide/web-capture).
+
 ## Direct setup guides
 
 - [CLI installation](/guide/installation)
 - [First deployment](/guide/first-deployment)
 - [GitHub Actions](/guide/github-actions)
+- [Build-free web capture](/guide/web-capture)
 - [MCP connection](/guide/mcp)
 - [Figma plugin](/guide/figma-plugin)
 
