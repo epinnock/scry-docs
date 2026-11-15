@@ -391,9 +391,8 @@ promise for your project.
 Ask your assistant to switch the project to build-free web capture. The [`scry-setup`
 skill](/guide/skill) follows the steps above:
 
-- It checks that the project qualifies and that the published deployer has the command. If
-  0.14.0 is not out yet, it tells you build-free capture arrives in 0.14.0, leaves the project
-  as it is and stops.
+- It checks that the project qualifies and that the deployer you can install has the command
+  (0.14.0 or later). If it does not, it tells you so, leaves the project as it is and stops.
 - It records the story count, runs `capture web` and `upload --dry-run` locally, and compares the
   counts. It will not switch CI over a gap it cannot explain.
 - It then runs `update-workflows --capture web`, shows you the diff, and commits only what you

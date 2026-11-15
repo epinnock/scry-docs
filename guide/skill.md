@@ -121,7 +121,8 @@ For a React Storybook 10 project on Vite, at the repository root, the skill sets
 [build-free web capture](/guide/web-capture) by default: your stories become searchable without a
 Storybook build on every push. It tells you which path it chose, and you can ask for the Storybook-build
 setup instead. A project that does not meet the requirements gets the Storybook-build setup, and the
-assistant says which requirement was not met.
+assistant says which requirement was not met. The same happens when the deployer you can install is
+older than 0.14.0.
 
 If your project already deploys to Scry the older way, the skill does not change your workflows on its
 own. Ask the assistant to "switch this project to build-free web capture". It checks the requirements and
