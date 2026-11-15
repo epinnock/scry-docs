@@ -104,8 +104,11 @@ look deleted.
 | `--max-dropped <n>` | `0` | Exit 1 when more than this many stories fail to capture |
 | `--retries <n>` | `1` | Extra tries, each on a fresh page, for a story that fails |
 | `--story-timeout <ms>` | `15000` | Time a story gets to render and finish its play function |
+| `--scale <n>` | `1` | Device scale factor of the images |
 | `--viewport <WxH>` | `1280x720` | Browser viewport |
 | `--fixed-time <iso\|off>` | `2026-11-14T12:00:00Z` | Instant the page clock starts at for each story; `off` uses the real clock |
+| `--stories <ids>` | all | Comma-separated story ids (a partial run, not uploadable) |
+| `--report <file>` | `capture-report.json` next to the bundle | Run report |
 
 The full list is in the [CLI reference](/cli/commands#capture-web).
 
@@ -447,8 +450,10 @@ or newer, which Storybook 10 needs. Check `node --version` and upgrade.
 (Storybook 10, Vite framework, React renderer, Vite, and Playwright installed in the project). The
 message names the failed requirement.
 
-**`--out` is refused.** The directory must not exist, be empty, hold the `.scry-capture` marker
-file, or hold a bundle written by `capture web`. Choose another directory.
+**`--out` is refused.** The tool only clears a directory that meets at least one of these: it
+does not exist yet, it is empty, it holds the `.scry-capture` marker file, or it holds a bundle
+written by `capture web`. A directory that meets none of them is refused before any file is
+touched. Choose another directory.
 
 **`upload` refuses the bundle.** It was a partial run (`--changed-since` or `--stories`). Run
 `capture web` with no filter.
