@@ -53,7 +53,7 @@ You can also request a specific integration:
 | --- | --- |
 | “Deploy this Storybook to Scry with GitHub Actions and PR previews.” | Deployment configuration and workflows adapted to the repository |
 | “Connect Scry MCP only; my project is already indexed.” | The assistant's remote MCP connection and a project-filtered search check |
-| “Make this project's components searchable through Scry.” | Screenshot and metadata capture, deployment, and an indexing check |
+| “Make this project's components searchable through Scry.” | Screenshot and metadata capture (build-free when the project qualifies), deployment, and an indexing check |
 | “Help me link this Storybook to Figma.” | Storybook connection checks and the Figma plugin setup steps |
 
 To invoke it explicitly in Codex, use `$scry-setup`; in Claude Code, use
@@ -115,11 +115,17 @@ If the installer reports **No skills found**, check that the source checkout
 contains `skills/scry-setup/SKILL.md`, or update your downloaded checkout.
 For MCP login or empty-search problems, see [MCP troubleshooting](/guide/mcp#troubleshooting).
 
-## Move to build-free web capture
+## Build-free web capture is the default
 
-For a React Storybook 10 project on Vite, you can ask the assistant to "switch this project to
-build-free web capture". The skill checks the requirements and runs one local capture before it changes
-any workflow. If 0.14.0 is not published yet, it leaves the project alone and says so. See [Build-free web capture](/guide/web-capture).
+For a React Storybook 10 project on Vite, at the repository root, the skill sets up
+[build-free web capture](/guide/web-capture) by default: your stories become searchable without a
+Storybook build on every push. It tells you which path it chose, and you can ask for the Storybook-build
+setup instead. A project that does not meet the requirements gets the Storybook-build setup, and the
+assistant says which requirement was not met.
+
+If your project already deploys to Scry the older way, the skill does not change your workflows on its
+own. Ask the assistant to "switch this project to build-free web capture". It checks the requirements and
+runs one local capture before it changes any workflow. This needs `@scrymore/scry-deployer` 0.14.0 or later.
 
 ## Direct setup guides
 
