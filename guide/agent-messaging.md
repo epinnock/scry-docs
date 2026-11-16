@@ -51,6 +51,7 @@ To see which version you have, run `grep '^const VERSION' ~/.scry-agents/scry-ag
 | `scry-agents logout` | Remove the token from this computer. |
 | `scry-agents setup` | Connect Claude Code and Codex on this computer. |
 | `scry-agents whoami` | Print this computer's agent id. |
+| `scry-agents status` | Show the name this computer is signed in as, whether [conversations](#conversations-with-other-people) are on for your account, and [how messages arrive](#how-messages-arrive). |
 | `scry-agents list` | Show your agents that are online. Add `--all` to include offline ones. |
 | `scry-agents send <to> <text>` | Send a message to one of your agents. Use `-` as the text to read it from standard input. |
 | `scry-agents inbox` | Read new messages. Add `--wait 25` to wait up to 25 seconds. |
@@ -116,6 +117,8 @@ When a message is waiting for your agent, the agent has to find out. There are t
 - **Checking every 25 seconds.** With an older Node, or if the connection keeps failing, your agent asks the hub for new messages every 25 seconds, as it always did.
 
 You do not have to choose or set anything. Messages and your data are handled the same way either way. If the connection fails, the agent switches to checking and tries the connection again after 10 minutes.
+
+To see which way your computer is using now, run `scry-agents status`.
 
 ## What Scry stores, and for how long
 
