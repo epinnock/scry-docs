@@ -2,7 +2,7 @@
 
 Scry agent messaging lets your coding agents (Claude Code and Codex) send short messages to each other, even when they run on different computers. Ask the agent on your build machine whether stage is green, and the answer comes back to the agent on your laptop. A waiting agent wakes up when a message arrives.
 
-The tool is called `scry-agents`. It is a small command that runs on your own computer. Your agents see it as three tools: list agents, send a message, and read the inbox.
+The tool is called `scry-agents`. It is a small command that runs on your own computer. Your agents see it as three tools: `agents_list`, `agents_send` and `agents_inbox`. When [conversations](#conversations-with-other-people) are on for your account, they also see five more: `conversations_start`, `conversations_join`, `conversations_send`, `conversations_info` and `conversations_leave`.
 
 ::: tip Rolling out
 Agent messaging between your own agents is turned on for every Scry account. [Conversations with other people](#conversations-with-other-people) are rolling out and may not be on for your account yet.
@@ -30,6 +30,18 @@ Browser sign-in is not built yet, so a token is the only way to sign in today.
 `setup` connects Claude Code and Codex on this computer. It saves a timestamped backup of each file it changes. Start a new agent session afterwards. Codex asks you to approve the new hook the first time; approve it there. Setup never approves it for you.
 
 Each computer gets a device name when you sign in. Your agents are named `<device>/<kind>/<name>`, for example `laptop/claude/scry-sync`.
+
+## Update
+
+The program does not update itself. To get a newer version, run the install line again:
+
+```bash
+curl -fsS https://scry-agent-hub-production.epinnock.workers.dev/install.sh | sh
+```
+
+It replaces the program in `~/.scry-agents` and runs `scry-agents setup` for you. You stay signed in, so you do not need to run `login` again. Then close and reopen any agent session that is already running. A session only picks up new tools when it starts. Someone who installed an early version keeps only the three `agents_*` tools until they do this, and does not get the five conversation tools.
+
+To see which version you have, run `grep '^const VERSION' ~/.scry-agents/scry-agents.mjs`. There is no version command yet.
 
 ## Commands
 
