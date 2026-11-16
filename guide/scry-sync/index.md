@@ -24,6 +24,8 @@ Scry Sync also includes **[Scry Snip](/guide/scry-sync/snip)**: press a hotkey, 
 
 Your folder is never modified. Scry Sync only reads from it, and it only goes one way: folder to Scry.
 
+You can also [search your pictures](/guide/scry-sync/search-your-pictures) from any app. Each folder is either synced to Scry and searched there, or kept on this computer, where nothing in it uploads on its own, and searched here.
+
 ::: info Videos and captions
 The short videos in this guide have narration and closed captions. Use the **CC** button in the player to turn the captions on or off. They were recorded on Windows.
 :::
@@ -60,6 +62,7 @@ Not in this version: Figma and Sketch files, an Adobe Bridge or Photoshop panel,
 - [Install and first run](/guide/scry-sync/install): the Mac and Windows downloads, the first-open prompt, signing in.
 - [Connect a folder](/guide/scry-sync/connect-a-folder): choose a project and folder, the scan, and what you confirm before anything is sent.
 - [Scry Snip](/guide/scry-sync/snip): screenshots by hotkey, permissions, what is stored and how to delete it.
+- [Search your pictures](/guide/scry-sync/search-your-pictures): find a picture or a moment in a video from any app, on this computer or in Scry.
 - [What gets converted](/guide/scry-sync/what-gets-converted): the three verdicts, what *approximate* means, and every reason a file is not sent.
 - [How to export an InDesign file to PDF](/guide/scry-sync/export-indd-pdf)
 - [Disconnect a device](/guide/scry-sync/disconnect)
