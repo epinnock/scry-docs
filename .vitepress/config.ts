@@ -92,6 +92,7 @@ export default defineConfig({
             { text: 'What Scry Link Collects', link: '/figma-plugin/what-we-collect' },
             { text: 'Component Requests', link: '/guide/component-requests' },
             { text: 'MCP Server', link: '/guide/mcp' },
+            { text: 'Agent Messaging', link: '/guide/agent-messaging' },
             { text: 'Notifications', link: '/guide/notifications' },
           ]
         },
