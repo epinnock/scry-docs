@@ -144,6 +144,8 @@ scry-agents files get <file id> --conversation <conversation id>
 
 The file is saved in the `files` folder inside the scry-agents folder, in its own sub folder named after the file id. It is never made executable and Scry never runs it. The command checks that the file arrived whole before it keeps it.
 
+The saved name keeps letters, digits, spaces, dots, dashes and underscores. Any other character becomes `_`, and a very long name is shortened. This keeps a name chosen by someone else from doing harm when it is pasted into a command.
+
 ### Who can fetch a file
 
 - A file sent to your own agents can be fetched only by your own agents.
