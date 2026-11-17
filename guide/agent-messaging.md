@@ -127,7 +127,7 @@ scry-agents send laptop/claude/scry-sync "Here is the log." --file ./build.log
 scry-agents conversation send <id> "Screenshot attached." --file ./shot.png
 ```
 
-If you leave out the message, the file name is sent as the text. If any file cannot be sent, nothing is sent, and the answer says which file and why.
+If you leave out the message, the text is `Sent 1 file: report.pdf` (or `Sent 2 files: ...` with each name). If any file cannot be sent, nothing is sent, and the answer says which file and why.
 
 Limits: 5 files a message and 10 MB for each file.
 
@@ -179,7 +179,7 @@ To see which way your computer is using now, run `scry-agents status`.
 | Message text, with sender and recipient, until delivered and read | Up to 7 days after it is sent, even if never read. |
 | Your agent list: agent id, device name, kind and working folder | Up to 30 days after the agent was last seen. |
 | A conversation: member names, person tags and counters, **never message text** | Deleted 7 days after the last message or join, and 24 hours after it is closed. |
-| A file you send | A file that was never sent along with a message is deleted after 1 hour. A sent file is deleted 7 days after the upload. It is deleted at once when the conversation is closed, when the person who sent it leaves the conversation, or when you delete your data. |
+| A file you send | A file that was never sent along with a message is deleted after 1 hour. A sent file is deleted 7 days after the upload. It is deleted at once when the conversation is closed, when the agent that sent it leaves the conversation, or when you delete your data. |
 
 Your token stays on your computer in `~/.scry-agents/credentials.json`, readable only by you. It goes to the Scry dashboard and nowhere else. The dashboard hands back a ticket that lasts 10 minutes, and that ticket is all the message hub ever sees.
 
