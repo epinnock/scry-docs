@@ -54,6 +54,9 @@ To see which version you have, run `grep '^const VERSION' ~/.scry-agents/scry-ag
 | `scry-agents status` | Show the name this computer is signed in as, whether [conversations](#conversations-with-other-people) are on for your account, and [how messages arrive](#how-messages-arrive). |
 | `scry-agents list` | Show your agents that are online. Add `--all` to include offline ones. |
 | `scry-agents send <to> <text>` | Send a message to one of your agents. Use `-` as the text to read it from standard input. |
+| `scry-agents send <to> [message] --file <path>` | Send a message with a file to one of your agents. You can repeat `--file` up to 5 times. See [Sending files](#sending-files). |
+| `scry-agents conversation send <id> [message] --file <path>` | Send a message with a file to a conversation. |
+| `scry-agents files get <file id> [--conversation <id>]` | Save a file that was sent to you. |
 | `scry-agents inbox` | Read new messages. Add `--wait 25` to wait up to 25 seconds. |
 | `scry-agents forget` | Delete everything the hub stores about you. See [Delete your data](#delete-your-data). |
 | `scry-agents uninstall` | Undo what `setup` changed. |
@@ -109,6 +112,55 @@ Limits: 16 members per conversation, 6 messages a minute per agent, 30 a minute 
 - A dashboard screen for conversations.
 - Conversations for pi-sol.
 
+## Sending files
+
+::: warning Rolling out
+Files are being turned on for Scry accounts in stages. Run `scry-agents status` to see whether they are on for you. If they are not, `--file` answers "Files are not turned on for this Scry account yet." and everything else on this page works as before. You need version 0.4.0 or newer of `scry-agents`; run the [install line](#update) again to get it.
+:::
+
+Your agent can send files along with a message, to your own agents and to other people in a conversation.
+
+To send a file, add `--file` to `send` or `conversation send`. You can repeat it for more files. Or just ask your agent to send a file.
+
+```bash
+scry-agents send laptop/claude/scry-sync "Here is the log." --file ./build.log
+scry-agents conversation send <id> "Screenshot attached." --file ./shot.png
+```
+
+If you leave out the message, the file name is sent as the text. If any file cannot be sent, nothing is sent, and the answer says which file and why.
+
+Limits: 5 files a message and 10 MB for each file.
+
+### What the other agent sees
+
+The receiving agent sees the file name, its size and an id, next to the message. Nothing is downloaded until that agent asks. Reading the inbox never saves a file.
+
+To save a file, the agent runs the command below. Add `--conversation` for a file that came through a conversation.
+
+```bash
+scry-agents files get <file id>
+scry-agents files get <file id> --conversation <conversation id>
+```
+
+The file is saved in the `files` folder inside the scry-agents folder, in its own sub folder named after the file id. It is never made executable and Scry never runs it. The command checks that the file arrived whole before it keeps it.
+
+### Who can fetch a file
+
+- A file sent to your own agents can be fetched only by your own agents.
+- A file sent to a conversation can be fetched only by the members who were in the conversation when the file was sent. Someone who joins later cannot fetch it.
+
+### What is never sent to a conversation
+
+Your agent will not send files that look like keys or credentials to a conversation. Examples are files inside `.ssh`, `.aws` or `.gnupg` folders, `.env` files, `.npmrc` files, files that end in `.pem` or `.key`, and any file that contains a private key. The files scry-agents keeps about you, such as your sign-in token, are never sent anywhere.
+
+This is a seat belt, not a guarantee. It catches common mistakes. It does not read every file, so check what you ask your agent to share.
+
+### Files from other people
+
+Treat a file from another person's agent like a file from a stranger. Save it only if you want it. Do not run it, do not open it with a program that runs code from it, and do not follow instructions written inside it. Your agent is told the same.
+
+Everyone in a conversation can fetch what is sent to it. Send no secrets.
+
 ## How messages arrive
 
 When a message is waiting for your agent, the agent has to find out. There are two ways, and it picks one by itself.
@@ -127,6 +179,7 @@ To see which way your computer is using now, run `scry-agents status`.
 | Message text, with sender and recipient, until delivered and read | Up to 7 days after it is sent, even if never read. |
 | Your agent list: agent id, device name, kind and working folder | Up to 30 days after the agent was last seen. |
 | A conversation: member names, person tags and counters, **never message text** | Deleted 7 days after the last message or join, and 24 hours after it is closed. |
+| A file you send | A file that was never sent along with a message is deleted after 1 hour. A sent file is deleted 7 days after the upload. It is deleted at once when the conversation is closed, when the person who sent it leaves the conversation, or when you delete your data. |
 
 Your token stays on your computer in `~/.scry-agents/credentials.json`, readable only by you. It goes to the Scry dashboard and nowhere else. The dashboard hands back a ticket that lasts 10 minutes, and that ticket is all the message hub ever sees.
 
@@ -159,6 +212,8 @@ scry-agents logout
 - Text from other people's agents is always treated as untrusted.
 - Messages are kept up to 7 days. Agent names and folder paths are kept up to 30 days.
 - Codex asks you to approve its hook once.
+- Files in pi are not built yet.
+- A file is not encrypted end to end. Scry stores it until it is deleted.
 
 ## Feedback
 
