@@ -14,7 +14,7 @@ Press a hotkey, select part of your screen, check the picture, and send it to a 
 ## What it does
 
 1. **Takes the screenshot** with a hotkey, from the Mac menu bar or the Windows system tray app.
-2. **Shows a review card** with the picture, so you can send it, mark it up, keep it on your computer or throw it away. Nothing leaves your computer until you press **Send** (see [Review, then send](#review-then-send)).
+2. **Shows a review card** with the picture, so you can send it, mark it up, keep it on your computer or throw it away. If you are signed in with a project chosen, the snip is sent when the card's bar runs out; press **Don't send** to keep it (see [Review, then send](#review-then-send)).
 3. **Puts the picture on your clipboard** and saves a copy in a Snips folder on your computer, so you can paste it into any chat or document straight away.
 4. **Sends it to your project**, where you can share it or give it to an agent.
 
@@ -61,7 +61,7 @@ By default every snip stops at a review card. It shows the picture with **Snip r
 
 If the picture could not be copied, the card says **Not copied** and adds a **Copy image** button. **Esc** discards the snip.
 
-If you do nothing for 30 seconds, the card moves the snip to **Recent snips** on your computer. It is not sent. After you press **Send**, the card says **Sending…** and then **Sent**, with the project name. If the upload fails the card says **Not sent** and offers **Retry**.
+The bar along the card runs for 30 seconds. If you are signed in and a project is chosen, the card says **Sending to** *project* **in N s** with a **Don't send** button, and when the bar runs out the snip is sent, the same as pressing **Send**. Point at the card to pause the bar. **Don't send**, **Copy again**, **Mark up** and the **More actions** menu stop the timed send, and the snip then moves to **Recent snips** on your computer when the bar runs out. If you are signed out or no project is chosen, the bar always ends with the snip in **Recent snips**, not sent. After you press **Send**, the card says **Sending…** and then **Sent**, with the project name. If the upload fails the card says **Not sent** and offers **Retry**.
 
 **Send immediately** is an option in **Settings > Snip**. It is off until you turn it on, and Scry explains what it does before it switches on. When it is on, a snip uploads as soon as you take it, and the card shows **Undo** for a moment. It applies to this computer only, and signing out turns it off.
 
@@ -217,7 +217,7 @@ To remove everything, delete the project in the dashboard, which deletes its sni
 
 **Mac says Scry needs Screen Recording, but it is already on.** Quit and reopen Scry Sync. If it still says so after an update, switch Scry Sync off and on in **System Settings > Privacy & Security > Screen Recording**.
 
-**The snip is on my computer but not in the dashboard.** The card says **Not sent** when the upload fails; press **Retry**. Snips you **Save** or let time out stay in **Recent snips** until you send them.
+**The snip is on my computer but not in the dashboard.** The card says **Not sent** when the upload fails; press **Retry**. Snips you **Save**, stop with **Don't send**, or let time out while signed out stay in **Recent snips** until you send them.
 
 **A snip does not show up in search.** Look at its label on the **Mine** tab of the **Snips** page. **Indexing…** means wait a few seconds. **Not searchable (turned off)** means **Make my snips searchable** is off; turn it on. A snip you sent before snips could be searched shows **Not searchable**. For a snip someone shared with you, ask them to check that they still share it and that their switch is on.
 
